@@ -11,10 +11,8 @@ function App() {
         <div style={{width: "80%", margin: "auto"}}>
             <Router>
                 <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/battler" component={Battler} />
-                    <Route exact path="/battlers/:id" component={Battler} />
-                    <Route exact path="/admin" component={Admin} />
+                    <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
+                    <Route exact path={`${process.env.PUBLIC_URL}/battlers/:id`} component={Battler} />
                 </Switch>
             </Router>
         </div>
