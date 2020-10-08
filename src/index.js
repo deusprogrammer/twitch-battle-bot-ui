@@ -4,6 +4,18 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import axios from 'axios';
+
+axios.interceptors.response.use(function (response) {
+    return response;
+}, function (error) {
+    if (error.response.status === 401) {
+        window.location = "https://deusprogrammer.com/api/auth-svc/auth/twitch";
+        return;
+    }
+    return Promise.reject(error);
+});
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
