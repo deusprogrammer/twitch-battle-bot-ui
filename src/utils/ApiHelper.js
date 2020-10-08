@@ -28,7 +28,7 @@ const getItemTable = async () => {
   let items = await axios.get(`${config.BASE_URL}/items`, {
     headers: {
       //Authorization: `Bearer ${BATTLE_BOT_JWT}`
-      "X-Auth-Token": localStorage.getItem("accessToken")
+      "X-Access-Token": localStorage.getItem("accessToken")
     }
   });
 
@@ -39,7 +39,7 @@ const getJobTable = async () => {
   let jobs = await axios.get(`${config.BASE_URL}/jobs`, {
     headers: {
       //Authorization: `Bearer ${BATTLE_BOT_JWT}`
-      "X-Auth-Token": localStorage.getItem("accessToken")
+      "X-Access-Token": localStorage.getItem("accessToken")
     }
   });
 
@@ -68,7 +68,7 @@ const getUser = async (username) => {
     {
         headers: {
             //Authorization: `Bearer ${BATTLE_BOT_JWT}`
-            "X-Auth-Token": localStorage.getItem("accessToken")
+            "X-Access-Token": localStorage.getItem("accessToken")
         }
     });
 
@@ -79,7 +79,7 @@ const updateUser = async (userData) => {
     let updated = await axios.put(`${config.BASE_URL}/users/${userData.name}`, userData, {
         headers: {
             //Authorization: `Bearer ${BATTLE_BOT_JWT}`
-            "X-Auth-Token": localStorage.getItem("accessToken")
+            "X-Access-Token": localStorage.getItem("accessToken")
         }
     });
 
