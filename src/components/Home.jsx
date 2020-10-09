@@ -18,7 +18,9 @@ export default class Home extends React.Component {
                     <img src={process.env.PUBLIC_URL + "/battler-step-3.png"} style={{width: "80%"}} /><br />
                 </div>
 
-                <p>See!  Easy peasy!  Now what can you current do?</p>
+                <p>Once you do this, you can check out and manage your profile here: https://deusprogrammer.com/util/twitch/battlers/~self</p>
+
+                <p>See!  Easy peasy!  Now what can you currently do?</p>
 
                 <h1>User Commands</h1>
 
