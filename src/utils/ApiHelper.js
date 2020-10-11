@@ -24,7 +24,7 @@ const recalculateStats = (userData, itemTable) => {
     return userData;
 }
 
-const getItemTable = async () => {
+const getItems = async () => {
   let items = await axios.get(`${config.BASE_URL}/items`, {
     headers: {
       //Authorization: `Bearer ${BATTLE_BOT_JWT}`
@@ -32,10 +32,16 @@ const getItemTable = async () => {
     }
   });
 
-  return indexArrayToMap(items.data);
+  return items.data;
 }
 
-const getJobTable = async () => {
+const getItemTable = async () => {
+  let items = await getItems();
+
+  return indexArrayToMap(items);
+}
+
+const getJobs = async () => {
   let jobs = await axios.get(`${config.BASE_URL}/jobs`, {
     headers: {
       //Authorization: `Bearer ${BATTLE_BOT_JWT}`
@@ -43,7 +49,13 @@ const getJobTable = async () => {
     }
   });
 
-  return indexArrayToMap(jobs.data);  
+  return jobs.data;
+}
+
+const getJobTable = async () => {
+  let jobs = await getJobs();
+
+  return indexArrayToMap(jobs);  
 }
 
 const expandUser = (userData, itemTable, jobTable ) => {
@@ -75,6 +87,30 @@ const getUser = async (username) => {
     return user.data;
 }
 
+const getMonsters = async () => {
+  let monsters = await axios.get(`${config.BASE_URL}/monsters`,
+  {
+      headers: {
+          //Authorization: `Bearer ${BATTLE_BOT_JWT}`
+          "X-Access-Token": localStorage.getItem("accessToken")
+      }
+  });
+
+  return monsters.data;
+}
+
+const getAbilities = async () => {
+  let abilities = await axios.get(`${config.BASE_URL}/abilities`,
+  {
+      headers: {
+          //Authorization: `Bearer ${BATTLE_BOT_JWT}`
+          "X-Access-Token": localStorage.getItem("accessToken")
+      }
+  });
+
+  return abilities.data;
+}
+
 const updateUser = async (userData) => {
     let updated = await axios.put(`${config.BASE_URL}/users/${userData.name}`, userData, {
         headers: {
@@ -87,5 +123,5 @@ const updateUser = async (userData) => {
 }
 
 export default {
-    expandUser, getItemTable, getJobTable, getUser, updateUser, recalculateStats
+    expandUser, getItemTable, getItems, getJobTable, getJobs, getUser, updateUser, recalculateStats, getMonsters, getAbilities
 }
