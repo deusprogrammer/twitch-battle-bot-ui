@@ -1,5 +1,5 @@
 import React from 'react';
-import {getAbilities} from '../utils/ApiHelper';
+import ApiHelper from '../utils/ApiHelper';
 
 export default class Abilities extends React.Component {
     state = {
@@ -7,7 +7,7 @@ export default class Abilities extends React.Component {
     }
 
     componentDidMount = async () => {
-        let abilities = await getAbilities();
+        let abilities = await ApiHelper.getAbilities();
 
         this.setState({abilities});
     }

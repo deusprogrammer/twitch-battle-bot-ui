@@ -1,5 +1,5 @@
 import React from 'react';
-import {getMonsters} from '../utils/ApiHelper';
+import ApiHelper from '../utils/ApiHelper';
 
 export default class Monsters extends React.Component {
     state = {
@@ -7,7 +7,7 @@ export default class Monsters extends React.Component {
     }
 
     componentDidMount = async () => {
-        let monsters = await getMonsters();
+        let monsters = await ApiHelper.getMonsters();
 
         this.setState({monsters});
     }

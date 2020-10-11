@@ -123,5 +123,14 @@ const updateUser = async (userData) => {
 }
 
 export default {
-    expandUser, getItemTable, getItems, getJobTable, getJobs, getUser, updateUser, recalculateStats, getMonsters, getAbilities
+    expandUser, 
+    getItemTable, 
+    getItems, 
+    getJobTable, 
+    getJobs, 
+    getUser, 
+    updateUser, 
+    recalculateStats, 
+    getMonsters, 
+    getAbilities
 }
