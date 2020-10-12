@@ -51,6 +51,9 @@ export default class Items extends React.Component {
 
     handleSubmit = async (values) => {
         values.id = values.name.replace(" ", "_").toUpperCase();
+        if (values.type === "consumable") {
+            values.slot = "inventory";
+        }
         let created = await ApiHelper.createItem(values);
         this.setState({items: [...this.state.items, created]}, () => {
             this.formApi.reset();

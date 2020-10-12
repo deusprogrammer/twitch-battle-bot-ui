@@ -26,6 +26,9 @@ export default class Item extends React.Component {
 
     handleSubmit = async (values) => {
         values.id = this.state.item.id;
+        if (values.type === "consumable") {
+            values.slot = "inventory";
+        }
         await ApiHelper.updateItem(values);
         this.props.history.goBack();
     }
