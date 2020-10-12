@@ -32,8 +32,9 @@ const itemSchema = Yup.object().shape({
 export default (props) => {
     return (
         <Form 
+            getApi={formApi => this.formApi = formApi}
             initialValues={props.initialValues}
-            onSubmit={props.onSubmit} 
+            onSubmit={() => {this.formApi.reset(); props.onSubmit();}} 
             onSubmitFailure={props.onFailure}
             validationSchema={itemSchema}>
             <table>
