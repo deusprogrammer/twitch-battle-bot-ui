@@ -111,6 +111,39 @@ const getAbilities = async () => {
   return abilities.data;
 }
 
+const getItem = async (id) => {
+  let item = await axios.get(`${config.BASE_URL}/items/${id}`, {
+    headers: {
+        //Authorization: `Bearer ${BATTLE_BOT_JWT}`
+        "X-Access-Token": localStorage.getItem("accessToken")
+    }
+  });
+
+  return item.data;
+}
+
+const createItem = async (itemData) => {
+  let created = await axios.post(`${config.BASE_URL}/items`, itemData, {
+    headers: {
+        //Authorization: `Bearer ${BATTLE_BOT_JWT}`
+        "X-Access-Token": localStorage.getItem("accessToken")
+    }
+  });
+
+  return created.data;
+}
+
+const updateItem = async (itemData) => {
+  let updated = await axios.put(`${config.BASE_URL}/items/${itemData.id}`, itemData, {
+    headers: {
+        //Authorization: `Bearer ${BATTLE_BOT_JWT}`
+        "X-Access-Token": localStorage.getItem("accessToken")
+    }
+  });
+
+  return updated.data;
+}
+
 const updateUser = async (userData) => {
     let updated = await axios.put(`${config.BASE_URL}/users/${userData.name}`, userData, {
         headers: {
@@ -132,5 +165,8 @@ export default {
     updateUser, 
     recalculateStats, 
     getMonsters, 
-    getAbilities
+    getAbilities,
+    getItem,
+    createItem,
+    updateItem
 }
