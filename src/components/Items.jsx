@@ -6,42 +6,42 @@ import ItemForm from '../forms/ItemForm';
 export default class Items extends React.Component {
     state = {
         items: [
-            // {
-            //     "_id": "5f7e351ac1cf475d70236c15",
-            //     "id": "SPACE_KNIGHT_LEGS",
-            //     "type": "armor",
-            //     "slot": "legs",
-            //     "name": "Space Knight Legs",
-            //     "ac": 8,
-            //     "value": 0,
-            //     "__v": 0
-            // },
-            // {
-            //     "_id": "5f798e83afd8650738313392",
-            //     "id": "POTION",
-            //     "type": "consumable",
-            //     "slot": "inventory",
-            //     "name": "Potion",
-            //     "use": "+100HP",
-            //     "value": 10,
-            //     "__v": 0
-            // },
-            // {
-            //     "_id": "5f7f4b38c1cf475d70250b8d",
-            //     "id": "TEQUILA_BOTTLE",
-            //     "type": "weapon",
-            //     "slot": "hand",
-            //     "name": "Broken Tequila Bottle",
-            //     "dmg": "2d4",
-            //     "value": 0
-            // }
+            {
+                "_id": "5f7e351ac1cf475d70236c15",
+                "id": "SPACE_KNIGHT_LEGS",
+                "type": "armor",
+                "slot": "legs",
+                "name": "Space Knight Legs",
+                "ac": 8,
+                "value": 0,
+                "__v": 0
+            },
+            {
+                "_id": "5f798e83afd8650738313392",
+                "id": "POTION",
+                "type": "consumable",
+                "slot": "inventory",
+                "name": "Potion",
+                "use": "+100HP",
+                "value": 10,
+                "__v": 0
+            },
+            {
+                "_id": "5f7f4b38c1cf475d70250b8d",
+                "id": "TEQUILA_BOTTLE",
+                "type": "weapon",
+                "slot": "hand",
+                "name": "Broken Tequila Bottle",
+                "dmg": "2d4",
+                "value": 0
+            }
         ]
     }
 
     componentDidMount = async () => {
-        let items = await ApiHelper.getItems();
+        // let items = await ApiHelper.getItems();
 
-        this.setState({items});
+        // this.setState({items});
     }
 
     goTo = async (selectedItem) => {
@@ -52,7 +52,9 @@ export default class Items extends React.Component {
     handleSubmit = async (values) => {
         values.id = values.name.replace(" ", "_").toUpperCase();
         let created = await ApiHelper.createItem(values);
-        this.setState({items: [...this.state.items, created]});
+        this.setState({items: [...this.state.items, created]}, () => {
+            this.formApi.reset();
+        });
     }
 
     handleFailure = async (errors) => {
@@ -100,6 +102,7 @@ export default class Items extends React.Component {
                     <div style={{float: "right", width: "49%"}}>
                         <h2>Create New Item</h2>
                         <ItemForm 
+                            getApi={formApi => this.formApi = formApi}
                             onSubmit={(values) => {this.handleSubmit(values)}} 
                             onFailure={(errors) => {this.handleFailure(errors)}} />
                     </div>
