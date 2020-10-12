@@ -29,109 +29,111 @@ const itemSchema = Yup.object().shape({
         .required("Item must have a value")
 });
 
-export default (props) => {
-    return (
-        <Form 
-            getApi={formApi => this.formApi = formApi}
-            initialValues={props.initialValues}
-            onSubmit={() => {this.formApi.reset(); props.onSubmit();}} 
-            onSubmitFailure={props.onFailure}
-            validationSchema={itemSchema}>
-            <table>
-                <tbody>
-                    <tr>
-                        <td style={{fontWeight: "bolder"}}>
-                            Type:
-                        </td>
-                        <td>
-                            <Select field="type">
-                                <Option value="null">Select Item Type</Option>
-                                <Option value="weapon">WEAPON</Option>
-                                <Option value="armor">ARMOR</Option>
-                                <Option value="consumable">CONSUMABLE</Option>
-                            </Select>
-                        </td>
-                    </tr>
-                    <Relevant when={({values}) => values.type === "weapon"}>
+export default class ItemForm extends React.Component {
+    render() {
+        return (
+            <Form 
+                getApi={formApi => this.formApi = formApi}
+                initialValues={props.initialValues}
+                onSubmit={() => {this.formApi.reset(); props.onSubmit();}} 
+                onSubmitFailure={props.onFailure}
+                validationSchema={itemSchema}>
+                <table>
+                    <tbody>
                         <tr>
                             <td style={{fontWeight: "bolder"}}>
-                                Slot:
+                                Type:
                             </td>
                             <td>
-                                <Select field="slot">
-                                    <Option value="null">Select Item Slot</Option>
-                                    <Option value="hand">HAND</Option>
-                                    <Option value="offhand">OFFHAND</Option>
+                                <Select field="type">
+                                    <Option value="null">Select Item Type</Option>
+                                    <Option value="weapon">WEAPON</Option>
+                                    <Option value="armor">ARMOR</Option>
+                                    <Option value="consumable">CONSUMABLE</Option>
                                 </Select>
                             </td>
                         </tr>
-                    </Relevant>
-                    <Relevant when={({values}) => values.type === "armor"}>
+                        <Relevant when={({values}) => values.type === "weapon"}>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Slot:
+                                </td>
+                                <td>
+                                    <Select field="slot">
+                                        <Option value="null">Select Item Slot</Option>
+                                        <Option value="hand">HAND</Option>
+                                        <Option value="offhand">OFFHAND</Option>
+                                    </Select>
+                                </td>
+                            </tr>
+                        </Relevant>
+                        <Relevant when={({values}) => values.type === "armor"}>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Slot:
+                                </td>
+                                <td>
+                                    <Select field="slot">
+                                        <Option value="null">Select Item Slot</Option>
+                                        <Option value="head">HEAD</Option>
+                                        <Option value="body">BODY</Option>
+                                        <Option value="arms">ARMS</Option>
+                                        <Option value="legs">LEGS</Option>
+                                        <Option value="accessory">ACCESSORY</Option>
+                                    </Select>
+                                </td>
+                            </tr>
+                        </Relevant>
                         <tr>
                             <td style={{fontWeight: "bolder"}}>
-                                Slot:
+                                Item Name:
                             </td>
                             <td>
-                                <Select field="slot">
-                                    <Option value="null">Select Item Slot</Option>
-                                    <Option value="head">HEAD</Option>
-                                    <Option value="body">BODY</Option>
-                                    <Option value="arms">ARMS</Option>
-                                    <Option value="legs">LEGS</Option>
-                                    <Option value="accessory">ACCESSORY</Option>
-                                </Select>
+                                <Text field="name"></Text>
                             </td>
                         </tr>
-                    </Relevant>
-                    <tr>
-                        <td style={{fontWeight: "bolder"}}>
-                            Item Name:
-                        </td>
-                        <td>
-                            <Text field="name"></Text>
-                        </td>
-                    </tr>
-                    <Relevant when={({values}) => values.type === "weapon"}>
+                        <Relevant when={({values}) => values.type === "weapon"}>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Damage:
+                                </td>
+                                <td>
+                                    <Text field="dmg"></Text>
+                                </td>
+                            </tr>
+                        </Relevant>
+                        <Relevant when={({values}) => values.type === "armor"}>
                         <tr>
                             <td style={{fontWeight: "bolder"}}>
-                                Damage:
+                                Armor Class:
                             </td>
                             <td>
-                                <Text field="dmg"></Text>
+                                <Text field="ac" type="number"></Text>
                             </td>
                         </tr>
-                    </Relevant>
-                    <Relevant when={({values}) => values.type === "armor"}>
-                    <tr>
-                        <td style={{fontWeight: "bolder"}}>
-                            Armor Class:
-                        </td>
-                        <td>
-                            <Text field="ac" type="number"></Text>
-                        </td>
-                    </tr>
-                    </Relevant>
-                    <Relevant when={({values}) => values.type === "consumable"}>
+                        </Relevant>
+                        <Relevant when={({values}) => values.type === "consumable"}>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Use:
+                                </td>
+                                <td>
+                                    <Text field="use"></Text>
+                                </td>
+                            </tr>
+                        </Relevant>
                         <tr>
                             <td style={{fontWeight: "bolder"}}>
-                                Use:
+                                Price:
                             </td>
                             <td>
-                                <Text field="use"></Text>
+                                <Text field="value" type="number"></Text>
                             </td>
                         </tr>
-                    </Relevant>
-                    <tr>
-                        <td style={{fontWeight: "bolder"}}>
-                            Price:
-                        </td>
-                        <td>
-                            <Text field="value" type="number"></Text>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <button type="submit">Submit</button>
-        </Form>
-    )
+                    </tbody>
+                </table>
+                <button type="submit">Submit</button>
+            </Form>
+        )
+    }
 }
