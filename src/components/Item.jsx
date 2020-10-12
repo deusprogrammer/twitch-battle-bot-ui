@@ -26,7 +26,7 @@ export default class Item extends React.Component {
 
     handleSubmit = async (values) => {
         values.id = this.state.item.id;
-        let updated = await ApiHelper.updateItem(values);
+        await ApiHelper.updateItem(values);
         this.props.history.goBack();
     }
 
