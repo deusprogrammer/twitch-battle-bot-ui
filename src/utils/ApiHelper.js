@@ -99,6 +99,17 @@ const getMonsters = async () => {
   return monsters.data;
 }
 
+const createMonster = async (monsterData) => {
+  let created = await axios.post(`${config.BASE_URL}/monsters`, monsterData, {
+    headers: {
+        //Authorization: `Bearer ${BATTLE_BOT_JWT}`
+        "X-Access-Token": localStorage.getItem("accessToken")
+    }
+  });
+
+  return created.data;
+}
+
 const getAbilities = async () => {
   let abilities = await axios.get(`${config.BASE_URL}/abilities`,
   {
@@ -164,7 +175,8 @@ export default {
     getUser, 
     updateUser, 
     recalculateStats, 
-    getMonsters, 
+    getMonsters,
+    createMonster,
     getAbilities,
     getItem,
     createItem,

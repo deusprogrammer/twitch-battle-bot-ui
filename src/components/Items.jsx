@@ -50,7 +50,7 @@ export default class Items extends React.Component {
     }
 
     handleSubmit = async (values) => {
-        values.id = values.name.replace(" ", "_").toUpperCase();
+        values.id = values.name.replaceAll(" ", "_").toUpperCase();
         if (values.type === "consumable") {
             values.slot = "inventory";
         }
