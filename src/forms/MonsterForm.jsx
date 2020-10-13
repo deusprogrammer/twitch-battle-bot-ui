@@ -148,7 +148,7 @@ export default class MonsterForm extends React.Component {
                                     DEX:
                                 </td>
                                 <td>
-                                    <Text field="str" type="number" />
+                                    <Text field="dex" type="number" />
                                 </td>
                             </tr>
                             <tr>
@@ -172,7 +172,7 @@ export default class MonsterForm extends React.Component {
                             <legend>Actions</legend>
                             { this.state.actions.map((action, index) => {
                                 return (
-                                    <fieldset>
+                                    <fieldset key={`actions[${index}]`}>
                                         <legend>{`actions[${index}]`}</legend>
                                         <Scope scope={`actions[${index}]`}>
                                             <tr>
@@ -215,7 +215,7 @@ export default class MonsterForm extends React.Component {
                             <legend>Drops</legend>
                             { this.state.drops.map((drop, index) => {
                                 return (
-                                <fieldset>
+                                <fieldset key={`drops[${index}]`}>
                                     <legend>{`drops[${index}]`}</legend>
                                     <Scope scope={`drops[${index}]`}>
                                         <tr>
