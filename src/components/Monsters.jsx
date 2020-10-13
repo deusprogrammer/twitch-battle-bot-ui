@@ -77,14 +77,9 @@ export default class Monsters extends React.Component {
         this.setState({monsters});
     }
 
-    createMonster = async (monster) => {
-        ApiHelper.createMonster(monster);
-    }
-
     onSubmit = async (values) => {
         values.id = values.name.replaceAll(" ", "_").toUpperCase();
-        console.log("JSON: " + JSON.stringify(values, null, 5));
-        let created = await this.createMonster(values);
+        let created = await ApiHelper.createMonster(values);
         // let created = values;
         this.setState({monsters: [...this.state.monsters, created]}, () => {
             this.formApi.reset();
