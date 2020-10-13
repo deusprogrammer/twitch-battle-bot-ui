@@ -4,7 +4,7 @@ import {Form, Text, Checkbox, Select, Option, Scope} from 'informed';
 import * as Yup from 'yup';
 import ApiHelper from '../utils/ApiHelper';
 
-const itemSchema = Yup.object().shape({
+const monsterSchema = Yup.object().shape({
     name: Yup.string()
         .required("Monster must have a name"),
     hp: Yup.number()
@@ -113,8 +113,8 @@ export default class MonsterForm extends React.Component {
                 initialValues={this.props.initialValues}
                 getApi={this.props.getApi}
                 onSubmit={this.props.onSubmit} 
-                onSubmitFailure={this.props.onFailure}
-                validationSchema={itemSchema}>
+                onFailure={this.props.onFailure}
+                validationSchema={monsterSchema}>
                 <table>
                     <tbody>
                         <fieldset>

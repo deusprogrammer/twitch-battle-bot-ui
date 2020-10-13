@@ -122,6 +122,17 @@ const getAbilities = async () => {
   return abilities.data;
 }
 
+const createAbility = async (abilityData) => {
+  let created = await axios.post(`${config.BASE_URL}/abilities`, abilityData, {
+    headers: {
+        //Authorization: `Bearer ${BATTLE_BOT_JWT}`
+        "X-Access-Token": localStorage.getItem("accessToken")
+    }
+  });
+
+  return created.data;
+}
+
 const getItem = async (id) => {
   let item = await axios.get(`${config.BASE_URL}/items/${id}`, {
     headers: {
@@ -178,6 +189,7 @@ export default {
     getMonsters,
     createMonster,
     getAbilities,
+    createAbility,
     getItem,
     createItem,
     updateItem
