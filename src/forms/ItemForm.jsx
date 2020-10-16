@@ -103,6 +103,14 @@ export default (props) => {
                     </Relevant>
                     <tr>
                         <td style={{fontWeight: "bolder"}}>
+                            HP Modifier:
+                        </td>
+                        <td>
+                            <Text field="mods.hp" type="number"></Text>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style={{fontWeight: "bolder"}}>
                             Hit Modifier:
                         </td>
                         <td>
