@@ -85,8 +85,6 @@ export default class Battler extends React.Component {
                                     <tr>
                                         <th>Stat</th>
                                         <th>Value</th>
-                                        <th>Mod</th>
-                                        <th>Buff</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -100,19 +98,19 @@ export default class Battler extends React.Component {
                                     </tr>
                                     <tr>
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>STR</td>
-                                        <td style={{textAlign: "center"}}>{user.currentJob.str}</td>
+                                        <td style={{textAlign: "center"}}>{user.str}</td>
                                     </tr>
                                     <tr>
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>DEX</td>
-                                        <td style={{textAlign: "center"}}>{user.currentJob.dex}</td>
+                                        <td style={{textAlign: "center"}}>{user.dex}</td>
                                     </tr>
                                     <tr>
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>INT</td>
-                                        <td style={{textAlign: "center"}}>{user.currentJob.int}</td>
+                                        <td style={{textAlign: "center"}}>{user.int}</td>
                                     </tr>
                                     <tr>
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>HIT</td>
-                                        <td style={{textAlign: "center"}}>{user.currentJob.hit}</td>
+                                        <td style={{textAlign: "center"}}>{user.hit}</td>
                                     </tr>
                                     <tr>
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>AC</td>
