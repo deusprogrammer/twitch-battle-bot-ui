@@ -145,7 +145,7 @@ export default class MonsterForm extends React.Component {
                                                         <Option value={null}>{"Select an ability..."}</Option>
                                                         { this.state.abilities.map((ability) => {
                                                             return (
-                                                                <Option>{ability.id}</Option>
+                                                                <Option value={ability.id}>{ability.name}</Option>
                                                             )
                                                         })}
                                                     </Select>
@@ -188,7 +188,7 @@ export default class MonsterForm extends React.Component {
                                                     <Option value={null}>{"Select an item..."}</Option>
                                                     { this.state.items.map((item) => {
                                                         return (
-                                                            <Option>{item.id}</Option>
+                                                            <Option value={item.id}>{item.name}</Option>
                                                         )
                                                     })}
                                                 </Select>
