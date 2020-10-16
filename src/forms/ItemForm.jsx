@@ -101,6 +101,46 @@ export default (props) => {
                             </td>
                         </tr>
                     </Relevant>
+                    <tr>
+                        <td style={{fontWeight: "bolder"}}>
+                            Hit Modifier:
+                        </td>
+                        <td>
+                            <Text field="mods.hit" type="number" initialValue={0}></Text>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style={{fontWeight: "bolder"}}>
+                            Strength Modifier:
+                        </td>
+                        <td>
+                            <Text field="mods.str" type="number" initialValue={0}></Text>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style={{fontWeight: "bolder"}}>
+                            Dexterity Modifier:
+                        </td>
+                        <td>
+                            <Text field="mods.dex" type="number" initialValue={0}></Text>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style={{fontWeight: "bolder"}}>
+                            Intelligence Modifier:
+                        </td>
+                        <td>
+                            <Text field="mods.int" type="number" initialValue={0}></Text>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style={{fontWeight: "bolder"}}>
+                            Armor Class Modifier:
+                        </td>
+                        <td>
+                            <Text field="mods.ac" type="number" initialValue={0}></Text>
+                        </td>
+                    </tr>
                     <Relevant when={({values}) => values.type === "armor"}>
                     <tr>
                         <td style={{fontWeight: "bolder"}}>
