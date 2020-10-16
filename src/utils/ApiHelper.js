@@ -87,6 +87,18 @@ const getUser = async (username) => {
     return user.data;
 }
 
+const getMonster = async (id) => {
+  let monster = await axios.get(`${config.BASE_URL}/monsters/${id}`,
+  {
+      headers: {
+          //Authorization: `Bearer ${BATTLE_BOT_JWT}`
+          "X-Access-Token": localStorage.getItem("accessToken")
+      }
+  });
+
+  return monster.data;
+}
+
 const getMonsters = async () => {
   let monsters = await axios.get(`${config.BASE_URL}/monsters`,
   {
@@ -110,6 +122,17 @@ const createMonster = async (monsterData) => {
   return created.data;
 }
 
+const updateMonster = async (monsterData) => {
+  let updated = await axios.put(`${config.BASE_URL}/mondsters/${monsterData.id}`, monsterData, {
+    headers: {
+        //Authorization: `Bearer ${BATTLE_BOT_JWT}`
+        "X-Access-Token": localStorage.getItem("accessToken")
+    }
+  });
+
+  return updated.data;
+}
+
 const getAbilities = async () => {
   let abilities = await axios.get(`${config.BASE_URL}/abilities`,
   {
@@ -122,6 +145,18 @@ const getAbilities = async () => {
   return abilities.data;
 }
 
+const getAbility = async (id) => {
+  let ability = await axios.get(`${config.BASE_URL}/abilities/${id}`,
+  {
+      headers: {
+          //Authorization: `Bearer ${BATTLE_BOT_JWT}`
+          "X-Access-Token": localStorage.getItem("accessToken")
+      }
+  });
+
+  return ability.data;
+}
+
 const createAbility = async (abilityData) => {
   let created = await axios.post(`${config.BASE_URL}/abilities`, abilityData, {
     headers: {
@@ -131,6 +166,17 @@ const createAbility = async (abilityData) => {
   });
 
   return created.data;
+}
+
+const updateAbility = async (abilityData) => {
+  let updated = await axios.put(`${config.BASE_URL}/abilities/${abilityData.id}`, abilityData, {
+    headers: {
+        //Authorization: `Bearer ${BATTLE_BOT_JWT}`
+        "X-Access-Token": localStorage.getItem("accessToken")
+    }
+  });
+
+  return updated.data;
 }
 
 const getItem = async (id) => {
@@ -187,8 +233,12 @@ export default {
     updateUser, 
     recalculateStats, 
     getMonsters,
+    getMonster,
     createMonster,
+    updateMonster,
     getAbilities,
+    getAbility,
+    updateAbility,
     createAbility,
     getItem,
     createItem,

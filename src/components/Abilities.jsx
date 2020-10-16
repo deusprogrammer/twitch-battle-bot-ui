@@ -14,11 +14,13 @@ export default class Abilities extends React.Component {
         this.setState({abilities});
     }
 
+    goTo = async (selectedAbility) => {
+        this.props.history.push(`${process.env.PUBLIC_URL}/abilities/${selectedAbility.id}`);
+    }
+
     onSubmit = async (values) => {
         values.id = values.name.replaceAll(" ", "_").toUpperCase();
-        console.log("JSON: " + JSON.stringify(values, null, 5));
         let created = await ApiHelper.createAbility(values);
-        // let created = values;
         this.setState({abilities: [...this.state.abilities, created]}, () => {
             this.formApi.reset();
         });
@@ -51,13 +53,16 @@ export default class Abilities extends React.Component {
                                 <tbody>
                                     { this.state.abilities.map((ability) => {
                                         return (
-                                            <tr>
-                                                <td>{ability.id}</td>
-                                                <td>{ability.name}</td>
-                                                <td>{ability.dmg}</td>
-                                                <td>{ability.target}</td>
-                                                <td>{ability.area}</td>
-                                                <td>{ability.element}</td>
+                                            <tr 
+                                                key={`ability-${ability.id}`} 
+                                                onClick={() => {this.goTo(ability)}}
+                                                style={{cursor: "pointer"}}>
+                                                    <td>{ability.id}</td>
+                                                    <td>{ability.name}</td>
+                                                    <td>{ability.dmg}</td>
+                                                    <td>{ability.target}</td>
+                                                    <td>{ability.area}</td>
+                                                    <td>{ability.element}</td>
                                             </tr>
                                         )
                                     })}

@@ -77,6 +77,10 @@ export default class Monsters extends React.Component {
         this.setState({monsters});
     }
 
+    goTo = async (selectedMonster) => {
+        this.props.history.push(`${process.env.PUBLIC_URL}/monsters/${selectedMonster.id}`);
+    }
+
     onSubmit = async (values) => {
         values.id = values.name.replaceAll(" ", "_").toUpperCase();
         let created = await ApiHelper.createMonster(values);
@@ -107,19 +111,26 @@ export default class Monsters extends React.Component {
                                     <th>STR</th>
                                     <th>DEX</th>
                                     <th>INT</th>
+                                    <th>DMG</th>
+                                    <th>HIT</th>
                                     <th>AC</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 { this.state.monsters.map((monster) => {
                                     return (
-                                        <tr>
+                                        <tr 
+                                        key={`monster-${monster.id}`}
+                                        onClick={() => {this.goTo(monster)}}
+                                        style={{cursor: "pointer"}}>
                                             <td>{monster.id}</td>
                                             <td>{monster.name}</td>
                                             <td>{monster.hp}</td>
                                             <td>{monster.str}</td>
                                             <td>{monster.dex}</td>
                                             <td>{monster.int}</td>
+                                            <td>{monster.dmg}</td>
+                                            <td>{monster.hit}</td>
                                             <td>{monster.ac}</td>
                                         </tr>
                                     )

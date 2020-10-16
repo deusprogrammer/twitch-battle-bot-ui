@@ -5,7 +5,9 @@ import Home from './components/Home';
 import Battler from './components/Battler';
 import Item from './components/Item';
 import Items from './components/Items';
+import Monster from './components/Monster';
 import Monsters from './components/Monsters';
+import Ability from './components/Ability';
 import Abilities from './components/Abilities';
 import Admin from './components/Admin';
 import './App.css';
@@ -19,7 +21,9 @@ function App() {
                     <Route exact path={`${process.env.PUBLIC_URL}/items`} component={Items} />
                     <Route exact path={`${process.env.PUBLIC_URL}/items/:id`} component={Item} />
                     <Route exact path={`${process.env.PUBLIC_URL}/abilities`} component={Abilities} />
+                    <Route exact path={`${process.env.PUBLIC_URL}/abilities/:id`} component={Ability} />
                     <Route exact path={`${process.env.PUBLIC_URL}/monsters`} component={Monsters} />
+                    <Route exact path={`${process.env.PUBLIC_URL}/monsters/:id`} component={Monster} />
                     <Route exact path={`${process.env.PUBLIC_URL}/battlers/:id`} component={Battler} />
                 </Switch>
             </Router>
