@@ -123,7 +123,7 @@ const createMonster = async (monsterData) => {
 }
 
 const updateMonster = async (monsterData) => {
-  let updated = await axios.put(`${config.BASE_URL}/mondsters/${monsterData.id}`, monsterData, {
+  let updated = await axios.put(`${config.BASE_URL}/monsters/${monsterData.id}`, monsterData, {
     headers: {
         //Authorization: `Bearer ${BATTLE_BOT_JWT}`
         "X-Access-Token": localStorage.getItem("accessToken")
