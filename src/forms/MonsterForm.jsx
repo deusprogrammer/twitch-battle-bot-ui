@@ -30,8 +30,13 @@ export default class MonsterForm extends React.Component {
     componentDidMount = async () => {
         let items = await ApiHelper.getItems();
         let abilities = await ApiHelper.getAbilities();
-        let actions = this.props.initialValues.actions;
-        let drops = this.props.initialValues.drops;
+        let actions = [];
+        let drops = [];
+        if (this.props.initialValues) {
+            actions = this.props.initialValues.actions;
+            drops = this.props.initialValues.drops;
+            return;
+        }
 
         this.setState({abilities, items, actions, drops});
     }
