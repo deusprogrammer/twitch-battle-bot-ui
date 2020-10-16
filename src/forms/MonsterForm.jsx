@@ -35,7 +35,6 @@ export default class MonsterForm extends React.Component {
         if (this.props.initialValues) {
             actions = this.props.initialValues.actions;
             drops = this.props.initialValues.drops;
-            return;
         }
 
         this.setState({abilities, items, actions, drops});
