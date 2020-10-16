@@ -27,7 +27,7 @@ export default class Ability extends React.Component {
     render() {
         return (
             <div>
-                {this.state.monster ? 
+                {this.state.ability ? 
                     <div>
                         <h1>Update Ability</h1>
                         <AbilityForm 

@@ -23,76 +23,17 @@ export default class MonsterForm extends React.Component {
     state={
         actions: [],
         drops: [],
-        abilities: [
-        //     {
-        //         "_id": "5f82d4a8abb4370014c3a56b",
-        //         "id": "RAFOIE",
-        //         "name": "Rafoie",
-        //         "dmg": "1d12",
-        //         "target": "ENEMY",
-        //         "area": "ALL",
-        //         "element": "FIRE",
-        //         "__v": 0
-        //     },
-        //     {
-        //         "_id": "5f82d4beabb4370014c3a56c",
-        //         "id": "RESTA",
-        //         "name": "Resta",
-        //         "dmg": "1d12",
-        //         "target": "CHAT",
-        //         "area": "ALL",
-        //         "element": "HEALING",
-        //         "__v": 0
-        //     },
-        //     {
-        //         "_id": "5f82d48eabb4370014c3a56a",
-        //         "id": "TACKLE",
-        //         "name": "Tackle",
-        //         "dmg": "1d10",
-        //         "target": "ANY",
-        //         "area": "ONE",
-        //         "element": "NONE",
-        //         "__v": 0
-        //     }
-        // ],
-        // items: [            
-        //     {
-        //         "_id": "5f7e351ac1cf475d70236c15",
-        //         "id": "SPACE_KNIGHT_LEGS",
-        //         "type": "armor",
-        //         "slot": "legs",
-        //         "name": "Space Knight Legs",
-        //         "ac": 8,
-        //         "value": 0,
-        //         "__v": 0
-        //     },
-        //     {
-        //         "_id": "5f798e83afd8650738313392",
-        //         "id": "POTION",
-        //         "type": "consumable",
-        //         "slot": "inventory",
-        //         "name": "Potion",
-        //         "use": "+100HP",
-        //         "value": 10,
-        //         "__v": 0
-        //     },
-        //     {
-        //         "_id": "5f7f4b38c1cf475d70250b8d",
-        //         "id": "TEQUILA_BOTTLE",
-        //         "type": "weapon",
-        //         "slot": "hand",
-        //         "name": "Broken Tequila Bottle",
-        //         "dmg": "2d4",
-        //         "value": 0
-        //     }
-        ]
+        abilities: [],
+        items: []
     }
 
     componentDidMount = async () => {
         let items = await ApiHelper.getItems();
         let abilities = await ApiHelper.getAbilities();
+        let actions = this.props.initialValues.actions;
+        let drops = this.props.initialValues.drops;
 
-        this.setState({abilities, items});
+        this.setState({abilities, items, actions, drops});
     }
 
     addAction = () => {
