@@ -78,10 +78,11 @@ export default class Items extends React.Component {
                                     <th>Type</th>
                                     <th>Slot</th>
                                     <th>Item Name</th>
-                                    <th>HIT Mod</th>
+                                    <th>HP Mod</th>
                                     <th>STR Mod</th>
                                     <th>DEX Mod</th>
                                     <th>INT Mod</th>
+                                    <th>HIT Mod</th>
                                     <th>AC Mod</th>
                                     <th>Value</th>
                                     <th>Price</th>
@@ -99,10 +100,11 @@ export default class Items extends React.Component {
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.type.toUpperCase()}</td>
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.slot.toUpperCase()}</td>
                                                 <td>{item.name}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.hit}</td>
+                                                <td style={{textAlign: "center"}}>{item.mods.hp}</td>
                                                 <td style={{textAlign: "center"}}>{item.mods.str}</td>
                                                 <td style={{textAlign: "center"}}>{item.mods.dex}</td>
                                                 <td style={{textAlign: "center"}}>{item.mods.int}</td>
+                                                <td style={{textAlign: "center"}}>{item.mods.hit}</td>
                                                 <td style={{textAlign: "center"}}>{item.mods.ac}</td>
                                                 <td style={{textAlign: "center"}}>{value} <strong>{(item.ac ? "AC" : null) || (item.dmg ? "DMG" : null)}</strong></td>
                                                 <td style={{textAlign: "center"}}>{item.value}g</td>
