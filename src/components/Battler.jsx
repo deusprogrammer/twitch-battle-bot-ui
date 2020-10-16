@@ -9,8 +9,8 @@ export default class Battler extends React.Component {
         let itemTable = await ApiHelper.getItemTable();
         let jobTable = await ApiHelper.getJobTable();
         let user = await ApiHelper.getUser(username);
-        user = ApiHelper.expandUser(user, itemTable, jobTable);
-        return ApiHelper.recalculateStats(user);
+        return ApiHelper.expandUser(user, {itemTable, jobTable});
+        // return ApiHelper.recalculateStats(user);
     }
 
     equipItemOnUser = async (item, index) => {
@@ -109,6 +109,10 @@ export default class Battler extends React.Component {
                                     <tr>
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>INT</td>
                                         <td style={{textAlign: "center"}}>{user.currentJob.int}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>HIT</td>
+                                        <td style={{textAlign: "center"}}>{user.currentJob.hit}</td>
                                     </tr>
                                     <tr>
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>AC</td>

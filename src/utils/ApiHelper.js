@@ -58,22 +58,55 @@ const getJobTable = async () => {
   return indexArrayToMap(jobs);  
 }
 
-const expandUser = (userData, itemTable, jobTable ) => {
+const expandUser = (userData, context) => {
+  userData.totalAC = 0;
+  userData.currentJob = context.jobTable[userData.currentJob.id];
+  userData.str = userData.currentJob.str;
+  userData.dex = userData.currentJob.dex;
+  userData.int = userData.currentJob.int;
+  userData.hit = userData.currentJob.hit;
+  userData.maxHp = userData.currentJob.hp;
   Object.keys(userData.equipment).forEach((slot) => {
     let item = userData.equipment[slot];
-    let itemData = itemTable[item.id];
+    let itemData = context.itemTable[item.id];
+    if (itemData.type === "armor") {
+      userData.totalAC += itemData.ac;
+    }
+    userData.totalAC += itemData.mods.ac;
+    userData.maxHp += itemData.mods.hp;
+    userData.str += itemData.mods.hit;
+    userData.dex += itemData.mods.dex;
+    userData.int += itemData.mods.int;
+    userData.hit += itemData.mods.hit;
     userData.equipment[slot] = itemData;
   });
   let newInventoryList = [];
   userData.inventory.forEach((item) => {
-    newInventoryList.push(itemTable[item]);
+    newInventoryList.push(context.itemTable[item]);
   });
 
   userData.inventory = newInventoryList;
-  userData.currentJob = jobTable[userData.currentJob.id];
+  userData.actionCooldown = Math.min(11, 6 - Math.min(5, userData.dex));
 
   return userData;
 }
+
+// const expandUser = (userData, itemTable, jobTable ) => {
+//   Object.keys(userData.equipment).forEach((slot) => {
+//     let item = userData.equipment[slot];
+//     let itemData = itemTable[item.id];
+//     userData.equipment[slot] = itemData;
+//   });
+//   let newInventoryList = [];
+//   userData.inventory.forEach((item) => {
+//     newInventoryList.push(itemTable[item]);
+//   });
+
+//   userData.inventory = newInventoryList;
+//   userData.currentJob = jobTable[userData.currentJob.id];
+
+//   return userData;
+// }
 
 const getUser = async (username) => {
     let user = await axios.get(`${config.BASE_URL}/users/${username}`,
