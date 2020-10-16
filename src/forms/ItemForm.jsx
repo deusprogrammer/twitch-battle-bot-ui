@@ -106,7 +106,7 @@ export default (props) => {
                             Hit Modifier:
                         </td>
                         <td>
-                            <Text field="mods.hit" type="number" initialValue={0}></Text>
+                            <Text field="mods.hit" type="number"></Text>
                         </td>
                     </tr>
                     <tr>
@@ -114,7 +114,7 @@ export default (props) => {
                             Strength Modifier:
                         </td>
                         <td>
-                            <Text field="mods.str" type="number" initialValue={0}></Text>
+                            <Text field="mods.str" type="number"></Text>
                         </td>
                     </tr>
                     <tr>
@@ -122,7 +122,7 @@ export default (props) => {
                             Dexterity Modifier:
                         </td>
                         <td>
-                            <Text field="mods.dex" type="number" initialValue={0}></Text>
+                            <Text field="mods.dex" type="number"></Text>
                         </td>
                     </tr>
                     <tr>
@@ -130,7 +130,7 @@ export default (props) => {
                             Intelligence Modifier:
                         </td>
                         <td>
-                            <Text field="mods.int" type="number" initialValue={0}></Text>
+                            <Text field="mods.int" type="number"></Text>
                         </td>
                     </tr>
                     <tr>
@@ -138,7 +138,7 @@ export default (props) => {
                             Armor Class Modifier:
                         </td>
                         <td>
-                            <Text field="mods.ac" type="number" initialValue={0}></Text>
+                            <Text field="mods.ac" type="number"></Text>
                         </td>
                     </tr>
                     <Relevant when={({values}) => values.type === "armor"}>
