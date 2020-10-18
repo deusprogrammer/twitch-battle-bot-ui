@@ -215,9 +215,9 @@ export default class Battler extends React.Component {
                                         let value = item.ac || item.dmg || item.use;
                                         return (
                                             <tr>
-                                                <td title="Click here to copy trade id" style={{textAlign: "center", backgroundColor: "black", color: "white", cursor: "pointer"}} onClick={() => {navigator.clipboard.writeText(item.id)}}>{item.id}</td>
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.type.toUpperCase()}</td>
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.slot.toUpperCase()}</td>
+                                                <td title="Click to copy trade id" style={{textAlign: "center", backgroundColor: "black", color: "white", cursor: "pointer"}} onClick={() => {navigator.clipboard.writeText(item.id)}}>{item.id}</td>
                                                 <td>{item.name}</td>
                                                 <td style={{textAlign: "center"}}>{item.mods.hp}</td>
                                                 <td style={{textAlign: "center"}}>{item.mods.str}</td>
