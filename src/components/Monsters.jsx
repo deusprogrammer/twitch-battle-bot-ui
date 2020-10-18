@@ -1,4 +1,6 @@
 import React from 'react';
+import {toast} from 'react-toastify';
+
 import ApiHelper from '../utils/ApiHelper';
 
 import MonsterForm from '../forms/MonsterForm';
@@ -84,14 +86,16 @@ export default class Monsters extends React.Component {
     onSubmit = async (values) => {
         values.id = values.name.replaceAll(" ", "_").toUpperCase();
         let created = await ApiHelper.createMonster(values);
-        // let created = values;
+
+        toast("Monster created!", {type: "info"});
+
         this.setState({monsters: [...this.state.monsters, created]}, () => {
             this.formApi.reset();
         });
     }
 
     onError = async (error) => {
-        alert("Form is not complete");
+        toast("Failed to create monster", {type: "error"});
     }
 
     render() {

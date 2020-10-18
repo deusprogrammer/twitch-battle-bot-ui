@@ -9,12 +9,13 @@ import Monster from './components/Monster';
 import Monsters from './components/Monsters';
 import Ability from './components/Ability';
 import Abilities from './components/Abilities';
-import Admin from './components/Admin';
+import {ToastContainer} from 'react-toastify';
 import './App.css';
 
 function App() {
     return (
         <div style={{width: "80%", margin: "auto"}}>
+            <ToastContainer />
             <Router>
                 <Switch>
                     <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />

@@ -1,4 +1,6 @@
 import React from 'react';
+import {toast} from 'react-toastify';
+
 import ApiHelper from '../utils/ApiHelper';
 
 import AbilityForm from '../forms/AbilityForm';
@@ -17,11 +19,14 @@ export default class Ability extends React.Component {
     handleSubmit = async (values) => {
         values.id = this.state.ability.id;
         await ApiHelper.updateAbility(values);
+
+        toast("Ability updated!", {type: "info"});
+
         this.props.history.goBack();
     }
 
     handleFailure = async (errors) => {
-        alert("Ability update failed!");
+        toast("Failed to update ability!", {type: "error"});
     }
 
     render() {

@@ -1,4 +1,6 @@
 import React from 'react';
+import {toast} from 'react-toastify';
+
 import ApiHelper from '../utils/ApiHelper';
 
 import AbilityForm from '../forms/AbilityForm';
@@ -21,13 +23,16 @@ export default class Abilities extends React.Component {
     onSubmit = async (values) => {
         values.id = values.name.replaceAll(" ", "_").toUpperCase();
         let created = await ApiHelper.createAbility(values);
+
+        toast("Ability created!", {type: "info"});
+
         this.setState({abilities: [...this.state.abilities, created]}, () => {
             this.formApi.reset();
         });
     }
 
     onError = async (error) => {
-        alert("Form is not complete");
+        toast("Failed to create ability!", {type: "error"});
         console.log(error);
     }
 

@@ -1,4 +1,6 @@
 import React from 'react';
+import {toast} from 'react-toastify';
+
 import ApiHelper from '../utils/ApiHelper';
 
 import ItemForm from '../forms/ItemForm';
@@ -55,13 +57,16 @@ export default class Items extends React.Component {
             values.slot = "inventory";
         }
         let created = await ApiHelper.createItem(values);
+
+        toast("Item created", {type: "info"});
+
         this.setState({items: [...this.state.items, created]}, () => {
             this.formApi.reset();
         });
     }
 
     handleFailure = async (errors) => {
-        alert("Item creation failed!");
+        toast("Failed to create item", {type: "error"});
     }
 
     render() {

@@ -1,4 +1,5 @@
 import React from 'react';
+import {toast} from 'react-toastify';
 
 import ApiHelper from '../utils/ApiHelper';
 
@@ -239,9 +240,9 @@ export default class Battler extends React.Component {
                                                 <td style={{textAlign: "center"}}>{value} <strong>{(item.ac ? "AC" : null) || (item.dmg ? "DMG" : null)}</strong></td>
                                                 <td style={{textAlign: "center"}}>{item.value}g</td>
                                                 <td>
-                                                    {item.type !== "consumable" ? <button onClick={() => {this.equipItemOnUser(item, index)}} disabled={this.state.saving}>Equip</button> : null}
-                                                    {item.value > 0 ? <button onClick={() => {this.sellItem(item, index)}} disabled={this.state.saving}>Sell</button> : <button onClick={() => {this.sellItem(item, index)}} disabled={this.state.saving}>Discard</button>}
-                                                    <button onClick={() => {navigator.clipboard.writeText(item.id)}}>Get Trade Id</button>
+                                                    {item.type !== "consumable" ? <button onClick={() => {this.equipItemOnUser(item, index);toast(`Equipped ${item.name}`, {type: "info"})}} disabled={this.state.saving}>Equip</button> : null}
+                                                    {item.value > 0 ? <button onClick={() => {this.sellItem(item, index);toast(`Sold ${item.name}`, {type: "info"})}} disabled={this.state.saving}>Sell</button> : <button onClick={() => {this.sellItem(item, index);toast(`Discarded ${item.name}`, {type: "info"});}} disabled={this.state.saving}>Discard</button>}
+                                                    <button onClick={() => {navigator.clipboard.writeText(item.id);toast("Copied Trade Id to Clipboard", {type: "info"});}}>Get Trade Id</button>
                                                 </td>
                                             </tr>
                                         )

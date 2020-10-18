@@ -1,4 +1,6 @@
 import React from 'react';
+import {toast} from 'react-toastify';
+
 import ApiHelper from '../utils/ApiHelper';
 
 import MonsterForm from '../forms/MonsterForm';
@@ -17,11 +19,14 @@ export default class Monster extends React.Component {
     handleSubmit = async (values) => {
         values.id = this.state.monster.id;
         await ApiHelper.updateMonster(values);
+
+        toast("Monster updated!", {type: "info"});
+
         this.props.history.goBack();
     }
 
     handleFailure = async (errors) => {
-        alert("Monster update failed!");
+        toast("Failed to update monster!", {type: "error"});
     }
 
     render() {

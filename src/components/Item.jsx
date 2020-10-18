@@ -1,4 +1,6 @@
 import React from 'react';
+import {toast} from 'react-toastify';
+
 import ApiHelper from '../utils/ApiHelper';
 
 import ItemForm from '../forms/ItemForm';
@@ -25,6 +27,7 @@ export default class Item extends React.Component {
     }
 
     handleSubmit = async (values) => {
+        toast("Item updated!", {type: "info"});
         values.id = this.state.item.id;
         if (values.type === "consumable") {
             values.slot = "inventory";
@@ -34,7 +37,7 @@ export default class Item extends React.Component {
     }
 
     handleFailure = async (errors) => {
-        alert("Item creation failed!");
+        toast("Failed to update item", {type: "error"});
     }
 
     render() {
