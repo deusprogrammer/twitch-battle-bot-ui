@@ -229,7 +229,6 @@ export default class Battler extends React.Component {
                                             <tr>
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.type.toUpperCase()}</td>
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.slot.toUpperCase()}</td>
-                                                <td title="Click to copy trade id" style={{textAlign: "center", backgroundColor: "black", color: "white", cursor: "pointer"}} onClick={() => {navigator.clipboard.writeText(item.id)}}>{item.id}</td>
                                                 <td>{item.name}</td>
                                                 <td style={{textAlign: "center"}}>{item.mods.hp}</td>
                                                 <td style={{textAlign: "center"}}>{item.mods.str}</td>
@@ -242,6 +241,7 @@ export default class Battler extends React.Component {
                                                 <td>
                                                     {item.type !== "consumable" ? <button onClick={() => {this.equipItemOnUser(item, index)}} disabled={this.state.saving}>Equip</button> : null}
                                                     {item.value > 0 ? <button onClick={() => {this.sellItem(item, index)}} disabled={this.state.saving}>Sell</button> : <button onClick={() => {this.sellItem(item, index)}} disabled={this.state.saving}>Discard</button>}
+                                                    <button onClick={() => {navigator.clipboard.writeText(item.id)}}>Get Trade Id</button>
                                                 </td>
                                             </tr>
                                         )
