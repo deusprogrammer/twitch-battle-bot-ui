@@ -217,7 +217,7 @@ export default class Battler extends React.Component {
                                         let value = item.ac || item.dmg || item.use;
                                         return (
                                             <tr>
-                                                <td title="Click here to copy trade id" style={{textAlign: "center", backgroundColor: "black", color: "white"}} onClick={() => {navigator.clipboard.writeText(item.id)}}>{item.id}g</td>
+                                                <td title="Click here to copy trade id" style={{textAlign: "center", backgroundColor: "black", color: "white"}} onClick={() => {navigator.clipboard.writeText(item.id)}}>{item.id}</td>
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.type.toUpperCase()}</td>
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.slot.toUpperCase()}</td>
                                                 <td>{item.name}</td>
@@ -228,7 +228,7 @@ export default class Battler extends React.Component {
                                                 <td style={{textAlign: "center"}}>{item.mods.hit}</td>
                                                 <td style={{textAlign: "center"}}>{item.mods.ac}</td>
                                                 <td style={{textAlign: "center"}}>{value} <strong>{(item.ac ? "AC" : null) || (item.dmg ? "DMG" : null)}</strong></td>
-                                                <td style={{textAlign: "center"}}>{item.value}</td>
+                                                <td style={{textAlign: "center"}}>{item.value}g</td>
                                                 <td>
                                                     {item.type !== "consumable" ? <button onClick={() => {this.equipItemOnUser(item, index)}} disabled={this.state.saving}>Equip</button> : null}
                                                     {item.value > 0 ? <button onClick={() => {this.sellItem(item, index)}} disabled={this.state.saving}>Sell</button> : null}
