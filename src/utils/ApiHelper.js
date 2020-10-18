@@ -74,7 +74,7 @@ const expandUser = (userData, context) => {
     }
     userData.totalAC += itemData.mods.ac;
     userData.maxHp += itemData.mods.hp;
-    userData.str += itemData.mods.hit;
+    userData.str += itemData.mods.str;
     userData.dex += itemData.mods.dex;
     userData.int += itemData.mods.int;
     userData.hit += itemData.mods.hit;
