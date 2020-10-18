@@ -10,6 +10,7 @@ axios.interceptors.response.use(function (response) {
     return response;
 }, function (error) {
     if (error.response.status === 401) {
+        window.localStorage.setItem("twitchRedirect", window.location);
         window.location = "https://deusprogrammer.com/api/auth-svc/auth/twitch";
         return;
     }
