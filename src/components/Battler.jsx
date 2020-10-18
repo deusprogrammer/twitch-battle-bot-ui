@@ -210,7 +210,6 @@ export default class Battler extends React.Component {
                                     <tr>
                                         <th>Type</th>
                                         <th>Slot</th>
-                                        <th>Trade Id</th>
                                         <th>Item Name</th>
                                         <th>HP Mod</th>
                                         <th>STR Mod</th>
