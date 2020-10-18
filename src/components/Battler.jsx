@@ -4,11 +4,7 @@ import ApiHelper from '../utils/ApiHelper';
 
 export default class Battler extends React.Component {
     state = {
-        user: {
-            currentJob: {}, 
-            equipment: {}, 
-            inventory: []
-        }, 
+        user: null,
         saving: false
     };
 
