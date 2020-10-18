@@ -1,4 +1,5 @@
 import React from 'react';
+import {ToastContainer} from 'react-toastify';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 import Home from './components/Home';
@@ -9,7 +10,8 @@ import Monster from './components/Monster';
 import Monsters from './components/Monsters';
 import Ability from './components/Ability';
 import Abilities from './components/Abilities';
-import {ToastContainer} from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 function App() {
