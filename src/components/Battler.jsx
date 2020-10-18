@@ -197,6 +197,7 @@ export default class Battler extends React.Component {
                             <table style={{marginLeft: "10px"}}>
                                 <thead>
                                     <tr>
+                                        <th>Trade Id</th>
                                         <th>Type</th>
                                         <th>Slot</th>
                                         <th>Item Name</th>
@@ -208,7 +209,6 @@ export default class Battler extends React.Component {
                                         <th>AC Mod</th>
                                         <th>Value</th>
                                         <th>Price</th>
-                                        <th>Trade Id</th>
                                         <th></th>
                                     </tr>
                                 </thead>
