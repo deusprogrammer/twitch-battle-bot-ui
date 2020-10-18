@@ -117,12 +117,6 @@ export default class Battler extends React.Component {
                         <div style={{display: "table-cell", paddingRight: "50px"}}>
                             <h3>Stats</h3>
                             <table style={{marginLeft: "10px"}}>
-                                <thead>
-                                    <tr>
-                                        <th>Stat</th>
-                                        <th>Value</th>
-                                    </tr>
-                                </thead>
                                 <tbody>
                                     <tr>
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>HP</td>
@@ -151,6 +145,10 @@ export default class Battler extends React.Component {
                                     <tr>
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>AC</td>
                                         <td style={{textAlign: "center"}}>{user.totalAC}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>Gold</td>
+                                        <td style={{textAlign: "center"}}>{user.gold}</td>
                                     </tr>
                                 </tbody>
                             </table>
