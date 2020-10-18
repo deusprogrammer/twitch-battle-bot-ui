@@ -229,7 +229,7 @@ export default class Battler extends React.Component {
                                                 <td style={{textAlign: "center"}}>{item.value}g</td>
                                                 <td>
                                                     {item.type !== "consumable" ? <button onClick={() => {this.equipItemOnUser(item, index)}} disabled={this.state.saving}>Equip</button> : null}
-                                                    {item.value > 0 ? <button onClick={() => {this.sellItem(item, index)}} disabled={this.state.saving}>Sell</button> : null}
+                                                    {item.value > 0 ? <button onClick={() => {this.sellItem(item, index)}} disabled={this.state.saving}>Sell</button> : <button onClick={() => {this.sellItem(item, index)}} disabled={this.state.saving}>Discard</button>}
                                                 </td>
                                             </tr>
                                         )
