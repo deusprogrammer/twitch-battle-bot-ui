@@ -118,35 +118,35 @@ export default class Battler extends React.Component {
                             <h3>Stats</h3>
                             <table style={{marginLeft: "10px"}}>
                                 <tbody>
-                                    <tr>
+                                    <tr title="Your health points determine whether you are alive or not.  Once you hit zero, it's over.">
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>HP</td>
                                         <td>{user.hp}/{user.currentJob.hp}</td>
                                     </tr>
-                                    <tr>
+                                    <tr title="Your action points are consumed when you perform actions like attacking or using abilities.">
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>AP</td>
                                         <td style={{textAlign: "center"}}>{user.ap}</td>
                                     </tr>
-                                    <tr>
+                                    <tr title="Your strength determines how hard you hit when you attack.">
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>STR</td>
                                         <td style={{textAlign: "center"}}>{user.str}</td>
                                     </tr>
-                                    <tr>
+                                    <tr title="Your dexterity determines how often you can attack.">
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>DEX</td>
                                         <td style={{textAlign: "center"}}>{user.dex}</td>
                                     </tr>
-                                    <tr>
+                                    <tr title="Your intelligence determines if your abilities succeed or not.">
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>INT</td>
                                         <td style={{textAlign: "center"}}>{user.int}</td>
                                     </tr>
-                                    <tr>
+                                    <tr title="Your hit determines whether your attacks hit or not.">
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>HIT</td>
                                         <td style={{textAlign: "center"}}>{user.hit}</td>
                                     </tr>
-                                    <tr>
+                                    <tr title="Your armor class determines how hard it is to hit you.">
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>AC</td>
                                         <td style={{textAlign: "center"}}>{user.totalAC}</td>
                                     </tr>
-                                    <tr>
+                                    <tr title="Gold is used for purchasing things.">
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>Gold</td>
                                         <td style={{textAlign: "center"}}>{user.gold}</td>
                                     </tr>
