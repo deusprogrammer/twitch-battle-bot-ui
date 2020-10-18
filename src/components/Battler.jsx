@@ -9,7 +9,6 @@ export default class Battler extends React.Component {
             equipment: {}, 
             inventory: []
         }, 
-        users: [],
         saving: false
     };
 
@@ -23,6 +22,7 @@ export default class Battler extends React.Component {
     }
 
     damageRange = (user) => {
+        console.log(JSON.stringify(user, null, 5));
         let tokens = user.equipment.hand.dmg.split("d");
         return {low: (tokens[0] * 1) + user.str, high: (tokens[0] * tokens[1]) + user.str};
     }
@@ -110,9 +110,8 @@ export default class Battler extends React.Component {
         }
 
         let user = await this.getUser(username);
-        let users = await ApiHelper.getUsers();
         console.log(JSON.stringify(user, null, 5));
-        this.setState({user, users});
+        this.setState({user});
     }
 
     render() {
