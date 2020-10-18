@@ -57,6 +57,7 @@ export default class Battler extends React.Component {
 
     sellItem = async (item, index) => {
         let user = {...this.state.user};
+        let equipment = {...user.equipment};
         let inventory = [...user.inventory];
 
         // Remove item from inventory

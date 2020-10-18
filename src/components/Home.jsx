@@ -22,6 +22,12 @@ export default class Home extends React.Component {
 
                 <p>See!  Easy peasy!  Now what can you currently do?</p>
 
+                <h1>How Does it Work?</h1>
+
+                <p>Well, as soon as you create your battler as layed out above, you will become visible to other players as soon as you speak or do any of the below actions.</p>
+
+                <p>The bot or a mod will spawn monsters during the duration of the chat.  They will attack a random person or whoever has the most aggro based on who has done the most damage.  Once defeated, they will drop loot for whoever landed the last blow.</p>
+                
                 <h1>User Commands</h1>
 
                 <h2>Attack an Enemy</h2>
@@ -35,7 +41,7 @@ export default class Home extends React.Component {
                     !attack thetruekingofspace
                 </div>
 
-                <h2>Use an Ability</h2>
+                {/* <h2>Use an Ability</h2>
 
                 <p>Use an ability with a given name on target.</p>
 
@@ -44,7 +50,7 @@ export default class Home extends React.Component {
                     <br/>
                     Example:<br/>
                     !ability @focus-attack thetruekingofspace
-                </div>
+                </div> */}
 
                 <h2>Look at Stats</h2>
         
@@ -68,7 +74,7 @@ export default class Home extends React.Component {
                     !targets
                 </div>
 
-                <h2>Show Abilities</h2>
+                {/* <h2>Show Abilities</h2>
         
                 <p>This will show all available abilities for your users.</p>
 
@@ -77,7 +83,7 @@ export default class Home extends React.Component {
                     <br/>
                     Example:<br/>
                     !abilities
-                </div>
+                </div> */}
 
                 <h2>Give an Item to another Character</h2>
         
@@ -90,18 +96,18 @@ export default class Home extends React.Component {
                     !give thetruekingospace POTION
                 </div>
 
-                <h2>Describe an Item</h2>
-        
-                <p>Describes an item.</p>
+                <h1>Mod Commands</h1>
+
+                <h2>Spawn a Monster</h2>
+
+                <p>Spawns a monster with a given id.</p>
 
                 <div style={{background: "gray", color: "white", paddingLeft: "5px", marginLeft: "10px"}}>
-                    !describe ITEM_NAME<br/>
+                    !spawn MONSTER_ID<br/>
                     <br/>
                     Example:<br/>
-                    !describe Virtuous Contract
+                    !spawn SLIME
                 </div>
-
-                <h1>Mod Commands</h1>
 
                 <h2>Turn an Annoying Chatter into a Slime</h2>
 
