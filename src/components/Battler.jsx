@@ -13,12 +13,25 @@ export default class Battler extends React.Component {
         saving: false
     };
 
+    rollDice = (dice) => {
+        let tokens = dice.split("d");
+        let total = 0;
+        for (var i = 0; i < tokens[0]; i++) {
+          total += Math.floor(Math.random() * Math.floor(tokens[1])) + 1;
+        }
+        return total;
+    }
+
+    damageRange = (user) => {
+        let tokens = user.equipment.hand.split("d");
+        return {low: (tokens[0] * 1) + user.str, high: (tokens[0] * tokens[1]) + user.str};
+    }
+
     getUser = async (username) => {
         let itemTable = await ApiHelper.getItemTable();
         let jobTable = await ApiHelper.getJobTable();
         let user = await ApiHelper.getUser(username);
         return ApiHelper.expandUser(user, {itemTable, jobTable});
-        // return ApiHelper.recalculateStats(user);
     }
 
     equipItemOnUser = async (item, index) => {
@@ -118,37 +131,41 @@ export default class Battler extends React.Component {
                             <h3>Stats</h3>
                             <table style={{marginLeft: "10px"}}>
                                 <tbody>
-                                    <tr title="Your health points determine whether you are alive or not.  Once you hit zero, it's over.">
+                                    <tr title="Your health points determine whether you are alive or not.  Once you hit zero, it's over." style={{cursor: "pointer"}}>
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>HP</td>
                                         <td>{user.hp}/{user.currentJob.hp}</td>
                                     </tr>
-                                    <tr title="Your action points are consumed when you perform actions like attacking or using abilities.">
+                                    <tr title="Your action points are consumed when you perform actions like attacking or using abilities." style={{cursor: "pointer"}}>
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>AP</td>
                                         <td style={{textAlign: "center"}}>{user.ap}</td>
                                     </tr>
-                                    <tr title="Your strength determines how hard you hit when you attack.">
+                                    <tr title="Your strength determines how hard you hit when you attack." style={{cursor: "pointer"}}>
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>STR</td>
                                         <td style={{textAlign: "center"}}>{user.str}</td>
                                     </tr>
-                                    <tr title="Your dexterity determines how often you can attack.">
+                                    <tr title="Your dexterity determines how often you can attack." style={{cursor: "pointer"}}>
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>DEX</td>
                                         <td style={{textAlign: "center"}}>{user.dex}</td>
                                     </tr>
-                                    <tr title="Your intelligence determines if your abilities succeed or not.">
+                                    <tr title="Your intelligence determines if your abilities succeed or not." style={{cursor: "pointer"}}>
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>INT</td>
                                         <td style={{textAlign: "center"}}>{user.int}</td>
                                     </tr>
-                                    <tr title="Your hit determines whether your attacks hit or not.">
+                                    <tr title="Your hit determines whether your attacks hit or not." style={{cursor: "pointer"}}>
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>HIT</td>
                                         <td style={{textAlign: "center"}}>{user.hit}</td>
                                     </tr>
-                                    <tr title="Your armor class determines how hard it is to hit you.">
+                                    <tr title="Your armor class determines how hard it is to hit you." style={{cursor: "pointer"}}>
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>AC</td>
                                         <td style={{textAlign: "center"}}>{user.totalAC}</td>
                                     </tr>
-                                    <tr title="Gold is used for purchasing things.">
+                                    <tr title="Gold is used for purchasing things." style={{cursor: "pointer"}}>
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>Gold</td>
                                         <td style={{textAlign: "center"}}>{user.gold}</td>
+                                    </tr>
+                                    <tr title="This is the range of damage you can do with your current weapon." style={{cursor: "pointer"}}>
+                                        <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>Damage Range</td>
+                                        <td style={{textAlign: "center"}}>{this.damageRange(user).low} - {this.damageRange(user).high}</td>
                                     </tr>
                                 </tbody>
                             </table>
