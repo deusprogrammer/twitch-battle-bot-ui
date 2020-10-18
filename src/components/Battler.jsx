@@ -3,7 +3,15 @@ import React from 'react';
 import ApiHelper from '../utils/ApiHelper';
 
 export default class Battler extends React.Component {
-    state = {user: {currentJob: {}, equipment: {}, inventory: []}, saving: false};
+    state = {
+        user: {
+            currentJob: {}, 
+            equipment: {}, 
+            inventory: []
+        }, 
+        users: [],
+        saving: false
+    };
 
     getUser = async (username) => {
         let itemTable = await ApiHelper.getItemTable();
@@ -47,12 +55,38 @@ export default class Battler extends React.Component {
         });
     }
 
-    useItemOnUser = async (item, index) => {
-        alert("This functionality isn't implemented yet");
-    }
-
     sellItem = async (item, index) => {
-        alert("This functionality isn't implemented yet");
+        let user = {...this.state.user};
+        let inventory = [...user.inventory];
+
+        // Remove item from inventory
+        delete inventory[index];
+
+        // Update gold
+        user.gold += item.value;
+
+        this.setState({saving: true}, async () => {
+            // Create stripped down version for update call
+            let strippedUser = {...user};
+            strippedUser.totalAC = null;
+            strippedUser.equipment = {};
+            strippedUser.inventory = [];
+            strippedUser.currentJob = {
+                id: user.currentJob.id
+            };
+
+            Object.keys(equipment).forEach((slot) => {
+                strippedUser.equipment[slot] = {id: equipment[slot].id};
+            });
+            inventory.forEach((item) => {
+                strippedUser.inventory.push(item.id);
+            });
+
+            // Update and store updated version of user
+            await ApiHelper.updateUser(strippedUser);
+            let updated = await this.getUser(user.name);
+            this.setState({saving: false, user: updated});
+        });
     }
 
     async componentDidMount() {
@@ -62,8 +96,9 @@ export default class Battler extends React.Component {
         }
 
         let user = await this.getUser(username);
+        let users = await ApiHelper.getUsers();
         console.log(JSON.stringify(user, null, 5));
-        this.setState({user});
+        this.setState({user, users});
     }
 
     render() {
@@ -192,9 +227,7 @@ export default class Battler extends React.Component {
                                                 <td style={{textAlign: "center"}}>{value} <strong>{(item.ac ? "AC" : null) || (item.dmg ? "DMG" : null)}</strong></td>
                                                 <td style={{textAlign: "center"}}>{item.value}g</td>
                                                 <td>
-                                                    {item.type !== "consumable" ? 
-                                                        <button onClick={() => {this.equipItemOnUser(item, index)}} disabled={this.state.saving}>Equip</button> : 
-                                                        <button onClick={() => {this.useItemOnUser(item, index)}} disabled={this.state.saving}>Use</button>}
+                                                    {item.type !== "consumable" ? <button onClick={() => {this.equipItemOnUser(item, index)}} disabled={this.state.saving}>Equip</button> : null}
                                                     {item.value > 0 ? <button onClick={() => {this.sellItem(item, index)}} disabled={this.state.saving}>Sell</button> : null}
                                                 </td>
                                             </tr>

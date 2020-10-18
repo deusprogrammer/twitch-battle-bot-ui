@@ -120,6 +120,18 @@ const getUser = async (username) => {
     return user.data;
 }
 
+const getUsers = async () => {
+  let users = await axios.get(`${config.BASE_URL}/users`,
+    {
+        headers: {
+            //Authorization: `Bearer ${BATTLE_BOT_JWT}`
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
+
+    return users.data;
+}
+
 const getMonster = async (id) => {
   let monster = await axios.get(`${config.BASE_URL}/monsters/${id}`,
   {
@@ -262,7 +274,8 @@ export default {
     getItems, 
     getJobTable, 
     getJobs, 
-    getUser, 
+    getUser,
+    getUsers,
     updateUser, 
     recalculateStats, 
     getMonsters,
