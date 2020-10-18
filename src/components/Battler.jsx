@@ -23,7 +23,7 @@ export default class Battler extends React.Component {
     }
 
     damageRange = (user) => {
-        let tokens = user.equipment.hand.split("d");
+        let tokens = user.equipment.hand.dmg.split("d");
         return {low: (tokens[0] * 1) + user.str, high: (tokens[0] * tokens[1]) + user.str};
     }
 
