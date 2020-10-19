@@ -118,9 +118,7 @@ export default class Items extends React.Component {
                                     let value = item.ac || item.dmg || item.use;
                                     return (
                                         <tr 
-                                            key={`item-${item.id}`} 
-                                            onClick={() => {this.goTo(item)}}
-                                            style={{cursor: "pointer"}}>
+                                            key={`item-${item.id}`}>
                                                 <td style={{backgroundColor: "black", color: "white"}}>{item.id}</td>
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.type.toUpperCase()}</td>
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.slot.toUpperCase()}</td>
@@ -133,7 +131,10 @@ export default class Items extends React.Component {
                                                 <td style={{textAlign: "center"}}>{item.mods.ac}</td>
                                                 <td style={{textAlign: "center"}}>{value} <strong>{(item.ac ? "AC" : null) || (item.dmg ? "DMG" : null)}</strong></td>
                                                 <td style={{textAlign: "center"}}>{item.value}g</td>
-                                                <button onClick={() => {navigator.clipboard.writeText(item.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
+                                                <td>
+                                                    <button onClick={() => {this.goTo(item)}}>Edit</button>
+                                                    <button onClick={() => {navigator.clipboard.writeText(item.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
+                                                </td>
                                         </tr>
                                     )
                                 })}

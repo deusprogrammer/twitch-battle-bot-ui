@@ -63,16 +63,17 @@ export default class Abilities extends React.Component {
                                     { this.state.abilities.map((ability) => {
                                         return (
                                             <tr 
-                                                key={`ability-${ability.id}`} 
-                                                onClick={() => {this.goTo(ability)}}
-                                                style={{cursor: "pointer"}}>
+                                                key={`ability-${ability.id}`}>
                                                     <td style={{backgroundColor: "black", color: "white"}}>{ability.id}</td>
                                                     <td>{ability.name}</td>
                                                     <td>{ability.dmg}</td>
                                                     <td>{ability.target}</td>
                                                     <td>{ability.area}</td>
                                                     <td>{ability.element}</td>
-                                                    <button onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
+                                                    <td>
+                                                        <button onClick={() => {this.goTo(ability)}}>Edit</button>
+                                                        <button onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
+                                                    </td>
                                             </tr>
                                         )
                                     })}

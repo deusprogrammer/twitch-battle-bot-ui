@@ -133,9 +133,7 @@ export default class Monsters extends React.Component {
                                 { this.state.monsters.map((monster) => {
                                     return (
                                         <tr 
-                                        key={`monster-${monster.id}`}
-                                        onClick={() => {this.goTo(monster)}}
-                                        style={{cursor: "pointer"}}>
+                                        key={`monster-${monster.id}`}>
                                             <td style={{backgroundColor: "black", color: "white"}}>{monster.id}</td>
                                             <td>{monster.type || "MOB"}</td>
                                             <td>{monster.name}</td>
@@ -146,7 +144,10 @@ export default class Monsters extends React.Component {
                                             <td>{monster.dmg}</td>
                                             <td>{monster.hit}</td>
                                             <td>{monster.ac}</td>
-                                            <button onClick={() => {navigator.clipboard.writeText(monster.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
+                                            <td>
+                                                <button onClick={() => {this.goTo(monster)}}>Edit</button>
+                                                <button onClick={() => {navigator.clipboard.writeText(monster.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
+                                            </td>
                                         </tr>
                                     )
                                 })}
