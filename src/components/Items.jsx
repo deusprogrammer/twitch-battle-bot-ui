@@ -79,6 +79,7 @@ export default class Items extends React.Component {
     }
 
     handleFailure = (errors) => {
+        console.error("Failed to create item!");
         toast("Failed to create item", {type: "error"});
     }
 

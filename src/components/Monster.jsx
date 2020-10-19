@@ -1,5 +1,5 @@
 import React from 'react';
-import {toast, useToast} from 'react-toastify';
+import {toast} from 'react-toastify';
 
 import ApiHelper from '../utils/ApiHelper';
 
@@ -17,17 +17,16 @@ export default class Monster extends React.Component {
     }
 
     handleSubmit = async (values) => {
-        const addToast = useToast();
-
         values.id = this.state.monster.id;
         await ApiHelper.updateMonster(values);
 
-        addToast("Monster updated!", {type: "info"});
+        toast("Monster updated!", {type: "info"});
 
         this.props.history.goBack();
     }
 
     handleFailure = (errors) => {
+        console.error("Failed to update monster!");
         toast("Failed to update monster!", {type: "error"});
     }
 

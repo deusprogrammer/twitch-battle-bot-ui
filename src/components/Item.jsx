@@ -37,6 +37,7 @@ export default class Item extends React.Component {
     }
 
     handleFailure = (errors) => {
+        console.error("Failed to update item!");
         toast("Failed to update item", {type: "error"});
     }
 

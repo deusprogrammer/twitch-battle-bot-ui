@@ -26,6 +26,7 @@ export default class Ability extends React.Component {
     }
 
     handleFailure = (errors) => {
+        console.error("Failed to update ability!");
         toast("Failed to update ability!", {type: "error"});
     }
 
