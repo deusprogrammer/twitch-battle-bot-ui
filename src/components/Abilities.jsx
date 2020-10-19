@@ -31,7 +31,7 @@ export default class Abilities extends React.Component {
         });
     }
 
-    onError = async (error) => {
+    onError = (error) => {
         toast("Failed to create ability!", {type: "error"});
         console.log(error);
     }

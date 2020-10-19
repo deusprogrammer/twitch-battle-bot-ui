@@ -25,7 +25,7 @@ export default class Monster extends React.Component {
         this.props.history.goBack();
     }
 
-    handleFailure = async (errors) => {
+    handleFailure = (errors) => {
         toast("Failed to update monster!", {type: "error"});
     }
 

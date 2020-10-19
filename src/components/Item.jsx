@@ -36,7 +36,7 @@ export default class Item extends React.Component {
         this.props.history.goBack();
     }
 
-    handleFailure = async (errors) => {
+    handleFailure = (errors) => {
         toast("Failed to update item", {type: "error"});
     }
 

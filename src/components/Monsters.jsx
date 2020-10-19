@@ -94,7 +94,7 @@ export default class Monsters extends React.Component {
         });
     }
 
-    onError = async (error) => {
+    onError = (error) => {
         toast("Failed to create monster", {type: "error"});
     }
 
