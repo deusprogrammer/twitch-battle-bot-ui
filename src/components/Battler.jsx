@@ -66,6 +66,7 @@ export default class Battler extends React.Component {
                 toast(`Equipped ${item.name}`, {type: "info"});
             } catch (e) {
                 toast(`Failed to equip ${item.name}`, {type: "error"});
+                this.setState({saving: false});
             }
         });
     }
@@ -106,6 +107,7 @@ export default class Battler extends React.Component {
                 toast(`Sold ${item.name}`, {type: "info"});
             } catch (e) {
                 toast(`Failed to sell ${item.name}`, {type: "error"});
+                this.setState({saving: false});
             }
         });
     }
