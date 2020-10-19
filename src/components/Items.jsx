@@ -69,13 +69,17 @@ export default class Items extends React.Component {
         if (values.type === "consumable") {
             values.slot = "inventory";
         }
-        let created = await ApiHelper.createItem(values);
 
-        toast("Item created", {type: "info"});
-
-        this.setState({items: [...this.state.items, created]}, () => {
-            this.formApi.reset();
-        });
+        try {
+            let created = await ApiHelper.createItem(values);
+            toast("Item created", {type: "info"});
+            this.setState({items: [...this.state.items, created]}, () => {
+                this.formApi.reset();
+            });
+        } catch (e) {
+            console.error(e);
+            toast("Failed to create item", {type: "error"});
+        }
     }
 
     handleFailure = (errors) => {

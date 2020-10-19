@@ -18,11 +18,14 @@ export default class Ability extends React.Component {
 
     handleSubmit = async (values) => {
         values.id = this.state.ability.id;
-        await ApiHelper.updateAbility(values);
-
-        toast("Ability updated!", {type: "info"});
-
-        this.props.history.goBack();
+        try {
+            await ApiHelper.updateAbility(values);
+            toast("Ability updated!", {type: "info"});
+            this.props.history.goBack();
+        } catch (e) {
+            console.error(e);
+            toast("Failed to update ability!", {type: "error"});
+        }
     }
 
     handleFailure = (errors) => {

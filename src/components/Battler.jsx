@@ -65,6 +65,7 @@ export default class Battler extends React.Component {
                 this.setState({saving: false, user: updated});
                 toast(`Equipped ${item.name}`, {type: "info"});
             } catch (e) {
+                console.error(e);
                 toast(`Failed to equip ${item.name}`, {type: "error"});
                 this.setState({saving: false});
             }
@@ -106,6 +107,7 @@ export default class Battler extends React.Component {
                 this.setState({saving: false, user: updated});
                 toast(`Sold ${item.name}`, {type: "info"});
             } catch (e) {
+                console.error(e);
                 toast(`Failed to sell ${item.name}`, {type: "error"});
                 this.setState({saving: false});
             }
@@ -252,7 +254,7 @@ export default class Battler extends React.Component {
                                                 <td style={{textAlign: "center"}}>{item.value}g</td>
                                                 <td>
                                                     {item.type !== "consumable" ? <button onClick={() => {this.equipItemOnUser(item, index)}} disabled={this.state.saving}>Equip</button> : null}
-                                                    {item.value > 0 ? <button onClick={() => {this.sellItem(item, index);toast(`Sold ${item.name}`, {type: "info"})}} disabled={this.state.saving}>Sell</button> : <button onClick={() => {this.sellItem(item, index);toast(`Discarded ${item.name}`, {type: "info"});}} disabled={this.state.saving}>Discard</button>}
+                                                    {item.value > 0 ? <button onClick={() => {this.sellItem(item, index);}} disabled={this.state.saving}>Sell</button> : <button onClick={() => {this.sellItem(item, index);}} disabled={this.state.saving}>Discard</button>}
                                                     <button onClick={() => {navigator.clipboard.writeText(item.id);toast("Copied trade id to clipboard", {type: "info"});}}>Get Trade Id</button>
                                                 </td>
                                             </tr>

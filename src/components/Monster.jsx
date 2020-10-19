@@ -19,16 +19,19 @@ export default class Monster extends React.Component {
     handleSubmit = async (values) => {
         console.log("MONSTER: " + JSON.stringify(values, null, 5));
         values.id = this.state.monster.id;
-        await ApiHelper.updateMonster(values);
 
-        toast("Monster updated!", {type: "info"});
-
-        this.props.history.goBack();
+        try {
+            await ApiHelper.updateMonster(values);
+            toast("Monster updated!", {type: "info"});
+            this.props.history.goBack();
+        } catch (e) {
+            console.error(e);
+            toast("Failed to update monster!", {type: "error"});
+        }
     }
 
     handleFailure = (errors) => {
         console.error("Failed to update monster!");
-        console.error(JSON.stringify(errors, null, 5));
         toast("Failed to update monster!", {type: "error"});
     }
 

@@ -85,13 +85,19 @@ export default class Monsters extends React.Component {
 
     onSubmit = async (values) => {
         values.id = values.name.replaceAll(" ", "_").toUpperCase();
-        let created = await ApiHelper.createMonster(values);
 
-        toast("Monster created!", {type: "info"});
+        try {
+            let created = await ApiHelper.createMonster(values);
 
-        this.setState({monsters: [...this.state.monsters, created]}, () => {
-            this.formApi.reset();
-        });
+            toast("Monster created!", {type: "info"});
+
+            this.setState({monsters: [...this.state.monsters, created]}, () => {
+                this.formApi.reset();
+            });
+        } catch (e) {
+            console.error(e);
+            toast("Failed to create monster", {type: "error"});
+        }
     }
 
     onError = (error) => {

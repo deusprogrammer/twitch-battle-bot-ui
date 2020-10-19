@@ -22,19 +22,21 @@ export default class Abilities extends React.Component {
 
     onSubmit = async (values) => {
         values.id = values.name.replaceAll(" ", "_").toUpperCase();
-        let created = await ApiHelper.createAbility(values);
-
-        toast("Ability created!", {type: "info"});
-
-        this.setState({abilities: [...this.state.abilities, created]}, () => {
-            this.formApi.reset();
-        });
+        try {
+            let created = await ApiHelper.createAbility(values);
+            toast("Ability created!", {type: "info"});
+            this.setState({abilities: [...this.state.abilities, created]}, () => {
+                this.formApi.reset();
+            });
+        } catch (e) {
+            console.error(e);
+            toast("Failed to create ability!", {type: "error"});
+        }
     }
 
     onError = (error) => {
         console.error("Failed to create ability!");
         toast("Failed to create ability!", {type: "error"});
-        console.log(error);
     }
 
     render() {

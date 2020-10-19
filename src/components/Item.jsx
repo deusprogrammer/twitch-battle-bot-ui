@@ -27,13 +27,19 @@ export default class Item extends React.Component {
     }
 
     handleSubmit = async (values) => {
-        toast("Item updated!", {type: "info"});
         values.id = this.state.item.id;
         if (values.type === "consumable") {
             values.slot = "inventory";
         }
-        await ApiHelper.updateItem(values);
-        this.props.history.goBack();
+
+        try {
+            await ApiHelper.updateItem(values);
+            toast("Item updated!", {type: "info"});
+            this.props.history.goBack();
+        } catch (e) {
+            console.error(e);
+            toast("Failed to update item", {type: "error"});
+        }
     }
 
     handleFailure = (errors) => {
