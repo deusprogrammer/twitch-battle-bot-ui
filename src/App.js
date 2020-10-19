@@ -20,11 +20,7 @@ function App() {
             <ToastContainer />
             <Router>
                 <div style={{textAlign: "center"}}>
-                    <Link to={`${process.env.PUBLIC_URL}/`}>Guide</Link> |
-                    <Link to={`${process.env.PUBLIC_URL}/battlers/~self`}>Battler</Link> |
-                    <Link to={`${process.env.PUBLIC_URL}/items`}>Items</Link> |
-                    <Link to={`${process.env.PUBLIC_URL}/abilities`}>Abilities</Link> |
-                    <Link to={`${process.env.PUBLIC_URL}/monsters`}>Monsters</Link>
+                    <Link to={`${process.env.PUBLIC_URL}/`}>Guide</Link> | <Link to={`${process.env.PUBLIC_URL}/battlers/~self`}>Battler</Link> | <Link to={`${process.env.PUBLIC_URL}/items`}>Items</Link> | <Link to={`${process.env.PUBLIC_URL}/abilities`}>Abilities</Link> | <Link to={`${process.env.PUBLIC_URL}/monsters`}>Monsters</Link>
                 </div>
                 <Switch>
                     <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
