@@ -130,7 +130,7 @@ export default class Monsters extends React.Component {
                                         onClick={() => {this.goTo(monster)}}
                                         style={{cursor: "pointer"}}>
                                             <td>{monster.id}</td>
-                                            <td>{monster.type || "Mob"}</td>
+                                            <td>{monster.type || "MOB"}</td>
                                             <td>{monster.name}</td>
                                             <td>{monster.hp}</td>
                                             <td>{monster.str}</td>
