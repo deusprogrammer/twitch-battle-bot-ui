@@ -43,6 +43,19 @@ export default class Items extends React.Component {
     componentDidMount = async () => {
         let items = await ApiHelper.getItems();
 
+        items.forEach((item) => {
+            if (!item.mods) {
+                item.mods = {
+                    hp: 0,
+                    str: 0,
+                    dex: 0,
+                    int: 0,
+                    hit: 0,
+                    ac: 0
+                }
+            }
+        })
+
         this.setState({items});
     }
 
