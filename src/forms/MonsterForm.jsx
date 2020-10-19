@@ -5,6 +5,8 @@ import * as Yup from 'yup';
 import ApiHelper from '../utils/ApiHelper';
 
 const monsterSchema = Yup.object().shape({
+    type: Yup.string()
+        .required("Monster must have a type"),
     name: Yup.string()
         .required("Monster must have a name"),
     hp: Yup.number()
@@ -66,6 +68,20 @@ export default class MonsterForm extends React.Component {
                     <tbody>
                         <fieldset>
                             <legend>Basic Stats</legend>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Type:
+                                </td>
+                                <td>
+                                    <Select field="type">
+                                        <Option value={null}>{"Select a mob type..."}</Option>
+                                        <Option value={"MOB"}>Mob</Option>
+                                        <Option value={"ELITE"}>Elite</Option>
+                                        <Option value={"BOSS"}>Boss</Option>
+                                        <Option value={"RARE"}>Rare</Option>
+                                    </Select>
+                                </td>
+                            </tr>
                             <tr>
                                 <td style={{fontWeight: "bolder"}}>
                                     Name:
