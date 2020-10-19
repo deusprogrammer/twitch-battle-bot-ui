@@ -28,6 +28,8 @@ export default class Monster extends React.Component {
 
     handleFailure = (errors) => {
         console.error("Failed to update monster!");
+        console.log("MONSTER: " + JSON.stringify(values, null, 5));
+        console.error(JSON.stringify(errors, null, 5));
         toast("Failed to update monster!", {type: "error"});
     }
 

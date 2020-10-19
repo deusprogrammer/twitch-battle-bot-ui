@@ -62,7 +62,7 @@ export default class MonsterForm extends React.Component {
                 initialValues={this.props.initialValues}
                 getApi={this.props.getApi}
                 onSubmit={this.props.onSubmit} 
-                onFailure={this.props.onFailure}
+                onSubmitFailure={this.props.onFailure}
                 validationSchema={monsterSchema}>
                 <table>
                     <tbody>
