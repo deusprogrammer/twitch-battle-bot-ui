@@ -1,6 +1,6 @@
 import React from 'react';
 import {ToastContainer} from 'react-toastify';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
 import Home from './components/Home';
 import Battler from './components/Battler';
@@ -19,6 +19,12 @@ function App() {
         <div style={{width: "80%", margin: "auto"}}>
             <ToastContainer />
             <Router>
+                <div style={{textAlign: "center"}}>
+                    <Link to={`${process.env.PUBLIC_URL}/battlers/~self`}>Battler</Link> |
+                    <Link to={`${process.env.PUBLIC_URL}/items`}>Items</Link> |
+                    <Link to={`${process.env.PUBLIC_URL}/abilities`}>Abilities</Link> |
+                    <Link to={`${process.env.PUBLIC_URL}/monsters`}>Monsters</Link>
+                </div>
                 <Switch>
                     <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
                     <Route exact path={`${process.env.PUBLIC_URL}/items`} component={Items} />
