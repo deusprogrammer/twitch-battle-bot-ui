@@ -116,7 +116,7 @@ export default class Monsters extends React.Component {
                         <table style={{marginLeft: "10px"}}>
                             <thead>
                                 <tr>
-                                    <th style={{backgroundColor: "black", color: "white"}}>Id</th>
+                                    <th>Id</th>
                                     <th>Header</th>
                                     <th>Name</th>
                                     <th>HP</th>
@@ -135,7 +135,7 @@ export default class Monsters extends React.Component {
                                         key={`monster-${monster.id}`}
                                         onClick={() => {this.goTo(monster)}}
                                         style={{cursor: "pointer"}}>
-                                            <td>{monster.id}</td>
+                                            <td style={{backgroundColor: "black", color: "white"}}>{monster.id}</td>
                                             <td>{monster.type || "MOB"}</td>
                                             <td>{monster.name}</td>
                                             <td>{monster.hp}</td>
