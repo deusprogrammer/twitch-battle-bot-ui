@@ -15,7 +15,7 @@ const monsterSchema = Yup.object().shape({
         .required("Monster must have str"),
     dex: Yup.number()
         .required("Monster must have dex"),
-    dmg: Yup.number()
+    dmg: Yup.string()
         .required("Monster must have dmg"),
     hit: Yup.number()
         .required("Monster must have hit"),
