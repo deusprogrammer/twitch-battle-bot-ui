@@ -59,9 +59,14 @@ export default class Battler extends React.Component {
             });
 
             // Update and store updated version of user
-            await ApiHelper.updateUser(strippedUser);
-            let updated = await this.getUser(user.name);
-            this.setState({saving: false, user: updated});
+            try {
+                await ApiHelper.updateUser(strippedUser);
+                let updated = await this.getUser(user.name);
+                this.setState({saving: false, user: updated});
+                toast(`Equipped ${item.name}`, {type: "info"});
+            } catch (e) {
+                toast(`Failed to equip ${item.name}`, {type: "error"});
+            }
         });
     }
 
@@ -94,9 +99,14 @@ export default class Battler extends React.Component {
             });
 
             // Update and store updated version of user
-            await ApiHelper.updateUser(strippedUser);
-            let updated = await this.getUser(user.name);
-            this.setState({saving: false, user: updated});
+            try {
+                await ApiHelper.updateUser(strippedUser);
+                let updated = await this.getUser(user.name);
+                this.setState({saving: false, user: updated});
+                toast(`Sold ${item.name}`, {type: "info"});
+            } catch (e) {
+                toast(`Failed to sell ${item.name}`, {type: "error"});
+            }
         });
     }
 
@@ -239,7 +249,7 @@ export default class Battler extends React.Component {
                                                 <td style={{textAlign: "center"}}>{value} <strong>{(item.ac ? "AC" : null) || (item.dmg ? "DMG" : null)}</strong></td>
                                                 <td style={{textAlign: "center"}}>{item.value}g</td>
                                                 <td>
-                                                    {item.type !== "consumable" ? <button onClick={() => {this.equipItemOnUser(item, index);toast(`Equipped ${item.name}`, {type: "info"})}} disabled={this.state.saving}>Equip</button> : null}
+                                                    {item.type !== "consumable" ? <button onClick={() => {this.equipItemOnUser(item, index)}} disabled={this.state.saving}>Equip</button> : null}
                                                     {item.value > 0 ? <button onClick={() => {this.sellItem(item, index);toast(`Sold ${item.name}`, {type: "info"})}} disabled={this.state.saving}>Sell</button> : <button onClick={() => {this.sellItem(item, index);toast(`Discarded ${item.name}`, {type: "info"});}} disabled={this.state.saving}>Discard</button>}
                                                     <button onClick={() => {navigator.clipboard.writeText(item.id);toast("Copied trade id to clipboard", {type: "info"});}}>Get Trade Id</button>
                                                 </td>
