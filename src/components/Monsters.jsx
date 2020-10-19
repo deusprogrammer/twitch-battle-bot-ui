@@ -116,7 +116,7 @@ export default class Monsters extends React.Component {
                         <table style={{marginLeft: "10px"}}>
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th style={{backgroundColor: "black", color: "white"}}>Id</th>
                                     <th>Header</th>
                                     <th>Name</th>
                                     <th>HP</th>

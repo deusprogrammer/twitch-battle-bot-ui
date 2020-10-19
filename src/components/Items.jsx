@@ -98,6 +98,7 @@ export default class Items extends React.Component {
                         <table>
                             <thead>
                                 <tr>
+                                    <th>Id</th>
                                     <th>Type</th>
                                     <th>Slot</th>
                                     <th>Item Name</th>
@@ -120,6 +121,7 @@ export default class Items extends React.Component {
                                             key={`item-${item.id}`} 
                                             onClick={() => {this.goTo(item)}}
                                             style={{cursor: "pointer"}}>
+                                                <td style={{backgroundColor: "black", color: "white"}}>{item.id}</td>
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.type.toUpperCase()}</td>
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.slot.toUpperCase()}</td>
                                                 <td>{item.name}</td>

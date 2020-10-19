@@ -65,7 +65,7 @@ export default class Abilities extends React.Component {
                                                 key={`ability-${ability.id}`} 
                                                 onClick={() => {this.goTo(ability)}}
                                                 style={{cursor: "pointer"}}>
-                                                    <td>{ability.id}</td>
+                                                    <td style={{backgroundColor: "black", color: "white"}}>{ability.id}</td>
                                                     <td>{ability.name}</td>
                                                     <td>{ability.dmg}</td>
                                                     <td>{ability.target}</td>
