@@ -56,6 +56,7 @@ export default class Abilities extends React.Component {
                                         <th>Target</th>
                                         <th>Area</th>
                                         <th>Element</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -71,6 +72,7 @@ export default class Abilities extends React.Component {
                                                     <td>{ability.target}</td>
                                                     <td>{ability.area}</td>
                                                     <td>{ability.element}</td>
+                                                    <button onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
                                             </tr>
                                         )
                                     })}

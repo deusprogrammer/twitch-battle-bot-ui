@@ -126,6 +126,7 @@ export default class Monsters extends React.Component {
                                     <th>DMG</th>
                                     <th>HIT</th>
                                     <th>AC</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -145,6 +146,7 @@ export default class Monsters extends React.Component {
                                             <td>{monster.dmg}</td>
                                             <td>{monster.hit}</td>
                                             <td>{monster.ac}</td>
+                                            <button onClick={() => {navigator.clipboard.writeText(monster.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
                                         </tr>
                                     )
                                 })}
