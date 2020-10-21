@@ -52,10 +52,17 @@ export default class Abilities extends React.Component {
                                     <tr>
                                         <th>Id</th>
                                         <th>Name</th>
+                                        <th>AP Cost</th>
                                         <th>Damage</th>
                                         <th>Target</th>
                                         <th>Area</th>
                                         <th>Element</th>
+                                        <th>HP Mod</th>
+                                        <th>STR Mod</th>
+                                        <th>DEX Mod</th>
+                                        <th>INT Mod</th>
+                                        <th>HIT Mod</th>
+                                        <th>AC Mod</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -66,10 +73,17 @@ export default class Abilities extends React.Component {
                                                 key={`ability-${ability.id}`}>
                                                     <td style={{backgroundColor: "black", color: "white"}}>{ability.id}</td>
                                                     <td>{ability.name}</td>
+                                                    <td>{ability.cost}</td>
                                                     <td>{ability.dmg}</td>
                                                     <td>{ability.target}</td>
                                                     <td>{ability.area}</td>
                                                     <td>{ability.element}</td>
+                                                    <td style={{textAlign: "center"}}>{ability.mods.hp}</td>
+                                                    <td style={{textAlign: "center"}}>{ability.mods.str}</td>
+                                                    <td style={{textAlign: "center"}}>{ability.mods.dex}</td>
+                                                    <td style={{textAlign: "center"}}>{ability.mods.int}</td>
+                                                    <td style={{textAlign: "center"}}>{ability.mods.hit}</td>
+                                                    <td style={{textAlign: "center"}}>{ability.mods.ac}</td>
                                                     <td>
                                                         <button onClick={() => {this.goTo(ability)}}>Edit</button>
                                                         <button onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
