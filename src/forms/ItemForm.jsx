@@ -219,7 +219,7 @@ export default class ItemForm extends React.Component {
                         </fieldset>
                         <fieldset>
                             <legend>Abilities</legend>
-                            { this.state.abilitiesAdded.map((ability, index) => {
+                            { this.state.abilitiesAdded.map((abilityAdded, index) => {
                             return (
                                 <fieldset key={`actions[${index}]`}>
                                     <legend>{`actions[${index}]`}</legend>
