@@ -43,7 +43,7 @@ export default class ItemForm extends React.Component {
         let abilities = await ApiHelper.getAbilities();
         let abilitiesAdded = [];
         let skillsAdded = [];
-        if (this.this.props.initialValues) {
+        if (this.props.initialValues) {
             abilitiesAdded = this.this.props.initialValues.abilitiesAdded;
             skillsAdded = this.this.props.initialValues.skillsAdded;
         }
@@ -220,28 +220,29 @@ export default class ItemForm extends React.Component {
                         <fieldset>
                             <legend>Abilities</legend>
                             { this.state.abilitiesAdded.map((abilityAdded, index) => {
-                            return (
-                                <fieldset key={`actions[${index}]`}>
-                                    <legend>{`actions[${index}]`}</legend>
-                                    <tr>
-                                        <td>
-                                            <Select field={`abilities[${index}]`}>
-                                                <Option value={null}>{"Select an ability..."}</Option>
-                                                { this.state.abilities.map((ability) => {
-                                                    return (
-                                                        <Option value={ability.id}>{ability.name}</Option>
-                                                    )
-                                                })}
-                                            </Select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <button>Remove</button>
-                                        </td>
-                                    </tr>
-                                </fieldset>
-                            )})}
+                                return (
+                                    <fieldset key={`actions[${index}]`}>
+                                        <legend>{`actions[${index}]`}</legend>
+                                        <tr>
+                                            <td>
+                                                <Select field={`abilities[${index}]`}>
+                                                    <Option value={null}>{"Select an ability..."}</Option>
+                                                    { this.state.abilities.map((ability) => {
+                                                        return (
+                                                            <Option value={ability.id}>{ability.name}</Option>
+                                                        )
+                                                    })}
+                                                </Select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <button>Remove</button>
+                                            </td>
+                                        </tr>
+                                    </fieldset>
+                                )})
+                            }
                             <tr>
                                 <td><button onClick={() => {this.addAbility()}} type="button">Add New Ability</button></td>
                             </tr>
