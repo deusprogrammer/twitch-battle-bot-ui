@@ -73,7 +73,7 @@ export default class Abilities extends React.Component {
                                                 key={`ability-${ability.id}`}>
                                                     <td style={{backgroundColor: "black", color: "white"}}>{ability.id}</td>
                                                     <td>{ability.name}</td>
-                                                    <td>{ability.cost}</td>
+                                                    <td>{ability.ap}</td>
                                                     <td>{ability.dmg}</td>
                                                     <td>{ability.target}</td>
                                                     <td>{ability.area}</td>
