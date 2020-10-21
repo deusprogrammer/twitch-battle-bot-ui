@@ -27,8 +27,9 @@ export default class Battler extends React.Component {
     getUser = async (username) => {
         let itemTable = await ApiHelper.getItemTable();
         let jobTable = await ApiHelper.getJobTable();
+        let abilityTable = await ApiHelper.getAbilityTable();
         let user = await ApiHelper.getUser(username);
-        return ApiHelper.expandUser(user, {itemTable, jobTable});
+        return ApiHelper.expandUser(user, {itemTable, jobTable, abilityTable});
     }
 
     equipItemOnUser = async (item, index) => {
@@ -264,6 +265,77 @@ export default class Battler extends React.Component {
                                             </tr>
                                         )
                                     })}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div style={{display: "table-row"}}>
+                        <div style={{display: "table-cell", paddingRight: "50px"}}>
+                            <h3>Abilities</h3>
+                            <table style={{marginLeft: "10px"}}>
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Slot</th>
+                                        <th>Item Name</th>
+                                        <th>HP Mod</th>
+                                        <th>STR Mod</th>
+                                        <th>DEX Mod</th>
+                                        <th>INT Mod</th>
+                                        <th>HIT Mod</th>
+                                        <th>AC Mod</th>
+                                        <th>Value</th>
+                                        <th>Price</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {user.abilities.length > 0 ?
+                                    <table style={{marginLeft: "10px"}}>
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>AP Cost</th>
+                                                <th>Damage</th>
+                                                <th>Target</th>
+                                                <th>Area</th>
+                                                <th>Element</th>
+                                                <th>HP Mod</th>
+                                                <th>STR Mod</th>
+                                                <th>DEX Mod</th>
+                                                <th>INT Mod</th>
+                                                <th>HIT Mod</th>
+                                                <th>AC Mod</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            { user.abilities.map((ability) => {
+                                                return (
+                                                    <tr 
+                                                        key={`ability-${ability.id}`}>
+                                                            <td>{ability.name}</td>
+                                                            <td>{ability.ap}</td>
+                                                            <td>{ability.dmg}</td>
+                                                            <td>{ability.target}</td>
+                                                            <td>{ability.area}</td>
+                                                            <td>{ability.element}</td>
+                                                            <td style={{textAlign: "center"}}>{ability.mods.hp}</td>
+                                                            <td style={{textAlign: "center"}}>{ability.mods.str}</td>
+                                                            <td style={{textAlign: "center"}}>{ability.mods.dex}</td>
+                                                            <td style={{textAlign: "center"}}>{ability.mods.int}</td>
+                                                            <td style={{textAlign: "center"}}>{ability.mods.hit}</td>
+                                                            <td style={{textAlign: "center"}}>{ability.mods.ac}</td>
+                                                            <td>
+                                                                <button onClick={() => {this.goTo(ability)}}>Edit</button>
+                                                                <button onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
+                                                            </td>
+                                                    </tr>
+                                                )
+                                            })}
+                                        </tbody>
+                                    </table> : null 
+                                }
                                 </tbody>
                             </table>
                         </div>

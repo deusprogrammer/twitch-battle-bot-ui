@@ -58,8 +58,15 @@ const getJobTable = async () => {
   return indexArrayToMap(jobs);  
 }
 
+const getAbilityTable = async () => {
+  let abilities = await getAbilities();
+
+  return indexArrayToMap(abilities);
+}
+
 const expandUser = (userData, context) => {
   userData.totalAC = 0;
+  userData.abilities = [];
   userData.currentJob = context.jobTable[userData.currentJob.id];
   userData.str = userData.currentJob.str;
   userData.dex = userData.currentJob.dex;
@@ -78,6 +85,9 @@ const expandUser = (userData, context) => {
     userData.dex += itemData.mods.dex;
     userData.int += itemData.mods.int;
     userData.hit += itemData.mods.hit;
+    userData.abilities = itemData.abilities.map((ability) => {
+      return context.abilityTable[ability];
+    })
     userData.equipment[slot] = itemData;
   });
   let newInventoryList = [];
@@ -90,23 +100,6 @@ const expandUser = (userData, context) => {
 
   return userData;
 }
-
-// const expandUser = (userData, itemTable, jobTable ) => {
-//   Object.keys(userData.equipment).forEach((slot) => {
-//     let item = userData.equipment[slot];
-//     let itemData = itemTable[item.id];
-//     userData.equipment[slot] = itemData;
-//   });
-//   let newInventoryList = [];
-//   userData.inventory.forEach((item) => {
-//     newInventoryList.push(itemTable[item]);
-//   });
-
-//   userData.inventory = newInventoryList;
-//   userData.currentJob = jobTable[userData.currentJob.id];
-
-//   return userData;
-// }
 
 const getUser = async (username) => {
     let user = await axios.get(`${config.BASE_URL}/users/${username}`,
@@ -270,23 +263,24 @@ const updateUser = async (userData) => {
 
 export default {
     expandUser, 
+    recalculateStats, 
     getItemTable, 
-    getItems, 
+    getAbilityTable,
     getJobTable, 
     getJobs, 
     getUser,
     getUsers,
     updateUser, 
-    recalculateStats, 
-    getMonsters,
     getMonster,
+    getMonsters,
     createMonster,
     updateMonster,
-    getAbilities,
     getAbility,
-    updateAbility,
+    getAbilities,
     createAbility,
+    updateAbility,
     getItem,
+    getItems, 
     createItem,
     updateItem
 }
