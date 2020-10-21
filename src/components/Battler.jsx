@@ -39,7 +39,11 @@ export default class Battler extends React.Component {
         // Update version in state
         let oldItem = equipment[item.slot];
         equipment[item.slot] = item;
-        inventory[index] = oldItem;
+        if (oldItem) {
+            inventory[index] = oldItem;
+        } else {
+            delete inventory[index];
+        }
 
         this.setState({saving: true}, async () => {
             // Create stripped down version for update call
@@ -54,8 +58,8 @@ export default class Battler extends React.Component {
             Object.keys(equipment).forEach((slot) => {
                 strippedUser.equipment[slot] = {id: equipment[slot].id};
             });
-            inventory.forEach((item) => {
-                strippedUser.inventory.push(item.id);
+            inventory.forEach((inventoryItem) => {
+                strippedUser.inventory.push(inventoryItem.id);
             });
 
             // Update and store updated version of user
@@ -96,8 +100,8 @@ export default class Battler extends React.Component {
             Object.keys(equipment).forEach((slot) => {
                 strippedUser.equipment[slot] = {id: equipment[slot].id};
             });
-            inventory.forEach((item) => {
-                strippedUser.inventory.push(item.id);
+            inventory.forEach((inventoryItem) => {
+                strippedUser.inventory.push(inventoryItem.id);
             });
 
             // Update and store updated version of user
