@@ -95,7 +95,8 @@ export default (props) => {
                                 </Select>
                             </td>
                         </tr>
-                        <fieldset>
+                    </fieldset>
+                    <fieldset>
                             <legend>Modifiers</legend>
                             <tr>
                                 <td style={{fontWeight: "bolder"}}>
@@ -146,7 +147,6 @@ export default (props) => {
                                 </td>
                             </tr>
                         </fieldset>
-                    </fieldset>
                 </tbody>
             </table>
             <button type="submit">Submit</button>
