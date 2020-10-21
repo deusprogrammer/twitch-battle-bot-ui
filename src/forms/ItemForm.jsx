@@ -3,6 +3,8 @@ import React from 'react';
 import {Form, Text, Select, Option, Relevant} from 'informed';
 import * as Yup from 'yup';
 
+import ApiHelper from '../utils/ApiHelper';
+
 const itemSchema = Yup.object().shape({
     name: Yup.string()
         .required("Item must have a name"),
@@ -41,9 +43,9 @@ export default class ItemForm extends React.Component {
         let abilities = await ApiHelper.getAbilities();
         let abilitiesAdded = [];
         let skillsAdded = [];
-        if (this.props.initialValues) {
-            abilitiesAdded = this.props.initialValues.abilitiesAdded;
-            skillsAdded = this.props.initialValues.skillsAdded;
+        if (this.this.props.initialValues) {
+            abilitiesAdded = this.this.props.initialValues.abilitiesAdded;
+            skillsAdded = this.this.props.initialValues.skillsAdded;
         }
 
         this.setState({abilities, abilitiesAdded, skillsAdded});
@@ -64,10 +66,10 @@ export default class ItemForm extends React.Component {
     render() {
         return (
             <Form 
-                initialValues={props.initialValues}
-                getApi={props.getApi}
-                onSubmit={props.onSubmit} 
-                onSubmitFailure={props.onFailure}
+                initialValues={this.props.initialValues}
+                getApi={this.props.getApi}
+                onSubmit={this.props.onSubmit} 
+                onSubmitFailure={this.props.onFailure}
                 validationSchema={itemSchema}>
                 <table>
                     <tbody>
