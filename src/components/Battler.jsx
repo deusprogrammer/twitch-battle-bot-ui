@@ -147,7 +147,7 @@ export default class Battler extends React.Component {
                                 <tbody>
                                     <tr title="Your health points determine whether you are alive or not.  Once you hit zero, it's over." style={{cursor: "pointer"}}>
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>HP</td>
-                                        <td>{user.hp}/{user.currentJob.hp}</td>
+                                        <td>{user.hp}/{user.maxHp}</td>
                                     </tr>
                                     <tr title="Your action points are consumed when you perform actions like attacking or using abilities." style={{cursor: "pointer"}}>
                                         <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>AP</td>
