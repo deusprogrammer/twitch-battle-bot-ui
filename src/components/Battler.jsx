@@ -270,6 +270,7 @@ export default class Battler extends React.Component {
                         </div>
                     </div>
                     <div style={{display: "table-row"}}>
+                        <div style={{display: "table-cell", paddingRight: "50px"}}></div>
                         <div style={{display: "table-cell", paddingRight: "50px"}}>
                             <h3>Abilities</h3>
                             {user.abilities.length > 0 ?
