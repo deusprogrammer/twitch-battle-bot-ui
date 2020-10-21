@@ -310,7 +310,6 @@ export default class Battler extends React.Component {
                                                         <td style={{textAlign: "center"}}>{ability.mods.hit}</td>
                                                         <td style={{textAlign: "center"}}>{ability.mods.ac}</td>
                                                         <td>
-                                                            <button onClick={() => {this.goTo(ability)}}>Edit</button>
                                                             <button onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
                                                         </td>
                                                 </tr>
