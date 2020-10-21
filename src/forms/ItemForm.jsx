@@ -236,13 +236,13 @@ export default class ItemForm extends React.Component {
                                                     )
                                                 })}
                                             </Select>
+                                            <tr>
+                                                <td>
+                                                    <button>Remove</button>
+                                                </td>
+                                            </tr>
                                         </fieldset>
                                     )})}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <button>Remove</button>
                                 </td>
                             </tr>
                             <tr>
