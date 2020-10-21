@@ -219,15 +219,12 @@ export default class ItemForm extends React.Component {
                         </fieldset>
                         <fieldset>
                             <legend>Abilities</legend>
-                            <tr>
-                                <td style={{fontWeight: "bolder"}}>
-                                    Ability:
-                                </td>
-                                <td>
-                                    { this.state.abilitiesAdded.map((ability, index) => {
-                                    return (
-                                        <fieldset key={`actions[${index}]`}>
-                                            <legend>{`actions[${index}]`}</legend>
+                            { this.state.abilitiesAdded.map((ability, index) => {
+                            return (
+                                <fieldset key={`actions[${index}]`}>
+                                    <legend>{`actions[${index}]`}</legend>
+                                    <tr>
+                                        <td>
                                             <Select field={`abilities[${index}]`}>
                                                 <Option value={null}>{"Select an ability..."}</Option>
                                                 { this.state.abilities.map((ability) => {
@@ -236,15 +233,15 @@ export default class ItemForm extends React.Component {
                                                     )
                                                 })}
                                             </Select>
-                                            <tr>
-                                                <td>
-                                                    <button>Remove</button>
-                                                </td>
-                                            </tr>
-                                        </fieldset>
-                                    )})}
-                                </td>
-                            </tr>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <button>Remove</button>
+                                        </td>
+                                    </tr>
+                                </fieldset>
+                            )})}
                             <tr>
                                 <td><button onClick={() => {this.addAbility()}} type="button">Add New Ability</button></td>
                             </tr>
