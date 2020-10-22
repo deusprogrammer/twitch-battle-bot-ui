@@ -41,6 +41,8 @@ export default class Items extends React.Component {
     }
 
     componentDidMount = async () => {
+        document.title = `Items Admin`;
+
         let items = await ApiHelper.getItems();
 
         items.forEach((item) => {

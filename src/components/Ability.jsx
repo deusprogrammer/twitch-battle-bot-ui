@@ -13,6 +13,8 @@ export default class Ability extends React.Component {
     componentDidMount = async () => {
         let ability = await ApiHelper.getAbility(this.props.match.params.id);
 
+        document.title = `${ability.name} Ability`;
+
         this.setState({ability});
     }
 

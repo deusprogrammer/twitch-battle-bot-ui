@@ -125,6 +125,8 @@ export default class Battler extends React.Component {
             username = "self";
         }
 
+        document.title = `Battler for ${username}`;
+
         let user = await this.getUser(username);
         console.log(JSON.stringify(user, null, 5));
         this.setState({user});

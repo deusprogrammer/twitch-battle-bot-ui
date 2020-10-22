@@ -11,6 +11,7 @@ export default class Abilities extends React.Component {
     }
 
     componentDidMount = async () => {
+        document.title = `Abilities Admin`;
         let abilities = await ApiHelper.getAbilities();
 
         this.setState({abilities});

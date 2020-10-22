@@ -74,6 +74,8 @@ export default class Monsters extends React.Component {
     }
 
     componentDidMount = async () => {
+        document.title = `Monsters Admin`;
+
         let monsters = await ApiHelper.getMonsters();
 
         this.setState({monsters});
