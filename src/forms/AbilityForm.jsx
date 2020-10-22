@@ -92,6 +92,7 @@ export default (props) => {
                                     <Option>DARK</Option>
                                     <Option>LIGHT</Option>
                                     <Option>HEALING</Option>
+                                    <Option>BUFFING</Option>
                                 </Select>
                             </td>
                         </tr>
