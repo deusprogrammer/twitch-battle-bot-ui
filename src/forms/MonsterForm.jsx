@@ -20,7 +20,9 @@ const monsterSchema = Yup.object().shape({
     hit: Yup.number()
         .required("Monster must have hit"),
     ac: Yup.number()
-        .required("Monster must have ac")
+        .required("Monster must have ac"),
+    rarity: Yup.number()
+        .required("Monster must have rarity")
 });
 
 export default class MonsterForm extends React.Component { 
@@ -144,6 +146,14 @@ export default class MonsterForm extends React.Component {
                                 </td>
                                 <td>
                                     <Text field="ac" type="number" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Rarity:
+                                </td>
+                                <td>
+                                    <Text field="rarity" type="number" />
                                 </td>
                             </tr>
                         </fieldset>

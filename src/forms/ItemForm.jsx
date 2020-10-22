@@ -28,7 +28,9 @@ const itemSchema = Yup.object().shape({
             then: Yup.string().required("If type is consumable, then item needs use")
         }),
     value: Yup.number()
-        .required("Item must have a value")
+        .required("Item must have a value"),
+    rarity: Yup.number()
+        .required("Monster must have rarity")
 });
 
 export default class ItemForm extends React.Component {
@@ -170,6 +172,14 @@ export default class ItemForm extends React.Component {
                                 </td>
                                 <td>
                                     <Text field="value" type="number"></Text>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Rarity:
+                                </td>
+                                <td>
+                                    <Text field="rarity" type="number"></Text>
                                 </td>
                             </tr>
                         </fieldset>

@@ -110,6 +110,7 @@ export default class Items extends React.Component {
                                     <th>AC Mod</th>
                                     <th>Value</th>
                                     <th>Price</th>
+                                    <th>Rarity</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -131,6 +132,7 @@ export default class Items extends React.Component {
                                                 <td style={{textAlign: "center"}}>{item.mods.ac}</td>
                                                 <td style={{textAlign: "center"}}>{value} <strong>{(item.ac ? "AC" : null) || (item.dmg ? "DMG" : null)}</strong></td>
                                                 <td style={{textAlign: "center"}}>{item.value}g</td>
+                                                <td style={{textAlign: "center"}}>{monster.rarity}</td>
                                                 <td>
                                                     <button onClick={() => {this.goTo(item)}}>Edit</button>
                                                     <button onClick={() => {navigator.clipboard.writeText(item.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
