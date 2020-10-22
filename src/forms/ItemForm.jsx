@@ -59,6 +59,12 @@ export default class ItemForm extends React.Component {
         this.setState({abilitiesAdded});
     }
 
+    removeAbility = (index) => {
+        let abilities = [...this.state.abilities];
+        abilities.splice(index, 1);
+        this.setState({abilities});
+    }
+
     addSkill = () => {
         let skillsAdded = [...this.state.skillsAdded];
         skillsAdded.push({});
@@ -254,7 +260,7 @@ export default class ItemForm extends React.Component {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <button>Remove</button>
+                                                <button onClick={() => this.removeAbility(index)}>Remove</button>
                                             </td>
                                         </tr>
                                     </fieldset>

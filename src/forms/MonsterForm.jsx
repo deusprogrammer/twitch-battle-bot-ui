@@ -52,9 +52,21 @@ export default class MonsterForm extends React.Component {
         this.setState({actions});
     }
 
+    removeAction = (index) => {
+        let actions = [...this.state.actions];
+        actions.splice(index, 1);
+        this.setState({actions});
+    }
+
     addDrop = () => {
         let drops = [...this.state.drops];
         drops.push({});
+        this.setState({drops});
+    }
+
+    removeDrop = (index) => {
+        let drops = [...this.state.drops];
+        drops.splice(index, 1);
         this.setState({drops});
     }
 
@@ -189,7 +201,7 @@ export default class MonsterForm extends React.Component {
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <button>Remove</button>
+                                                    <button onClick={() => this.removeAction(index)}>Remove</button>
                                                 </td>
                                             </tr>
                                         </Scope>
@@ -235,12 +247,28 @@ export default class MonsterForm extends React.Component {
                                                 Only One:
                                             </td>
                                             <td>
-                                                <Checkbox field="onlyOne" initialValue={drop.chance} />
+                                                <Checkbox field="onlyOne" initialValue={drop.onlyOne} />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style={{fontWeight: "bolder"}}>
+                                                Exclusive:
+                                            </td>
+                                            <td>
+                                                <Checkbox field="onlyOne" initialValue={drop.exclusive} />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style={{fontWeight: "bolder"}}>
+                                                Exclusive Taken:
+                                            </td>
+                                            <td>
+                                                <Checkbox field="onlyOne" initialValue={drop.exclusiveTaken} />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <button>Remove</button>
+                                                <button onClick={() => {this.removeDrop(index)}}>Remove</button>
                                             </td>
                                         </tr>
                                     </Scope>
