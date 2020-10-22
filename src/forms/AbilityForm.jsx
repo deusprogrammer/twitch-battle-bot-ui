@@ -54,14 +54,45 @@ export default (props) => {
                         </tr>
                         <tr>
                             <td style={{fontWeight: "bolder"}}>
+                                Damage Stat:
+                            </td>
+                            <td>
+                                <Select field="dmgStat">
+                                    <Option value={null}>Select Stat Damaged</Option>
+                                    <Option value={"AP"}>AP</Option>
+                                    <Option value={"HP"}>HP</Option>
+                                    <Option value={"Gold"}>Gold</Option>
+                                    <Option value={"Cooldown"}>Cooldown</Option>
+                                </Select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style={{fontWeight: "bolder"}}>
+                                Hit Modifier Stat:
+                            </td>
+                            <td>
+                                <Select field="toHitStat">
+                                    <Option value={null}>Select To Hit Modifier</Option>
+                                    <Option value={"AP"}>AP</Option>
+                                    <Option value={"HP"}>HP</Option>
+                                    <Option value={"STR"}>STR</Option>
+                                    <Option value={"DEX"}>DEX</Option>
+                                    <Option value={"INT"}>INT</Option>
+                                    <Option value={"HIT"}>HIT</Option>
+                                    <Option value={"Gold"}>Gold</Option>
+                                </Select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style={{fontWeight: "bolder"}}>
                                 Target:
                             </td>
                             <td>
                                 <Select field="target">
                                     <Option value={null}>Select Target Type</Option>
-                                    <Option>ENEMY</Option>
-                                    <Option>CHAT</Option>
-                                    <Option>ANY</Option>
+                                    <Option value={"ENEMY"}>ENEMY</Option>
+                                    <Option value={"CHAT"}>CHAT</Option>
+                                    <Option value={"ANY"}>ANY</Option>
                                 </Select>
                             </td>
                         </tr>
@@ -72,8 +103,8 @@ export default (props) => {
                             <td>
                                 <Select field="area">
                                     <Option value={null}>Select Area Type</Option>
-                                    <Option>ALL</Option>
-                                    <Option>ONE</Option>
+                                    <Option value={"ALL"}>ALL</Option>
+                                    <Option value={"ONE"}>ONE</Option>
                                 </Select>
                             </td>
                         </tr>
@@ -82,17 +113,18 @@ export default (props) => {
                                 Element:
                             </td>
                             <td>
-                                <Select field="element" initialValue="NONE">
-                                    <Option>NONE</Option>
-                                    <Option>FIRE</Option>
-                                    <Option>ICE</Option>
-                                    <Option>WATER</Option>
-                                    <Option>EARTH</Option>
-                                    <Option>LIGHTNING</Option>
-                                    <Option>DARK</Option>
-                                    <Option>LIGHT</Option>
-                                    <Option>HEALING</Option>
-                                    <Option>BUFFING</Option>
+                                <Select field="element">
+                                    <Option value={null}>Select Element Type</Option>
+                                    <Option value="NONE">NONE</Option>
+                                    <Option value="FIRE">FIRE</Option>
+                                    <Option value="ICE">ICE</Option>
+                                    <Option value="WATER">WATER</Option>
+                                    <Option value="EARTH">EARTH</Option>
+                                    <Option value="LIGHTNING">LIGHTNING</Option>
+                                    <Option value="DARK">DARK</Option>
+                                    <Option value="LIGHT">LIGHT</Option>
+                                    <Option value="HEALING">HEALING</Option>
+                                    <Option value="BUFFING">BUFFING</Option>
                                 </Select>
                             </td>
                         </tr>

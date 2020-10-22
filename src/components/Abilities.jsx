@@ -55,6 +55,8 @@ export default class Abilities extends React.Component {
                                         <th>Name</th>
                                         <th>AP Cost</th>
                                         <th>Damage</th>
+                                        <th>Damage Stat</th>
+                                        <th>Hit Modifier</th>
                                         <th>Target</th>
                                         <th>Area</th>
                                         <th>Element</th>
@@ -78,6 +80,8 @@ export default class Abilities extends React.Component {
                                                     <td>{ability.name}</td>
                                                     <td>{ability.ap}</td>
                                                     <td>{ability.dmg}</td>
+                                                    <td>{ability.dmgStat}</td>
+                                                    <td>{ability.toHitStat}</td>
                                                     <td>{ability.target}</td>
                                                     <td>{ability.area}</td>
                                                     <td>{ability.element}</td>
