@@ -85,9 +85,9 @@ const expandUser = (userData, context) => {
     userData.dex += itemData.mods.dex;
     userData.int += itemData.mods.int;
     userData.hit += itemData.mods.hit;
-    userData.abilities = itemData.abilities.map((ability) => {
+    userData.abilities = [...itemData.abilities.map((ability) => {
       return context.abilityTable[ability];
-    })
+    })]
     userData.equipment[slot] = itemData;
   });
   let newInventoryList = [];
