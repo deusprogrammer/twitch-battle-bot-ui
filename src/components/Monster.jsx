@@ -13,7 +13,7 @@ export default class Monster extends React.Component {
     componentDidMount = async () => {
         let monster = await ApiHelper.getMonster(this.props.match.params.id);
 
-        document.title = `${monster.name} Ability`;
+        document.title = `${monster.name} Monster`;
 
         this.setState({monster});
     }
