@@ -32,25 +32,53 @@ export default class Home extends React.Component {
 
                 <h2>Attack an Enemy</h2>
 
-                <p>Attack a given target with your currently equipped weapon.</p>
+                <p>Attack a given target with your currently equipped weapon.  Monsters are prefixed with a ~ and use a special target identifier like ~M1 instead of a name.</p>
 
                 <div style={{background: "gray", color: "white", paddingLeft: "5px", marginLeft: "10px"}}>
                     !attack TARGET<br/>
                     <br/>
                     Example:<br/>
                     !attack thetruekingofspace
+                    !attack ~M1
                 </div>
 
-                {/* <h2>Use an Ability</h2>
+                <h2>Use an Ability</h2>
 
-                <p>Use an ability with a given name on target.</p>
+                <p>Use an ability with a given name on a target.  If an ability targets all monsters, you may leave the target off.  Also if the ability targets a friendly target, you can leave the target off as a shortcut for yourself.</p>
 
                 <div style={{background: "gray", color: "white", paddingLeft: "5px", marginLeft: "10px"}}>
-                    !ability ABILITY_NAME TARGET<br/>
+                    !use ABILITY_NAME [TARGET]<br/>
                     <br/>
-                    Example:<br/>
-                    !ability @focus-attack thetruekingofspace
-                </div> */}
+                    Examples:<br/>
+                    // Heal yourself<br/>
+                    !use HEAL<br/>
+                    // Heal 'other_player'<br/>
+                    !use HEAL other_player<br/>
+                    // Heal all other players<br/>
+                    !use RESTA<br/>
+                    // Tackle 'other_player'<br/>
+                    !use TACKLE other_player<br/>
+                    // Tackle monster identified by ~M1<br/>
+                    !use TACKLE ~M1<br/>
+                    // Rocket blast all monsters<br/>
+                    !use ROCKET_BLAST
+                </div>
+
+                <h2>Use an Item</h2>
+
+                <p>Use an item with a given name on a target.  If an item targets all monsters, you may leave the target off.  Also if the item targets a friendly target, you can leave the target off as a shortcut for yourself.  Items are prefixed with a #.</p>
+
+                <div style={{background: "gray", color: "white", paddingLeft: "5px", marginLeft: "10px"}}>
+                    !user ABILITY_NAME [TARGET]<br/>
+                    <br/>
+                    Examples:<br/>
+                    // Use potion on yourself<br/>
+                    !use #POTION<br/>
+                    // Use potion on 'other_player'<br/>
+                    !use #POTION other_player<br/>
+                    // Use mega potion on all players <br/>
+                    !use #POTION other_player<br/>
+                </div>
 
                 <h2>Look at Stats</h2>
         
@@ -74,16 +102,16 @@ export default class Home extends React.Component {
                     !targets
                 </div>
 
-                {/* <h2>Show Abilities</h2>
+                <h2>Show Abilities</h2>
         
-                <p>This will show all available abilities for your users.</p>
+                <p>This will show a link to go view your abilities.</p>
 
                 <div style={{background: "gray", color: "white", paddingLeft: "5px", marginLeft: "10px"}}>
                     !abilities<br/>
                     <br/>
                     Example:<br/>
                     !abilities
-                </div> */}
+                </div>
 
                 <h2>Give an Item to another Character</h2>
         
@@ -94,6 +122,17 @@ export default class Home extends React.Component {
                     <br/>
                     Example:<br/>
                     !give thetruekingospace POTION
+                </div>
+
+                <h2>Explore</h2>
+        
+                <p>Explore the dungeon and find monsters to fight and occasional treasure and gold.</p>
+
+                <div style={{background: "gray", color: "white", paddingLeft: "5px", marginLeft: "10px"}}>
+                    !explore<br/>
+                    <br/>
+                    Example:<br/>
+                    !explore
                 </div>
 
                 <h1>Mod Commands</h1>
@@ -136,10 +175,34 @@ export default class Home extends React.Component {
                 <p>Give any item to a user even if you don't have it in your inventory.</p>
 
                 <div style={{background: "gray", color: "white", paddingLeft: "5px", marginLeft: "10px"}}>
-                !give TARGET ITEM_ID<br/>
+                    !give TARGET ITEM_ID<br/>
                     <br/>
                     Example:<br/>
                     !give thetruekingospace VIRTUOUS_CONTRACT
+                </div>
+
+                <h2>Refresh Cache</h2>
+
+                <p>After updating the database, use this command to refresh the cache on the bot.</p>
+
+                <div style={{background: "gray", color: "white", paddingLeft: "5px", marginLeft: "10px"}}>
+                    !refresh<br/>
+                    <br/>
+                    Example:<br/>
+                    !refresh<br/>
+                </div>
+
+                <h2>Change Bot Configuration</h2>
+
+                <p>Change a config value on the bot.  Currently the two config items are 'verbosity' and 'maxEncounters'</p>
+
+                <div style={{background: "gray", color: "white", paddingLeft: "5px", marginLeft: "10px"}}>
+                    !config CONFIG_KEY CONFIG_VALUE<br/>
+                    <br/>
+                    Example:<br/>
+                    !config verbosity verbose<br/>
+                    !config verbosity simple<br/>
+                    !config maxEncounters 4<br/>
                 </div>
             </div>
         );
