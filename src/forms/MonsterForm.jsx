@@ -268,7 +268,7 @@ export default class MonsterForm extends React.Component {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <button onClick={() => {this.removeDrop(index)}}>Remove</button>
+                                                <button onClick={() => {this.removeDrop(index)}} type="button">Remove</button>
                                             </td>
                                         </tr>
                                     </Scope>

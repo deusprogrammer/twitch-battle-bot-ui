@@ -260,7 +260,7 @@ export default class ItemForm extends React.Component {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <button onClick={() => this.removeAbility(index)}>Remove</button>
+                                                <button onClick={() => this.removeAbility(index)} type="button">Remove</button>
                                             </td>
                                         </tr>
                                     </fieldset>
