@@ -119,7 +119,7 @@ export default class Monsters extends React.Component {
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Header</th>
+                                    <th>Type</th>
                                     <th>Name</th>
                                     <th>HP</th>
                                     <th>STR</th>
