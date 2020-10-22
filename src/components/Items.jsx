@@ -95,7 +95,7 @@ export default class Items extends React.Component {
                 <h1 style={{textAlign: "center"}}>Item Admin Console</h1>
                 <div>
                     { this.state.items.length > 0 ? 
-                    <div style={{float: "left", width: "49%"}}>
+                    <div style={{float: "left"}}>
                         <h2>Item List</h2>
                         <table>
                             <thead>
@@ -145,7 +145,7 @@ export default class Items extends React.Component {
                             </tbody>
                         </table>
                     </div> : null }
-                    <div style={{float: "right", width: "49%"}}>
+                    <div style={{float: "right"}}>
                         <h2>Create New Item</h2>
                         <ItemForm 
                             getApi={formApi => this.formApi = formApi}

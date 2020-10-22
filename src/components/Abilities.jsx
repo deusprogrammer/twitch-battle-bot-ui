@@ -45,7 +45,7 @@ export default class Abilities extends React.Component {
             <div>
                 <h1 style={{textAlign: "center"}}>Abilities List</h1>
                 <div>
-                    <div style={{float: "left", width: "49%"}}>
+                    <div style={{float: "left"}}>
                         <h2>Abilities List</h2>
                         {this.state.abilities.length > 0 ?
                             <table style={{marginLeft: "10px"}}>
@@ -95,7 +95,7 @@ export default class Abilities extends React.Component {
                                 </tbody>
                             </table> : null }
                     </div>
-                    <div style={{float: "right", width: "49%"}}>
+                    <div style={{float: "right"}}>
                         <h2>Create New Ability</h2>
                         <AbilityForm
                             getApi={formApi => this.formApi = formApi}

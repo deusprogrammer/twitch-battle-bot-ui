@@ -113,7 +113,7 @@ export default class Monsters extends React.Component {
                 <h1 style={{textAlign: "center"}}>Monster Admin Console</h1>
                 <div>
                     { this.state.monsters.length > 0 ?
-                    <div style={{float: "left", width: "49%"}}>
+                    <div style={{float: "left"}}>
                         <h2>Monster List</h2>
                         <table style={{marginLeft: "10px"}}>
                             <thead>
@@ -158,7 +158,7 @@ export default class Monsters extends React.Component {
                             </tbody>
                         </table>
                     </div> : null }
-                    <div style={{float: "right", width: "49%"}}>
+                    <div style={{float: "right"}}>
                         <h2>Create a New Monster</h2>
                         <MonsterForm
                             getApi={formApi => this.formApi = formApi}
