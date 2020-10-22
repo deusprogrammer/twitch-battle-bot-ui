@@ -1,6 +1,10 @@
 import React from 'react';
 
 export default class Home extends React.Component {
+    componentDidMount = () => {
+        document.title = "Welcome to Twitch Dungeons";
+    }
+
     render() {
         return (
             <div style={{paddingBottom: "10px"}}>
@@ -77,7 +81,7 @@ export default class Home extends React.Component {
                     // Use potion on 'other_player'<br/>
                     !use #POTION other_player<br/>
                     // Use mega potion on all players <br/>
-                    !use #POTION other_player<br/>
+                    !use #MEGA_POTION<br/>
                 </div>
 
                 <h2>Look at Stats</h2>
