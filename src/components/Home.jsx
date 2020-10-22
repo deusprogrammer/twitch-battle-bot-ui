@@ -8,7 +8,7 @@ export default class Home extends React.Component {
     render() {
         return (
             <div style={{paddingBottom: "10px"}}>
-                <h1>Welcome to Twitch Battle Bot</h1>
+                <h1>Welcome to Twitch Dungeons</h1>
                 <strong>THIS IS STILL IN EARLY ACCESS!</strong>
                 <p>Welcome to what I hope is a new experience in the game-ification of Twitch chat to increase interaction with followers.  Currently this bot is only used for https://twitch.tv/thetruekingofspace, but as soon as it's finished it will be available to whoever desires to use it and characters will be accessible cross-channel.</p>
                 
