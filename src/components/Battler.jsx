@@ -289,6 +289,7 @@ export default class Battler extends React.Component {
                                         <th>AC Mod</th>
                                         <th>Value</th>
                                         <th>Price</th>
+                                        <th>Rarity</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -308,6 +309,7 @@ export default class Battler extends React.Component {
                                                 <td style={{textAlign: "center"}}>{item.mods.ac}</td>
                                                 <td style={{textAlign: "center"}}>{value} <strong>{(item.ac ? "AC" : null) || (item.dmg ? "DMG" : null)}</strong></td>
                                                 <td style={{textAlign: "center"}}>{item.value}g</td>
+                                                <td style={{textAlign: "center"}}>{item.rarity}</td>
                                                 <td>
                                                     {item.type !== "consumable" ? <button onClick={() => {this.equipItemOnUser(item, index)}} disabled={this.state.saving}>Equip</button> : null}
                                                     {item.value > 0 ? <button onClick={() => {this.sellItem(item, index);}} disabled={this.state.saving}>Sell</button> : <button onClick={() => {this.sellItem(item, index);}} disabled={this.state.saving}>Discard</button>}
