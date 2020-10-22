@@ -60,9 +60,9 @@ export default class ItemForm extends React.Component {
     }
 
     removeAbility = (index) => {
-        let abilities = [...this.state.abilities];
-        abilities.splice(index, 1);
-        this.setState({abilities});
+        let abilitiesAdded = [...this.state.abilitiesAdded];
+        abilitiesAdded.splice(index, 1);
+        this.setState({abilitiesAdded});
     }
 
     addSkill = () => {
