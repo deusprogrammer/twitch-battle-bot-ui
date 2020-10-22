@@ -153,7 +153,14 @@ export default class ItemForm extends React.Component {
                                         Use:
                                     </td>
                                     <td>
-                                        <Text field="use"></Text>
+                                        <Select field={`use`}>
+                                            <Option value={null}>{"Select an ability..."}</Option>
+                                            { this.state.abilities.map((ability) => {
+                                                return (
+                                                    <Option value={ability.id}>{ability.name}</Option>
+                                                )
+                                            })}
+                                        </Select>
                                     </td>
                                 </tr>
                             </Relevant>
