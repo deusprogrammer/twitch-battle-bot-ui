@@ -64,6 +64,8 @@ export default class Abilities extends React.Component {
                                         <th>INT Mod</th>
                                         <th>HIT Mod</th>
                                         <th>AC Mod</th>
+                                        <th>Buffs</th>
+                                        <th>Duration</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -85,6 +87,8 @@ export default class Abilities extends React.Component {
                                                     <td style={{textAlign: "center"}}>{ability.mods.int}</td>
                                                     <td style={{textAlign: "center"}}>{ability.mods.hit}</td>
                                                     <td style={{textAlign: "center"}}>{ability.mods.ac}</td>
+                                                    <td style={{textAlign: "center"}}>{ability.buffs}</td>
+                                                    <td style={{textAlign: "center"}}>{ability.buffsDuration}</td>
                                                     <td>
                                                         <button onClick={() => {this.goTo(ability)}}>Edit</button>
                                                         <button onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
