@@ -223,55 +223,6 @@ export default class Battler extends React.Component {
                             </table>
                         </div>
                         <div style={{display: "table-cell", paddingRight: "50px"}}>
-                            <h3>Inventory</h3>
-                            <table style={{marginLeft: "10px"}}>
-                                <thead>
-                                    <tr>
-                                        <th>Type</th>
-                                        <th>Slot</th>
-                                        <th>Item Name</th>
-                                        <th>HP Mod</th>
-                                        <th>STR Mod</th>
-                                        <th>DEX Mod</th>
-                                        <th>INT Mod</th>
-                                        <th>HIT Mod</th>
-                                        <th>AC Mod</th>
-                                        <th>Value</th>
-                                        <th>Price</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    { user.inventory.map((item, index) => {
-                                        let value = item.ac || item.dmg || item.use;
-                                        return (
-                                            <tr>
-                                                <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.type.toUpperCase()}</td>
-                                                <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.slot.toUpperCase()}</td>
-                                                <td>{item.name}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.hp}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.str}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.dex}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.int}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.hit}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.ac}</td>
-                                                <td style={{textAlign: "center"}}>{value} <strong>{(item.ac ? "AC" : null) || (item.dmg ? "DMG" : null)}</strong></td>
-                                                <td style={{textAlign: "center"}}>{item.value}g</td>
-                                                <td>
-                                                    {item.type !== "consumable" ? <button onClick={() => {this.equipItemOnUser(item, index)}} disabled={this.state.saving}>Equip</button> : null}
-                                                    {item.value > 0 ? <button onClick={() => {this.sellItem(item, index);}} disabled={this.state.saving}>Sell</button> : <button onClick={() => {this.sellItem(item, index);}} disabled={this.state.saving}>Discard</button>}
-                                                    <button onClick={() => {navigator.clipboard.writeText(item.id);toast("Copied trade id to clipboard", {type: "info"});}}>Get Trade Id</button>
-                                                </td>
-                                            </tr>
-                                        )
-                                    })}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div style={{display: "table-row"}}>
-                        <div style={{display: "table-cell", paddingRight: "50px"}}></div>
-                        <div style={{display: "table-cell", paddingRight: "50px"}}>
                             <h3>Abilities</h3>
                             {user.abilities.length > 0 ?
                                 <table style={{marginLeft: "10px"}}>
@@ -318,6 +269,55 @@ export default class Battler extends React.Component {
                                     </tbody>
                                 </table> : null 
                             }
+                        </div>
+                    </div>
+                    <div style={{display: "table-row"}}>
+                        <div style={{display: "table-cell", paddingRight: "50px"}}></div>
+                        <div style={{display: "table-cell", paddingRight: "50px"}}>
+                            <h3>Inventory</h3>
+                            <table style={{marginLeft: "10px"}}>
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Slot</th>
+                                        <th>Item Name</th>
+                                        <th>HP Mod</th>
+                                        <th>STR Mod</th>
+                                        <th>DEX Mod</th>
+                                        <th>INT Mod</th>
+                                        <th>HIT Mod</th>
+                                        <th>AC Mod</th>
+                                        <th>Value</th>
+                                        <th>Price</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    { user.inventory.map((item, index) => {
+                                        let value = item.ac || item.dmg || item.use;
+                                        return (
+                                            <tr>
+                                                <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.type.toUpperCase()}</td>
+                                                <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.slot.toUpperCase()}</td>
+                                                <td>{item.name}</td>
+                                                <td style={{textAlign: "center"}}>{item.mods.hp}</td>
+                                                <td style={{textAlign: "center"}}>{item.mods.str}</td>
+                                                <td style={{textAlign: "center"}}>{item.mods.dex}</td>
+                                                <td style={{textAlign: "center"}}>{item.mods.int}</td>
+                                                <td style={{textAlign: "center"}}>{item.mods.hit}</td>
+                                                <td style={{textAlign: "center"}}>{item.mods.ac}</td>
+                                                <td style={{textAlign: "center"}}>{value} <strong>{(item.ac ? "AC" : null) || (item.dmg ? "DMG" : null)}</strong></td>
+                                                <td style={{textAlign: "center"}}>{item.value}g</td>
+                                                <td>
+                                                    {item.type !== "consumable" ? <button onClick={() => {this.equipItemOnUser(item, index)}} disabled={this.state.saving}>Equip</button> : null}
+                                                    {item.value > 0 ? <button onClick={() => {this.sellItem(item, index);}} disabled={this.state.saving}>Sell</button> : <button onClick={() => {this.sellItem(item, index);}} disabled={this.state.saving}>Discard</button>}
+                                                    <button onClick={() => {navigator.clipboard.writeText(item.id);toast("Copied trade id to clipboard", {type: "info"});}}>Get Trade Id</button>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
