@@ -255,7 +255,7 @@ export default class MonsterForm extends React.Component {
                                                 Exclusive:
                                             </td>
                                             <td>
-                                                <Checkbox field="onlyOne" initialValue={drop.exclusive} />
+                                                <Checkbox field="exclusive" initialValue={drop.exclusive} />
                                             </td>
                                         </tr>
                                         <tr>
@@ -263,7 +263,7 @@ export default class MonsterForm extends React.Component {
                                                 Exclusive Taken:
                                             </td>
                                             <td>
-                                                <Checkbox field="onlyOne" initialValue={drop.exclusiveTaken} />
+                                                <Checkbox field="exclusiveTaken" initialValue={drop.exclusiveTaken} />
                                             </td>
                                         </tr>
                                         <tr>
