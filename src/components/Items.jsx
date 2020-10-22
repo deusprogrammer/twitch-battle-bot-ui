@@ -111,6 +111,8 @@ export default class Items extends React.Component {
                                     <th>HIT Mod</th>
                                     <th>AC Mod</th>
                                     <th>Value</th>
+                                    <th>Damage Stat</th>
+                                    <th>Hit Modifier</th>
                                     <th>Price</th>
                                     <th>Rarity</th>
                                     <th></th>
@@ -133,6 +135,8 @@ export default class Items extends React.Component {
                                                 <td style={{textAlign: "center"}}>{item.mods.hit}</td>
                                                 <td style={{textAlign: "center"}}>{item.mods.ac}</td>
                                                 <td style={{textAlign: "center"}}>{value} <strong>{(item.ac ? "AC" : null) || (item.dmg ? "DMG" : null)}</strong></td>
+                                                <td style={{textAlign: "center"}}>{item.dmgStat}</td>
+                                                <td style={{textAlign: "center"}}>{item.toHitStat}</td>
                                                 <td style={{textAlign: "center"}}>{item.value}g</td>
                                                 <td style={{textAlign: "center"}}>{item.rarity}</td>
                                                 <td>

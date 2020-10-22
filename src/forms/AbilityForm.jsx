@@ -62,7 +62,6 @@ export default (props) => {
                                     <Option value={"AP"}>AP</Option>
                                     <Option value={"HP"}>HP</Option>
                                     <Option value={"Gold"}>Gold</Option>
-                                    <Option value={"Cooldown"}>Cooldown</Option>
                                 </Select>
                             </td>
                         </tr>

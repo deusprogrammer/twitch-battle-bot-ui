@@ -144,6 +144,36 @@ export default class ItemForm extends React.Component {
                                         <Text field="dmg"></Text>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Damage Stat:
+                                    </td>
+                                    <td>
+                                        <Select field="dmgStat">
+                                            <Option value={null}>Select Stat Damaged</Option>
+                                            <Option value={"AP"}>AP</Option>
+                                            <Option value={"HP"}>HP</Option>
+                                            <Option value={"Gold"}>Gold</Option>
+                                        </Select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Hit Modifier Stat:
+                                    </td>
+                                    <td>
+                                        <Select field="toHitStat">
+                                            <Option value={null}>Select To Hit Modifier</Option>
+                                            <Option value={"AP"}>AP</Option>
+                                            <Option value={"HP"}>HP</Option>
+                                            <Option value={"STR"}>STR</Option>
+                                            <Option value={"DEX"}>DEX</Option>
+                                            <Option value={"INT"}>INT</Option>
+                                            <Option value={"HIT"}>HIT</Option>
+                                            <Option value={"Gold"}>Gold</Option>
+                                        </Select>
+                                    </td>
+                                </tr>
                             </Relevant>
                             <Relevant when={({values}) => values.type === "armor"}>
                                 <tr>
@@ -189,87 +219,89 @@ export default class ItemForm extends React.Component {
                                 </td>
                             </tr>
                         </fieldset>
-                        <fieldset>
-                            <legend>Modifiers</legend>
-                            <tr>
-                                <td style={{fontWeight: "bolder"}}>
-                                    HP Modifier:
-                                </td>
-                                <td>
-                                    <Text field="mods.hp" type="number"></Text>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style={{fontWeight: "bolder"}}>
-                                    Hit Modifier:
-                                </td>
-                                <td>
-                                    <Text field="mods.hit" type="number"></Text>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style={{fontWeight: "bolder"}}>
-                                    Strength Modifier:
-                                </td>
-                                <td>
-                                    <Text field="mods.str" type="number"></Text>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style={{fontWeight: "bolder"}}>
-                                    Dexterity Modifier:
-                                </td>
-                                <td>
-                                    <Text field="mods.dex" type="number"></Text>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style={{fontWeight: "bolder"}}>
-                                    Intelligence Modifier:
-                                </td>
-                                <td>
-                                    <Text field="mods.int" type="number"></Text>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style={{fontWeight: "bolder"}}>
-                                    Armor Class Modifier:
-                                </td>
-                                <td>
-                                    <Text field="mods.ac" type="number"></Text>
-                                </td>
-                            </tr>
-                        </fieldset>
-                        <fieldset>
-                            <legend>Abilities</legend>
-                            { this.state.abilitiesAdded.map((abilityAdded, index) => {
-                                return (
-                                    <fieldset key={`actions[${index}]`}>
-                                        <legend>{`actions[${index}]`}</legend>
-                                        <tr>
-                                            <td>
-                                                <Select field={`abilities[${index}]`}>
-                                                    <Option value={null}>{"Select an ability..."}</Option>
-                                                    { this.state.abilities.map((ability) => {
-                                                        return (
-                                                            <Option value={ability.id}>{ability.name}</Option>
-                                                        )
-                                                    })}
-                                                </Select>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <button onClick={() => this.removeAbility(index)} type="button">Remove</button>
-                                            </td>
-                                        </tr>
-                                    </fieldset>
-                                )})
-                            }
-                            <tr>
-                                <td><button onClick={() => {this.addAbility()}} type="button">Add New Ability</button></td>
-                            </tr>
-                        </fieldset>
+                        <Relevant when={({values}) => values.type !== "consumable"}>
+                            <fieldset>
+                                <legend>Modifiers</legend>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        HP Modifier:
+                                    </td>
+                                    <td>
+                                        <Text field="mods.hp" type="number"></Text>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Hit Modifier:
+                                    </td>
+                                    <td>
+                                        <Text field="mods.hit" type="number"></Text>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Strength Modifier:
+                                    </td>
+                                    <td>
+                                        <Text field="mods.str" type="number"></Text>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Dexterity Modifier:
+                                    </td>
+                                    <td>
+                                        <Text field="mods.dex" type="number"></Text>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Intelligence Modifier:
+                                    </td>
+                                    <td>
+                                        <Text field="mods.int" type="number"></Text>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Armor Class Modifier:
+                                    </td>
+                                    <td>
+                                        <Text field="mods.ac" type="number"></Text>
+                                    </td>
+                                </tr>
+                            </fieldset>
+                            <fieldset>
+                                <legend>Abilities</legend>
+                                { this.state.abilitiesAdded.map((abilityAdded, index) => {
+                                    return (
+                                        <fieldset key={`actions[${index}]`}>
+                                            <legend>{`actions[${index}]`}</legend>
+                                            <tr>
+                                                <td>
+                                                    <Select field={`abilities[${index}]`}>
+                                                        <Option value={null}>{"Select an ability..."}</Option>
+                                                        { this.state.abilities.map((ability) => {
+                                                            return (
+                                                                <Option value={ability.id}>{ability.name}</Option>
+                                                            )
+                                                        })}
+                                                    </Select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <button onClick={() => this.removeAbility(index)} type="button">Remove</button>
+                                                </td>
+                                            </tr>
+                                        </fieldset>
+                                    )})
+                                }
+                                <tr>
+                                    <td><button onClick={() => {this.addAbility()}} type="button">Add New Ability</button></td>
+                                </tr>
+                            </fieldset>
+                        </Relevant>
                         {/* <fieldset>
                             <legend>Skills</legend>
                         </fieldset> */}
