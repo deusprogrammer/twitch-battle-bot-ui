@@ -34,6 +34,17 @@ export default class Home extends React.Component {
                 
                 <h1>User Commands</h1>
 
+                <h2>Ready yourself for battle</h2>
+
+                <p>Mark yourself as available for battle with monsters or other players.  This state will end after 10 minutes of inactivity.</p>
+
+                <div style={{background: "gray", color: "white", paddingLeft: "5px", marginLeft: "10px"}}>
+                    !ready<br/>
+                    <br/>
+                    Example:<br/>
+                    !ready
+                </div>
+
                 <h2>Attack an Enemy</h2>
 
                 <p>Attack a given target with your currently equipped weapon.  Monsters are prefixed with a ~ and use a special target identifier like ~M1 instead of a name.</p>
@@ -42,7 +53,7 @@ export default class Home extends React.Component {
                     !attack TARGET<br/>
                     <br/>
                     Example:<br/>
-                    !attack thetruekingofspace
+                    !attack thetruekingofspace<br/>
                     !attack ~M1
                 </div>
 
@@ -81,7 +92,7 @@ export default class Home extends React.Component {
                     // Use potion on 'other_player'<br/>
                     !use #POTION other_player<br/>
                     // Use mega potion on all players <br/>
-                    !use #MEGA_POTION<br/>
+                    !use #MEGA_POTION
                 </div>
 
                 <h2>Look at Stats</h2>
@@ -174,15 +185,15 @@ export default class Home extends React.Component {
                     !untransmog get_affiliated_now
                 </div>
 
-                <h2>Give an Item to a User</h2>
+                <h2>Gift an Item to a User</h2>
 
-                <p>Give any item to a user even if you don't have it in your inventory.</p>
+                <p>Gift any item to a user even if you don't have it in your inventory.</p>
 
                 <div style={{background: "gray", color: "white", paddingLeft: "5px", marginLeft: "10px"}}>
-                    !give TARGET ITEM_ID<br/>
+                    !gift TARGET ITEM_ID<br/>
                     <br/>
                     Example:<br/>
-                    !give thetruekingospace VIRTUOUS_CONTRACT
+                    !gift thetruekingospace VIRTUOUS_CONTRACT
                 </div>
 
                 <h2>Refresh Cache</h2>
@@ -193,7 +204,18 @@ export default class Home extends React.Component {
                     !refresh<br/>
                     <br/>
                     Example:<br/>
-                    !refresh<br/>
+                    !refresh
+                </div>
+
+                <h2>Reset Encounters</h2>
+
+                <p>Reset the encounter table to clear all monsters in case of a malfunction.</p>
+
+                <div style={{background: "gray", color: "white", paddingLeft: "5px", marginLeft: "10px"}}>
+                    !reset<br/>
+                    <br/>
+                    Example:<br/>
+                    !reset
                 </div>
 
                 <h2>Change Bot Configuration</h2>
@@ -206,7 +228,21 @@ export default class Home extends React.Component {
                     Example:<br/>
                     !config verbosity verbose<br/>
                     !config verbosity simple<br/>
-                    !config maxEncounters 4<br/>
+                    !config maxEncounters 4
+                </div>
+
+                <h2>Shut Down Bot</h2>
+
+                <p>Turn off the bot.</p>
+
+                <div style={{background: "gray", color: "white", paddingLeft: "5px", marginLeft: "10px"}}>
+                    !shutdown<br/>
+                    OR<br/>
+                    !goodnight<br/>
+                    <br/>
+                    Example:<br/>
+                    !shutdown<br/>
+                    !goodnight
                 </div>
             </div>
         );
