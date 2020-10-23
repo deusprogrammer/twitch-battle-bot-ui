@@ -41,3 +41,13 @@ body {
     transform: rotate(360deg);
   }
 }
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+  background-color: white;
+}
