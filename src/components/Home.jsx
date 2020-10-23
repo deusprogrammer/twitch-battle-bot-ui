@@ -133,10 +133,10 @@ export default class Home extends React.Component {
                 <p>This will give an item to a user.  You must have it in your inventory however.</p>
 
                 <div style={{background: "gray", color: "white", paddingLeft: "5px", marginLeft: "10px"}}>
-                    !give TARGET ITEM_ID<br/>
+                    !give ITEM_ID TARGET<br/>
                     <br/>
                     Example:<br/>
-                    !give thetruekingospace POTION
+                    !give POTION thetruekingospace
                 </div>
 
                 <h2>Explore</h2>
@@ -190,10 +190,10 @@ export default class Home extends React.Component {
                 <p>Gift any item to a user even if you don't have it in your inventory.</p>
 
                 <div style={{background: "gray", color: "white", paddingLeft: "5px", marginLeft: "10px"}}>
-                    !gift TARGET ITEM_ID<br/>
+                    !gift ITEM_ID TARGET<br/>
                     <br/>
                     Example:<br/>
-                    !gift thetruekingospace VIRTUOUS_CONTRACT
+                    !gift VIRTUOUS_CONTRACT thetruekingospace
                 </div>
 
                 <h2>Refresh Cache</h2>
