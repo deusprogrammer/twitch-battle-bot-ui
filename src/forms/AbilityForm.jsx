@@ -64,7 +64,7 @@ export default (props) => {
                                 </Select>
                             </td>
                         </tr>
-                        <Relevant when={({values}) => values.element !== "BUFFING" && values.element !== null}>
+                        <Relevant when={({values}) => values.element && values.element !== "BUFFING"}>
                             <tr>
                                 <td style={{fontWeight: "bolder"}}>
                                     Damage:
@@ -146,7 +146,7 @@ export default (props) => {
                             </td>
                         </tr>
                     </fieldset>
-                    <Relevant when={({values}) => values.element !== "BUFFING" && values.element !== null}>
+                    <Relevant when={({values}) => values.element && values.element !== "BUFFING"}>
                         <fieldset>
                             <legend>Modifiers</legend>
                             <tr>
