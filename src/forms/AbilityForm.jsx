@@ -146,57 +146,59 @@ export default (props) => {
                             </td>
                         </tr>
                     </fieldset>
-                    <fieldset>
-                        <legend>Modifiers</legend>
-                        <tr>
-                            <td style={{fontWeight: "bolder"}}>
-                                HP Modifier:
-                            </td>
-                            <td>
-                                <Text field="mods.hp" type="number"></Text>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style={{fontWeight: "bolder"}}>
-                                Hit Modifier:
-                            </td>
-                            <td>
-                                <Text field="mods.hit" type="number"></Text>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style={{fontWeight: "bolder"}}>
-                                Strength Modifier:
-                            </td>
-                            <td>
-                                <Text field="mods.str" type="number"></Text>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style={{fontWeight: "bolder"}}>
-                                Dexterity Modifier:
-                            </td>
-                            <td>
-                                <Text field="mods.dex" type="number"></Text>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style={{fontWeight: "bolder"}}>
-                                Intelligence Modifier:
-                            </td>
-                            <td>
-                                <Text field="mods.int" type="number"></Text>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style={{fontWeight: "bolder"}}>
-                                Armor Class Modifier:
-                            </td>
-                            <td>
-                                <Text field="mods.ac" type="number"></Text>
-                            </td>
-                        </tr>
-                    </fieldset>
+                    <Relevant when={({values}) => values.element !== "BUFFING" && values.element !== null}>
+                        <fieldset>
+                            <legend>Modifiers</legend>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    HP Modifier:
+                                </td>
+                                <td>
+                                    <Text field="mods.hp" type="number"></Text>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Hit Modifier:
+                                </td>
+                                <td>
+                                    <Text field="mods.hit" type="number"></Text>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Strength Modifier:
+                                </td>
+                                <td>
+                                    <Text field="mods.str" type="number"></Text>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Dexterity Modifier:
+                                </td>
+                                <td>
+                                    <Text field="mods.dex" type="number"></Text>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Intelligence Modifier:
+                                </td>
+                                <td>
+                                    <Text field="mods.int" type="number"></Text>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Armor Class Modifier:
+                                </td>
+                                <td>
+                                    <Text field="mods.ac" type="number"></Text>
+                                </td>
+                            </tr>
+                        </fieldset>
+                    </Relevant>
                 </tbody>
             </table>
             <button type="submit">Submit</button>
