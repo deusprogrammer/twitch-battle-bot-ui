@@ -64,7 +64,7 @@ export default (props) => {
                                 </Select>
                             </td>
                         </tr>
-                        <Relevant when={({values}) => values.element !== "BUFFING"}>
+                        <Relevant when={({values}) => values.element !== "BUFFING" && values.element !== null}>
                             <tr>
                                 <td style={{fontWeight: "bolder"}}>
                                     Damage:
