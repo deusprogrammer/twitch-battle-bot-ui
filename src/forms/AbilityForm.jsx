@@ -46,42 +46,64 @@ export default (props) => {
                         </tr>
                         <tr>
                             <td style={{fontWeight: "bolder"}}>
-                                Damage:
+                                Element:
                             </td>
                             <td>
-                                <Text field="dmg"></Text>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style={{fontWeight: "bolder"}}>
-                                Damage Stat:
-                            </td>
-                            <td>
-                                <Select field="dmgStat">
-                                    <Option value={null}>Select Stat Damaged</Option>
-                                    <Option value={"AP"}>AP</Option>
-                                    <Option value={"HP"}>HP</Option>
-                                    <Option value={"Gold"}>Gold</Option>
+                                <Select field="element">
+                                    <Option value={null}>Select Element Type</Option>
+                                    <Option value="NONE">NONE</Option>
+                                    <Option value="FIRE">FIRE</Option>
+                                    <Option value="ICE">ICE</Option>
+                                    <Option value="WATER">WATER</Option>
+                                    <Option value="EARTH">EARTH</Option>
+                                    <Option value="LIGHTNING">LIGHTNING</Option>
+                                    <Option value="DARK">DARK</Option>
+                                    <Option value="LIGHT">LIGHT</Option>
+                                    <Option value="HEALING">HEALING</Option>
+                                    <Option value="BUFFING">BUFFING</Option>
                                 </Select>
                             </td>
                         </tr>
-                        <tr>
-                            <td style={{fontWeight: "bolder"}}>
-                                Hit Modifier Stat:
-                            </td>
-                            <td>
-                                <Select field="toHitStat">
-                                    <Option value={null}>Select To Hit Modifier</Option>
-                                    <Option value={"AP"}>AP</Option>
-                                    <Option value={"HP"}>HP</Option>
-                                    <Option value={"STR"}>STR</Option>
-                                    <Option value={"DEX"}>DEX</Option>
-                                    <Option value={"INT"}>INT</Option>
-                                    <Option value={"HIT"}>HIT</Option>
-                                    <Option value={"Gold"}>Gold</Option>
-                                </Select>
-                            </td>
-                        </tr>
+                        <Relevant when={({values}) => values.element !== "BUFFING"}>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Damage:
+                                </td>
+                                <td>
+                                    <Text field="dmg"></Text>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Damage Stat:
+                                </td>
+                                <td>
+                                    <Select field="dmgStat">
+                                        <Option value={null}>NONE</Option>
+                                        <Option value={"AP"}>AP</Option>
+                                        <Option value={"HP"}>HP</Option>
+                                        <Option value={"Gold"}>Gold</Option>
+                                    </Select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Hit Modifier Stat:
+                                </td>
+                                <td>
+                                    <Select field="toHitStat">
+                                        <Option value={null}>NONE</Option>
+                                        <Option value={"AP"}>AP</Option>
+                                        <Option value={"HP"}>HP</Option>
+                                        <Option value={"STR"}>STR</Option>
+                                        <Option value={"DEX"}>DEX</Option>
+                                        <Option value={"INT"}>INT</Option>
+                                        <Option value={"HIT"}>HIT</Option>
+                                        <Option value={"Gold"}>Gold</Option>
+                                    </Select>
+                                </td>
+                            </tr>
+                        </Relevant>
                         <tr>
                             <td style={{fontWeight: "bolder"}}>
                                 Target:
@@ -104,26 +126,6 @@ export default (props) => {
                                     <Option value={null}>Select Area Type</Option>
                                     <Option value={"ALL"}>ALL</Option>
                                     <Option value={"ONE"}>ONE</Option>
-                                </Select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style={{fontWeight: "bolder"}}>
-                                Element:
-                            </td>
-                            <td>
-                                <Select field="element">
-                                    <Option value={null}>Select Element Type</Option>
-                                    <Option value="NONE">NONE</Option>
-                                    <Option value="FIRE">FIRE</Option>
-                                    <Option value="ICE">ICE</Option>
-                                    <Option value="WATER">WATER</Option>
-                                    <Option value="EARTH">EARTH</Option>
-                                    <Option value="LIGHTNING">LIGHTNING</Option>
-                                    <Option value="DARK">DARK</Option>
-                                    <Option value="LIGHT">LIGHT</Option>
-                                    <Option value="HEALING">HEALING</Option>
-                                    <Option value="BUFFING">BUFFING</Option>
                                 </Select>
                             </td>
                         </tr>
