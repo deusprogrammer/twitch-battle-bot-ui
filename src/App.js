@@ -45,7 +45,7 @@ class App extends React.Component {
                 <ToastContainer />
                 <Router>
                     <div style={{textAlign: "center"}}>
-                        <Link to={`${process.env.PUBLIC_URL}/`}>Guide</Link> | <Link to={`${process.env.PUBLIC_URL}/battlers/~self`}>Battler</Link> | {this.state.isAdmin ? <Link to={`${process.env.PUBLIC_URL}/items`}>Items</Link> | <Link to={`${process.env.PUBLIC_URL}/abilities`}>Abilities</Link> | <Link to={`${process.env.PUBLIC_URL}/monsters`}>Monsters</Link> : null}
+                        <Link to={`${process.env.PUBLIC_URL}/`}>Guide</Link> | <Link to={`${process.env.PUBLIC_URL}/battlers/~self`}>Battler</Link><br/>{this.state.isAdmin ? <Link to={`${process.env.PUBLIC_URL}/items`}>Items</Link> | <Link to={`${process.env.PUBLIC_URL}/abilities`}>Abilities</Link> | <Link to={`${process.env.PUBLIC_URL}/monsters`}>Monsters</Link> : null}
                     </div>
                     <Switch>
                         <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
