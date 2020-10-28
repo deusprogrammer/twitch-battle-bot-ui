@@ -24,11 +24,13 @@ class App extends React.Component {
 
     componentDidMount = async () => {
         let user = await ApiHelper.getUser("~self");
-        let profile = await axios.get(`https://deusprogrammer.com/api/profile-svc/users/${user.name}`, {
+        let res = await axios.get(`https://deusprogrammer.com/api/profile-svc/users/${user.name}`, {
             headers: {
                 "X-Access-Token": localStorage.getItem("accessToken")
             }
         });
+
+        let profile = res.data;
 
         console.log("PROFILE: " + JSON.stringify(profile, null, 5));
 
