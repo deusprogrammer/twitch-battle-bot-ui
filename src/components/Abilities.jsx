@@ -75,6 +75,7 @@ export default class Abilities extends React.Component {
                                     { this.state.abilities.map((ability) => {
                                         return (
                                             <tr 
+                                                title={ability.description}
                                                 key={`ability-${ability.id}`}>
                                                     <td style={{backgroundColor: "black", color: "white"}}>{ability.id}</td>
                                                     <td>{ability.name}</td>

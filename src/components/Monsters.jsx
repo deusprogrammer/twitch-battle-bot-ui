@@ -136,6 +136,7 @@ export default class Monsters extends React.Component {
                                 { this.state.monsters.map((monster) => {
                                     return (
                                         <tr 
+                                        title={monster.description}
                                         key={`monster-${monster.id}`}>
                                             <td style={{backgroundColor: "black", color: "white"}}>{monster.id}</td>
                                             <td>{monster.type || "MOB"}</td>

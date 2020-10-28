@@ -38,6 +38,14 @@ export default (props) => {
                         </tr>
                         <tr>
                             <td style={{fontWeight: "bolder"}}>
+                                Ability Description:
+                            </td>
+                            <td>
+                                <Text field="description"></Text>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style={{fontWeight: "bolder"}}>
                                 AP Cost:
                             </td>
                             <td>
