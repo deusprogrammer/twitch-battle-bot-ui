@@ -49,7 +49,7 @@ class App extends React.Component {
                     </div>
                     {this.state.isAdmin ? 
                         <div style={{textAlign: "center"}}>
-                            <Link to={`${process.env.PUBLIC_URL}/items`}>Items</Link> | <Link to={`${process.env.PUBLIC_URL}/abilities`}>Abilities</Link> | <Link to={`${process.env.PUBLIC_URL}/monsters`}>Monsters</Link>
+                            Admin Console: <Link to={`${process.env.PUBLIC_URL}/items`}>Items</Link> | <Link to={`${process.env.PUBLIC_URL}/abilities`}>Abilities</Link> | <Link to={`${process.env.PUBLIC_URL}/monsters`}>Monsters</Link>
                         </div>
                     : null}
                     <Switch>

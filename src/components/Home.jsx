@@ -2,13 +2,13 @@ import React from 'react';
 
 export default class Home extends React.Component {
     componentDidMount = () => {
-        document.title = "Welcome to Twitch Dungeons";
+        document.title = "Welcome to Chat Battler Dungeons";
     }
 
     render() {
         return (
             <div style={{paddingBottom: "10px"}}>
-                <h1>Welcome to Twitch Dungeons</h1>
+                <h1>Welcome to Chat Battler Dungeons</h1>
                 <strong>THIS IS STILL IN EARLY ACCESS!</strong>
                 <p>Welcome to what I hope is a new experience in the game-ification of Twitch chat to increase interaction with followers.  Currently this bot is only used for https://twitch.tv/thetruekingofspace, but as soon as it's finished it will be available to whoever desires to use it and characters will be accessible cross-channel.</p>
                 
@@ -33,6 +33,8 @@ export default class Home extends React.Component {
                 <p>The bot or a mod will spawn monsters during the duration of the chat.  They will attack a random person or whoever has the most aggro based on who has done the most damage.  Once defeated, they will drop loot for whoever landed the last blow.</p>
                 
                 <h1>User Commands</h1>
+
+                <p>You can use these commands in chat, or you can use the extension for a push button interface.</p>
 
                 <h2>Ready yourself for battle</h2>
 
