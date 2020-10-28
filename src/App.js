@@ -30,6 +30,8 @@ class App extends React.Component {
             }
         });
 
+        console.log("PROFILE: " + JSON.stringify(profile, null, 5));
+
         if (profile.roles.includes("SUPER_USER")) {
             this.setState({isAdmin: true});
         }
