@@ -253,7 +253,7 @@ export default class Battler extends React.Component {
                                         { user.abilities.map((ability) => {
                                             return (
                                                 <tr 
-                                                    title={item.description}
+                                                    title={ability.description}
                                                     key={`ability-${ability.id}`}>
                                                         <td>{ability.name}</td>
                                                         <td>{ability.ap}</td>
