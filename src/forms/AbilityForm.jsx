@@ -167,14 +167,6 @@ export default (props) => {
                             <legend>Modifiers</legend>
                             <tr>
                                 <td style={{fontWeight: "bolder"}}>
-                                    HP Modifier:
-                                </td>
-                                <td>
-                                    <Text field="mods.hp" type="number"></Text>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style={{fontWeight: "bolder"}}>
                                     Hit Modifier:
                                 </td>
                                 <td>
@@ -187,14 +179,6 @@ export default (props) => {
                                 </td>
                                 <td>
                                     <Text field="mods.str" type="number"></Text>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style={{fontWeight: "bolder"}}>
-                                    Dexterity Modifier:
-                                </td>
-                                <td>
-                                    <Text field="mods.dex" type="number"></Text>
                                 </td>
                             </tr>
                             <tr>
