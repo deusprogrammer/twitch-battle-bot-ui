@@ -86,6 +86,11 @@ const expandUser = (userData, context) => {
         userData.int += itemData.mods.int;
         userData.hit += itemData.mods.hit;
         itemData.abilities.forEach((ability) => {
+            if (userData.abilities.find((element) => {
+                return ability === element.id
+            })) {
+                return;
+            }
             userData.abilities.push(context.abilityTable[ability]);
         });
         userData.equipment[slot] = itemData;
