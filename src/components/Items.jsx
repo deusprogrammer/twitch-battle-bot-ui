@@ -112,7 +112,6 @@ export default class Items extends React.Component {
                                     <th>Value</th>
                                     <th>Damage Stat</th>
                                     <th>Hit Modifier</th>
-                                    <th>Price</th>
                                     <th>Rarity</th>
                                     <th></th>
                                 </tr>
