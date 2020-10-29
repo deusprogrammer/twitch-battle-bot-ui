@@ -118,7 +118,6 @@ export default class Monsters extends React.Component {
                         <table style={{marginLeft: "10px"}}>
                             <thead>
                                 <tr>
-                                    <th>Id</th>
                                     <th>Type</th>
                                     <th>Name</th>
                                     <th>HP</th>
@@ -138,7 +137,6 @@ export default class Monsters extends React.Component {
                                         <tr 
                                         title={monster.description}
                                         key={`monster-${monster.id}`}>
-                                            <td style={{backgroundColor: "black", color: "white"}}>{monster.id}</td>
                                             <td>{monster.type || "MOB"}</td>
                                             <td>{monster.name}</td>
                                             <td>{monster.hp}</td>
