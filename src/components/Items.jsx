@@ -124,7 +124,6 @@ export default class Items extends React.Component {
                                         <tr 
                                             title={item.description}
                                             key={`item-${item.id}`}>
-                                                <td style={{backgroundColor: "black", color: "white"}}>{item.id}</td>
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.type.toUpperCase()}</td>
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.slot.toUpperCase()}</td>
                                                 <td>{item.name}</td>
@@ -137,7 +136,6 @@ export default class Items extends React.Component {
                                                 <td style={{textAlign: "center"}}>{value} <strong>{(item.ac ? "AC" : null) || (item.dmg ? "DMG" : null)}</strong></td>
                                                 <td style={{textAlign: "center"}}>{item.dmgStat}</td>
                                                 <td style={{textAlign: "center"}}>{item.toHitStat}</td>
-                                                <td style={{textAlign: "center"}}>{item.value}g</td>
                                                 <td style={{textAlign: "center"}}>{item.rarity}</td>
                                                 <td>
                                                     <button onClick={() => {this.goTo(item)}}>Edit</button>
