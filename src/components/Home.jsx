@@ -14,7 +14,7 @@ export default class Home extends React.Component {
                 
                 <h1>Getting Started</h1>
 
-                <p>First you need to stick around long enough to get enough points for the "Create Battler" channel point reward (prices vary).</p>
+                <p>First you need to stick around long enough to get 1 channel point for the "Create Battler" channel point reward.  Or if the extension panel is available, just create one through that interface.  However if the extension isn't available you can use the below steps to create one with channel points.  This method will be removed once the extension is live.</p>
 
                 <div style={{textAlign: "center"}}>
                     <img src={process.env.PUBLIC_URL + "/battler-step-1.png"} style={{width: "80%"}} /><br />

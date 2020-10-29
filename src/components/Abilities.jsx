@@ -57,6 +57,7 @@ export default class Abilities extends React.Component {
                                         <th>Damage</th>
                                         <th>Damage Stat</th>
                                         <th>Hit Modifier</th>
+                                        <th>Ignore Damage Mod</th>
                                         <th>Target</th>
                                         <th>Area</th>
                                         <th>Element</th>
@@ -83,6 +84,7 @@ export default class Abilities extends React.Component {
                                                     <td>{ability.dmg}</td>
                                                     <td>{ability.dmgStat}</td>
                                                     <td>{ability.toHitStat}</td>
+                                                    <td>{ability.ignoreDamageMod}</td>
                                                     <td>{ability.target}</td>
                                                     <td>{ability.area}</td>
                                                     <td>{ability.element}</td>

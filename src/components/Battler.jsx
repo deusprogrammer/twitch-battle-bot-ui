@@ -208,7 +208,7 @@ export default class Battler extends React.Component {
                                         let item = user.equipment[slot];
                                         let value = item.ac || item.dmg || item.use;
                                         return (
-                                            <tr>
+                                            <tr title={item.description}>
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.toUpperCase()}</td>
                                                 <td>{item.name}</td>
                                                 <td style={{textAlign: "center"}}>{item.mods.hp}</td>
@@ -253,6 +253,7 @@ export default class Battler extends React.Component {
                                         { user.abilities.map((ability) => {
                                             return (
                                                 <tr 
+                                                    title={item.description}
                                                     key={`ability-${ability.id}`}>
                                                         <td>{ability.name}</td>
                                                         <td>{ability.ap}</td>
@@ -307,7 +308,7 @@ export default class Battler extends React.Component {
                                     { user.inventory.map((item, index) => {
                                         let value = item.ac || item.dmg || item.use;
                                         return (
-                                            <tr>
+                                            <tr title={item.description}>
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.type.toUpperCase()}</td>
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.slot.toUpperCase()}</td>
                                                 <td>{item.name}</td>

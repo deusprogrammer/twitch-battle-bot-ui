@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Form, Text, Select, Option, Relevant} from 'informed';
+import {Form, Text, Select, Option, Relevant, Checkbox} from 'informed';
 import * as Yup from 'yup';
 
 const abilitySchema = Yup.object().shape({
@@ -109,6 +109,14 @@ export default (props) => {
                                         <Option value={"HIT"}>HIT</Option>
                                         <Option value={"Gold"}>Gold</Option>
                                     </Select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Ignore Damage Modifiers:
+                                </td>
+                                <td>
+                                    <Checkbox field="ignoreDamageMods"/>
                                 </td>
                             </tr>
                         </Relevant>
