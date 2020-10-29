@@ -100,7 +100,6 @@ export default class Items extends React.Component {
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Id</th>
                                     <th>Type</th>
                                     <th>Slot</th>
                                     <th>Item Name</th>

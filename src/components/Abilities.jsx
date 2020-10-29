@@ -51,7 +51,6 @@ export default class Abilities extends React.Component {
                             <table style={{marginLeft: "10px"}}>
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
                                         <th>Name</th>
                                         <th>AP Cost</th>
                                         <th>Damage</th>
@@ -61,9 +60,7 @@ export default class Abilities extends React.Component {
                                         <th>Target</th>
                                         <th>Area</th>
                                         <th>Element</th>
-                                        <th>HP Mod</th>
                                         <th>STR Mod</th>
-                                        <th>DEX Mod</th>
                                         <th>INT Mod</th>
                                         <th>HIT Mod</th>
                                         <th>AC Mod</th>
@@ -78,7 +75,6 @@ export default class Abilities extends React.Component {
                                             <tr 
                                                 title={ability.description}
                                                 key={`ability-${ability.id}`}>
-                                                    <td style={{backgroundColor: "black", color: "white"}}>{ability.id}</td>
                                                     <td>{ability.name}</td>
                                                     <td>{ability.ap}</td>
                                                     <td>{ability.dmg}</td>
@@ -88,9 +84,7 @@ export default class Abilities extends React.Component {
                                                     <td>{ability.target}</td>
                                                     <td>{ability.area}</td>
                                                     <td>{ability.element}</td>
-                                                    <td style={{textAlign: "center"}}>{ability.mods.hp}</td>
                                                     <td style={{textAlign: "center"}}>{ability.mods.str}</td>
-                                                    <td style={{textAlign: "center"}}>{ability.mods.dex}</td>
                                                     <td style={{textAlign: "center"}}>{ability.mods.int}</td>
                                                     <td style={{textAlign: "center"}}>{ability.mods.hit}</td>
                                                     <td style={{textAlign: "center"}}>{ability.mods.ac}</td>
