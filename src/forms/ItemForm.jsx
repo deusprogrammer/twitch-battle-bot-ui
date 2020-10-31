@@ -37,6 +37,7 @@ export default class ItemForm extends React.Component {
     state = {
         abilities: [],
         skills: [],
+        triggers: [],
         abilitiesAdded: [],
         skillsAdded: []
     };
@@ -69,6 +70,12 @@ export default class ItemForm extends React.Component {
         let skillsAdded = [...this.state.skillsAdded];
         skillsAdded.push({});
         this.setState({skillsAdded});
+    }
+
+    addTrigger = () => {
+        let triggers = [...this.state.triggers];
+        triggers.push({});
+        this.setState({triggers});
     }
 
     render() {
@@ -225,6 +232,49 @@ export default class ItemForm extends React.Component {
                                 <td>
                                     <Text field="rarity" type="number"></Text>
                                 </td>
+                            </tr>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Triggers</legend>
+                            { this.state.triggers.map((trigger, index) => {
+                                return (
+                                    <fieldset key={`triggers[${index}]`}>
+                                        <legend>{`triggers[${index}]`}</legend>
+                                        <Scope scope={`triggers[${index}]`}>
+                                            <tr>
+                                                <td style={{fontWeight: "bolder"}}>
+                                                    Ability:
+                                                </td>
+                                                <td>
+                                                    <Select field="abilityId">
+                                                        <Option value={null}>{"Select an ability..."}</Option>
+                                                        { this.state.abilities.map((ability) => {
+                                                            return (
+                                                                <Option value={ability.id}>{ability.name}</Option>
+                                                            )
+                                                        })}
+                                                    </Select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style={{fontWeight: "bolder"}}>
+                                                    Chance:
+                                                </td>
+                                                <td>
+                                                    <Text field="chance" type="number" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <button onClick={() => this.removeTrigger(index)}>Remove</button>
+                                                </td>
+                                            </tr>
+                                        </Scope>
+                                    </fieldset>
+                                )
+                            })}
+                            <tr>
+                                <td><button onClick={() => {this.addTrigger()}} type="button">Add New Trigger</button></td>
                             </tr>
                         </fieldset>
                         <Relevant when={({values}) => values.type !== "consumable"}>
