@@ -117,7 +117,7 @@ export default class AbilityForm extends React.Component {
                                         Max Procs:
                                     </td>
                                     <td>
-                                        <Text field="procTime" /> times
+                                        <Text field="maxProcs" /> times
                                     </td>
                                 </tr>
                                 <tr>
