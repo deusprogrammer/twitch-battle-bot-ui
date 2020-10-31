@@ -46,12 +46,14 @@ export default class ItemForm extends React.Component {
         let abilities = await ApiHelper.getAbilities();
         let abilitiesAdded = [];
         let skillsAdded = [];
+        let triggers = [];
         if (this.props.initialValues) {
             abilitiesAdded = this.props.initialValues.abilities;
             skillsAdded = this.props.initialValues.skills;
+            triggers = this.props.initialValues.triggers;
         }
 
-        this.setState({abilities, abilitiesAdded, skillsAdded});
+        this.setState({abilities, abilitiesAdded, skillsAdded, triggers});
     }
 
     addAbility = () => {
