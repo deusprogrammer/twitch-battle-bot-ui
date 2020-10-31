@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Form, Text, Select, Option, Relevant} from 'informed';
+import {Form, Text, Select, Option, Relevant, Scope} from 'informed';
 import * as Yup from 'yup';
 
 import ApiHelper from '../utils/ApiHelper';
