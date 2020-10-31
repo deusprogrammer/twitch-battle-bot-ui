@@ -42,10 +42,10 @@ export default class AbilityForm extends React.Component {
     render() {
         return (
             <Form 
-                initialValues={props.initialValues}
-                getApi={props.getApi}
-                onSubmit={props.onSubmit} 
-                onSubmitFailure={props.onFailure}
+                initialValues={this.props.initialValues}
+                getApi={this.props.getApi}
+                onSubmit={this.props.onSubmit} 
+                onSubmitFailure={this.props.onFailure}
                 validationSchema={abilitySchema}>
                 <table>
                     <tbody>
@@ -102,6 +102,14 @@ export default class AbilityForm extends React.Component {
                                     </td>
                                     <td>
                                         <Text field="dmg"></Text>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Proc Time:
+                                    </td>
+                                    <td>
+                                        <Text field="procTime"></Text>
                                     </td>
                                 </tr>
                                 <tr>
