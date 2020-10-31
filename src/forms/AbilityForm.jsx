@@ -109,7 +109,15 @@ export default class AbilityForm extends React.Component {
                                         Proc Time:
                                     </td>
                                     <td>
-                                        <Text field="procTime"></Text>
+                                        <Text field="procTime" /> ticks
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Max Procs:
+                                    </td>
+                                    <td>
+                                        <Text field="procTime" /> times
                                     </td>
                                 </tr>
                                 <tr>
@@ -186,10 +194,10 @@ export default class AbilityForm extends React.Component {
                             </tr>
                             <tr>
                                 <td style={{fontWeight: "bolder"}}>
-                                    Buffs Duration (in ticks):
+                                    Buffs Duration:
                                 </td>
                                 <td>
-                                    <Text field="buffsDuration" type="number"></Text>
+                                    <Text field="buffsDuration" type="number" /> ticks
                                 </td>
                             </tr>
                         </fieldset>
