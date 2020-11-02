@@ -119,6 +119,7 @@ export default class Monsters extends React.Component {
                             <thead>
                                 <tr>
                                     <th>Type</th>
+                                    <th>Dungeon</th>
                                     <th>Name</th>
                                     <th>HP</th>
                                     <th>STR</th>
@@ -138,6 +139,7 @@ export default class Monsters extends React.Component {
                                         title={monster.description}
                                         key={`monster-${monster.id}`}>
                                             <td>{monster.type || "MOB"}</td>
+                                            <td>{monster.dungeon}</td>
                                             <td>{monster.name}</td>
                                             <td>{monster.hp}</td>
                                             <td>{monster.str}</td>

@@ -114,6 +114,14 @@ export default class MonsterForm extends React.Component {
                             </tr>
                             <tr>
                                 <td style={{fontWeight: "bolder"}}>
+                                    Dungeon:
+                                </td>
+                                <td>
+                                    <Text field="dungeon"></Text>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
                                     HP:
                                 </td>
                                 <td>

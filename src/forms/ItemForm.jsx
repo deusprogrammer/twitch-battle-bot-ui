@@ -152,6 +152,14 @@ export default class ItemForm extends React.Component {
                                     <Text field="description"></Text>
                                 </td>
                             </tr>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Dungeon:
+                                </td>
+                                <td>
+                                    <Text field="dungeon"></Text>
+                                </td>
+                            </tr>
                             <Relevant when={({values}) => values.type === "weapon"}>
                                 <tr>
                                     <td style={{fontWeight: "bolder"}}>

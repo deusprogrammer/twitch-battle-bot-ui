@@ -102,6 +102,7 @@ export default class Items extends React.Component {
                                 <tr>
                                     <th>Type</th>
                                     <th>Slot</th>
+                                    <th>Dungeon</th>
                                     <th>Item Name</th>
                                     <th>HP Mod</th>
                                     <th>STR Mod</th>
@@ -125,6 +126,7 @@ export default class Items extends React.Component {
                                             key={`item-${item.id}`}>
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.type.toUpperCase()}</td>
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.slot.toUpperCase()}</td>
+                                                <td style={{textAlign: "center"}}>{item.dungeon}</td>
                                                 <td>{item.name}</td>
                                                 <td style={{textAlign: "center"}}>{item.mods.hp}</td>
                                                 <td style={{textAlign: "center"}}>{item.mods.str}</td>
