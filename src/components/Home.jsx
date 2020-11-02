@@ -14,23 +14,13 @@ export default class Home extends React.Component {
                 
                 <h1>Getting Started</h1>
 
-                <p>First you need to stick around long enough to get 1 channel point for the "Create Battler" channel point reward.  Or if the extension panel is available, just create one through that interface.  However if the extension isn't available you can use the below steps to create one with channel points.  This method will be removed once the extension is live.</p>
-
-                <div style={{textAlign: "center"}}>
-                    <img src={process.env.PUBLIC_URL + "/battler-step-1.png"} style={{width: "80%"}} /><br />
-                    <img src={process.env.PUBLIC_URL + "/battler-step-2.png"} style={{width: "80%"}} /><br />
-                    <img src={process.env.PUBLIC_URL + "/battler-step-3.png"} style={{width: "80%"}} /><br />
-                </div>
-
-                <p>Once you do this, you can check out and manage your profile here: https://deusprogrammer.com/util/twitch/battlers/~self</p>
-
-                <p>See!  Easy peasy!  Now what can you currently do?</p>
+                <p>First you need to create a battler through the Twitch extension under the video.  Once you do this, you can check out and manage your profile here: https://deusprogrammer.com/util/twitch/battlers/~self</p>
 
                 <h1>How Does it Work?</h1>
 
-                <p>Well, as soon as you create your battler as layed out above, you will become visible to other players as soon as you speak or do any of the below actions.</p>
+                <p>Well, as soon as you create your battler as layed out above, you will become visible to other players as soon as you perform any of the below actions.</p>
 
-                <p>The bot or a mod will spawn monsters during the duration of the chat.  They will attack a random person or whoever has the most aggro based on who has done the most damage.  Once defeated, they will drop loot for whoever landed the last blow.</p>
+                <p>The bot or a mod will spawn monsters during the duration of the chat.  They will attack a random person or whoever has the most aggro based on who has done the most damage.  Once defeated, they will drop loot for a random participant.</p>
                 
                 <h1>User Commands</h1>
 
@@ -143,26 +133,30 @@ export default class Home extends React.Component {
 
                 <h2>Explore</h2>
         
-                <p>Explore the dungeon and find monsters to fight and occasional treasure and gold.</p>
+                <p>Explore the dungeon and find monsters to fight and occasional treasure and gold.  If you specify a dungeon id, you can hunt specific and rarer monsters for their loot.  Exploring costs 5AP and exploring a specific dungeon costs 10AP.</p>
 
                 <div style={{background: "gray", color: "white", paddingLeft: "5px", marginLeft: "10px"}}>
-                    !explore<br/>
+                    !explore [DUNGEON_ID]<br/>
                     <br/>
                     Example:<br/>
-                    !explore
+                    !explore<br/>
+                    OR<br/>
+                    !explore PSO
                 </div>
 
                 <h1>Mod Commands</h1>
 
                 <h2>Spawn a Monster</h2>
 
-                <p>Spawns a monster with a given id.</p>
+                <p>Spawns a monster with a given id.  If an id isn't provided, a random monster will be spawned for whatever the currently configured dungeon is.</p>
 
                 <div style={{background: "gray", color: "white", paddingLeft: "5px", marginLeft: "10px"}}>
-                    !spawn MONSTER_ID<br/>
+                    !spawn [MONSTER_ID]<br/>
                     <br/>
                     Example:<br/>
-                    !spawn SLIME
+                    !spawn SLIME<br/>
+                    OR<br/>
+                    !spawn
                 </div>
 
                 <h2>Turn an Annoying Chatter into a Slime</h2>
@@ -222,7 +216,7 @@ export default class Home extends React.Component {
 
                 <h2>Change Bot Configuration</h2>
 
-                <p>Change a config value on the bot.  Currently the two config items are 'verbosity' and 'maxEncounters'</p>
+                <p>Change a config value on the bot.  Currently the two config items are 'verbosity', 'currentDungeon' and 'maxEncounters'</p>
 
                 <div style={{background: "gray", color: "white", paddingLeft: "5px", marginLeft: "10px"}}>
                     !config CONFIG_KEY CONFIG_VALUE<br/>
@@ -230,6 +224,7 @@ export default class Home extends React.Component {
                     Example:<br/>
                     !config verbosity verbose<br/>
                     !config verbosity simple<br/>
+                    !config currentDungeon PSO<br/>
                     !config maxEncounters 4
                 </div>
 
@@ -239,13 +234,75 @@ export default class Home extends React.Component {
 
                 <div style={{background: "gray", color: "white", paddingLeft: "5px", marginLeft: "10px"}}>
                     !shutdown<br/>
-                    OR<br/>
-                    !goodnight<br/>
                     <br/>
                     Example:<br/>
-                    !shutdown<br/>
-                    !goodnight
+                    !shutdown
                 </div>
+
+                <h2>Restart Bot</h2>
+
+                <p>Restart the bot.</p>
+
+                <div style={{background: "gray", color: "white", paddingLeft: "5px", marginLeft: "10px"}}>
+                    !restart<br/>
+                    <br/>
+                    Example:<br/>
+                    !restart
+                </div>
+
+                <h1>Game Play Features</h1>
+
+                <h2>Your Stats and What they Mean</h2>
+
+                <h3>HP</h3>
+                
+                <p>Hit points are how much damage your character can take until you are dead.  Simple enough.</p>
+
+                <h3>AP</h3>
+
+                <p>Action points are used everytime you perform an action like attacking, using abilities, or exploring.</p>
+
+                <h3>STR</h3>
+
+                <p>Strength is how hard you hit with your weapon.  This stat adds damage each attack you perform.</p>
+
+                <h3>DEX</h3>
+
+                <p>How quickly you can attack.  If you have a DEX of 0 your cooldown time is 25 seconds.  At the maximum value of +5 your cool down times are 5 seconds, and negative DEX has no limit on how much it can slow you down.  In the future, DEX beyond +5 will allow for multiple attacks in one cool down period.</p>
+
+                <h3>INT</h3>
+
+                <p>This stat is how well you can cast magic.  Abilities can use any of these stats to specify if an ability hits or not, but magic type abilities will always rely on intelligence.</p>
+
+                <h3>HIT</h3>
+
+                <p>This stat is how well you can aim your attacks.  The higher this is, the more likely you are to hit your target with an attack or a non-magic ability.</p>
+
+                <h3>AC</h3>
+
+                <p>This stat represents how hard you are to damage.  This is generally due to how well you armor protects you.</p>
+
+                <h2>Special Effects</h2>
+
+                <h3>Damage Area/Target Types</h3>
+
+                <p>Some abilities can target more than one enemy, and some can only target monsters or only players in chat.</p>
+
+                <h3>Damage Types</h3>
+
+                <p>Weapons and abilities can damage more than just your HP.  They can also damage (or heal) your AP or Gold.</p>
+
+                <h3>Buffs/Debuffs</h3>
+
+                <p>Some abilities will temporarily increase your stats and make it easier/harder to damage targets, do more/less damage to targets, act faster/slower, or be harder/easier hit.</p>
+
+                <h3>Status Effects</h3>
+
+                <p>Some attacks and abilities will harm your HP/AP/Gold over time.  An example of this is the poison spell that deals 1d4 every 10 seconds.</p>
+
+                <h3>Triggered Effects</h3>
+
+                <p>Some weapons are able to trigger abilities.  The Poop Knife for example has a 50% chance of inflicting poison.  Triggered abilities are used for free.</p>
             </div>
         );
     }
