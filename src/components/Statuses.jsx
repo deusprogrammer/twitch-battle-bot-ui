@@ -24,7 +24,7 @@ export default class Abilities extends React.Component {
     onSubmit = async (values) => {
         values.id = values.name.replaceAll(" ", "_").toUpperCase();
         try {
-            let created = await ApiHelper.createAbility(values);
+            let created = await ApiHelper.createStatus(values);
             toast("Status created!", {type: "info"});
             this.setState({statuses: [...this.state.statuses, created]}, () => {
                 this.formApi.reset();
