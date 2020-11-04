@@ -56,7 +56,7 @@ export default class AbilityForm extends React.Component {
                                     Ability Name:
                                 </td>
                                 <td>
-                                    <Text field="name"></Text>
+                                    <Text field="name" />
                                 </td>
                             </tr>
                             <tr>
@@ -64,7 +64,7 @@ export default class AbilityForm extends React.Component {
                                     Ability Description:
                                 </td>
                                 <td>
-                                    <Text field="description"></Text>
+                                    <Text field="description" />
                                 </td>
                             </tr>
                             <tr>
@@ -72,7 +72,7 @@ export default class AbilityForm extends React.Component {
                                     AP Cost:
                                 </td>
                                 <td>
-                                    <Text field="ap"></Text>
+                                    <Text field="ap" />
                                 </td>
                             </tr>
                             <tr>
@@ -92,16 +92,17 @@ export default class AbilityForm extends React.Component {
                                         <Option value="LIGHT">LIGHT</Option>
                                         <Option value="HEALING">HEALING</Option>
                                         <Option value="BUFFING">BUFFING</Option>
+                                        <Option value="CLEANSING">CLEANSING</Option>
                                     </Select>
                                 </td>
                             </tr>
-                            <Relevant when={({values}) => values.element && values.element !== "BUFFING"}>
+                            <Relevant when={({values}) => values.element && !["BUFFING", "CLEANSING"].includes(values.element)}>
                                 <tr>
                                     <td style={{fontWeight: "bolder"}}>
                                         Damage:
                                     </td>
                                     <td>
-                                        <Text field="dmg"></Text>
+                                        <Text field="dmg" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -184,22 +185,34 @@ export default class AbilityForm extends React.Component {
                                     </Select>
                                 </td>
                             </tr>
-                            <tr>
-                                <td style={{fontWeight: "bolder"}}>
-                                    Buffs:
-                                </td>
-                                <td>
-                                    <Text field="buffs"></Text>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style={{fontWeight: "bolder"}}>
-                                    Buffs Duration:
-                                </td>
-                                <td>
-                                    <Text field="buffsDuration" type="number" /> ticks
-                                </td>
-                            </tr>
+                            <Relevant when={({values}) => {values.element && values.element === "BUFFING"}}>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Buffs:
+                                    </td>
+                                    <td>
+                                        <Text field="buffs" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Buffs Duration:
+                                    </td>
+                                    <td>
+                                        <Text field="buffsDuration" type="number" /> ticks
+                                    </td>
+                                </tr>
+                            </Relevant>
+                            <Relevant when={({values}) => {values.element && values.element === "CLEANSING"}}>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Cleanses:
+                                    </td>
+                                    <td>
+                                        <Text field="buffs"/>
+                                    </td>
+                                </tr>
+                            </Relevant>
                         </fieldset>
                         <fieldset>
                             <legend>Triggers</legend>
@@ -244,7 +257,7 @@ export default class AbilityForm extends React.Component {
                                 <td><button onClick={() => {this.addTrigger()}} type="button">Add New Trigger</button></td>
                             </tr>
                         </fieldset>
-                        <Relevant when={({values}) => values.element && values.element !== "BUFFING"}>
+                        <Relevant when={({values}) => values.element && !["BUFFING", "CLEANSING"].includes(values.element)}>
                             <fieldset>
                                 <legend>Modifiers</legend>
                                 <tr>
@@ -252,7 +265,7 @@ export default class AbilityForm extends React.Component {
                                         Hit Modifier:
                                     </td>
                                     <td>
-                                        <Text field="mods.hit" type="number"></Text>
+                                        <Text field="mods.hit" type="number" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -260,7 +273,7 @@ export default class AbilityForm extends React.Component {
                                         Strength Modifier:
                                     </td>
                                     <td>
-                                        <Text field="mods.str" type="number"></Text>
+                                        <Text field="mods.str" type="number" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -268,7 +281,7 @@ export default class AbilityForm extends React.Component {
                                         Intelligence Modifier:
                                     </td>
                                     <td>
-                                        <Text field="mods.int" type="number"></Text>
+                                        <Text field="mods.int" type="number" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -276,7 +289,7 @@ export default class AbilityForm extends React.Component {
                                         Armor Class Modifier:
                                     </td>
                                     <td>
-                                        <Text field="mods.ac" type="number"></Text>
+                                        <Text field="mods.ac" type="number" />
                                     </td>
                                 </tr>
                             </fieldset>
