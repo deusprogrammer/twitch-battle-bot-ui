@@ -52,19 +52,10 @@ export default class Abilities extends React.Component {
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>AP Cost</th>
                                         <th>Damage</th>
                                         <th>Damage Stat</th>
-                                        <th>Hit Modifier</th>
-                                        <th>Ignore DM</th>
-                                        <th>Target</th>
-                                        <th>Area</th>
                                         <th>Element</th>
-                                        <th>STR Mod</th>
-                                        <th>INT Mod</th>
-                                        <th>HIT Mod</th>
-                                        <th>AC Mod</th>
-                                        <th>Buffs</th>
+                                        <th>Effects</th>
                                         <th>Duration</th>
                                         <th></th>
                                     </tr>
