@@ -118,7 +118,6 @@ const getUser = async (username) => {
     let user = await axios.get(`${config.BASE_URL}/users/${username}`,
         {
             headers: {
-                //Authorization: `Bearer ${BATTLE_BOT_JWT}`
                 "X-Access-Token": localStorage.getItem("accessToken")
             }
         });
@@ -130,7 +129,6 @@ const getUsers = async () => {
     let users = await axios.get(`${config.BASE_URL}/users`,
         {
             headers: {
-                //Authorization: `Bearer ${BATTLE_BOT_JWT}`
                 "X-Access-Token": localStorage.getItem("accessToken")
             }
         });
@@ -142,7 +140,6 @@ const getMonster = async (id) => {
     let monster = await axios.get(`${config.BASE_URL}/monsters/${id}`,
         {
             headers: {
-                //Authorization: `Bearer ${BATTLE_BOT_JWT}`
                 "X-Access-Token": localStorage.getItem("accessToken")
             }
         });
@@ -154,7 +151,6 @@ const getMonsters = async () => {
     let monsters = await axios.get(`${config.BASE_URL}/monsters`,
         {
             headers: {
-                //Authorization: `Bearer ${BATTLE_BOT_JWT}`
                 "X-Access-Token": localStorage.getItem("accessToken")
             }
         });
@@ -162,10 +158,51 @@ const getMonsters = async () => {
     return monsters.data;
 }
 
+const getStatuses = async () => {
+    let statuses = await axios.get(`${config.BASE_URL}/statuses`,
+    {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
+
+return statuses.data;
+}
+
+const getStatus = async (id) => {
+    let status = await axios.get(`${config.BASE_URL}/statuses/${id}`,
+        {
+            headers: {
+                "X-Access-Token": localStorage.getItem("accessToken")
+            }
+        });
+
+    return status.data;
+}
+
+const createStatus = async (statusData) => {
+    let created = await axios.post(`${config.BASE_URL}/statuses`, statusData, {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
+
+    return created.data;
+}
+
+const updateStatus = async (statusData) => {
+    let updated = await axios.post(`${config.BASE_URL}/statuses/${statusData.id}`, statusData, {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
+
+    return updated.data;
+}
+
 const createMonster = async (monsterData) => {
     let created = await axios.post(`${config.BASE_URL}/monsters`, monsterData, {
         headers: {
-            //Authorization: `Bearer ${BATTLE_BOT_JWT}`
             "X-Access-Token": localStorage.getItem("accessToken")
         }
     });
@@ -176,7 +213,6 @@ const createMonster = async (monsterData) => {
 const updateMonster = async (monsterData) => {
     let updated = await axios.put(`${config.BASE_URL}/monsters/${monsterData.id}`, monsterData, {
         headers: {
-            //Authorization: `Bearer ${BATTLE_BOT_JWT}`
             "X-Access-Token": localStorage.getItem("accessToken")
         }
     });
@@ -188,7 +224,6 @@ const getAbilities = async () => {
     let abilities = await axios.get(`${config.BASE_URL}/abilities`,
         {
             headers: {
-                //Authorization: `Bearer ${BATTLE_BOT_JWT}`
                 "X-Access-Token": localStorage.getItem("accessToken")
             }
         });
@@ -200,7 +235,6 @@ const getAbility = async (id) => {
     let ability = await axios.get(`${config.BASE_URL}/abilities/${id}`,
         {
             headers: {
-                //Authorization: `Bearer ${BATTLE_BOT_JWT}`
                 "X-Access-Token": localStorage.getItem("accessToken")
             }
         });
@@ -211,7 +245,6 @@ const getAbility = async (id) => {
 const createAbility = async (abilityData) => {
     let created = await axios.post(`${config.BASE_URL}/abilities`, abilityData, {
         headers: {
-            //Authorization: `Bearer ${BATTLE_BOT_JWT}`
             "X-Access-Token": localStorage.getItem("accessToken")
         }
     });
@@ -222,7 +255,6 @@ const createAbility = async (abilityData) => {
 const updateAbility = async (abilityData) => {
     let updated = await axios.put(`${config.BASE_URL}/abilities/${abilityData.id}`, abilityData, {
         headers: {
-            //Authorization: `Bearer ${BATTLE_BOT_JWT}`
             "X-Access-Token": localStorage.getItem("accessToken")
         }
     });
@@ -233,7 +265,6 @@ const updateAbility = async (abilityData) => {
 const getItem = async (id) => {
     let item = await axios.get(`${config.BASE_URL}/items/${id}`, {
         headers: {
-            //Authorization: `Bearer ${BATTLE_BOT_JWT}`
             "X-Access-Token": localStorage.getItem("accessToken")
         }
     });
@@ -244,7 +275,6 @@ const getItem = async (id) => {
 const createItem = async (itemData) => {
     let created = await axios.post(`${config.BASE_URL}/items`, itemData, {
         headers: {
-            //Authorization: `Bearer ${BATTLE_BOT_JWT}`
             "X-Access-Token": localStorage.getItem("accessToken")
         }
     });
@@ -255,7 +285,6 @@ const createItem = async (itemData) => {
 const updateItem = async (itemData) => {
     let updated = await axios.put(`${config.BASE_URL}/items/${itemData.id}`, itemData, {
         headers: {
-            //Authorization: `Bearer ${BATTLE_BOT_JWT}`
             "X-Access-Token": localStorage.getItem("accessToken")
         }
     });
@@ -266,7 +295,6 @@ const updateItem = async (itemData) => {
 const updateUser = async (userData) => {
     let updated = await axios.put(`${config.BASE_URL}/users/${userData.name}`, userData, {
         headers: {
-            //Authorization: `Bearer ${BATTLE_BOT_JWT}`
             "X-Access-Token": localStorage.getItem("accessToken")
         }
     });
@@ -286,6 +314,10 @@ export default {
     updateUser,
     getMonster,
     getMonsters,
+    getStatus,
+    getStatuses,
+    createStatus,
+    updateStatus,
     createMonster,
     updateMonster,
     getAbility,
