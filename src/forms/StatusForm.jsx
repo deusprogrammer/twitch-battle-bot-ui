@@ -12,7 +12,7 @@ const abilitySchema = Yup.object().shape({
         .required("Ability must have proc time"),
     maxProcs: Yup.number()
         .required("Ability must have maximum procs"),
-    dmgStat: Yup.number()
+    dmgStat: Yup.string()
         .required("Ability must have damage stat"),
     element: Yup.string()
         .required("Item must have an element")
