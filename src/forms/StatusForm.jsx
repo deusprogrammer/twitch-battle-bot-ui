@@ -15,11 +15,7 @@ const abilitySchema = Yup.object().shape({
     dmgStat: Yup.number()
         .required("Ability must have damage stat"),
     element: Yup.string()
-        .required("Item must have an element"),
-    otherEffects: Yup.string()
-        .required("Ability must have damage stat"),
-    otherEffectsDuration: Yup.number()
-        .required("Ability must have damage stat")
+        .required("Item must have an element")
 });
 
 export default class StatusForm extends React.Component {
@@ -72,45 +68,43 @@ export default class StatusForm extends React.Component {
                                     </Select>
                                 </td>
                             </tr>
-                            <Relevant when={({values}) => values.element && !["BUFFING", "CLEANSING"].includes(values.element)}>
-                                <tr>
-                                    <td style={{fontWeight: "bolder"}}>
-                                        Damage:
-                                    </td>
-                                    <td>
-                                        <Text field="dmg" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style={{fontWeight: "bolder"}}>
-                                        Proc Time:
-                                    </td>
-                                    <td>
-                                        <Text field="procTime" /> ticks
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style={{fontWeight: "bolder"}}>
-                                        Max Procs:
-                                    </td>
-                                    <td>
-                                        <Text field="maxProcs" /> times
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style={{fontWeight: "bolder"}}>
-                                        Damage Stat:
-                                    </td>
-                                    <td>
-                                        <Select field="dmgStat">
-                                            <Option value={null}>NONE</Option>
-                                            <Option value={"AP"}>AP</Option>
-                                            <Option value={"HP"}>HP</Option>
-                                            <Option value={"Gold"}>Gold</Option>
-                                        </Select>
-                                    </td>
-                                </tr>
-                            </Relevant>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Damage:
+                                </td>
+                                <td>
+                                    <Text field="dmg" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Proc Time:
+                                </td>
+                                <td>
+                                    <Text field="procTime" /> ticks
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Max Procs:
+                                </td>
+                                <td>
+                                    <Text field="maxProcs" /> times
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{fontWeight: "bolder"}}>
+                                    Damage Stat:
+                                </td>
+                                <td>
+                                    <Select field="dmgStat">
+                                        <Option value={null}>NONE</Option>
+                                        <Option value={"AP"}>AP</Option>
+                                        <Option value={"HP"}>HP</Option>
+                                        <Option value={"Gold"}>Gold</Option>
+                                    </Select>
+                                </td>
+                            </tr>
                             <tr>
                                 <td style={{fontWeight: "bolder"}}>
                                     Other Effects:
