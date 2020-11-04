@@ -185,7 +185,7 @@ export default class AbilityForm extends React.Component {
                                     </Select>
                                 </td>
                             </tr>
-                            <Relevant when={({values}) => values.element && !["BUFFING"].includes(values.element)}>
+                            <Relevant when={({values}) => values.element && ["BUFFING"].includes(values.element)}>
                                 <tr>
                                     <td style={{fontWeight: "bolder"}}>
                                         Buffs:
@@ -203,7 +203,7 @@ export default class AbilityForm extends React.Component {
                                     </td>
                                 </tr>
                             </Relevant>
-                            <Relevant when={({values}) => values.element && !["CLEANSING"].includes(values.element)}>
+                            <Relevant when={({values}) => values.element && ["CLEANSING"].includes(values.element)}>
                                 <tr>
                                     <td style={{fontWeight: "bolder"}}>
                                         Cleanses:
