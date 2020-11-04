@@ -54,6 +54,8 @@ export default class Abilities extends React.Component {
                                         <th>Name</th>
                                         <th>Damage</th>
                                         <th>Damage Stat</th>
+                                        <th>Proc Time</th>
+                                        <th>Max Procs</th>
                                         <th>Element</th>
                                         <th>Effects</th>
                                         <th>Duration</th>
@@ -69,6 +71,8 @@ export default class Abilities extends React.Component {
                                                     <td>{status.name}</td>
                                                     <td>{status.dmg}</td>
                                                     <td>{status.dmgStat}</td>
+                                                    <td>{status.procTime}</td>
+                                                    <td>{status.maxProcs}</td>
                                                     <td>{status.element}</td>
                                                     <td style={{textAlign: "center"}}>{status.otherEffects}</td>
                                                     <td style={{textAlign: "center"}}>{status.otherEffectsDuration}</td>
