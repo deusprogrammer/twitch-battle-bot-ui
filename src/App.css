@@ -51,3 +51,26 @@ a:hover {
   color: black;
   background-color: white;
 }
+
+.item {
+  display: table-row;
+  width: 800px;
+}
+
+.item > div {
+  display: table-cell;
+  box-sizing: border-box;
+}
+
+.item-image {
+  width: 300px;
+}
+
+.item-details {
+  width: 500px;
+}
+
+.stat-highlight {
+  color: white;
+  background-color: greenyellow;
+}

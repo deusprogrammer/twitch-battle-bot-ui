@@ -1,5 +1,6 @@
 import React from 'react';
 import {toast} from 'react-toastify';
+import ItemElement from '../elements/ItemElement';
 
 import ApiHelper from '../utils/ApiHelper';
 
@@ -261,7 +262,7 @@ export default class Battler extends React.Component {
                                                 if (element !== ability.element) {
                                                     return;
                                                 }
-                                                
+
                                                 return (
                                                     <tr 
                                                         title={ability.description}
@@ -298,45 +299,18 @@ export default class Battler extends React.Component {
                         <div style={{display: "table-cell", paddingRight: "50px"}}></div>
                         <div style={{display: "table-cell", paddingRight: "50px"}}>
                             <h3>Inventory</h3>
-                            <table style={{marginLeft: "10px"}}>
-                                <thead>
-                                    <tr>
-                                        <th>Type</th>
-                                        <th>Slot</th>
-                                        <th>Item Name</th>
-                                        <th>Price</th>
-                                        <th>Rarity</th>
-                                        <th>Count</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY"].map((slot) => {
-                                        return Object.keys(user.condensedInventory).map((itemKey) => {
-                                            const item = user.condensedInventory[itemKey].item;
-                                            const count = user.condensedInventory[itemKey].count;
-                                            if (item.slot.toUpperCase() !== slot) {
-                                                return;
-                                            }
-                                            return (
-                                                <tr title={item.description}>
-                                                    <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.type.toUpperCase()}</td>
-                                                    <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.slot.toUpperCase()}</td>
-                                                    <td>{item.name}</td>
-                                                    <td style={{textAlign: "center"}}>{item.value}g</td>
-                                                    <td style={{textAlign: "center"}}>{item.rarity}</td>
-                                                    <td>{count}</td>
-                                                    <td>
-                                                        {item.type !== "consumable" ? <button onClick={() => {this.equipItemOnUser(item)}} disabled={this.state.saving}>Equip</button> : null}
-                                                        {item.value > 0 ? <button onClick={() => {this.sellItem(item);}} disabled={this.state.saving}>Sell</button> : <button onClick={() => {this.sellItem(item);}} disabled={this.state.saving}>Discard</button>}
-                                                        <button onClick={() => {navigator.clipboard.writeText(item.id);toast("Copied trade id to clipboard", {type: "info"});}}>Get Trade Id</button>
-                                                    </td>
-                                                </tr>
-                                            )
-                                        })}
-                                    )}
-                                </tbody>
-                            </table>
+                            { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY"].map((slot) => {
+                                return Object.keys(user.condensedInventory).map((itemKey) => {
+                                    const item = user.condensedInventory[itemKey].item;
+                                    const count = user.condensedInventory[itemKey].count;
+                                    if (item.slot.toUpperCase() !== slot) {
+                                        return;
+                                    }
+                                    return (
+                                        <ItemElement item={item} />
+                                    )
+                                })}
+                            )}
                         </div>
                     </div>
                 </div>

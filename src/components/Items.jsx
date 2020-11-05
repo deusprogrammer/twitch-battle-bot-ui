@@ -118,7 +118,7 @@ export default class Items extends React.Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                { this.state.items.map((item, index) => {
+                                { this.state.items.map((item) => {
                                     let value = item.ac || item.dmg || item.use;
                                     return (
                                         <tr 
