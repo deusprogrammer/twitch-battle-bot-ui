@@ -73,7 +73,7 @@ export default class StatusForm extends React.Component {
                             <Relevant when={({values}) => values.dmgStat && values.dmgStat !== "NONE"}>
                                 <tr>
                                     <td style={{fontWeight: "bolder"}}>
-                                        Damage:
+                                        Damage per Proc:
                                     </td>
                                     <td>
                                         <Text field="dmg" />
@@ -98,7 +98,7 @@ export default class StatusForm extends React.Component {
                             </Relevant>
                             <tr>
                                 <td style={{fontWeight: "bolder"}}>
-                                    Other Effects:
+                                    Effects:
                                 </td>
                                 <td>
                                     <Text field="otherEffects" />
@@ -106,7 +106,7 @@ export default class StatusForm extends React.Component {
                             </tr>
                             <tr>
                                 <td style={{fontWeight: "bolder"}}>
-                                    Duration:
+                                    Effects Duration:
                                 </td>
                                 <td>
                                     <Text field="otherEffectsDuration" type="number" /> ticks
