@@ -41,7 +41,7 @@ export default class Ability extends React.Component {
             <div>
                 {this.state.status ? 
                     <div>
-                        <h1>Update Ability</h1>
+                        <h1>Update Status</h1>
                         <StatusForm 
                             initialValues={this.state.status}
                             onSubmit={(values) => {this.handleSubmit(values)}} 
