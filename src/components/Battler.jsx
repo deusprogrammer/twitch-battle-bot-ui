@@ -307,9 +307,12 @@ export default class Battler extends React.Component {
                                 <tbody>
                                     { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY"].forEach((slot) => {
                                         console.log("SLOT: " + slot);
-                                        { Object.keys(user.condensedInventory).filter(itemKey => user.condensedInventory[itemKey].item.slot.toUpperCase() === slot).map((itemKey) => {
+                                        { Object.keys(user.condensedInventory).map((itemKey) => {
                                             const item = user.condensedInventory[itemKey].item;
                                             const count = user.condensedInventory[itemKey].count;
+                                            if (item.slot !== slot) {
+                                                return;
+                                            }
                                             return (
                                                 <tr title={item.description}>
                                                     <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.type.toUpperCase()}</td>
