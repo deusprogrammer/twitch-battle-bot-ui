@@ -305,8 +305,8 @@ export default class Battler extends React.Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY"].forEach((slot) => {
-                                        { Object.keys(user.condensedInventory).map((itemKey) => {
+                                    { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY"].map((slot) => {
+                                        return Object.keys(user.condensedInventory).map((itemKey) => {
                                             const item = user.condensedInventory[itemKey].item;
                                             const count = user.condensedInventory[itemKey].count;
                                             console.log("ITEM SLOT: " + item.slot.toUpperCase());
@@ -330,7 +330,7 @@ export default class Battler extends React.Component {
                                                 </tr>
                                             )
                                         })}
-                                    })}
+                                    )}
                                 </tbody>
                             </table>
                         </div>
