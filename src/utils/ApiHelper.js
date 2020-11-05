@@ -191,7 +191,7 @@ const createStatus = async (statusData) => {
 }
 
 const updateStatus = async (statusData) => {
-    let updated = await axios.post(`${config.BASE_URL}/statuses/${statusData.id}`, statusData, {
+    let updated = await axios.put(`${config.BASE_URL}/statuses/${statusData.id}`, statusData, {
         headers: {
             "X-Access-Token": localStorage.getItem("accessToken")
         }
