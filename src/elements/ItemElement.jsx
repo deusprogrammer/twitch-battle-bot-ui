@@ -3,9 +3,9 @@ import React from 'react';
 export default (props) => {
     const item = props.item;
     let value = item.ac || item.dmg || item.use;
-    const rarity = [];
+    let rarity = [];
     for (let i = 0; i < rarity; i++) {
-        rarity += "*";
+        rarity.push("*");
     }
     return (
         <div className="item">
