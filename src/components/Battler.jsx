@@ -305,24 +305,26 @@ export default class Battler extends React.Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    { Object.keys(user.condensedInventory).map((itemKey, index) => {
-                                        const item = user.condensedInventory[itemKey].item;
-                                        const count = user.condensedInventory[itemKey].count;
-                                        return (
-                                            <tr title={item.description}>
-                                                <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.type.toUpperCase()}</td>
-                                                <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.slot.toUpperCase()}</td>
-                                                <td>{item.name}</td>
-                                                <td style={{textAlign: "center"}}>{item.value}g</td>
-                                                <td style={{textAlign: "center"}}>{item.rarity}</td>
-                                                <td>{count}</td>
-                                                <td>
-                                                    {item.type !== "consumable" ? <button onClick={() => {this.equipItemOnUser(item)}} disabled={this.state.saving}>Equip</button> : null}
-                                                    {item.value > 0 ? <button onClick={() => {this.sellItem(item);}} disabled={this.state.saving}>Sell</button> : <button onClick={() => {this.sellItem(item);}} disabled={this.state.saving}>Discard</button>}
-                                                    <button onClick={() => {navigator.clipboard.writeText(item.id);toast("Copied trade id to clipboard", {type: "info"});}}>Get Trade Id</button>
-                                                </td>
-                                            </tr>
-                                        )
+                                    { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY"].forEach((slot) => {
+                                        { Object.keys(user.condensedInventory).filter(itemKey => itemKey === slot).map((itemKey) => {
+                                            const item = user.condensedInventory[itemKey].item;
+                                            const count = user.condensedInventory[itemKey].count;
+                                            return (
+                                                <tr title={item.description}>
+                                                    <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.type.toUpperCase()}</td>
+                                                    <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.slot.toUpperCase()}</td>
+                                                    <td>{item.name}</td>
+                                                    <td style={{textAlign: "center"}}>{item.value}g</td>
+                                                    <td style={{textAlign: "center"}}>{item.rarity}</td>
+                                                    <td>{count}</td>
+                                                    <td>
+                                                        {item.type !== "consumable" ? <button onClick={() => {this.equipItemOnUser(item)}} disabled={this.state.saving}>Equip</button> : null}
+                                                        {item.value > 0 ? <button onClick={() => {this.sellItem(item);}} disabled={this.state.saving}>Sell</button> : <button onClick={() => {this.sellItem(item);}} disabled={this.state.saving}>Discard</button>}
+                                                        <button onClick={() => {navigator.clipboard.writeText(item.id);toast("Copied trade id to clipboard", {type: "info"});}}>Get Trade Id</button>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })}
                                     })}
                                 </tbody>
                             </table>
