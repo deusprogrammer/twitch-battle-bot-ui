@@ -55,7 +55,10 @@ a:hover {
 .item {
   display: table-row;
   width: 800px;
-  box-sizing: border-box
+  box-sizing: border-box;
+  margin-bottom: "10px";
+  background-color: black;
+  color: white;
 }
 
 .item > div {
@@ -72,7 +75,14 @@ a:hover {
   width: 700px;
 }
 
-.stat-highlight {
+.item-stat {
+  margin-right: 5px;
+  color: black;
+  background-color: white;
+}
+
+.item-stat-highlight {
+  margin-right: 5px;
   color: white;
   background-color: greenyellow;
 }

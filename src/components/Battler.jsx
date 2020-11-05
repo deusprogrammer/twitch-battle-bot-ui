@@ -295,23 +295,20 @@ export default class Battler extends React.Component {
                             }
                         </div>
                     </div>
-                    <div style={{display: "table-row"}}>
-                        <div style={{display: "table-cell", paddingRight: "50px"}}></div>
-                        <div style={{display: "table-cell", paddingRight: "50px"}}>
-                            <h3>Inventory</h3>
-                            { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY"].map((slot) => {
-                                return Object.keys(user.condensedInventory).map((itemKey) => {
-                                    const item = user.condensedInventory[itemKey].item;
-                                    const count = user.condensedInventory[itemKey].count;
-                                    if (item.slot.toUpperCase() !== slot) {
-                                        return;
-                                    }
-                                    return (
-                                        <ItemElement item={item} />
-                                    )
-                                })}
-                            )}
-                        </div>
+                    <div>
+                        <h3>Inventory</h3>
+                        { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY"].map((slot) => {
+                            return Object.keys(user.condensedInventory).map((itemKey) => {
+                                const item = user.condensedInventory[itemKey].item;
+                                const count = user.condensedInventory[itemKey].count;
+                                if (item.slot.toUpperCase() !== slot) {
+                                    return;
+                                }
+                                return (
+                                    <ItemElement item={item} />
+                                )
+                            })}
+                        )}
                     </div>
                 </div>
             </div>
