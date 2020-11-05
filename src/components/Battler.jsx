@@ -310,7 +310,8 @@ export default class Battler extends React.Component {
                                         { Object.keys(user.condensedInventory).map((itemKey) => {
                                             const item = user.condensedInventory[itemKey].item;
                                             const count = user.condensedInventory[itemKey].count;
-                                            if (item.slot !== slot) {
+                                            console.log("ITEM SLOT: " + item.slot);
+                                            if (item.slot.toUpperCase() !== slot) {
                                                 return;
                                             }
                                             return (
