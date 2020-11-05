@@ -256,32 +256,38 @@ export default class Battler extends React.Component {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        { user.abilities.map((ability) => {
-                                            return (
-                                                <tr 
-                                                    title={ability.description}
-                                                    key={`ability-${ability.id}`}>
-                                                        <td>{ability.name}</td>
-                                                        <td>{ability.ap}</td>
-                                                        <td>{ability.dmg}</td>
-                                                        <td>{ability.dmgStat}</td>
-                                                        <td>{ability.toHitStat}</td>
-                                                        <td>{ability.target}</td>
-                                                        <td>{ability.area}</td>
-                                                        <td>{ability.element}</td>
-                                                        <td style={{textAlign: "center"}}>{ability.mods.hp}</td>
-                                                        <td style={{textAlign: "center"}}>{ability.mods.str}</td>
-                                                        <td style={{textAlign: "center"}}>{ability.mods.dex}</td>
-                                                        <td style={{textAlign: "center"}}>{ability.mods.int}</td>
-                                                        <td style={{textAlign: "center"}}>{ability.mods.hit}</td>
-                                                        <td style={{textAlign: "center"}}>{ability.mods.ac}</td>
-                                                        <td style={{textAlign: "center"}}>{ability.buffs}</td>
-                                                        <td style={{textAlign: "center"}}>{ability.buffsDuration}</td>
-                                                        <td>
-                                                            <button onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
-                                                        </td>
-                                                </tr>
-                                            )
+                                        { ["NONE", "FIRE", "ICE", "LIGHTNING", "WATER", "EARTH", "DARK", "LIGHT", "HEALING", "BUFFING", "CLEANSING"].map((element) => {
+                                            if (element !== ability.element) {
+                                                return;
+                                            }
+                                            
+                                            return user.abilities.map((ability) => {
+                                                return (
+                                                    <tr 
+                                                        title={ability.description}
+                                                        key={`ability-${ability.id}`}>
+                                                            <td>{ability.name}</td>
+                                                            <td>{ability.ap}</td>
+                                                            <td>{ability.dmg}</td>
+                                                            <td>{ability.dmgStat}</td>
+                                                            <td>{ability.toHitStat}</td>
+                                                            <td>{ability.target}</td>
+                                                            <td>{ability.area}</td>
+                                                            <td>{ability.element}</td>
+                                                            <td style={{textAlign: "center"}}>{ability.mods.hp}</td>
+                                                            <td style={{textAlign: "center"}}>{ability.mods.str}</td>
+                                                            <td style={{textAlign: "center"}}>{ability.mods.dex}</td>
+                                                            <td style={{textAlign: "center"}}>{ability.mods.int}</td>
+                                                            <td style={{textAlign: "center"}}>{ability.mods.hit}</td>
+                                                            <td style={{textAlign: "center"}}>{ability.mods.ac}</td>
+                                                            <td style={{textAlign: "center"}}>{ability.buffs}</td>
+                                                            <td style={{textAlign: "center"}}>{ability.buffsDuration}</td>
+                                                            <td>
+                                                                <button onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
+                                                            </td>
+                                                    </tr>
+                                                )
+                                            })
                                         })}
                                     </tbody>
                                 </table> : null 
@@ -309,8 +315,6 @@ export default class Battler extends React.Component {
                                         return Object.keys(user.condensedInventory).map((itemKey) => {
                                             const item = user.condensedInventory[itemKey].item;
                                             const count = user.condensedInventory[itemKey].count;
-                                            console.log("ITEM SLOT: " + item.slot.toUpperCase());
-                                            console.log(`${item.slot.toUpperCase()} !== ${slot} : ${item.slot.toUpperCase() !== slot}`);
                                             if (item.slot.toUpperCase() !== slot) {
                                                 return;
                                             }
