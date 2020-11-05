@@ -306,7 +306,8 @@ export default class Battler extends React.Component {
                                 </thead>
                                 <tbody>
                                     { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY"].forEach((slot) => {
-                                        { Object.keys(user.condensedInventory).filter(itemKey => user.condensedInventory[itemKey].item.slot === slot).map((itemKey) => {
+                                        console.log("SLOT: " + slot);
+                                        { Object.keys(user.condensedInventory).filter(itemKey => user.condensedInventory[itemKey].item.slot.toUpperCase() === slot).map((itemKey) => {
                                             const item = user.condensedInventory[itemKey].item;
                                             const count = user.condensedInventory[itemKey].count;
                                             return (
