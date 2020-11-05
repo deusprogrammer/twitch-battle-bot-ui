@@ -55,6 +55,7 @@ a:hover {
 .item {
   display: table-row;
   width: 800px;
+  box-sizing: border-box
 }
 
 .item > div {
@@ -63,11 +64,12 @@ a:hover {
 }
 
 .item-image {
-  width: 300px;
+  width: 100px;
+  vertical-align: middle;
 }
 
 .item-details {
-  width: 500px;
+  width: 700px;
 }
 
 .stat-highlight {

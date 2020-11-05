@@ -9,7 +9,7 @@ export default (props) => {
     }
     return (
         <div className="item">
-            <div className="item-image"><img src="https://dummyimage.com/300X300/000/fff" /></div>
+            <div className="item-image"><img src="https://dummyimage.com/100X100/000/fff" /></div>
             <div className="item-details">
                 <div className="item-header"><span className="item-name">{item.name}</span><span className="item-type">{item.slot !== "hand" ? item.slot : null} {item.type}</span></div>
                 <div className="item-description">{item.description}</div>
