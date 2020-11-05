@@ -32,10 +32,13 @@ export default class Battler extends React.Component {
         return ApiHelper.expandUser(user, {itemTable, jobTable, abilityTable});
     }
 
-    equipItemOnUser = async (item, index) => {
+    equipItemOnUser = async (item) => {
         let user = {...this.state.user};
         let equipment = {...user.equipment};
         let inventory = [...user.inventory];
+
+        // Find the first instance of the item in the inventory list
+        let index = user.inventory.findIndex(search => search.id === item.id);
 
         // Update version in state
         let oldItem = equipment[item.slot];
@@ -77,10 +80,13 @@ export default class Battler extends React.Component {
         });
     }
 
-    sellItem = async (item, index) => {
+    sellItem = async (item) => {
         let user = {...this.state.user};
         let equipment = {...user.equipment};
         let inventory = [...user.inventory];
+
+        // Find the first instance of the item in the inventory list
+        let index = user.inventory.findIndex(search => search.id === item.id);
 
         // Remove item from inventory
         delete inventory[index];
@@ -292,38 +298,27 @@ export default class Battler extends React.Component {
                                         <th>Type</th>
                                         <th>Slot</th>
                                         <th>Item Name</th>
-                                        <th>HP Mod</th>
-                                        <th>STR Mod</th>
-                                        <th>DEX Mod</th>
-                                        <th>INT Mod</th>
-                                        <th>HIT Mod</th>
-                                        <th>AC Mod</th>
-                                        <th>Value</th>
                                         <th>Price</th>
                                         <th>Rarity</th>
+                                        <th>Count</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    { user.inventory.map((item, index) => {
-                                        let value = item.ac || item.dmg || item.use;
+                                    { Object.keys(user.condensedInventory).map((itemKey, index) => {
+                                        const item = user.condensedInventory[itemKey].item;
+                                        const count = user.condensedInventory[itemKey].count;
                                         return (
                                             <tr title={item.description}>
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.type.toUpperCase()}</td>
                                                 <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.slot.toUpperCase()}</td>
                                                 <td>{item.name}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.hp}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.str}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.dex}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.int}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.hit}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.ac}</td>
-                                                <td style={{textAlign: "center"}}>{value} <strong>{(item.ac ? "AC" : null) || (item.dmg ? "DMG" : null)}</strong></td>
                                                 <td style={{textAlign: "center"}}>{item.value}g</td>
                                                 <td style={{textAlign: "center"}}>{item.rarity}</td>
+                                                <td>{count}</td>
                                                 <td>
-                                                    {item.type !== "consumable" ? <button onClick={() => {this.equipItemOnUser(item, index)}} disabled={this.state.saving}>Equip</button> : null}
-                                                    {item.value > 0 ? <button onClick={() => {this.sellItem(item, index);}} disabled={this.state.saving}>Sell</button> : <button onClick={() => {this.sellItem(item, index);}} disabled={this.state.saving}>Discard</button>}
+                                                    {item.type !== "consumable" ? <button onClick={() => {this.equipItemOnUser(item)}} disabled={this.state.saving}>Equip</button> : null}
+                                                    {item.value > 0 ? <button onClick={() => {this.sellItem(item);}} disabled={this.state.saving}>Sell</button> : <button onClick={() => {this.sellItem(item);}} disabled={this.state.saving}>Discard</button>}
                                                     <button onClick={() => {navigator.clipboard.writeText(item.id);toast("Copied trade id to clipboard", {type: "info"});}}>Get Trade Id</button>
                                                 </td>
                                             </tr>

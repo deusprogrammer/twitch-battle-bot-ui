@@ -96,8 +96,18 @@ const expandUser = (userData, context) => {
         userData.equipment[slot] = itemData;
     });
     let newInventoryList = [];
+    let condensedItemMap = {};
     userData.inventory.forEach((item) => {
         newInventoryList.push(context.itemTable[item]);
+        if (!condensedItemMap[item]) {
+            condensedItemMap[item] = {
+                item: context.itemTable[item],
+                count: 1
+            }
+
+            return;
+        }
+        condensedItemMap[item].count++;
     });
 
     if (userData.maxHp < 0) {
@@ -109,6 +119,7 @@ const expandUser = (userData, context) => {
     }
 
     userData.inventory = newInventoryList;
+    userData.condensedInventory = condensedItemMap;
     userData.actionCooldown = Math.min(11, 6 - Math.min(5, userData.dex));
 
     return userData;
