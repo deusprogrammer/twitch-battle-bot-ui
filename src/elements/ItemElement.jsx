@@ -15,12 +15,26 @@ export default (props) => {
                 <div className="item-description">{item.description}</div>
                 <div className="item-stats">
                     <div>{value} <strong>{(item.ac ? "armor " : null) || (item.dmg ? ` damage to ${item.dmgStat}` : null)} </strong></div>
-                    {["HP", "STR", "DEX", "INT", "HIT", "AC"].map((modStat) => {
-                        return <div className={item.toHitStat === modStat ? "stat-highlight" : null}>{item.mods[modStat.toLowerCase()]}</div>
+                    {["STR", "DEX", "INT"].map((modStat) => {
+                        return <div style={{float: "left"}} className={item.toHitStat === modStat ? "stat-highlight" : null}>{modStat}: {item.mods[modStat.toLowerCase()]}</div>
+                    })}
+                    <div style={{clear: "both"}} />
+                    {["HIT", "AC", "AP"].map((modStat) => {
+                        return <div style={{float: "left"}} className={item.toHitStat === modStat ? "stat-highlight" : null}>{modStat}: {item.mods[modStat.toLowerCase()]}</div>
                     })}
                 </div>
-                <div className="item-triggers"></div>
-                <div className="item-abilities"></div>
+                <div style={{clear: "both"}} />
+                <div className="item-triggers">
+                    {item.triggers.map((trigger) => {
+                        return <div style={{float: "left"}}>{trigger.abilityId} ({trigger.chance}% chance)</div>
+                    })}
+                </div>
+                <div style={{clear: "both"}} />
+                <div className="item-abilities">
+                    {item.abilities.map((ability) => {
+                        return <div style={{float: "left"}}>{ability.abilityId}</div>
+                    })}
+                </div>
                 <div className="item-value"><span>{item.value} gold</span><span>{rarity.map(star => star)}</span></div>
             </div>
         </div>
