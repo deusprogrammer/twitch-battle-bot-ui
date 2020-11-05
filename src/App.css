@@ -64,7 +64,7 @@ a:hover {
   display: table-row;
 }
 
-.item > div {
+.item-inner > div {
   display: table-cell;
   box-sizing: border-box;
 }
