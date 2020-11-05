@@ -257,11 +257,11 @@ export default class Battler extends React.Component {
                                     </thead>
                                     <tbody>
                                         { ["NONE", "FIRE", "ICE", "LIGHTNING", "WATER", "EARTH", "DARK", "LIGHT", "HEALING", "BUFFING", "CLEANSING"].map((element) => {
-                                            if (element !== ability.element) {
-                                                return;
-                                            }
-                                            
                                             return user.abilities.map((ability) => {
+                                                if (element !== ability.element) {
+                                                    return;
+                                                }
+                                                
                                                 return (
                                                     <tr 
                                                         title={ability.description}
