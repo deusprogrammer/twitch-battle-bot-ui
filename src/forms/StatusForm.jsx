@@ -6,14 +6,6 @@ import * as Yup from 'yup';
 const abilitySchema = Yup.object().shape({
     name: Yup.string()
         .required("Item must have a name"),
-    dmg: Yup.string()
-        .required("Ability must have dmg"),
-    procTime: Yup.number()
-        .required("Ability must have proc time"),
-    maxProcs: Yup.number()
-        .required("Ability must have maximum procs"),
-    dmgStat: Yup.string()
-        .required("Ability must have damage stat"),
     element: Yup.string()
         .required("Item must have an element")
 });
