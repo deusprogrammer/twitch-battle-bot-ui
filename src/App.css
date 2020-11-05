@@ -53,12 +53,15 @@ a:hover {
 }
 
 .item {
-  display: table-row;
   width: 800px;
   box-sizing: border-box;
-  margin-bottom: "10px";
+  margin: 10px;
   background-color: black;
   color: white;
+}
+
+.item-inner {
+  display: table-row;
 }
 
 .item > div {
