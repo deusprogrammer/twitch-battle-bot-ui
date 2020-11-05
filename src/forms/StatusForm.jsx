@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Form, Text, Select, Option, Relevant, Checkbox, Scope} from 'informed';
+import {Form, Text, Select, Option, Relevant} from 'informed';
 import * as Yup from 'yup';
 
 const abilitySchema = Yup.object().shape({
@@ -54,34 +54,7 @@ export default class StatusForm extends React.Component {
                                         <Option value="LIGHTNING">LIGHTNING</Option>
                                         <Option value="DARK">DARK</Option>
                                         <Option value="LIGHT">LIGHT</Option>
-                                        <Option value="HEALING">HEALING</Option>
-                                        <Option value="BUFFING">BUFFING</Option>
-                                        <Option value="CLEANSING">CLEANSING</Option>
                                     </Select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style={{fontWeight: "bolder"}}>
-                                    Damage:
-                                </td>
-                                <td>
-                                    <Text field="dmg" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style={{fontWeight: "bolder"}}>
-                                    Proc Time:
-                                </td>
-                                <td>
-                                    <Text field="procTime" /> ticks
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style={{fontWeight: "bolder"}}>
-                                    Max Procs:
-                                </td>
-                                <td>
-                                    <Text field="maxProcs" /> times
                                 </td>
                             </tr>
                             <tr>
@@ -97,6 +70,32 @@ export default class StatusForm extends React.Component {
                                     </Select>
                                 </td>
                             </tr>
+                            <Relevant when={({values}) => values.dmgStat && values.dmgStat !== "NONE"}>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Damage:
+                                    </td>
+                                    <td>
+                                        <Text field="dmg" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Proc Time:
+                                    </td>
+                                    <td>
+                                        <Text field="procTime" /> ticks
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Max Procs:
+                                    </td>
+                                    <td>
+                                        <Text field="maxProcs" /> times
+                                    </td>
+                                </tr>
+                            </Relevant>
                             <tr>
                                 <td style={{fontWeight: "bolder"}}>
                                     Other Effects:
