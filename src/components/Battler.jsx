@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactToolTip from 'react-tooltip';
 import {toast} from 'react-toastify';
 import ItemElement from '../elements/ItemElement';
 
@@ -215,17 +216,22 @@ export default class Battler extends React.Component {
                                         let item = user.equipment[slot];
                                         let value = item.ac || item.dmg || item.use;
                                         return (
-                                            <tr title={item.description}>
-                                                <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.toUpperCase()}</td>
-                                                <td>{item.name}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.hp}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.str}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.dex}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.int}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.hit}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.ac}</td>
-                                                <td style={{textAlign: "center"}}>{value} <strong>{(item.ac ? "AC" : null) || (item.dmg ? "DMG" : null)}</strong></td>
-                                            </tr>
+                                            <React.Fragment>
+                                                <tr data-tip data-for={`${item.slot}-tip`} title={item.description}>
+                                                    <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.toUpperCase()}</td>
+                                                    <td>{item.name}</td>
+                                                    <td style={{textAlign: "center"}}>{item.mods.hp}</td>
+                                                    <td style={{textAlign: "center"}}>{item.mods.str}</td>
+                                                    <td style={{textAlign: "center"}}>{item.mods.dex}</td>
+                                                    <td style={{textAlign: "center"}}>{item.mods.int}</td>
+                                                    <td style={{textAlign: "center"}}>{item.mods.hit}</td>
+                                                    <td style={{textAlign: "center"}}>{item.mods.ac}</td>
+                                                    <td style={{textAlign: "center"}}>{value} <strong>{(item.ac ? "AC" : null) || (item.dmg ? "DMG" : null)}</strong></td>
+                                                </tr>
+                                                <ReactToolTip id={`${item.slot}-tip`} place="top" effect="solid">
+                                                    <ItemElement item={item} abilityTable={this.abilityTable} />
+                                                </ReactToolTip>
+                                            </React.Fragment>
                                         )
                                     })}
                                 </tbody>
