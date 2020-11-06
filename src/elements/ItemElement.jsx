@@ -36,7 +36,7 @@ export default (props) => {
                         <div>
                             <div className="item-stats">
                                 <div>{value} <strong>{(item.ac ? "armor " : null) || (item.dmg ? ` damage to ${item.dmgStat}` : null) || (item.use ? ` use to use ${item.use}` : null)} </strong></div>
-                                {["STR", "DEX", "INT", "HIT", "AC", "AP"].map((modStat) => {
+                                {["STR", "DEX", "INT", "HIT", "AC"].map((modStat) => {
                                     return <div style={{float: "left"}} className={item.type !== "armor" && item.toHitStat === modStat ? "item-stat-highlight" : "item-stat"}>{modStat}: {item.mods[modStat.toLowerCase()]}</div>
                                 })}
                             </div>
