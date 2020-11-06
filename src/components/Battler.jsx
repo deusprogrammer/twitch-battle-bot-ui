@@ -155,7 +155,7 @@ export default class Battler extends React.Component {
                 <div className="container">
                     <h1>{user.name}</h1>
                     <div className="row">
-                        <div className="col">
+                        <div className="col-md-1">
                             <h3>Stats</h3>
                             <table>
                                 <tbody>
@@ -198,7 +198,7 @@ export default class Battler extends React.Component {
                                 </tbody>
                             </table>
                         </div>
-                        <div className="col">
+                        <div className="col-md-1">
                             <h3>Equipment</h3>
                             <table>
                                     { Object.keys(user.equipment).map((slot) => {
@@ -222,7 +222,7 @@ export default class Battler extends React.Component {
                                     })}
                             </table>
                         </div>
-                        <div className="col">
+                        <div className="col-md-4">
                             <h3>Abilities</h3>
                             {user.abilities.length > 0 ?
                                 <table>
@@ -267,7 +267,7 @@ export default class Battler extends React.Component {
                                 </table> : null 
                             }
                         </div>
-                        <div className="col">
+                        <div className="col-md-5">
                             <h3>Inventory</h3>
                             { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY"].map((slot) => {
                                 return Object.keys(user.condensedInventory).map((itemKey) => {
