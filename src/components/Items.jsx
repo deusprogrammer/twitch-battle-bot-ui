@@ -103,7 +103,9 @@ export default class Items extends React.Component {
                             return <ItemElement 
                                         item={item} 
                                         abilityTable={this.abilityTable} 
-                                        onClick={() => {this.goTo(item)}} />
+                                        onEdit={(item) => {this.goTo(item)}}
+                                        onGetId={(item) => {navigator.clipboard.writeText(item.id);toast("Copied id to clipboard", {type: "info"});}} 
+                                         />
                         })}
                     </div> : null }
                     <div style={{float: "right"}}>
