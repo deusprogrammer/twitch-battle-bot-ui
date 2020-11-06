@@ -53,7 +53,8 @@ a:hover {
 }
 
 .item {
-  width: 800px;
+  width: 750px;
+  height: 300px;
   box-sizing: border-box;
   margin: 10px;
   background-color: black;
@@ -75,7 +76,7 @@ a:hover {
 }
 
 .item-details {
-  width: 700px;
+  width: 650px;
 }
 
 .item-stat {
@@ -88,4 +89,15 @@ a:hover {
   margin-right: 5px;
   color: white;
   background-color: greenyellow;
+}
+
+.item-name {
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.item-type {
+  margin-left: 5px;
+  font-size: smaller;
+  font-style: italic;
 }
