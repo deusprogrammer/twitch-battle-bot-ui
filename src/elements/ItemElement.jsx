@@ -45,7 +45,6 @@ export default (props) => {
                                 <div style={{float: "left", padding: "3px"}}>Triggers:</div>
                                 {item.triggers.map((trigger) => {
                                     let ability = abilityTable[trigger.abilityId];
-                                    let ability = abilityTable[abilityName];
                                     let elementColor = elementColors[ability.element];
                                     let color = elementColor.c;
                                     let backgroundColor = elementColor.b;
