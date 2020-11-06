@@ -15,7 +15,7 @@ const elementColors = {
     "NONE": {b: "white", c: "black"}
 }
 
-export default (props) => {
+let AbilityElement = (props) => {
     const ability = props.ability;
     const abilityTable = props.abilityTable;
     const elementColor = elementColors[ability.element];
@@ -105,3 +105,5 @@ export default (props) => {
         </div>
     );
 }
+
+export default AbilityElement;
