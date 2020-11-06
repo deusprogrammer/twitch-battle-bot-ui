@@ -100,11 +100,11 @@ export default class Items extends React.Component {
                     <div style={{float: "left"}}>
                         <h2>Item List</h2>
                         { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY"].map((slot) => {
-                            if (item.slot.toUpperCase() !== slot) {
-                                return;
-                            }
-
                             return this.state.items.map((item) => {
+                                if (item.slot.toUpperCase() !== slot) {
+                                    return;
+                                }
+                                
                                 return <ItemElement 
                                             item={item} 
                                             abilityTable={this.abilityTable} 
