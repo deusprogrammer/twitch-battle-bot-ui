@@ -2,6 +2,7 @@ import React from 'react';
 import ReactToolTip from 'react-tooltip';
 import {toast} from 'react-toastify';
 import ItemElement from '../elements/ItemElement';
+import AbilityElement from '../elements/AbilityElement';
 
 import ApiHelper from '../utils/ApiHelper';
 
