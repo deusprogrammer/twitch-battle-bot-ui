@@ -22,11 +22,31 @@ export default (props) => {
     const abilityTable = props.abilityTable;
     let value = item.ac || item.dmg || item.use;
     let rarity = [];
+    let message = ``;
     for (let i = 0; i < item.rarity; i++) {
         let color = colors[Math.floor(i/5)];
         console.log("COLOR: " + color);
         rarity.push(<span style={{color}}>*</span>);
     }
+
+    if (item.type === "consumable") {
+        let ability = abilityTable[item.use];
+        switch (ability.element) {
+            case "CLEANSING":
+                message = <div>{`Cleanses ${ability.buffs}`}</div>
+                break;
+            case "BUFFING":
+                message = <div>{`${ability.buffs} for ${ability.buffsDuration} ticks`}</div>;
+                break;
+            case "HEALING":
+                message = <div>{`Heals ${ability.dmg} damage to ${target}.`}</div>
+                break;
+            default:
+                message = <div>{`${ability.dmg} ${ability.element.toLowerCase()} ${ability.dmgStat} damage ${ability.procTime > 0 ? ` every ${ability.procTime} ticks for ${ability.maxProcs} ticks` : ''} to ${target}`}</div>
+                break;
+        }
+    }
+
     return (
         <div className="item">
             <div className="item-inner">
@@ -34,6 +54,9 @@ export default (props) => {
                 <div className="item-details">
                     <div className="item-header"><span className="item-name">{item.name}</span><span className="item-type">{item.slot !== "hand" ? item.slot : null} {item.type}</span></div>
                     <div className="item-description">{item.description}</div>
+                    { item.type === "consumable" ?
+                        <div className="item-use"><strong>Use: </strong>{message}</div>
+                    : null}
                     { item.type !== "consumable" ? 
                         <div>
                             <div className="item-stats">
