@@ -207,8 +207,7 @@ export default class Battler extends React.Component {
                                             <React.Fragment>
                                                 <tr 
                                                     data-tip 
-                                                    data-for={`${item.slot}-tip`} 
-                                                    data-event="mouseenter click"
+                                                    data-for={`${item.slot}-tip`}
                                                     style={{cursor: "pointer"}}>
                                                         <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.toUpperCase()}</td>
                                                         <td>{item.name}</td>
@@ -246,7 +245,6 @@ export default class Battler extends React.Component {
                                                     <React.Fragment>
                                                         <tr data-tip
                                                             data-for={`${ability.id}-tip`}
-                                                            data-event="mouseenter click"
                                                             style={{cursor: "pointer"}}
                                                             key={`ability-${ability.id}`}>
                                                                 <td>{ability.name}</td>
@@ -256,7 +254,7 @@ export default class Battler extends React.Component {
                                                                     <button type="button" class="btn btn-primary" onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
                                                                 </td>
                                                         </tr>
-                                                        <ReactToolTip id={`${ability.id}-tip`} place="right" effect="solid" delayHide={500} delayShow={500} delayUpdate={500} globalEventOff='click mouseleave'>
+                                                        <ReactToolTip id={`${ability.id}-tip`} place="right" effect="solid" delayHide={500} delayShow={500} delayUpdate={500}>
                                                             <AbilityElement 
                                                                 ability={ability} 
                                                                 abilityTable={this.abilityTable} />
