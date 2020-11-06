@@ -152,9 +152,9 @@ export default class Battler extends React.Component {
 
         return (
             <div>
-                <div className="battler">
+                <div className="container col-2">
                     <h1>{user.name}</h1>
-                    <div className="battler-section left">
+                    <div className="battler-section battler-stats left">
                         <h3>Stats</h3>
                         <table>
                             <tbody>
@@ -197,7 +197,7 @@ export default class Battler extends React.Component {
                             </tbody>
                         </table>
                     </div>
-                    <div className="battler-section left">
+                    <div className="col-2">
                         <h3>Equipment</h3>
                         <table>
                                 { Object.keys(user.equipment).map((slot) => {
@@ -221,7 +221,7 @@ export default class Battler extends React.Component {
                                 })}
                         </table>
                     </div>
-                    <div className="battler-section right">
+                    <div className="col-2">
                         <h3>Abilities</h3>
                         {user.abilities.length > 0 ?
                             <table>
@@ -266,7 +266,7 @@ export default class Battler extends React.Component {
                             </table> : null 
                         }
                     </div>
-                    <div className="battler-section right">
+                    <div className="col-6">
                         <h3>Inventory</h3>
                         { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY"].map((slot) => {
                             return Object.keys(user.condensedInventory).map((itemKey) => {

@@ -100,6 +100,7 @@ export default (props) => {
                                             <div 
                                                 data-tip 
                                                 data-for={`${item.name}-trigger-${index}`}
+                                                data-event="mouseenter click"
                                                 className="action-trigger" 
                                                 style={{float: "left", cursor: "pointer", color, backgroundColor}}>
                                                 {ability.name} ({trigger.chance}%)
@@ -123,6 +124,7 @@ export default (props) => {
                                             <div 
                                                 data-tip 
                                                 data-for={`${item.name}-ability-${index}`}
+                                                data-event="mouseenter click"
                                                 className="action-ability" 
                                                 style={{float: "left", cursor: "pointer", color, backgroundColor}}>{ability.name}</div>
                                             <ReactToolTip id={`${item.name}-ability-${index}`} effect="solid" delayHide={500} delayShow={500} delayUpdate={500}>

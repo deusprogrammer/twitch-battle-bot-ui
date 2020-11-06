@@ -19,6 +19,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import axios from 'axios';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 class App extends React.Component {
     state = {
         isAdmin: false

@@ -81,6 +81,22 @@ a:hover {
   float: left;
 }
 
+.battler-stats {
+
+}
+
+.battler-equipment {
+
+}
+
+.battler-inventory {
+
+}
+
+.battler-abilities {
+  
+}
+
 @media screen and (min-width: 480px) {
   .item-image {
     width: 200px;
