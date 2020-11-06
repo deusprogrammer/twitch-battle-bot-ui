@@ -156,7 +156,7 @@ export default class Battler extends React.Component {
                 <div>
                     <div style={{float: "left"}}>
                         <h3>Stats</h3>
-                        <table style={{marginLeft: "10px"}}>
+                        <table>
                             <tbody>
                                 <tr title="Your health points determine whether you are alive or not.  Once you hit zero, it's over." style={{cursor: "pointer"}}>
                                     <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>HP</td>
@@ -199,7 +199,7 @@ export default class Battler extends React.Component {
                     </div>
                     <div style={{float: "left"}}>
                         <h3>Equipment</h3>
-                        <table style={{marginLeft: "10px"}}>
+                        <table>
                                 { Object.keys(user.equipment).map((slot) => {
                                     let item = user.equipment[slot];
                                     return (
@@ -224,7 +224,7 @@ export default class Battler extends React.Component {
                     <div style={{float: "left"}}>
                         <h3>Abilities</h3>
                         {user.abilities.length > 0 ?
-                            <table style={{marginLeft: "10px"}}>
+                            <table>
                                 <thead>
                                     <tr>
                                         <th>Name</th>
