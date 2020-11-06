@@ -152,7 +152,7 @@ export default class Battler extends React.Component {
 
         return (
             <div>
-                <div>
+                <div className="container-fluid">
                     <h1>{user.name}</h1>
                     <div className="row">
                         <div className="col-md-1">
@@ -198,7 +198,7 @@ export default class Battler extends React.Component {
                                 </tbody>
                             </table>
                         </div>
-                        <div className="col-md-1">
+                        <div className="col-md-3">
                             <h3>Equipment</h3>
                             <table>
                                     { Object.keys(user.equipment).map((slot) => {
@@ -208,6 +208,7 @@ export default class Battler extends React.Component {
                                                 <tr 
                                                     data-tip 
                                                     data-for={`${item.slot}-tip`} 
+                                                    data-event="mouseenter click"
                                                     style={{cursor: "pointer"}}>
                                                         <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.toUpperCase()}</td>
                                                         <td>{item.name}</td>
@@ -245,6 +246,7 @@ export default class Battler extends React.Component {
                                                     <React.Fragment>
                                                         <tr data-tip
                                                             data-for={`${ability.id}-tip`}
+                                                            data-event="mouseenter click"
                                                             style={{cursor: "pointer"}}
                                                             key={`ability-${ability.id}`}>
                                                                 <td>{ability.name}</td>
@@ -254,7 +256,7 @@ export default class Battler extends React.Component {
                                                                     <button type="button" class="btn btn-primary" onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
                                                                 </td>
                                                         </tr>
-                                                        <ReactToolTip id={`${ability.id}-tip`} place="right" effect="solid" delayHide={500} delayShow={500} delayUpdate={500}>
+                                                        <ReactToolTip id={`${ability.id}-tip`} place="right" effect="solid" delayHide={500} delayShow={500} delayUpdate={500} globalEventOff='click mouseleave'>
                                                             <AbilityElement 
                                                                 ability={ability} 
                                                                 abilityTable={this.abilityTable} />
@@ -267,7 +269,7 @@ export default class Battler extends React.Component {
                                 </table> : null 
                             }
                         </div>
-                        <div className="col-md-5">
+                        <div className="col-md-4">
                             <h3>Inventory</h3>
                             { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY"].map((slot) => {
                                 return Object.keys(user.condensedInventory).map((itemKey) => {
