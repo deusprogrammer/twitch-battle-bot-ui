@@ -2,17 +2,17 @@ import React from 'react';
 
 const colors = ["white", "yellow", "orange", "red"];
 const elementColors = {
-    "HEALING": {b: "green !important", c: "white !important"},
-    "BUFFING": {b: "green !important", c: "white !important"},
-    "CLEANSING": {b: "green !important", c: "white !important"},
-    "FIRE": {b: "red !important", c: "white !important"},
-    "ICE": {b: "blue !important", c: "white !important"},
-    "WATER": {b: "lightblue !important", c: "white !important"},
-    "LIGHTNING": {b: "yellow !important", c: "lightgray !important"},
-    "EARTH": {b: "brown !important", c: "white !important"},
-    "DARK": {b: "purple !important", c: "white !important"},
-    "LIGHT": {b: "gold !important", c: "white !important"},
-    "NONE": {b: "white !important", c: "black !important"}
+    "HEALING": {b: "green", c: "white"},
+    "BUFFING": {b: "green", c: "white"},
+    "CLEANSING": {b: "green", c: "white"},
+    "FIRE": {b: "red", c: "white"},
+    "ICE": {b: "blue", c: "white"},
+    "WATER": {b: "lightblue", c: "white"},
+    "LIGHTNING": {b: "yellow", c: "lightgray"},
+    "EARTH": {b: "brown", c: "white"},
+    "DARK": {b: "purple", c: "white"},
+    "LIGHT": {b: "gold", c: "white"},
+    "NONE": {b: "white", c: "black"}
 }
 
 export default (props) => {
@@ -20,7 +20,7 @@ export default (props) => {
     const abilityTable = props.abilityTable;
     const elementColor = elementColors[ability.element];
     const backgroundColor = elementColor.b;
-    const color = elementColors.c;
+    const color = elementColor.c;
     return (
         <div className="item" style={{backgroundColor, color}}>
             <div className="item-inner">
@@ -29,7 +29,7 @@ export default (props) => {
                     <div className="item-header"><span className="item-name">{ability.name}</span><span className="item-type">{ability.element.toLowerCase()}</span></div>
                     <div className="item-description">{ability.description}</div>
                     <div className="item-stats">
-                        <div>{ability.dmg ? `${ability.dmg} ${ability.element} damage` : `${ability.buffs} for ${ability.buffsDuration}`}</div>
+                        <div>{!ability.buffs ? `${ability.dmg} ${ability.element.toLowerCase()} damage` : `${ability.buffs} for ${ability.buffsDuration}`}</div>
                         {["STR", "DEX", "INT", "HIT", "AC"].map((modStat) => {
                             return <div style={{float: "left"}} className={ability.toHitStat === modStat ? "item-stat-highlight" : "item-stat"}>{modStat}: {ability.mods[modStat.toLowerCase()]}</div>
                         })}
