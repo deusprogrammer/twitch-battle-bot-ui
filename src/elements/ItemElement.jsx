@@ -67,7 +67,7 @@ export default (props) => {
                 message = <div>{`Heals ${ability.dmg} damage to ${target}.`}</div>
                 break;
             default:
-                message = <div>{`${ability.dmg} ${ability.element.toLowerCase()} ${ability.dmgStat} damage ${ability.procTime > 0 ? ` every ${ability.procTime} ticks for ${ability.maxProcs} ticks` : ''} to ${target}`}</div>
+                message = <div>{`${ability.dmg} ${ability.element !== "NONE" ? ability.element.toLowerCase() : ''} ${ability.dmgStat} damage ${ability.procTime > 0 ? ` every ${ability.procTime} ticks for ${ability.maxProcs} ticks` : ''} to ${target}`}</div>
                 break;
         }
     }
