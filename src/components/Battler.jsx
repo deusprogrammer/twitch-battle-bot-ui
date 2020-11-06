@@ -228,14 +228,6 @@ export default class Battler extends React.Component {
                                             <th>Target</th>
                                             <th>Area</th>
                                             <th>Element</th>
-                                            <th>HP Mod</th>
-                                            <th>STR Mod</th>
-                                            <th>DEX Mod</th>
-                                            <th>INT Mod</th>
-                                            <th>HIT Mod</th>
-                                            <th>AC Mod</th>
-                                            <th>Buffs</th>
-                                            <th>Duration</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -258,14 +250,6 @@ export default class Battler extends React.Component {
                                                             <td>{ability.target}</td>
                                                             <td>{ability.area}</td>
                                                             <td>{ability.element}</td>
-                                                            <td style={{textAlign: "center"}}>{ability.mods.hp}</td>
-                                                            <td style={{textAlign: "center"}}>{ability.mods.str}</td>
-                                                            <td style={{textAlign: "center"}}>{ability.mods.dex}</td>
-                                                            <td style={{textAlign: "center"}}>{ability.mods.int}</td>
-                                                            <td style={{textAlign: "center"}}>{ability.mods.hit}</td>
-                                                            <td style={{textAlign: "center"}}>{ability.mods.ac}</td>
-                                                            <td style={{textAlign: "center"}}>{ability.buffs}</td>
-                                                            <td style={{textAlign: "center"}}>{ability.buffsDuration}</td>
                                                             <td>
                                                                 <button onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
                                                             </td>
