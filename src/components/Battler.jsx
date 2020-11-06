@@ -266,26 +266,26 @@ export default class Battler extends React.Component {
                             </table> : null 
                         }
                     </div>
-                </div>
-                <div>
-                    <h3>Inventory</h3>
-                    { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY"].map((slot) => {
-                        return Object.keys(user.condensedInventory).map((itemKey) => {
-                            const item = user.condensedInventory[itemKey].item;
-                            const count = user.condensedInventory[itemKey].count;
-                            if (item.slot.toUpperCase() !== slot) {
-                                return;
-                            }
-                            return (
-                                <ItemElement 
-                                    item={item} 
-                                    abilityTable={this.abilityTable} 
-                                    count={count} 
-                                    onEquip={(item) => {this.equipItemOnUser(item)}} 
-                                    onSell={(item) => {this.sellItem(item)}} />
-                            )
-                        })}
-                    )}
+                    <div style={{float: "left"}}>
+                        <h3>Inventory</h3>
+                        { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY"].map((slot) => {
+                            return Object.keys(user.condensedInventory).map((itemKey) => {
+                                const item = user.condensedInventory[itemKey].item;
+                                const count = user.condensedInventory[itemKey].count;
+                                if (item.slot.toUpperCase() !== slot) {
+                                    return;
+                                }
+                                return (
+                                    <ItemElement 
+                                        item={item} 
+                                        abilityTable={this.abilityTable} 
+                                        count={count} 
+                                        onEquip={(item) => {this.equipItemOnUser(item)}} 
+                                        onSell={(item) => {this.sellItem(item)}} />
+                                )
+                            })}
+                        )}
+                    </div>
                 </div>
             </div>
         );
