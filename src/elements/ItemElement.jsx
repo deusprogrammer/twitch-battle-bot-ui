@@ -2,7 +2,7 @@ import React from 'react';
 import ReactToolTip from 'react-tooltip';
 import AbilityElement from './AbilityElement';
 
-const colors = ["white", "blue", "yellow", "orange", "red"];
+const colors = ["lightgray", "white", "yellow", "orange", "red"];
 const elementColors = {
     "HEALING": {b: "green", c: "white"},
     "BUFFING": {b: "green", c: "white"},
