@@ -23,10 +23,35 @@ export default (props) => {
     let value = item.ac || item.dmg || item.use;
     let rarity = [];
     let message = ``;
+    let target = ``;
     for (let i = 0; i < item.rarity; i++) {
         let color = colors[Math.floor(i/5)];
         console.log("COLOR: " + color);
         rarity.push(<span style={{color}}>*</span>);
+    }
+
+    switch (ability.target) {
+        case "ENEMY":
+            if (ability.area === "ALL") {
+                target = "all enemies";
+            } else {
+                target = "one enemy";
+            }
+            break;
+        case "CHAT":
+            if (ability.area === "ALL") {
+                target = "all players";
+            } else {
+                target = "one player";
+            }
+            break;
+        case "ANY":
+            if (ability.area === "ALL") {
+                target = "all enemies and players";
+            } else {
+                target = "one enemy or player";
+            }
+            break;
     }
 
     if (item.type === "consumable") {
