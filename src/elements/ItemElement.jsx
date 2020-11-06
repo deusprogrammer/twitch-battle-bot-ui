@@ -89,7 +89,7 @@ export default (props) => {
                     { item.type !== "consumable" ? 
                         <div>
                             <div className="item-triggers">
-                                <div style={{float: "left", padding: "3px"}}><b>Triggers:</b></div>
+                                <div style={{float: "left"}}><b>Triggers:</b></div>
                                 {item.triggers.map((trigger, index) => {
                                     let ability = abilityTable[trigger.abilityId];
                                     let elementColor = elementColors[ability.element];
@@ -112,7 +112,7 @@ export default (props) => {
                             </div>
                             <div style={{clear: "both"}} />
                             <div className="item-abilities">
-                                <div style={{float: "left", padding: "3px"}}><b>Abilities:</b></div>
+                                <div style={{float: "left"}}><b>Abilities:</b></div>
                                 {item.abilities.map((abilityName, index) => {
                                     let ability = abilityTable[abilityName];
                                     let elementColor = elementColors[ability.element];
@@ -134,7 +134,7 @@ export default (props) => {
                             </div>
                             <div style={{clear: "both"}} />
                             <div className="item-stats">
-                                <div style={{float: "left", padding: "3px"}}><b>Stat Mods:</b></div>
+                                <div style={{float: "left", height: "25px", lineHeight: "25px"}}><b>Stat Mods:</b></div>
                                 {["STR", "DEX", "INT", "HIT", "AC"].map((modStat) => {
                                     return <div style={{float: "left"}} className={item.type !== "armor" && item.toHitStat === modStat ? "item-stat-highlight" : "item-stat"}>{modStat}: {item.mods[modStat.toLowerCase()]}</div>
                                 })}

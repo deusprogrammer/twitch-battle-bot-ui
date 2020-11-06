@@ -74,7 +74,7 @@ let AbilityElement = (props) => {
                     <div className="item-use"><b>Effect: </b>{message}</div>
                     <div style={{clear: "both"}} />
                     <div className="item-triggers">
-                        <div style={{float: "left", padding: "3px"}}><b>Triggers:</b></div>
+                        <div style={{float: "left"}}><b>Triggers:</b></div>
                         {ability.triggers.map((trigger, index) => {
                             let ability = abilityTable[trigger.abilityId];
                             let elementColor = elementColors[ability.element];
@@ -96,7 +96,7 @@ let AbilityElement = (props) => {
                     </div>
                     <div style={{clear: "both"}} />
                     <div className="item-stats">
-                        <div style={{float: "left", padding: "3px"}}><b>Stat Mods:</b></div>
+                        <div style={{float: "left", height: "25px", lineHeight: "25px"}}><b>Stat Mods:</b></div>
                         {["STR", "DEX", "INT", "HIT", "AC"].map((modStat) => {
                             return <div style={{float: "left"}} className={ability.toHitStat === modStat ? "item-stat-highlight" : "item-stat"}>{modStat}: {ability.mods[modStat.toLowerCase()]}</div>
                         })}

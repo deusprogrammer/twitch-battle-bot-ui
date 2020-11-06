@@ -116,6 +116,8 @@ a:hover {
 .item-stat {
   margin: 5px;
   width: 75px;
+  height: 25px;
+  line-height: 25px;
   text-align: center;
   color: black;
   border: 1px solid black;
@@ -125,6 +127,8 @@ a:hover {
 .item-stat-highlight {
   margin: 5px;
   width: 75px;
+  height: 25px;
+  line-height: 25px;
   text-align: center;
   color: white;
   background-color: greenyellow;
