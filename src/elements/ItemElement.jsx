@@ -24,10 +24,13 @@ export default (props) => {
     let rarity = [];
     let message = ``;
     let target = ``;
-    for (let i = 0; i < item.rarity; i++) {
+    for (let i = 0; i < 20; i++) {
         let color = colors[Math.floor(i/5)];
-        console.log("COLOR: " + color);
-        rarity.push(<span style={{color}}>&#9734;</span>);
+        if (i < item.rarity) {
+            rarity.push(<span style={{color}}>&#9733;</span>);    
+        } else {
+            rarity.push(<span style={{color}}>&#9734;</span>);
+        }
     }
 
     if (item.type === "consumable") {
@@ -131,7 +134,7 @@ export default (props) => {
                             </div>
                             <div style={{clear: "both"}} />
                             <div className="item-stats">
-                                <div style={{float: "left", padding: "3px", height: "50px", lineHeight: "50px"}}><b>Stat Mods:</b></div>
+                                <div style={{float: "left", padding: "3px"}}><b>Stat Mods:</b></div>
                                 {["STR", "DEX", "INT", "HIT", "AC"].map((modStat) => {
                                     return <div style={{float: "left"}} className={item.type !== "armor" && item.toHitStat === modStat ? "item-stat-highlight" : "item-stat"}>{modStat}: {item.mods[modStat.toLowerCase()]}</div>
                                 })}

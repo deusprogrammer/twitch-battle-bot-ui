@@ -96,7 +96,6 @@ a:hover {
 .item-stat {
   margin: 5px;
   width: 50px;
-  height: 50px;
   line-height: 50px;
   text-align: center;
   color: black;
@@ -107,7 +106,6 @@ a:hover {
 .item-stat-highlight {
   margin: 5px;
   width: 50px;
-  height: 50px;
   line-height: 50px;
   text-align: center;
   color: white;
