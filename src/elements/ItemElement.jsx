@@ -18,22 +18,20 @@ export default (props) => {
                         <div>
                             <div className="item-stats">
                                 <div>{value} <strong>{(item.ac ? "armor " : null) || (item.dmg ? ` damage to ${item.dmgStat}` : null) || (item.use ? ` use to use ${item.use}` : null)} </strong></div>
-                                {["STR", "DEX", "INT"].map((modStat) => {
-                                    return <div style={{float: "left"}} className={item.type !== "armor" && item.toHitStat === modStat ? "item-stat-highlight" : "item-stat"}>{modStat}: {item.mods[modStat.toLowerCase()]}</div>
-                                })}
-                                <div style={{clear: "both"}} />
-                                {["HIT", "AC", "AP"].map((modStat) => {
+                                {["STR", "DEX", "INT", "HIT", "AC", "AP"].map((modStat) => {
                                     return <div style={{float: "left"}} className={item.type !== "armor" && item.toHitStat === modStat ? "item-stat-highlight" : "item-stat"}>{modStat}: {item.mods[modStat.toLowerCase()]}</div>
                                 })}
                             </div>
                             <div style={{clear: "both"}} />
                             <div className="item-triggers">
+                                <div style={{float: "left"}}>Triggers:</div>
                                 {item.triggers.map((trigger) => {
                                     return <div style={{float: "left"}}>{trigger.abilityId} ({trigger.chance}% chance)</div>
                                 })}
                             </div>
                             <div style={{clear: "both"}} />
                             <div className="item-abilities">
+                                <div style={{float: "left"}}>Abilities:</div>
                                 {item.abilities.map((ability) => {
                                     return <div style={{float: "left"}}>{ability.abilityId}</div>
                                 })}
