@@ -54,8 +54,8 @@ export default class Abilities extends React.Component {
                                     <AbilityElement 
                                         ability={ability} 
                                         abilityTable={this.abilityTable} 
-                                        onGetId={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}} 
-                                        onClick={() => {this.goTo(ability)}} />
+                                        onGetId={(ability) => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}} 
+                                        onEdit={(ability) => {this.goTo(ability)}} />
                                 )
                             })};
                     </div>

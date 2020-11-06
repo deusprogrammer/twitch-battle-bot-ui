@@ -90,7 +90,10 @@ export default (props) => {
                     <div style={{clear: "both"}} />
                 </div>
             </div>
-            <div style={{textAlign: "center"}}>{props.onGetId ? <button onClick={() => {props.onGetId(ability)}}>Get Id</button> : null}</div>
+            <div style={{textAlign: "center"}}>
+                {props.onGetId ? <button onClick={() => {props.onGetId(ability)}}>Get Id</button> : null}
+                {props.onEdit ? <button onClick={() => {props.onEdit(ability)}}>Edit</button> : null}
+            </div>
         </div>
     );
 }

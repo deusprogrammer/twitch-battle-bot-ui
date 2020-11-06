@@ -224,11 +224,6 @@ export default class Battler extends React.Component {
                                         <tr>
                                             <th>Name</th>
                                             <th>AP Cost</th>
-                                            <th>Damage</th>
-                                            <th>Damage Stat</th>
-                                            <th>Hit Modifier</th>
-                                            <th>Target</th>
-                                            <th>Area</th>
                                             <th>Element</th>
                                             <th></th>
                                         </tr>
@@ -241,21 +236,24 @@ export default class Battler extends React.Component {
                                                 }
 
                                                 return (
-                                                    <tr 
-                                                        title={ability.description}
-                                                        key={`ability-${ability.id}`}>
-                                                            <td>{ability.name}</td>
-                                                            <td>{ability.ap}</td>
-                                                            <td>{ability.dmg}</td>
-                                                            <td>{ability.dmgStat}</td>
-                                                            <td>{ability.toHitStat}</td>
-                                                            <td>{ability.target}</td>
-                                                            <td>{ability.area}</td>
-                                                            <td>{ability.element}</td>
-                                                            <td>
-                                                                <button onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
-                                                            </td>
-                                                    </tr>
+                                                    <React.Fragment>
+                                                        <tr data-tip
+                                                            data-for={`${ability}-tip`}
+                                                            title={ability.description}
+                                                            key={`ability-${ability.id}`}>
+                                                                <td>{ability.name}</td>
+                                                                <td>{ability.ap}</td>
+                                                                <td>{ability.element}</td>
+                                                                <td>
+                                                                    <button onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
+                                                                </td>
+                                                        </tr>
+                                                        <ReactToolTip id={`${ability}-tip`} place="top" effect="solid">
+                                                            <AbilityElement 
+                                                                ability={ability} 
+                                                                abilityTable={this.abilityTable} />
+                                                        </ReactToolTip>
+                                                    </React.Fragment>
                                                 )
                                             })
                                         })}
