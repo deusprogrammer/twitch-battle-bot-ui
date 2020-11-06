@@ -73,6 +73,10 @@ a:hover {
   box-sizing: border-box;
 }
 
+.battler-section {
+  float: left;
+}
+
 @media screen and (min-width: 480px) {
   .item-image {
     width: 200px;
@@ -100,6 +104,10 @@ a:hover {
 
   h1, h2, h3 {
     text-align: center;
+  }
+
+  .battler-section {
+    margin-left: 10px;
   }
 }
 
