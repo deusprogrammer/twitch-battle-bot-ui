@@ -152,7 +152,7 @@ export default class Battler extends React.Component {
 
         return (
             <div>
-                <div className="container">
+                <div>
                     <h1>{user.name}</h1>
                     <div className="row">
                         <div className="col-md-1">
