@@ -89,6 +89,10 @@ a:hover {
   vertical-align: middle;
 }
 
+.item-use {
+  overflow-wrap: normal;
+}
+
 .item-stat {
   margin: 5px;
   width: 50px;
