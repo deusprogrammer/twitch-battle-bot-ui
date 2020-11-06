@@ -112,3 +112,15 @@ a:hover {
   font-size: smaller;
   font-style: italic;
 }
+
+.action-trigger {
+  color: white;
+  padding: 3px;
+  border-radius: 20px;
+}
+
+.action-ability {
+  color: white;
+  padding: 3px;
+  border-radius: 20px;
+}

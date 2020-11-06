@@ -1,10 +1,25 @@
 import React from 'react';
 
+const colors = ["white", "yellow", "orange", "red"];
+const elementColors = {
+    "HEALING": {b: "green", c: "white"},
+    "BUFFING": {b: "green", c: "white"},
+    "CLEANSING": {b: "green", c: "white"},
+    "FIRE": {b: "red", c: "white"},
+    "ICE": {b: "blue", c: "white"},
+    "WATER": {b: "lightblue", c: "white"},
+    "LIGHTNING": {b: "yellow", c: "lightgray"},
+    "EARTH": {b: "brown", c: "white"},
+    "DARK": {b: "purple", c: "white"},
+    "LIGHT": {b: "gold", c: "white"},
+    "NONE": {b: "white", c: "black"}
+}
+
 export default (props) => {
     const item = props.item;
+    const abilityTable = props.abilityTable;
     let value = item.ac || item.dmg || item.use;
     let rarity = [];
-    let colors = ["white", "yellow", "orange", "red"];
     for (let i = 0; i < item.rarity; i++) {
         let color = colors[Math.floor(i/5)];
         console.log("COLOR: " + color);
@@ -27,16 +42,25 @@ export default (props) => {
                             </div>
                             <div style={{clear: "both"}} />
                             <div className="item-triggers">
-                                <div style={{float: "left"}}>Triggers:</div>
+                                <div style={{float: "left", padding: "3px"}}>Triggers:</div>
                                 {item.triggers.map((trigger) => {
-                                    return <div className="action-trigger" style={{float: "left"}}>{trigger.abilityId} ({trigger.chance}% chance)</div>
+                                    let ability = abilityTable[trigger.abilityId];
+                                    let ability = abilityTable[abilityName];
+                                    let elementColor = elementColors[ability.element];
+                                    let color = elementColor.c;
+                                    let backgroundColor = elementColor.b;
+                                    return <div className="action-trigger" style={{float: "left", color, backgroundColor}}>{ability.name} ({trigger.chance}%)</div>
                                 })}
                             </div>
                             <div style={{clear: "both"}} />
                             <div className="item-abilities">
-                                <div style={{float: "left"}}>Abilities:</div>
-                                {item.abilities.map((ability) => {
-                                    return <div className="action-trigger" style={{float: "left"}}>{ability.abilityId}</div>
+                                <div style={{float: "left", padding: "3px"}}>Abilities:</div>
+                                {item.abilities.map((abilityName) => {
+                                    let ability = abilityTable[abilityName];
+                                    let elementColor = elementColors[ability.element];
+                                    let color = elementColor.c;
+                                    let backgroundColor = elementColor.b;
+                                    return <div className="action-ability" style={{float: "left", color, backgroundColor}}>{ability.name}</div>
                                 })}
                             </div>
                         </div>                   

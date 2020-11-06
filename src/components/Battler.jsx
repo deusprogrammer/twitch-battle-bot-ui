@@ -26,9 +26,9 @@ export default class Battler extends React.Component {
     }
 
     getUser = async (username) => {
-        let itemTable = await ApiHelper.getItemTable();
-        let jobTable = await ApiHelper.getJobTable();
-        let abilityTable = await ApiHelper.getAbilityTable();
+        let itemTable = this.itemTable = await ApiHelper.getItemTable();
+        let jobTable = this.jobTable = await ApiHelper.getJobTable();
+        let abilityTable = this.abilityTable = await ApiHelper.getAbilityTable();
         let user = await ApiHelper.getUser(username);
         return ApiHelper.expandUser(user, {itemTable, jobTable, abilityTable});
     }
@@ -305,7 +305,7 @@ export default class Battler extends React.Component {
                                     return;
                                 }
                                 return (
-                                    <ItemElement item={item} />
+                                    <ItemElement item={item} abilityTable={this.abilityTable} count={count} />
                                 )
                             })}
                         )}
