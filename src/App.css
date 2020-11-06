@@ -84,6 +84,14 @@ a:hover {
   .item-image {
     display: none;
   }
+
+  .item-header {
+    text-align: center;
+  }
+
+  .item-description {
+    text-align: center;
+  }
 }
 
 .item-details {
@@ -123,7 +131,6 @@ a:hover {
 }
 
 .item-description {
-  height: 50px;
 }
 
 .item-type {
