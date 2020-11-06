@@ -17,6 +17,7 @@ const elementColors = {
 
 export default (props) => {
     const ability = props.ability;
+    const abilityTable = props.abilityTable;
     const elementColor = elementColors[ability.element];
     const backgroundColor = elementColor.b;
     const color = elementColors.c;
