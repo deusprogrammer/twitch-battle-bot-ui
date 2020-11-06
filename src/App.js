@@ -19,8 +19,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import axios from 'axios';
 
-window.onblur = function() {window.onfocus = function () {window.location.reload(true)}};
-
 class App extends React.Component {
     state = {
         isAdmin: false

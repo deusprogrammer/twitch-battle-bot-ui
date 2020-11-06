@@ -129,6 +129,8 @@ export default class Battler extends React.Component {
     }
 
     async componentDidMount() {
+        window.onblur = function() {window.onfocus = function () {window.location.reload(true)}};
+        
         let username = this.props.match.params.id;
         if (!this.props.match.params.id) {
             username = "self";
