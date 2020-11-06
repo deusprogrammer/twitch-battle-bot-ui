@@ -70,8 +70,8 @@ let AbilityElement = (props) => {
                 <div className="item-details">
                     <div className="item-header"><span className="item-name">{ability.name}</span><span className="item-type">{ability.element.toLowerCase()}</span></div>
                     <div className="item-description">{ability.description}</div>
-                    <div className="item-cost"><strong>Cost: </strong>{ability.ap} AP</div>
-                    <div className="item-use"><strong>Use: </strong>{message}</div>
+                    <div className="item-cost"><b>Cost: </b>{ability.ap} AP</div>
+                    <div className="item-use"><b>Use: </b>{message}</div>
                     <div className="item-stats">
                         {["STR", "DEX", "INT", "HIT", "AC"].map((modStat) => {
                             return <div style={{float: "left"}} className={ability.toHitStat === modStat ? "item-stat-highlight" : "item-stat"}>{modStat}: {ability.mods[modStat.toLowerCase()]}</div>

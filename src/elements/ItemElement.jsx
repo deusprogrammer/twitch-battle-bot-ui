@@ -80,12 +80,13 @@ export default (props) => {
                     <div className="item-header"><span className="item-name">{item.name}</span><span className="item-type">{item.slot !== "hand" ? item.slot : null} {item.type}</span></div>
                     <div className="item-description">{item.description}</div>
                     { item.type === "consumable" ?
-                        <div className="item-use"><strong>Use: </strong>{message}</div>
-                    : null}
+                        <div className="item-use"><b>Use: </b>{message}</div>
+                        : 
+                        <div><b>Value: </b>{value} <b>{(item.ac ? "armor " : null) || (item.dmg ? ` damage to ${item.dmgStat}` : null) || (item.use ? ` use to use ${item.use}` : null)} </b></div>}
                     { item.type !== "consumable" ? 
                         <div>
+                            
                             <div className="item-stats">
-                                <div>{value} <strong>{(item.ac ? "armor " : null) || (item.dmg ? ` damage to ${item.dmgStat}` : null) || (item.use ? ` use to use ${item.use}` : null)} </strong></div>
                                 {["STR", "DEX", "INT", "HIT", "AC"].map((modStat) => {
                                     return <div style={{float: "left"}} className={item.type !== "armor" && item.toHitStat === modStat ? "item-stat-highlight" : "item-stat"}>{modStat}: {item.mods[modStat.toLowerCase()]}</div>
                                 })}
@@ -130,7 +131,7 @@ export default (props) => {
                         </div>                   
                     : null}
                     <div style={{clear: "both"}} />
-                    <div className="item-value"><span><strong>Value:</strong> {item.value} gold</span><span style={{"marginLeft": "5px"}}><strong>Rarity:</strong> {rarity}</span></div>
+                    <div className="item-value"><span><b>Value:</b> {item.value} gold</span><span style={{"marginLeft": "5px"}}><b>Rarity:</b> {rarity}</span></div>
                 </div>
                 {props.count ? <div className="item-count">X{props.count}</div> : null}
             </div>
