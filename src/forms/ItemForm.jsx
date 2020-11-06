@@ -276,7 +276,7 @@ export default class ItemForm extends React.Component {
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <button onClick={() => this.removeTrigger(index)}>Remove</button>
+                                                    <button type="button" class="btn btn-primary" onClick={() => this.removeTrigger(index)}>Remove</button>
                                                 </td>
                                             </tr>
                                         </Scope>
@@ -284,7 +284,7 @@ export default class ItemForm extends React.Component {
                                 )
                             })}
                             <tr>
-                                <td><button onClick={() => {this.addTrigger()}} type="button">Add New Trigger</button></td>
+                                <td><button type="button" class="btn btn-primary" onClick={() => {this.addTrigger()}}>Add New Trigger</button></td>
                             </tr>
                         </fieldset>
                         <Relevant when={({values}) => values.type !== "consumable"}>
@@ -359,14 +359,14 @@ export default class ItemForm extends React.Component {
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <button onClick={() => this.removeAbility(index)} type="button">Remove</button>
+                                                    <button type="button" class="btn btn-primary" onClick={() => this.removeAbility(index)}>Remove</button>
                                                 </td>
                                             </tr>
                                         </fieldset>
                                     )})
                                 }
                                 <tr>
-                                    <td><button onClick={() => {this.addAbility()}} type="button">Add New Ability</button></td>
+                                    <td><button type="button" class="btn btn-primary" onClick={() => {this.addAbility()}}>Add New Ability</button></td>
                                 </tr>
                             </fieldset>
                         </Relevant>
@@ -375,7 +375,7 @@ export default class ItemForm extends React.Component {
                         </fieldset> */}
                     </tbody>
                 </table>
-                <button type="submit">Submit</button>
+                <button class="btn btn-primary" type="submit">Submit</button>
             </Form>
         )
     }

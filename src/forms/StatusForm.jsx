@@ -115,7 +115,7 @@ export default class StatusForm extends React.Component {
                         </fieldset>
                     </tbody>
                 </table>
-                <button type="submit">Submit</button>
+                <button class="btn btn-primary" type="submit">Submit</button>
             </Form>
         )
     }

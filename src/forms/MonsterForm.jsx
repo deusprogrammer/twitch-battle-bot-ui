@@ -217,7 +217,7 @@ export default class MonsterForm extends React.Component {
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <button onClick={() => this.removeAction(index)}>Remove</button>
+                                                    <button type="button" class="btn btn-primary" onClick={() => this.removeAction(index)}>Remove</button>
                                                 </td>
                                             </tr>
                                         </Scope>
@@ -225,7 +225,7 @@ export default class MonsterForm extends React.Component {
                                 )
                             })}
                             <tr>
-                                <td><button onClick={() => {this.addAction()}} type="button">Add New Action</button></td>
+                                <td><button type="button" class="btn btn-primary" onClick={() => {this.addAction()}}>Add New Action</button></td>
                             </tr>
                         </fieldset>
                         <fieldset>
@@ -284,7 +284,7 @@ export default class MonsterForm extends React.Component {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <button onClick={() => {this.removeDrop(index)}} type="button">Remove</button>
+                                                <button type="button" class="btn btn-primary" onClick={() => {this.removeDrop(index)}}>Remove</button>
                                             </td>
                                         </tr>
                                     </Scope>
@@ -292,12 +292,12 @@ export default class MonsterForm extends React.Component {
                                 )
                             })}
                             <tr>
-                                <td><button onClick={() => {this.addDrop()}} type="button">Add New Drop</button></td>
+                                <td><button type="button" class="btn btn-primary" onClick={() => {this.addDrop()}}>Add New Drop</button></td>
                             </tr>
                         </fieldset>
                     </tbody>
                 </table>
-                <button type="submit">Submit</button>
+                <button class="btn btn-primary" type="submit">Submit</button>
             </Form>
         )
     }

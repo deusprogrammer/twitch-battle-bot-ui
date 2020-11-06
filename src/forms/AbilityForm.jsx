@@ -246,7 +246,7 @@ export default class AbilityForm extends React.Component {
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <button onClick={() => this.removeTrigger(index)}>Remove</button>
+                                                    <button type="button" class="btn btn-primary" onClick={() => this.removeTrigger(index)}>Remove</button>
                                                 </td>
                                             </tr>
                                         </Scope>
@@ -254,7 +254,7 @@ export default class AbilityForm extends React.Component {
                                 )
                             })}
                             <tr>
-                                <td><button onClick={() => {this.addTrigger()}} type="button">Add New Trigger</button></td>
+                                <td><button type="button" class="btn btn-primary" onClick={() => {this.addTrigger()}}>Add New Trigger</button></td>
                             </tr>
                         </fieldset>
                         <Relevant when={({values}) => values.element && !["BUFFING", "CLEANSING"].includes(values.element)}>
@@ -296,7 +296,7 @@ export default class AbilityForm extends React.Component {
                         </Relevant>
                     </tbody>
                 </table>
-                <button type="submit">Submit</button>
+                <button class="btn btn-primary" type="submit">Submit</button>
             </Form>
         )
     }

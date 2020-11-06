@@ -250,7 +250,7 @@ export default class Battler extends React.Component {
                                                             <td>{ability.ap}</td>
                                                             <td>{ability.element}</td>
                                                             <td>
-                                                                <button onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
+                                                                <button  type="button" class="btn btn-primary" onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
                                                             </td>
                                                     </tr>
                                                     <ReactToolTip id={`${ability.id}-tip`} place="right" effect="solid" delayHide={500} delayShow={500} delayUpdate={500}>
