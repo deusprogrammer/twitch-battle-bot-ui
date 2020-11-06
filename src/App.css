@@ -81,6 +81,10 @@ a:hover {
 }
 
 @media screen and (max-width: 480px) {
+  .item-details {
+    padding: 5px;
+  }
+
   .item-image {
     display: none !important;
   }
