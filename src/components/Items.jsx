@@ -4,6 +4,7 @@ import {toast} from 'react-toastify';
 import ApiHelper from '../utils/ApiHelper';
 
 import ItemForm from '../forms/ItemForm';
+import ItemElement from '../elements/ItemElement';
 
 export default class Items extends React.Component {
     state = {
@@ -44,6 +45,7 @@ export default class Items extends React.Component {
         document.title = `Items Admin`;
 
         let items = await ApiHelper.getItems();
+        this.abilityTable = await ApiHelper.getAbilityTable();
 
         items.forEach((item) => {
             if (!item.mods) {
@@ -97,56 +99,9 @@ export default class Items extends React.Component {
                     { this.state.items.length > 0 ? 
                     <div style={{float: "left"}}>
                         <h2>Item List</h2>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Type</th>
-                                    <th>Slot</th>
-                                    <th>Dungeon</th>
-                                    <th>Item Name</th>
-                                    <th>HP Mod</th>
-                                    <th>STR Mod</th>
-                                    <th>DEX Mod</th>
-                                    <th>INT Mod</th>
-                                    <th>HIT Mod</th>
-                                    <th>AC Mod</th>
-                                    <th>Value</th>
-                                    <th>Damage Stat</th>
-                                    <th>Hit Modifier</th>
-                                    <th>Rarity</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
                                 { this.state.items.map((item) => {
-                                    let value = item.ac || item.dmg || item.use;
-                                    return (
-                                        <tr 
-                                            title={item.description}
-                                            key={`item-${item.id}`}>
-                                                <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.type.toUpperCase()}</td>
-                                                <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{item.slot.toUpperCase()}</td>
-                                                <td style={{textAlign: "center"}}>{item.dungeon}</td>
-                                                <td>{item.name}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.hp}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.str}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.dex}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.int}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.hit}</td>
-                                                <td style={{textAlign: "center"}}>{item.mods.ac}</td>
-                                                <td style={{textAlign: "center"}}>{value} <strong>{(item.ac ? "AC" : null) || (item.dmg ? "DMG" : null)}</strong></td>
-                                                <td style={{textAlign: "center"}}>{item.dmgStat}</td>
-                                                <td style={{textAlign: "center"}}>{item.toHitStat}</td>
-                                                <td style={{textAlign: "center"}}>{item.rarity}</td>
-                                                <td>
-                                                    <button onClick={() => {this.goTo(item)}}>Edit</button>
-                                                    <button onClick={() => {navigator.clipboard.writeText(item.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
-                                                </td>
-                                        </tr>
-                                    )
+                                    <ItemElement item={item} abilityTable={this.abilityTable} />
                                 })}
-                            </tbody>
-                        </table>
                     </div> : null }
                     <div style={{float: "right"}}>
                         <h2>Create New Item</h2>
