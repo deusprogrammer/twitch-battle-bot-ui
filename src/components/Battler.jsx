@@ -153,8 +153,8 @@ export default class Battler extends React.Component {
         return (
             <div>
                 <div className="container">
+                    <h1>{user.name}</h1>
                     <div className="row">
-                        <h1>{user.name}</h1>
                         <div className="col">
                             <h3>Stats</h3>
                             <table>
