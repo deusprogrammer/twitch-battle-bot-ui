@@ -97,7 +97,7 @@ export default (props) => {
                                             <div data-tip data-for={`${item.name}-trigger-${index}`} className="action-trigger" style={{float: "left", cursor: "pointer", color, backgroundColor}}>
                                                 {ability.name} ({trigger.chance}%)
                                             </div>
-                                            <ReactToolTip id={`${item.name}-trigger-${index}`} effect="solid" delayHide={2000}>
+                                            <ReactToolTip id={`${item.name}-trigger-${index}`} effect="solid" delayHide={500}>
                                                 <AbilityElement ability={ability} abilityTable={abilityTable} />
                                             </ReactToolTip>
                                         </React.Fragment>)
@@ -114,7 +114,7 @@ export default (props) => {
                                     return (
                                         <React.Fragment>
                                             <div data-tip data-for={`${item.name}-ability-${index}`} className="action-ability" style={{float: "left", cursor: "pointer", color, backgroundColor}}>{ability.name}</div>
-                                            <ReactToolTip id={`${item.name}-ability-${index}`} effect="solid" delayHide={2000}>
+                                            <ReactToolTip id={`${item.name}-ability-${index}`} effect="solid" delayHide={500}>
                                                 <AbilityElement ability={ability} abilityTable={abilityTable} />
                                             </ReactToolTip>
                                         </React.Fragment>
