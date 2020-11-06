@@ -72,14 +72,9 @@ let AbilityElement = (props) => {
                     <div className="item-description">{ability.description}</div>
                     <div className="item-cost"><b>Cost: </b>{ability.ap} AP</div>
                     <div className="item-use"><b>Use: </b>{message}</div>
-                    <div className="item-stats">
-                        {["STR", "DEX", "INT", "HIT", "AC"].map((modStat) => {
-                            return <div style={{float: "left"}} className={ability.toHitStat === modStat ? "item-stat-highlight" : "item-stat"}>{modStat}: {ability.mods[modStat.toLowerCase()]}</div>
-                        })}
-                    </div>
                     <div style={{clear: "both"}} />
                     <div className="item-triggers">
-                        <div style={{float: "left", padding: "3px"}}>Triggers:</div>
+                        <div style={{float: "left", padding: "3px"}}><b>Triggers:</b></div>
                         {ability.triggers.map((trigger, index) => {
                             let ability = abilityTable[trigger.abilityId];
                             let elementColor = elementColors[ability.element];
@@ -93,6 +88,13 @@ let AbilityElement = (props) => {
                                     </ReactToolTip>
                                 </React.Fragment>
                             )
+                        })}
+                    </div>
+                    <div style={{clear: "both"}} />
+                    <div className="item-stats">
+                        <div style={{float: "left", padding: "3px"}}><b>Stat Mods:</b></div>
+                        {["STR", "DEX", "INT", "HIT", "AC"].map((modStat) => {
+                            return <div style={{float: "left"}} className={ability.toHitStat === modStat ? "item-stat-highlight" : "item-stat"}>{modStat}: {ability.mods[modStat.toLowerCase()]}</div>
                         })}
                     </div>
                     <div style={{clear: "both"}} />

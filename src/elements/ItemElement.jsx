@@ -82,18 +82,11 @@ export default (props) => {
                     { item.type === "consumable" ?
                         <div className="item-use"><b>Use: </b>{message}</div>
                         : 
-                        <div><b>Value: </b>{value} <b>{(item.ac ? "armor " : null) || (item.dmg ? ` damage to ${item.dmgStat}` : null) || (item.use ? ` use to use ${item.use}` : null)} </b></div>}
+                        <div><b>Value: </b>{value} <b>{(item.ac ? "armor" : null) || (item.dmg ? `damage to ${item.dmgStat}` : null)} </b></div>}
                     { item.type !== "consumable" ? 
                         <div>
-                            
-                            <div className="item-stats">
-                                {["STR", "DEX", "INT", "HIT", "AC"].map((modStat) => {
-                                    return <div style={{float: "left"}} className={item.type !== "armor" && item.toHitStat === modStat ? "item-stat-highlight" : "item-stat"}>{modStat}: {item.mods[modStat.toLowerCase()]}</div>
-                                })}
-                            </div>
-                            <div style={{clear: "both"}} />
                             <div className="item-triggers">
-                                <div style={{float: "left", padding: "3px"}}>Triggers:</div>
+                                <div style={{float: "left", padding: "3px"}}><b>Triggers:</b></div>
                                 {item.triggers.map((trigger, index) => {
                                     let ability = abilityTable[trigger.abilityId];
                                     let elementColor = elementColors[ability.element];
@@ -112,7 +105,7 @@ export default (props) => {
                             </div>
                             <div style={{clear: "both"}} />
                             <div className="item-abilities">
-                                <div style={{float: "left", padding: "3px"}}>Abilities:</div>
+                                <div style={{float: "left", padding: "3px"}}><b>Abilities:</b></div>
                                 {item.abilities.map((abilityName, index) => {
                                     let ability = abilityTable[abilityName];
                                     let elementColor = elementColors[ability.element];
@@ -128,10 +121,19 @@ export default (props) => {
                                     )
                                 })}
                             </div>
+                            <div style={{clear: "both"}} />
+                            <div className="item-stats">
+                                <div style={{float: "left", padding: "3px"}}><b>Stat Mods:</b></div>
+                                {["STR", "DEX", "INT", "HIT", "AC"].map((modStat) => {
+                                    return <div style={{float: "left"}} className={item.type !== "armor" && item.toHitStat === modStat ? "item-stat-highlight" : "item-stat"}>{modStat}: {item.mods[modStat.toLowerCase()]}</div>
+                                })}
+                            </div>
+                            <div style={{clear: "both"}} />
                         </div>                   
                     : null}
                     <div style={{clear: "both"}} />
-                    <div className="item-value"><span><b>Value:</b> {item.value} gold</span><span style={{"marginLeft": "5px"}}><b>Rarity:</b> {rarity}</span></div>
+                    <div className="item-value"><b>Value:</b> {item.value} gold</div>
+                    <div className="item-rarity"><b>Rarity:</b> {rarity}</div>
                 </div>
                 {props.count ? <div className="item-count">X{props.count}</div> : null}
             </div>
