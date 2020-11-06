@@ -29,7 +29,7 @@ export default (props) => {
         if (i < item.rarity) {
             rarity.push(<span style={{color}}>&#9733;</span>);    
         } else {
-            rarity.push(<span style={{color}}>&#9734;</span>);
+            rarity.push(<span style={{color: "white"}}>&#9734;</span>);
         }
     }
 
