@@ -52,7 +52,7 @@ export default (props) => {
                                     let backgroundColor = elementColor.b;
                                     return (
                                         <React.Fragment>
-                                            <div data-tip data-for={`${item.name}-trigger-${index}`} className="action-trigger" style={{float: "left", color, backgroundColor}}>
+                                            <div data-tip data-for={`${item.name}-trigger-${index}`} className="action-trigger" style={{float: "left", cursor: "pointer", color, backgroundColor}}>
                                                 {ability.name} ({trigger.chance}%)
                                             </div>
                                             <ReactToolTip id={`${item.name}-trigger-${index}`}>
@@ -69,7 +69,14 @@ export default (props) => {
                                     let elementColor = elementColors[ability.element];
                                     let color = elementColor.c;
                                     let backgroundColor = elementColor.b;
-                                    return <div className="action-ability" style={{float: "left", color, backgroundColor}}>{ability.name}</div>
+                                    return (
+                                        <React.Fragment>
+                                            <div data-tip data-for={`${item.name}-ability-${index}`} className="action-ability" style={{float: "left", cursor: "pointer", color, backgroundColor}}>{ability.name}</div>
+                                            <ReactToolTip id={`${item.name}-ability-${index}`}>
+                                                <AbilityElement ability={ability} abilityTable={abilityTable} />
+                                            </ReactToolTip>
+                                        </React.Fragment>
+                                    )
                                 })}
                             </div>
                         </div>                   
