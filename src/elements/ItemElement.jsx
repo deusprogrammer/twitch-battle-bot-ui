@@ -4,8 +4,9 @@ export default (props) => {
     const item = props.item;
     let value = item.ac || item.dmg || item.use;
     let rarity = [];
-    for (let i = 0; i < rarity; i++) {
-        rarity.push("*");
+    let colors = ["white", "yellow", "red", "purple"];
+    for (let i = 0; i < item.rarity; i++) {
+        rarity.push(<span style={{color: Math.floor(colors[i/5])}}>*</span>);
     }
     return (
         <div className="item">
@@ -26,20 +27,20 @@ export default (props) => {
                             <div className="item-triggers">
                                 <div style={{float: "left"}}>Triggers:</div>
                                 {item.triggers.map((trigger) => {
-                                    return <div style={{float: "left"}}>{trigger.abilityId} ({trigger.chance}% chance)</div>
+                                    return <div className="action-trigger" style={{float: "left"}}>{trigger.abilityId} ({trigger.chance}% chance)</div>
                                 })}
                             </div>
                             <div style={{clear: "both"}} />
                             <div className="item-abilities">
                                 <div style={{float: "left"}}>Abilities:</div>
                                 {item.abilities.map((ability) => {
-                                    return <div style={{float: "left"}}>{ability.abilityId}</div>
+                                    return <div className="action-trigger" style={{float: "left"}}>{ability.abilityId}</div>
                                 })}
                             </div>
                         </div>                   
                     : null}
                     <div style={{clear: "both"}} />
-                    <div className="item-value"><span>{item.value} gold</span><span>Rarity: {rarity.map((star) => {return (<span>star</span>);})}</span></div>
+                    <div className="item-value"><span>Value: {item.value} gold</span><span>Rarity: {rarity}</span></div>
                 </div>
             </div>
         </div>
