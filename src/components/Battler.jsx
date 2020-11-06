@@ -305,7 +305,7 @@ export default class Battler extends React.Component {
                                     return;
                                 }
                                 return (
-                                    <ItemElement item={item} abilityTable={this.abilityTable} count={count} />
+                                    <ItemElement item={item} abilityTable={this.abilityTable} count={count} onEquip={(item) => {this.equipItemOnUser(item)}} onSell={(item) => {this.sellItem(item)}} />
                                 )
                             })}
                         )}
