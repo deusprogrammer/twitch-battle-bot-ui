@@ -73,9 +73,17 @@ a:hover {
   box-sizing: border-box;
 }
 
-.item-image {
-  width: 200px;
-  vertical-align: middle;
+@media screen and (min-width: 480px) {
+  .item-image {
+    width: 200px;
+    vertical-align: middle;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .item-image {
+    display: none;
+  }
 }
 
 .item-details {
