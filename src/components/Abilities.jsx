@@ -4,6 +4,7 @@ import {toast} from 'react-toastify';
 import ApiHelper from '../utils/ApiHelper';
 
 import AbilityForm from '../forms/AbilityForm';
+import AbilityElement from '../elements/AbilityElement';
 
 export default class Abilities extends React.Component {
     state = {
@@ -13,6 +14,7 @@ export default class Abilities extends React.Component {
     componentDidMount = async () => {
         document.title = `Abilities Admin`;
         let abilities = await ApiHelper.getAbilities();
+        this.abilityTable = await ApiHelper.getAbilityTable();
 
         this.setState({abilities});
     }
@@ -47,58 +49,15 @@ export default class Abilities extends React.Component {
                 <div>
                     <div style={{float: "left"}}>
                         <h2>Abilities List</h2>
-                        {this.state.abilities.length > 0 ?
-                            <table style={{marginLeft: "10px"}}>
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>AP Cost</th>
-                                        <th>Damage</th>
-                                        <th>Damage Stat</th>
-                                        <th>Hit Modifier</th>
-                                        <th>Ignore DM</th>
-                                        <th>Target</th>
-                                        <th>Area</th>
-                                        <th>Element</th>
-                                        <th>STR Mod</th>
-                                        <th>INT Mod</th>
-                                        <th>HIT Mod</th>
-                                        <th>AC Mod</th>
-                                        <th>Buffs</th>
-                                        <th>Duration</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    { this.state.abilities.map((ability) => {
-                                        return (
-                                            <tr 
-                                                title={ability.description}
-                                                key={`ability-${ability.id}`}>
-                                                    <td>{ability.name}</td>
-                                                    <td>{ability.ap}</td>
-                                                    <td>{ability.dmg}</td>
-                                                    <td>{ability.dmgStat}</td>
-                                                    <td>{ability.toHitStat}</td>
-                                                    <td>{ability.ignoreDamageMods ? "Yes" : "No"}</td>
-                                                    <td>{ability.target}</td>
-                                                    <td>{ability.area}</td>
-                                                    <td>{ability.element}</td>
-                                                    <td style={{textAlign: "center"}}>{ability.mods.str}</td>
-                                                    <td style={{textAlign: "center"}}>{ability.mods.int}</td>
-                                                    <td style={{textAlign: "center"}}>{ability.mods.hit}</td>
-                                                    <td style={{textAlign: "center"}}>{ability.mods.ac}</td>
-                                                    <td style={{textAlign: "center"}}>{ability.buffs}</td>
-                                                    <td style={{textAlign: "center"}}>{ability.buffsDuration}</td>
-                                                    <td>
-                                                        <button onClick={() => {this.goTo(ability)}}>Edit</button>
-                                                        <button onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
-                                                    </td>
-                                            </tr>
-                                        )
-                                    })}
-                                </tbody>
-                            </table> : null }
+                            { this.state.abilities.map((ability) => {
+                                return (
+                                    <AbilityElement 
+                                        ability={ability} 
+                                        abilityTable={this.abilityTable} 
+                                        onGetId={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}} 
+                                        onClick={() => {this.goTo(ability)}} />
+                                )
+                            })};
                     </div>
                     <div style={{float: "right"}}>
                         <h2>Create New Ability</h2>

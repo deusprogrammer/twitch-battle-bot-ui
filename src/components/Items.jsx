@@ -100,7 +100,10 @@ export default class Items extends React.Component {
                     <div style={{float: "left"}}>
                         <h2>Item List</h2>
                         { this.state.items.map((item) => {
-                            return (<ItemElement item={item} abilityTable={this.abilityTable} />)
+                            return <ItemElement 
+                                        item={item} 
+                                        abilityTable={this.abilityTable} 
+                                        onClick={() => {this.goTo(item)}} />
                         })}
                     </div> : null }
                     <div style={{float: "right"}}>

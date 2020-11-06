@@ -207,7 +207,9 @@ export default class Battler extends React.Component {
                                                     <td>{item.name}</td>
                                                 </tr>
                                                 <ReactToolTip id={`${item.slot}-tip`} place="top" effect="solid">
-                                                    <ItemElement item={item} abilityTable={this.abilityTable} />
+                                                    <ItemElement 
+                                                        item={item} 
+                                                        abilityTable={this.abilityTable} />
                                                 </ReactToolTip>
                                             </React.Fragment>
                                         )
@@ -272,7 +274,12 @@ export default class Battler extends React.Component {
                                     return;
                                 }
                                 return (
-                                    <ItemElement item={item} abilityTable={this.abilityTable} count={count} onEquip={(item) => {this.equipItemOnUser(item)}} onSell={(item) => {this.sellItem(item)}} />
+                                    <ItemElement 
+                                        item={item} 
+                                        abilityTable={this.abilityTable} 
+                                        count={count} 
+                                        onEquip={(item) => {this.equipItemOnUser(item)}} 
+                                        onSell={(item) => {this.sellItem(item)}} />
                                 )
                             })}
                         )}
