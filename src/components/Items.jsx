@@ -99,13 +99,19 @@ export default class Items extends React.Component {
                     { this.state.items.length > 0 ? 
                     <div style={{float: "left"}}>
                         <h2>Item List</h2>
-                        { this.state.items.map((item) => {
-                            return <ItemElement 
-                                        item={item} 
-                                        abilityTable={this.abilityTable} 
-                                        onEdit={(item) => {this.goTo(item)}}
-                                        onGetId={(item) => {navigator.clipboard.writeText(item.id);toast("Copied id to clipboard", {type: "info"});}} 
-                                         />
+                        { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY"].map((slot) => {
+                            if (item.slot.toUpperCase() !== slot) {
+                                return;
+                            }
+
+                            return this.state.items.map((item) => {
+                                return <ItemElement 
+                                            item={item} 
+                                            abilityTable={this.abilityTable} 
+                                            onEdit={(item) => {this.goTo(item)}}
+                                            onGetId={(item) => {navigator.clipboard.writeText(item.id);toast("Copied id to clipboard", {type: "info"});}} 
+                                            />
+                            })
                         })}
                     </div> : null }
                     <div style={{float: "right"}}>

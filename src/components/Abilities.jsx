@@ -49,15 +49,21 @@ export default class Abilities extends React.Component {
                 <div>
                     <div style={{float: "left"}}>
                         <h2>Abilities List</h2>
-                            { this.state.abilities.map((ability) => {
-                                return (
-                                    <AbilityElement 
-                                        ability={ability} 
-                                        abilityTable={this.abilityTable} 
-                                        onGetId={(ability) => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}} 
-                                        onEdit={(ability) => {this.goTo(ability)}} />
-                                )
-                            })};
+                            { ["NONE", "FIRE", "ICE", "LIGHTNING", "WATER", "EARTH", "DARK", "LIGHT", "HEALING", "BUFFING", "CLEANSING"].map((element) => {
+                                return this.state.abilities.map((ability) => {
+                                    if (element !== ability.element) {
+                                        return;
+                                    }
+
+                                    return (
+                                        <AbilityElement 
+                                            ability={ability} 
+                                            abilityTable={this.abilityTable} 
+                                            onGetId={(ability) => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}} 
+                                            onEdit={(ability) => {this.goTo(ability)}} />
+                                    )
+                                });
+                            })}
                     </div>
                     <div style={{float: "right"}}>
                         <h2>Create New Ability</h2>
