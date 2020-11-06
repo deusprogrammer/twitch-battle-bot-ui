@@ -38,7 +38,8 @@ export default (props) => {
                             </div>
                         </div>                   
                     : null}
-                    <div className="item-value"><span>{item.value} gold</span><span>{rarity.map(star => star)}</span></div>
+                    <div style={{clear: "both"}} />
+                    <div className="item-value"><span>{item.value} gold</span><span>Rarity: {rarity.map((star) => {return (<span>star</span>);})}</span></div>
                 </div>
             </div>
         </div>
