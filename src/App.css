@@ -184,6 +184,10 @@ a:hover {
   font-style: italic;
 }
 
+.item-rarity > span {
+  font-size: x-large;
+}
+
 .action-trigger {
   color: white;
   padding: 5px;
