@@ -67,6 +67,7 @@ export default (props) => {
                     <div style={{clear: "both"}} />
                     <div className="item-value"><span><strong>Value:</strong> {item.value} gold</span><span style={{"marginLeft": "5px"}}><strong>Rarity:</strong> {rarity}</span></div>
                 </div>
+                <div className="item-count">X{props.count}</div>
             </div>
         </div>
     );

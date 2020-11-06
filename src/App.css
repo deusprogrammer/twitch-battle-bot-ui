@@ -75,7 +75,14 @@ a:hover {
 }
 
 .item-details {
-  width: 600px;
+  width: 580px;
+}
+
+.item-count {
+  width: 20px;
+  color: white;
+  font-weight: bolder;
+  vertical-align: "middle";
 }
 
 .item-stat {
