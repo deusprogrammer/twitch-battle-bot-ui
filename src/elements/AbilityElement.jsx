@@ -89,7 +89,7 @@ let AbilityElement = (props) => {
                                 <React.Fragment>
                                     <div data-tip data-for={`${ability.name}-trigger-${index}`} className="action-trigger" style={{float: "left", border: "1px solid black", color, backgroundColor}}>{ability.name} ({trigger.chance}%)</div>
                                     <ReactToolTip id={`${ability.name}-trigger-${index}`}>
-                                        <AbilityElement ability={trigger.ability} abilityTable={abilityTable} />
+                                        <AbilityElement ability={ability} abilityTable={abilityTable} />
                                     </ReactToolTip>
                                 </React.Fragment>
                             )

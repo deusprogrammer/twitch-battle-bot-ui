@@ -56,7 +56,7 @@ export default (props) => {
                                                 {ability.name} ({trigger.chance}%)
                                             </div>
                                             <ReactToolTip id={`${item.name}-trigger-${index}`}>
-                                                <AbilityElement ability={trigger.ability} abilityTable={abilityTable} />
+                                                <AbilityElement ability={ability} abilityTable={abilityTable} />
                                             </ReactToolTip>
                                         </React.Fragment>)
                                 })}
