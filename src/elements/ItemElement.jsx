@@ -69,7 +69,7 @@ export default (props) => {
                 </div>
                 {props.count ? <div className="item-count">X{props.count}</div> : null}
             </div>
-            <div style={{textAlign: "center"}}>{item.type !== "consumable" ? <button onClick={() => {props.onEquip(item)}}>Equip</button> : null}<button onClick={() => {props.onSell(item)}}>Sell</button></div>
+            <div style={{textAlign: "center"}}>{item.type !== "consumable" && props.onEquip ? <button onClick={() => {props.onEquip(item)}}>Equip</button> : null}{props.onEquip ? <button onClick={() => {props.onSell(item)}}>Sell</button> : null}</div>
         </div>
     );
 }
