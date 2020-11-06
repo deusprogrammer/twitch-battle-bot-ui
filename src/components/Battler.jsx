@@ -202,12 +202,6 @@ export default class Battler extends React.Component {
                                     <tr>
                                         <th>Slot</th>
                                         <th>Item Name</th>
-                                        <th>HP Mod</th>
-                                        <th>STR Mod</th>
-                                        <th>DEX Mod</th>
-                                        <th>INT Mod</th>
-                                        <th>HIT Mod</th>
-                                        <th>AC Mod</th>
                                         <th>Value</th>
                                     </tr>
                                 </thead>
@@ -220,12 +214,6 @@ export default class Battler extends React.Component {
                                                 <tr data-tip data-for={`${item.slot}-tip`} style={{cursor: "pointer"}}>
                                                     <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.toUpperCase()}</td>
                                                     <td>{item.name}</td>
-                                                    <td style={{textAlign: "center"}}>{item.mods.hp}</td>
-                                                    <td style={{textAlign: "center"}}>{item.mods.str}</td>
-                                                    <td style={{textAlign: "center"}}>{item.mods.dex}</td>
-                                                    <td style={{textAlign: "center"}}>{item.mods.int}</td>
-                                                    <td style={{textAlign: "center"}}>{item.mods.hit}</td>
-                                                    <td style={{textAlign: "center"}}>{item.mods.ac}</td>
                                                     <td style={{textAlign: "center"}}>{value} <strong>{(item.ac ? "AC" : null) || (item.dmg ? "DMG" : null)}</strong></td>
                                                 </tr>
                                                 <ReactToolTip id={`${item.slot}-tip`} place="top" effect="solid">
