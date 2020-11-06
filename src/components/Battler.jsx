@@ -217,7 +217,7 @@ export default class Battler extends React.Component {
                                         let value = item.ac || item.dmg || item.use;
                                         return (
                                             <React.Fragment>
-                                                <tr data-tip data-for={`${item.slot}-tip`} title={item.description}>
+                                                <tr data-tip data-for={`${item.slot}-tip`} style={{cursor: "pointer"}}>
                                                     <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.toUpperCase()}</td>
                                                     <td>{item.name}</td>
                                                     <td style={{textAlign: "center"}}>{item.mods.hp}</td>
