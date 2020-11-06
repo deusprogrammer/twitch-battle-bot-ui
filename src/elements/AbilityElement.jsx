@@ -21,6 +21,48 @@ export default (props) => {
     const elementColor = elementColors[ability.element];
     const backgroundColor = elementColor.b;
     const color = elementColor.c;
+    let message = ``;
+    let target = ``;
+
+    switch (ability.target) {
+        case "ENEMY":
+            if (ability.area === "ALL") {
+                target = "all enemies";
+            } else {
+                target = "one enemy";
+            }
+            break;
+        case "CHAT":
+            if (ability.area === "ALL") {
+                target = "all players";
+            } else {
+                target = "one player";
+            }
+            break;
+        case "ANY":
+            if (ability.area === "ALL") {
+                target = "all enemies and players";
+            } else {
+                target = "one enemy or player";
+            }
+            break;
+    }
+
+    switch (ability.element) {
+        case "CLEANSING":
+            message = <div>{`Cleanses ${ability.buffs}`}</div>
+            break;
+        case "BUFFING":
+            message = <div>{`${ability.buffs} for ${ability.buffsDuration} ticks`}</div>;
+            break;
+        case "HEALING":
+            message = <div>{`Heals ${ability.dmg} damage to ${target}.`}</div>
+            break;
+        default:
+            message = <div>{`${ability.dmg} ${ability.element.toLowerCase()} damage ${ability.procTime > 0 ? ` every ${ability.procTime} ticks for ${ability.maxProcs} ticks` : null} to ${target}`}</div>
+            break;
+    }
+
     return (
         <div className="item" style={{backgroundColor, color}}>
             <div className="item-inner">
@@ -29,7 +71,7 @@ export default (props) => {
                     <div className="item-header"><span className="item-name">{ability.name}</span><span className="item-type">{ability.element.toLowerCase()}</span></div>
                     <div className="item-description">{ability.description}</div>
                     <div className="item-stats">
-                        <div>{!ability.buffs ? `${ability.dmg} ${ability.element.toLowerCase()} damage` : `${ability.buffs} for ${ability.buffsDuration}`}</div>
+                        {message}
                         {["STR", "DEX", "INT", "HIT", "AC"].map((modStat) => {
                             return <div style={{float: "left"}} className={ability.toHitStat === modStat ? "item-stat-highlight" : "item-stat"}>{modStat}: {ability.mods[modStat.toLowerCase()]}</div>
                         })}
