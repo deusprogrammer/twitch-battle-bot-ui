@@ -198,23 +198,13 @@ export default class Battler extends React.Component {
                         <div style={{display: "table-cell", paddingRight: "50px"}}>
                             <h3>Equipment</h3>
                             <table style={{marginLeft: "10px"}}>
-                                <thead>
-                                    <tr>
-                                        <th>Slot</th>
-                                        <th>Item Name</th>
-                                        <th>Value</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
                                     { Object.keys(user.equipment).map((slot) => {
                                         let item = user.equipment[slot];
-                                        let value = item.ac || item.dmg || item.use;
                                         return (
                                             <React.Fragment>
                                                 <tr data-tip data-for={`${item.slot}-tip`} style={{cursor: "pointer"}}>
                                                     <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.toUpperCase()}</td>
                                                     <td>{item.name}</td>
-                                                    <td style={{textAlign: "center"}}>{value} <strong>{(item.ac ? "AC" : null) || (item.dmg ? "DMG" : null)}</strong></td>
                                                 </tr>
                                                 <ReactToolTip id={`${item.slot}-tip`} place="top" effect="solid">
                                                     <ItemElement item={item} abilityTable={this.abilityTable} />
@@ -222,7 +212,6 @@ export default class Battler extends React.Component {
                                             </React.Fragment>
                                         )
                                     })}
-                                </tbody>
                             </table>
                         </div>
                         <div style={{display: "table-cell", paddingRight: "50px"}}>
