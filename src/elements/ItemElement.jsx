@@ -85,7 +85,7 @@ export default (props) => {
                     { item.type === "consumable" ?
                         <div className="item-use"><b>Use: </b>{message}</div>
                         : 
-                        <div><b>Value: </b>{value} <b>{(item.ac ? "armor" : null) || (item.dmg ? `damage to ${item.dmgStat}` : null)} </b></div>}
+                        <div><b>Effect: </b>{value} <b>{(item.ac ? "armor" : null) || (item.dmg ? `damage to ${item.dmgStat}` : null)} </b></div>}
                     { item.type !== "consumable" ? 
                         <div>
                             <div className="item-triggers">

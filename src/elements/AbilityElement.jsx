@@ -71,7 +71,7 @@ let AbilityElement = (props) => {
                     <div className="item-header"><span className="item-name">{ability.name}</span><span className="item-type">{ability.element.toLowerCase()}</span></div>
                     <div className="item-description">{ability.description}</div>
                     <div className="item-cost"><b>Cost: </b>{ability.ap} AP</div>
-                    <div className="item-use"><b>Use: </b>{message}</div>
+                    <div className="item-use"><b>Effect: </b>{message}</div>
                     <div style={{clear: "both"}} />
                     <div className="item-triggers">
                         <div style={{float: "left", padding: "3px"}}><b>Triggers:</b></div>
