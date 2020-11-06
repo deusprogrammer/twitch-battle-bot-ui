@@ -6,7 +6,9 @@ export default (props) => {
     let rarity = [];
     let colors = ["white", "yellow", "red", "purple"];
     for (let i = 0; i < item.rarity; i++) {
-        rarity.push(<span style={{color: colors[Math.floor(colors[i/5])]}}>*</span>);
+        let color = colors[Math.floor(i/5)];
+        console.log("COLOR: " + color);
+        rarity.push(<span style={{color}}>*</span>);
     }
     return (
         <div className="item">
