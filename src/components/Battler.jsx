@@ -205,11 +205,15 @@ export default class Battler extends React.Component {
                                         let item = user.equipment[slot];
                                         return (
                                             <React.Fragment>
-                                                <tr data-tip data-for={`${item.slot}-tip`} style={{cursor: "pointer"}}>
-                                                    <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.toUpperCase()}</td>
-                                                    <td>{item.name}</td>
+                                                <tr 
+                                                    data-tip 
+                                                    data-for={`${item.slot}-tip`} 
+                                                    data-event="click" 
+                                                    style={{cursor: "pointer"}}>
+                                                        <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.toUpperCase()}</td>
+                                                        <td>{item.name}</td>
                                                 </tr>
-                                                <ReactToolTip id={`${item.slot}-tip`} effect="solid" delayHide={500}>
+                                                <ReactToolTip id={`${item.slot}-tip`} effect="solid">
                                                     <ItemElement 
                                                         item={item} 
                                                         abilityTable={this.abilityTable} />
@@ -242,6 +246,7 @@ export default class Battler extends React.Component {
                                                     <React.Fragment>
                                                         <tr data-tip
                                                             data-for={`${ability.id}-tip`}
+                                                            data-event="click"
                                                             style={{cursor: "pointer"}}
                                                             key={`ability-${ability.id}`}>
                                                                 <td>{ability.name}</td>
@@ -251,7 +256,7 @@ export default class Battler extends React.Component {
                                                                     <button onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
                                                                 </td>
                                                         </tr>
-                                                        <ReactToolTip id={`${ability.id}-tip`} effect="solid" delayHide={500}>
+                                                        <ReactToolTip id={`${ability.id}-tip`} effect="solid">
                                                             <AbilityElement 
                                                                 ability={ability} 
                                                                 abilityTable={this.abilityTable} />

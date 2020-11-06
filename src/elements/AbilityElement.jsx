@@ -82,10 +82,15 @@ let AbilityElement = (props) => {
                             let backgroundColor = elementColor.b;
                             return (
                                 <React.Fragment>
-                                    <div data-tip data-for={`${ability.name}-trigger-${index}`} className="action-trigger" style={{float: "left", border: "1px solid black", cursor: "pointer", color, backgroundColor}}>{ability.name} ({trigger.chance}%)</div>
-                                    <ReactToolTip id={`${ability.name}-trigger-${index}`} effect="solid" delayHide={500}>
-                                        <AbilityElement ability={ability} abilityTable={abilityTable} />
-                                    </ReactToolTip>
+                                    <div 
+                                        data-tip 
+                                        data-for={`${ability.name}-trigger-${index}`} 
+                                        data-event="click"
+                                        className="action-trigger" 
+                                        style={{float: "left", border: "1px solid black", cursor: "pointer", color, backgroundColor}}>{ability.name} ({trigger.chance}%)</div>
+                                            <ReactToolTip id={`${ability.name}-trigger-${index}`} effect="solid">
+                                                <AbilityElement ability={ability} abilityTable={abilityTable} />
+                                            </ReactToolTip>
                                 </React.Fragment>
                             )
                         })}
