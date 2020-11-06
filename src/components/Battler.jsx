@@ -130,7 +130,7 @@ export default class Battler extends React.Component {
 
     async componentDidMount() {
         window.onblur = function() {window.onfocus = function () {window.location.reload(true)}};
-        
+
         let username = this.props.match.params.id;
         if (!this.props.match.params.id) {
             username = "self";
@@ -241,7 +241,7 @@ export default class Battler extends React.Component {
                                                 return (
                                                     <React.Fragment>
                                                         <tr data-tip
-                                                            data-for={`${ability}-tip`}
+                                                            data-for={`${ability.id}-tip`}
                                                             style={{cursor: "pointer"}}
                                                             key={`ability-${ability.id}`}>
                                                                 <td>{ability.name}</td>
@@ -251,7 +251,7 @@ export default class Battler extends React.Component {
                                                                     <button onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
                                                                 </td>
                                                         </tr>
-                                                        <ReactToolTip id={`${ability}-tip`} place="top" effect="solid">
+                                                        <ReactToolTip id={`${ability.id}-tip`} place="top" effect="solid">
                                                             <AbilityElement 
                                                                 ability={ability} 
                                                                 abilityTable={this.abilityTable} />
