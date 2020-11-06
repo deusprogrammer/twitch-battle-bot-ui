@@ -4,7 +4,7 @@ export default (props) => {
     const item = props.item;
     let value = item.ac || item.dmg || item.use;
     let rarity = [];
-    let colors = ["white", "yellow", "red", "purple"];
+    let colors = ["white", "yellow", "orange", "red"];
     for (let i = 0; i < item.rarity; i++) {
         let color = colors[Math.floor(i/5)];
         console.log("COLOR: " + color);
