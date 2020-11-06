@@ -28,7 +28,7 @@ export default (props) => {
     return (
         <div className="item">
             <div className="item-inner">
-                <div className="item-image"><img src="https://dummyimage.com/100X100/000/fff" /></div>
+                <div className="item-image"><img src="https://dummyimage.com/200X200/000/fff" /></div>
                 <div className="item-details">
                     <div className="item-header"><span className="item-name">{item.name}</span><span className="item-type">{item.slot !== "hand" ? item.slot : null} {item.type}</span></div>
                     <div className="item-description">{item.description}</div>
@@ -65,7 +65,7 @@ export default (props) => {
                         </div>                   
                     : null}
                     <div style={{clear: "both"}} />
-                    <div className="item-value"><span>Value: {item.value} gold</span><span style={{"marginLeft": "5px"}}>Rarity: {rarity}</span></div>
+                    <div className="item-value"><span><strong>Value:</strong> {item.value} gold</span><span style={{"marginLeft": "5px"}}><strong>Rarity:</strong> {rarity}</span></div>
                 </div>
             </div>
         </div>
