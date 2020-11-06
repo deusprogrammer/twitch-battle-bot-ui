@@ -73,7 +73,11 @@ a:hover {
   box-sizing: border-box;
 }
 
-.battler-section {
+.right {
+  float: right;
+}
+
+.left {
   float: left;
 }
 
