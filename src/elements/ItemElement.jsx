@@ -102,7 +102,7 @@ export default (props) => {
                                                 style={{float: "left", cursor: "pointer", color, backgroundColor}}>
                                                 {ability.name} ({trigger.chance}%)
                                             </div>
-                                            <ReactToolTip id={`${item.name}-trigger-${index}`} effect="solid">
+                                            <ReactToolTip id={`${item.name}-trigger-${index}`} effect="solid" globalEventOff='click'>
                                                 <AbilityElement ability={ability} abilityTable={abilityTable} />
                                             </ReactToolTip>
                                         </React.Fragment>)
@@ -124,7 +124,7 @@ export default (props) => {
                                                 data-event="click"
                                                 className="action-ability" 
                                                 style={{float: "left", cursor: "pointer", color, backgroundColor}}>{ability.name}</div>
-                                            <ReactToolTip id={`${item.name}-ability-${index}`} effect="solid">
+                                            <ReactToolTip id={`${item.name}-ability-${index}`} effect="solid" globalEventOff='click'>
                                                 <AbilityElement ability={ability} abilityTable={abilityTable} />
                                             </ReactToolTip>
                                         </React.Fragment>

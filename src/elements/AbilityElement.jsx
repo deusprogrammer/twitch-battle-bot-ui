@@ -88,7 +88,7 @@ let AbilityElement = (props) => {
                                         data-event="click"
                                         className="action-trigger" 
                                         style={{float: "left", border: "1px solid black", cursor: "pointer", color, backgroundColor}}>{ability.name} ({trigger.chance}%)</div>
-                                            <ReactToolTip id={`${ability.name}-trigger-${index}`} effect="solid">
+                                            <ReactToolTip id={`${ability.name}-trigger-${index}`} effect="solid" globalEventOff='click'>
                                                 <AbilityElement ability={ability} abilityTable={abilityTable} />
                                             </ReactToolTip>
                                 </React.Fragment>
