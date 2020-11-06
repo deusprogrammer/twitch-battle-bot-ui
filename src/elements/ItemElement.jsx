@@ -24,9 +24,9 @@ export default (props) => {
     let rarity = [];
     let message = ``;
     let target = ``;
-    for (let i = 0; i < 20; i++) {
-        let color = colors[Math.floor(i/5)];
-        if (i < item.rarity) {
+    for (let i = 0; i < 10; i++) {
+        let color = colors[Math.floor(i/2)];
+        if (i < Math.ceil(item.rarity/2)) {
             rarity.push(<span style={{color}}>&#9733;</span>);    
         } else {
             rarity.push(<span style={{color: "white"}}>&#9734;</span>);
