@@ -27,7 +27,7 @@ export default (props) => {
     for (let i = 0; i < item.rarity; i++) {
         let color = colors[Math.floor(i/5)];
         console.log("COLOR: " + color);
-        rarity.push(<span style={{color}}>&star;</span>);
+        rarity.push(<span style={{color}}>&#9734;</span>);
     }
 
     if (item.type === "consumable") {
