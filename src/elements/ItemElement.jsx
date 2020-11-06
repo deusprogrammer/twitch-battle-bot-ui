@@ -6,7 +6,7 @@ export default (props) => {
     let rarity = [];
     let colors = ["white", "yellow", "red", "purple"];
     for (let i = 0; i < item.rarity; i++) {
-        rarity.push(<span style={{color: Math.floor(colors[i/5])}}>*</span>);
+        rarity.push(<span style={{color: colors[Math.floor(colors[i/5])]}}>*</span>);
     }
     return (
         <div className="item">
@@ -40,7 +40,7 @@ export default (props) => {
                         </div>                   
                     : null}
                     <div style={{clear: "both"}} />
-                    <div className="item-value"><span>Value: {item.value} gold</span><span>Rarity: {rarity}</span></div>
+                    <div className="item-value"><span>Value: {item.value} gold</span><span style={{"marginLeft": "5px"}}>Rarity: {rarity}</span></div>
                 </div>
             </div>
         </div>
