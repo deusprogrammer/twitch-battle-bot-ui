@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactToolTip from 'react-tooltip';
+import AbilityElement from './AbilityElement';
 
 const colors = ["white", "yellow", "orange", "red"];
 const elementColors = {
@@ -43,12 +45,20 @@ export default (props) => {
                             <div style={{clear: "both"}} />
                             <div className="item-triggers">
                                 <div style={{float: "left", padding: "3px"}}>Triggers:</div>
-                                {item.triggers.map((trigger) => {
+                                {item.triggers.map((trigger, index) => {
                                     let ability = abilityTable[trigger.abilityId];
                                     let elementColor = elementColors[ability.element];
                                     let color = elementColor.c;
                                     let backgroundColor = elementColor.b;
-                                    return <div className="action-trigger" style={{float: "left", color, backgroundColor}}>{ability.name} ({trigger.chance}%)</div>
+                                    return (
+                                        <React.Fragment>
+                                            <div data-tip data-for={`${item.name}-trigger-${index}`} className="action-trigger" style={{float: "left", color, backgroundColor}}>
+                                                {ability.name} ({trigger.chance}%)
+                                            </div>
+                                            <ReactToolTip id={`${item.name}-trigger-${index}`}>
+                                                <AbilityElement ability={trigger.ability} abilityTable={abilityTable} />
+                                            </ReactToolTip>
+                                        </React.Fragment>)
                                 })}
                             </div>
                             <div style={{clear: "both"}} />

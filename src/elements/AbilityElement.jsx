@@ -1,6 +1,6 @@
 import React from 'react';
+import ReactToolTip from 'react-tooltip';
 
-const colors = ["white", "yellow", "orange", "red"];
 const elementColors = {
     "HEALING": {b: "green", c: "white"},
     "BUFFING": {b: "green", c: "white"},
@@ -70,8 +70,9 @@ export default (props) => {
                 <div className="item-details">
                     <div className="item-header"><span className="item-name">{ability.name}</span><span className="item-type">{ability.element.toLowerCase()}</span></div>
                     <div className="item-description">{ability.description}</div>
+                    <div className="item-cost"><strong>Cost: </strong>{ability.ap} AP</div>
+                    <div className="item-use">{message}</div>
                     <div className="item-stats">
-                        {message}
                         {["STR", "DEX", "INT", "HIT", "AC"].map((modStat) => {
                             return <div style={{float: "left"}} className={ability.toHitStat === modStat ? "item-stat-highlight" : "item-stat"}>{modStat}: {ability.mods[modStat.toLowerCase()]}</div>
                         })}
@@ -79,12 +80,19 @@ export default (props) => {
                     <div style={{clear: "both"}} />
                     <div className="item-triggers">
                         <div style={{float: "left", padding: "3px"}}>Triggers:</div>
-                        {ability.triggers.map((trigger) => {
+                        {ability.triggers.map((trigger, index) => {
                             let ability = abilityTable[trigger.abilityId];
                             let elementColor = elementColors[ability.element];
                             let color = elementColor.c;
                             let backgroundColor = elementColor.b;
-                            return <div className="action-trigger" style={{float: "left", border: "1px solid black", color, backgroundColor}}>{ability.name} ({trigger.chance}%)</div>
+                            return (
+                                <React.Fragment>
+                                    <div data-tip data-for={`${ability.name}-trigger-${index}`} className="action-trigger" style={{float: "left", border: "1px solid black", color, backgroundColor}}>{ability.name} ({trigger.chance}%)</div>
+                                    <ReactToolTip id={`${ability.name}-trigger-${index}`}>
+                                        <AbilityElement ability={trigger.ability} abilityTable={abilityTable} />
+                                    </ReactToolTip>
+                                </React.Fragment>
+                            )
                         })}
                     </div>
                     <div style={{clear: "both"}} />
