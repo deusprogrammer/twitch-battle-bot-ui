@@ -39,6 +39,12 @@ export default class AbilityForm extends React.Component {
         this.setState({triggers});
     }
 
+    removeTrigger = () => {
+        let triggers = [...this.state.triggers];
+        triggers.splice(index, 1);
+        this.setState({triggers});
+    }
+
     render() {
         return (
             <Form 
