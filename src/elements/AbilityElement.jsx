@@ -74,7 +74,7 @@ let AbilityElement = (props) => {
                     <div className="item-use"><b>Effect: </b>{message}</div>
                     <div style={{clear: "both"}} />
                     <div className="item-triggers">
-                        <div style={{float: "left"}}><b>Triggers:</b></div>
+                        <div style={{float: "left", padding: "5px 0px 5px 0px"}}><b>Triggers:</b></div>
                         {ability.triggers.map((trigger, index) => {
                             let ability = abilityTable[trigger.abilityId];
                             let elementColor = elementColors[ability.element];

@@ -89,7 +89,7 @@ export default (props) => {
                     { item.type !== "consumable" ? 
                         <div>
                             <div className="item-triggers">
-                                <div style={{float: "left"}}><b>Triggers:</b></div>
+                                <div style={{float: "left", padding: "5px 0px 5px 0px"}}><b>Triggers:</b></div>
                                 {item.triggers.map((trigger, index) => {
                                     let ability = abilityTable[trigger.abilityId];
                                     let elementColor = elementColors[ability.element];
@@ -112,7 +112,7 @@ export default (props) => {
                             </div>
                             <div style={{clear: "both"}} />
                             <div className="item-abilities">
-                                <div style={{float: "left"}}><b>Abilities:</b></div>
+                                <div style={{float: "left", padding: "5px 0px 5px 0px"}}><b>Abilities:</b></div>
                                 {item.abilities.map((abilityName, index) => {
                                     let ability = abilityTable[abilityName];
                                     let elementColor = elementColors[ability.element];
