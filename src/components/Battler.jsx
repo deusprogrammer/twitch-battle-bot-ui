@@ -212,7 +212,7 @@ export default class Battler extends React.Component {
                                                         <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.toUpperCase()}</td>
                                                         <td>{item.name}</td>
                                                 </tr>
-                                                <ReactToolTip id={`${item.slot}-tip`} effect="solid" delayHide={500} delayShow={500} delayUpdate={500}>
+                                                <ReactToolTip id={`${item.slot}-tip`} place="right" effect="solid" delayHide={500} delayShow={500} delayUpdate={500}>
                                                     <ItemElement 
                                                         item={item} 
                                                         abilityTable={this.abilityTable} />
@@ -254,7 +254,7 @@ export default class Battler extends React.Component {
                                                                     <button onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
                                                                 </td>
                                                         </tr>
-                                                        <ReactToolTip id={`${ability.id}-tip`} effect="solid" delayHide={500} delayShow={500} delayUpdate={500}>
+                                                        <ReactToolTip id={`${ability.id}-tip`} place="right" effect="solid" delayHide={500} delayShow={500} delayUpdate={500}>
                                                             <AbilityElement 
                                                                 ability={ability} 
                                                                 abilityTable={this.abilityTable} />
