@@ -99,9 +99,9 @@ export default class Items extends React.Component {
                     { this.state.items.length > 0 ? 
                     <div style={{float: "left"}}>
                         <h2>Item List</h2>
-                                { this.state.items.map((item) => {
-                                    <ItemElement item={item} abilityTable={this.abilityTable} />
-                                })}
+                        { this.state.items.map((item) => {
+                            return (<ItemElement item={item} abilityTable={this.abilityTable} />)
+                        })}
                     </div> : null }
                     <div style={{float: "right"}}>
                         <h2>Create New Item</h2>
