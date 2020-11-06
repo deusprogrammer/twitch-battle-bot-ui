@@ -240,7 +240,7 @@ export default class Battler extends React.Component {
                                                     <React.Fragment>
                                                         <tr data-tip
                                                             data-for={`${ability}-tip`}
-                                                            title={ability.description}
+                                                            style={{cursor: "pointer"}}
                                                             key={`ability-${ability.id}`}>
                                                                 <td>{ability.name}</td>
                                                                 <td>{ability.ap}</td>
