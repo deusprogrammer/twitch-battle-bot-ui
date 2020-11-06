@@ -153,7 +153,7 @@ export default class Battler extends React.Component {
         return (
             <div>
                 <h1>{user.name}</h1>
-                <div>
+                <div className="battler">
                     <div className="battler-section">
                         <h3>Stats</h3>
                         <table>

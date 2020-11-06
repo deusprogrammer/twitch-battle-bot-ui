@@ -82,6 +82,11 @@ a:hover {
     width: 200px;
     vertical-align: middle;
   }
+
+  .battler {
+    width: 80%;
+    margin: auto;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -108,6 +113,11 @@ a:hover {
 
   .battler-section {
     margin-left: 10px;
+  }
+
+  button {
+    width: 100px;
+    height: 50px;
   }
 }
 
