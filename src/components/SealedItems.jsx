@@ -64,8 +64,8 @@ export default class Abilities extends React.Component {
                                                 title={sealedItem.description}
                                                 key={`ability-${sealedItem.id}`}>
                                                     <td>{sealedItem.name}</td>
-                                                    <td>{sealedItem.claimed ? "Yes" : "No"}</td>
-                                                    <td>{sealedItem.claimedBy}</td>
+                                                    <td style={{textAlign: "center"}}>{sealedItem.claimed ? "Yes" : "No"}</td>
+                                                    <td style={{textAlign: "center"}}>{sealedItem.claimedBy}</td>
                                                     <td>
                                                         <button onClick={() => {this.goTo(sealedItem)}}>Edit</button>
                                                         <button onClick={() => {navigator.clipboard.writeText(sealedItem.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
