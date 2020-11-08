@@ -269,7 +269,7 @@ export default class Battler extends React.Component {
                         </div>
                         <div className="col-md-4">
                             <h3>Inventory</h3>
-                            { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY"].map((slot) => {
+                            { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY", "MIKU", "MONSTER", "DIGITAL", "PHYSICAL"].map((slot) => {
                                 return Object.keys(user.condensedInventory).map((itemKey) => {
                                     const item = user.condensedInventory[itemKey].item;
                                     const count = user.condensedInventory[itemKey].count;
