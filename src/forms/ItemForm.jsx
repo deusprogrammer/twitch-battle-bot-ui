@@ -44,6 +44,7 @@ export default class ItemForm extends React.Component {
 
     componentDidMount = async () => {
         let abilities = await ApiHelper.getAbilities();
+        let sealedItems = await ApiHelper.getSealedItems();
         let abilitiesAdded = [];
         let skillsAdded = [];
         let triggers = [];
@@ -53,7 +54,7 @@ export default class ItemForm extends React.Component {
             triggers = this.props.initialValues.triggers;
         }
 
-        this.setState({abilities, abilitiesAdded, skillsAdded, triggers});
+        this.setState({sealedItems, abilities, abilitiesAdded, skillsAdded, triggers});
     }
 
     addAbility = () => {
@@ -108,6 +109,7 @@ export default class ItemForm extends React.Component {
                                         <Option value="weapon">WEAPON</Option>
                                         <Option value="armor">ARMOR</Option>
                                         <Option value="consumable">CONSUMABLE</Option>
+                                        <Option value="sealed">SEALED CHEST</Option>
                                     </Select>
                                 </td>
                             </tr>
@@ -138,6 +140,35 @@ export default class ItemForm extends React.Component {
                                             <Option value="arms">ARMS</Option>
                                             <Option value="legs">LEGS</Option>
                                             <Option value="accessory">ACCESSORY</Option>
+                                        </Select>
+                                    </td>
+                                </tr>
+                            </Relevant>
+                            <Relevant when={({values}) => values.type === "sealed"}>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Sealed Item Type:
+                                    </td>
+                                    <td>
+                                        <Select field="slot">
+                                            <Option value="null">Select Sealed Item Type</Option>
+                                            <Option value="head">DIGITAL CODE</Option>
+                                            <Option value="head">PHYSICAL GOODS</Option>
+                                        </Select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Sealed Item ID:
+                                    </td>
+                                    <td>
+                                        <Select field="abilityId">
+                                            <Option value={null}>{"Select a Sealed Item..."}</Option>
+                                            { this.state.sealedItems.map((sealedItem) => {
+                                                return (
+                                                    <Option value={sealedItem.id}>{sealedItem.name}</Option>
+                                                )
+                                            })}
                                         </Select>
                                     </td>
                                 </tr>

@@ -3,37 +3,37 @@ import {toast} from 'react-toastify';
 
 import ApiHelper from '../utils/ApiHelper';
 
-import StatusForm from '../forms/StatusForm';
+import SealedItemForm from '../forms/SealedItemForm';
 
-export default class Status extends React.Component {
+export default class SealedItem extends React.Component {
     state = {
-        status: null
+        sealedItem: null
     }
 
     componentDidMount = async () => {
-        let status = await ApiHelper.getStatus(this.props.match.params.id);
+        let sealedItem = await ApiHelper.getSealedItem(this.props.match.params.id);
 
-        document.title = `${status.name} Status`;
+        document.title = `${status.name} Sealed Item`;
 
-        this.setState({status});
+        this.setState({sealedItem});
     }
 
     handleSubmit = async (values) => {
-        values.id = this.state.status.id;
+        values.id = this.state.sealedItem.id;
         try {
-            await ApiHelper.updateStatus(values);
-            toast("Status updated!", {type: "info"});
+            await ApiHelper.updateSealedItem(values);
+            toast("Sealed Item updated!", {type: "info"});
             this.props.history.goBack();
         } catch (e) {
             console.error(e);
-            toast("Failed to update status!", {type: "error"});
+            toast("Failed to update sealed item!", {type: "error"});
         }
     }
 
     handleFailure = (errors) => {
-        console.error("Failed to update status!");
+        console.error("Failed to update sealed item!");
         console.error(errors);
-        toast("Failed to update status!", {type: "error"});
+        toast("Failed to update sealed item!", {type: "error"});
     }
 
     render() {
@@ -42,7 +42,7 @@ export default class Status extends React.Component {
                 {this.state.status ? 
                     <div>
                         <h1>Update Status</h1>
-                        <StatusForm 
+                        <SealedItemForm 
                             initialValues={this.state.status}
                             onSubmit={(values) => {this.handleSubmit(values)}} 
                             onFailure={(errors) => {this.handleFailure(errors)}} />

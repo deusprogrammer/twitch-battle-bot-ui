@@ -303,6 +303,47 @@ const updateItem = async (itemData) => {
     return updated.data;
 }
 
+const getSealedItems = async () => {
+    let items = await axios.get(`${config.BASE_URL}/sealed-items`, {
+        headers: {
+            //Authorization: `Bearer ${BATTLE_BOT_JWT}`
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
+
+    return items.data;
+}
+
+const getSealedItem = async (id) => {
+    let item = await axios.get(`${config.BASE_URL}/sealed-items/${id}`, {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
+
+    return item.data;
+}
+
+const createSealedItem = async (itemData) => {
+    let created = await axios.post(`${config.BASE_URL}/sealed-items`, itemData, {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
+
+    return created.data;
+}
+
+const updateSealedItem = async (itemData) => {
+    let updated = await axios.put(`${config.BASE_URL}/sealed-items/${itemData.id}`, itemData, {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
+
+    return updated.data;
+}
+
 const updateUser = async (userData) => {
     let updated = await axios.put(`${config.BASE_URL}/users/${userData.name}`, userData, {
         headers: {
@@ -338,5 +379,9 @@ export default {
     getItem,
     getItems,
     createItem,
-    updateItem
+    updateItem,
+    getSealedItems,
+    getSealedItem,
+    createSealedItem,
+    updateSealedItem
 }
