@@ -75,8 +75,16 @@ export default (props) => {
         }
     }
 
+    let backgroundColor = "black";
+    let color = "white";
+
+    if (item.type === "sealed") {
+        backgroundColor = "red";
+        color = "white";
+    }
+
     return (
-        <div className="item">
+        <div className="item" style={{backgroundColor, color}}>
             <div className="item-inner">
                 <div className="item-image"><img src="https://dummyimage.com/200X200/000/fff" /></div>
                 <div className="item-details">
@@ -86,7 +94,7 @@ export default (props) => {
                         <div className="item-use"><b>Use: </b>{message}</div>
                         : 
                         <div><b>Effect: </b>{value} <b>{(item.ac ? "armor" : null) || (item.dmg ? `damage to ${item.dmgStat}` : null)} </b></div>}
-                    { item.type !== "consumable" ? 
+                    { item.type !== "consumable" && item.type !== "sealed" ? 
                         <div>
                             <div className="item-triggers">
                                 <div style={{float: "left", padding: "5px 0px 5px 0px"}}><b>Triggers:</b></div>
