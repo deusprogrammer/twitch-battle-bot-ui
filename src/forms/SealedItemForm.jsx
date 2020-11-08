@@ -1,14 +1,14 @@
 import React from 'react';
 
-import {Form, Text, Checkbox, Select, Option, Scope} from 'informed';
+import {Form, Text, Checkbox} from 'informed';
 
-export default () =>  { 
+export default (props) =>  { 
     return (
         <Form 
-            initialValues={this.props.initialValues}
-            getApi={this.props.getApi}
-            onSubmit={this.props.onSubmit} 
-            onSubmitFailure={this.props.onFailure}>
+            initialValues={props.initialValues}
+            getApi={props.getApi}
+            onSubmit={props.onSubmit} 
+            onSubmitFailure={props.onFailure}>
             <table>
                 <tbody>
                     <fieldset>
