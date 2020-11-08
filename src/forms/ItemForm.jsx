@@ -265,14 +265,16 @@ export default class ItemForm extends React.Component {
                                     </td>
                                 </tr>
                             </Relevant>
-                            <tr>
-                                <td style={{fontWeight: "bolder"}}>
-                                    Price:
-                                </td>
-                                <td>
-                                    <Text field="value" type="number"></Text>
-                                </td>
-                            </tr>
+                            <Relevant when={({values}) => values.type !== "sealed"}>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Price:
+                                    </td>
+                                    <td>
+                                        <Text field="value" type="number"></Text>
+                                    </td>
+                                </tr>
+                            </Relevant>
                             <tr>
                                 <td style={{fontWeight: "bolder"}}>
                                     Rarity:
@@ -325,7 +327,7 @@ export default class ItemForm extends React.Component {
                                 <td><button type="button" class="btn btn-primary" onClick={() => {this.addTrigger()}}>Add New Trigger</button></td>
                             </tr>
                         </fieldset>
-                        <Relevant when={({values}) => values.type !== "consumable"}>
+                        <Relevant when={({values}) => !["consumable", "sealed"].includes(values.type)}>
                             <fieldset>
                                 <legend>Modifiers</legend>
                                 <tr>
