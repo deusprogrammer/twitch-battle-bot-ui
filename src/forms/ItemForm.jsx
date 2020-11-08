@@ -342,7 +342,7 @@ export default class ItemForm extends React.Component {
                                 <td><button type="button" class="btn btn-primary" onClick={() => {this.addTrigger()}}>Add New Trigger</button></td>
                             </tr>
                         </fieldset>
-                        <Relevant when={({values}) => !["consumable", "sealed"].includes(values.type)}>
+                        <Relevant when={({values}) => !["consumable", "sealed", "gift"].includes(values.type)}>
                             <fieldset>
                                 <legend>Modifiers</legend>
                                 <tr>
