@@ -4,9 +4,9 @@ import AbilityElement from './AbilityElement';
 
 const colors = ["lightgray", "white", "yellow", "orange", "red"];
 const elementColors = {
-    "HEALING": {b: "green", c: "white"},
-    "BUFFING": {b: "green", c: "white"},
-    "CLEANSING": {b: "green", c: "white"},
+    "HEALING": {b: "limegreen", c: "white"},
+    "BUFFING": {b: "midnightblue", c: "white"},
+    "CLEANSING": {b: "lightseagreen", c: "white"},
     "FIRE": {b: "red", c: "white"},
     "ICE": {b: "blue", c: "white"},
     "WATER": {b: "lightblue", c: "white"},
