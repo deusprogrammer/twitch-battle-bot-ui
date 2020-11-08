@@ -52,7 +52,6 @@ export default class Abilities extends React.Component {
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Code</th>
                                         <th>Claimed</th>
                                         <th></th>
                                     </tr>
@@ -64,7 +63,6 @@ export default class Abilities extends React.Component {
                                                 title={sealedItem.description}
                                                 key={`ability-${sealedItem.id}`}>
                                                     <td>{sealedItem.name}</td>
-                                                    <td>{sealedItem.code}</td>
                                                     <td>{sealedItem.claimed ? "Yes" : "No"}</td>
                                                     <td>
                                                         <button onClick={() => {this.goTo(sealedItem)}}>Edit</button>
