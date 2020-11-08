@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {Form, Text, Checkbox, Select, Option, Scope} from 'informed';
-import ApiHelper from '../utils/ApiHelper';
 
 export default () =>  { 
     return (

@@ -31,13 +31,13 @@ export default class Abilities extends React.Component {
             });
         } catch (e) {
             console.error(e);
-            toast("Failed to create status!", {type: "error"});
+            toast("Failed to create sealed item!", {type: "error"});
         }
     }
 
     onError = (error) => {
-        console.error("Failed to create status!");
-        toast("Failed to create status!", {type: "error"});
+        console.error("Failed to create sealed Item!");
+        toast("Failed to create sealed item!", {type: "error"});
     }
 
     render() {

@@ -13,7 +13,7 @@ export default class SealedItem extends React.Component {
     componentDidMount = async () => {
         let sealedItem = await ApiHelper.getSealedItem(this.props.match.params.id);
 
-        document.title = `${status.name} Sealed Item`;
+        document.title = `${sealedItem.name} Sealed Item`;
 
         this.setState({sealedItem});
     }
@@ -39,11 +39,11 @@ export default class SealedItem extends React.Component {
     render() {
         return (
             <div>
-                {this.state.status ? 
+                {this.state.sealedItem ? 
                     <div>
                         <h1>Update Status</h1>
                         <SealedItemForm 
-                            initialValues={this.state.status}
+                            initialValues={this.state.sealedItem}
                             onSubmit={(values) => {this.handleSubmit(values)}} 
                             onFailure={(errors) => {this.handleFailure(errors)}} />
                     </div> 
