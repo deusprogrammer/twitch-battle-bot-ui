@@ -29,7 +29,7 @@ export default (props) => {
         if (i < Math.ceil(item.rarity/2)) {
             rarity.push(<span style={{color}}>&#9733;</span>);    
         } else {
-            rarity.push(<span style={{color: "white"}}>&#9734;</span>);
+            rarity.push(<span style={{color: "white", WebkitTextStrokeColor: "white", WebkitTextStrokeWidth: "2px"}}>&#9734;</span>);
         }
     }
 
@@ -79,7 +79,7 @@ export default (props) => {
     let color = "white";
 
     if (item.type === "sealed") {
-        backgroundColor = "blue";
+        backgroundColor = "red";
         color = "white";
     }
 
