@@ -94,7 +94,7 @@ export default (props) => {
                         <div className="item-use"><b>Use: </b>{message}</div>
                         : 
                         <div><b>Effect: </b>{value} <b>{(item.ac ? "armor" : null) || (item.dmg ? `damage to ${item.dmgStat}` : null)} </b></div>}
-                    { item.type !== "consumable" && item.type !== "sealed" ? 
+                    { item.type !== "consumable" && item.type !== "sealed" && item.type !== "gift" ? 
                         <div>
                             <div className="item-triggers">
                                 <div style={{float: "left", padding: "5px 0px 5px 0px"}}><b>Triggers:</b></div>
