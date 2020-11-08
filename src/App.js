@@ -12,6 +12,8 @@ import Ability from './components/Ability';
 import Abilities from './components/Abilities';
 import Status from './components/Status';
 import Statuses from './components/Statuses';
+import SealedItem from './components/SealedItem';
+import SealedItems from './components/SealedItems';
 
 import ApiHelper from './utils/ApiHelper';
 
@@ -43,9 +45,17 @@ class App extends React.Component {
 
         console.log("PROFILE: " + JSON.stringify(profile, null, 5));
 
+        let isAdmin = false;
+        let isBroadcaster = false;
         if (profile.roles.includes("SUPER_USER")) {
-            this.setState({isAdmin: true});
+            isAdmin = true;
         }
+
+        if (profile.roles.includes("TWITCH_BROADCASTER")) {
+            isBroadcaster = true;
+        }
+
+        this.setState({isAdmin, isBroadcaster});
     }
     
     render() {
@@ -61,10 +71,17 @@ class App extends React.Component {
                             <Link to={`${process.env.PUBLIC_URL}/items`}>Items</Link> | <Link to={`${process.env.PUBLIC_URL}/abilities`}>Abilities</Link> | <Link to={`${process.env.PUBLIC_URL}/statuses`}>Statuses</Link> | <Link to={`${process.env.PUBLIC_URL}/monsters`}>Monsters</Link>
                         </div>
                     : null}
+                    {this.state.isAdmin ? 
+                        <div style={{textAlign: "center"}}>
+                            <Link to={`${process.env.PUBLIC_URL}/sealed-items`}>Sealed Items</Link>
+                        </div>
+                    : null}
                     <Switch>
                         <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
                         <Route exact path={`${process.env.PUBLIC_URL}/items`} component={Items} />
                         <Route exact path={`${process.env.PUBLIC_URL}/items/:id`} component={Item} />
+                        <Route exact path={`${process.env.PUBLIC_URL}/sealed-items`} component={SealedItems} />
+                        <Route exact path={`${process.env.PUBLIC_URL}/sealed-items/:id`} component={SealedItem} />
                         <Route exact path={`${process.env.PUBLIC_URL}/abilities`} component={Abilities} />
                         <Route exact path={`${process.env.PUBLIC_URL}/abilities/:id`} component={Ability} />
                         <Route exact path={`${process.env.PUBLIC_URL}/statuses`} component={Statuses} />
