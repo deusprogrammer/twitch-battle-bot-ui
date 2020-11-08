@@ -110,6 +110,7 @@ export default class ItemForm extends React.Component {
                                         <Option value="weapon">WEAPON</Option>
                                         <Option value="armor">ARMOR</Option>
                                         <Option value="consumable">CONSUMABLE</Option>
+                                        <Option value="gift">GIFT</Option>
                                         <Option value="sealed">SEALED CHEST</Option>
                                     </Select>
                                 </td>
@@ -141,6 +142,20 @@ export default class ItemForm extends React.Component {
                                             <Option value="arms">ARMS</Option>
                                             <Option value="legs">LEGS</Option>
                                             <Option value="accessory">ACCESSORY</Option>
+                                        </Select>
+                                    </td>
+                                </tr>
+                            </Relevant>
+                            <Relevant when={({values}) => values.type === "gift"}>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Gift Receiver Type:
+                                    </td>
+                                    <td>
+                                        <Select field="slot">
+                                            <Option value="null">Select Item Slot</Option>
+                                            <Option value="miku">MIKU</Option>
+                                            <Option value="monster">MONSTER</Option>
                                         </Select>
                                     </td>
                                 </tr>
