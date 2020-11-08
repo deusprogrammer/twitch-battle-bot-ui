@@ -153,8 +153,8 @@ export default class ItemForm extends React.Component {
                                     <td>
                                         <Select field="slot">
                                             <Option value="null">Select Sealed Item Type</Option>
-                                            <Option value="head">DIGITAL CODE</Option>
-                                            <Option value="head">PHYSICAL GOODS</Option>
+                                            <Option value="digital">DIGITAL CODE</Option>
+                                            <Option value="physical">PHYSICAL GOODS</Option>
                                         </Select>
                                     </td>
                                 </tr>

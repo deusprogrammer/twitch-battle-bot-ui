@@ -99,7 +99,7 @@ export default class Items extends React.Component {
                     { this.state.items.length > 0 ? 
                     <div style={{float: "left"}}>
                         <h2>Item List</h2>
-                        { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY"].map((slot) => {
+                        { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY", "DIGITAL", "PHYSICAL"].map((slot) => {
                             return this.state.items.map((item) => {
                                 if (item.slot.toUpperCase() !== slot) {
                                     return;
