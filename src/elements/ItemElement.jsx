@@ -27,9 +27,9 @@ export default (props) => {
     for (let i = 0; i < 10; i++) {
         let color = colors[Math.floor(i/2)];
         if (i < Math.ceil(item.rarity/2)) {
-            rarity.push(<span style={{color}}>&#9733;</span>);    
+            rarity.push(<span style={{color, WebkitTextStrokeColor: "white", WebkitTextStrokeWidth: "1px"}}>&#9733;</span>);    
         } else {
-            rarity.push(<span style={{color: "white", WebkitTextStrokeColor: "white", WebkitTextStrokeWidth: "2px"}}>&#9734;</span>);
+            rarity.push(<span style={{color: "white"}}>&#9734;</span>);
         }
     }
 
