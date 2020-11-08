@@ -27,6 +27,11 @@ class App extends React.Component {
     }
 
     componentDidMount = async () => {
+        // If no access token is present, don't retrieve their information
+        if (!localStorage.getItem("accessToken")) {
+            return;
+        }
+
         let user = await ApiHelper.getUser("~self");
         let res = await axios.get(`https://deusprogrammer.com/api/profile-svc/users/${user.name}`, {
             headers: {
