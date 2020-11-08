@@ -29,7 +29,7 @@ export default (props) => {
         if (i < Math.ceil(item.rarity/2)) {
             rarity.push(<span style={{color, WebkitTextStrokeColor: "white", WebkitTextStrokeWidth: "1px"}}>&#9733;</span>);    
         } else {
-            rarity.push(<span style={{color: black, WebkitTextStrokeColor: "white", WebkitTextStrokeWidth: "1px"}}>&#9733;</span>);
+            rarity.push(<span style={{color: "black", WebkitTextStrokeColor: "white", WebkitTextStrokeWidth: "1px"}}>&#9733;</span>);
         }
     }
 
