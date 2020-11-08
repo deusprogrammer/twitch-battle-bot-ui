@@ -178,7 +178,7 @@ export default class ItemForm extends React.Component {
                                         Sealed Item ID:
                                     </td>
                                     <td>
-                                        <Select field="abilityId">
+                                        <Select field="sealedItemId">
                                             <Option value={null}>{"Select a Sealed Item..."}</Option>
                                             { this.state.sealedItems.map((sealedItem) => {
                                                 return (
