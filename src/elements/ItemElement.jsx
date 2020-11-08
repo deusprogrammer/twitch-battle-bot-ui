@@ -79,7 +79,7 @@ export default (props) => {
     let color = "white";
 
     if (item.type === "sealed") {
-        backgroundColor = "red";
+        backgroundColor = "blue";
         color = "white";
     }
 
