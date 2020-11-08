@@ -35,6 +35,7 @@ const itemSchema = Yup.object().shape({
 
 export default class ItemForm extends React.Component {
     state = {
+        sealedItems: [],
         abilities: [],
         skills: [],
         triggers: [],
