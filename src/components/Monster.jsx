@@ -20,7 +20,7 @@ export default class Monster extends React.Component {
 
     handleSubmit = async (values) => {
         values.id = this.state.monster.id;
-        values.owningChannel = window.localStorage.getItem("channel");
+        values.owningChannel = parseInt(window.localStorage.getItem("channel"));
 
         try {
             await ApiHelper.updateMonster(values);

@@ -20,7 +20,7 @@ export default class Item extends React.Component {
 
     handleSubmit = async (values) => {
         values.id = this.state.item.id;
-        values.owningChannel = window.localStorage.getItem("channel");
+        values.owningChannel = parseInt(window.localStorage.getItem("channel"));
 
         if (values.type === "consumable") {
             values.slot = "inventory";

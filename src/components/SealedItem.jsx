@@ -20,7 +20,8 @@ export default class SealedItem extends React.Component {
 
     handleSubmit = async (values) => {
         values.id = this.state.sealedItem.id;
-        values.owningChannel = window.localStorage.getItem("channel");
+        values.owningChannel = parseInt(window.localStorage.getItem("channel"));
+        
         try {
             await ApiHelper.updateSealedItem(values);
             toast("Sealed Item updated!", {type: "info"});

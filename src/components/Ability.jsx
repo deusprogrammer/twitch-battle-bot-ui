@@ -20,7 +20,8 @@ export default class Ability extends React.Component {
 
     handleSubmit = async (values) => {
         values.id = this.state.ability.id;
-        values.owningChannel = window.localStorage.getItem("channel");
+        values.owningChannel = parseInt(window.localStorage.getItem("channel"));
+
         try {
             await ApiHelper.updateAbility(values);
             toast("Ability updated!", {type: "info"});

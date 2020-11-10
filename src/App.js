@@ -26,7 +26,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 class App extends React.Component {
     state = {
         isAdmin: false,
-        channel: parseInt(window.localStorage.getItem("channel"))
+        channel: window.localStorage.getItem("channel")
     }
 
     componentDidMount = async () => {
@@ -44,7 +44,7 @@ class App extends React.Component {
 
         let profile = res.data;
 
-        window.localStorage.setItem("channel", profile.connected.twitch.channels.length > 0 ? parseInt(profile.connected.twitch.channels[0]) : null);
+        window.localStorage.setItem("channel", profile.connected.twitch.channels.length > 0 ? profile.connected.twitch.channels[0] : null);
 
         console.log("PROFILE: " + JSON.stringify(profile, null, 5));
 
@@ -87,7 +87,7 @@ class App extends React.Component {
                                 onChange={(evt) => {window.localStorage.setItem("channel", evt.target.value); window.location.reload();}}>
                                 { this.state.profile.connected.twitch.channels.map((channel) => {
                                     return (
-                                        <option value={parseInt(channel)}>{parseInt(channel)}</option>
+                                        <option value={channel}>{channel}</option>
                                     );
                                 })}
                             </select>

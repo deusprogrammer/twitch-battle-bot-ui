@@ -87,7 +87,7 @@ export default class Monsters extends React.Component {
 
     onSubmit = async (values) => {
         values.id = values.name.replaceAll(" ", "_").replaceAll("'", "").toUpperCase();
-        values.owningChannel = window.localStorage.getItem("channel");
+        values.owningChannel = parseInt(window.localStorage.getItem("channel"));
 
         try {
             let created = await ApiHelper.createMonster(values);
