@@ -20,6 +20,7 @@ export default class Status extends React.Component {
 
     handleSubmit = async (values) => {
         values.id = this.state.status.id;
+        values.owningChannel = window.localStorage.getItem("channel");
         try {
             await ApiHelper.updateStatus(values);
             toast("Status updated!", {type: "info"});

@@ -25,7 +25,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
     state = {
-        isAdmin: false
+        isAdmin: false,
+        channel: window.localStorage.getItem("channel")
     }
 
     componentDidMount = async () => {
@@ -43,6 +44,8 @@ class App extends React.Component {
 
         let profile = res.data;
 
+        window.localStorage.setItem("channel", profile.connected.twitch.channels.length > 0 ? profile.connected.twitch.channels[0] : null);
+
         console.log("PROFILE: " + JSON.stringify(profile, null, 5));
 
         let isAdmin = false;
@@ -55,7 +58,7 @@ class App extends React.Component {
             isBroadcaster = true;
         }
 
-        this.setState({isAdmin, isBroadcaster});
+        this.setState({isAdmin, isBroadcaster, profile});
     }
     
     render() {
@@ -71,11 +74,24 @@ class App extends React.Component {
                             <Link to={`${process.env.PUBLIC_URL}/items`}>Items</Link> | <Link to={`${process.env.PUBLIC_URL}/abilities`}>Abilities</Link> | <Link to={`${process.env.PUBLIC_URL}/statuses`}>Statuses</Link> | <Link to={`${process.env.PUBLIC_URL}/monsters`}>Monsters</Link>
                         </div>
                     : null}
-                    {this.state.isAdmin ? 
+                    {this.state.isBroadcaster ? 
                         <div style={{textAlign: "center"}}>
                             <Link to={`${process.env.PUBLIC_URL}/sealed-items`}>Sealed Items</Link>
                         </div>
                     : null}
+                    {this.state.isAdmin ?
+                        <div style={{textAlign: "center"}}>
+                            <select 
+                                value={this.state.channel}
+                                onChange={(evt) => {window.localStorage.setItem("channel", evt.target.value)}}>
+                                { profile.connected.twitch.channels.map((channel) => {
+                                    return (
+                                        <option value={channel}>channel</option>
+                                    );
+                                })}
+                            </select>
+                        </div> : null
+                    }
                     <Switch>
                         <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
                         <Route exact path={`${process.env.PUBLIC_URL}/items`} component={Items} />

@@ -75,6 +75,7 @@ export default class Items extends React.Component {
         }
 
         try {
+            values.owningChannel = window.localStorage.getItem("channel");
             let created = await ApiHelper.createItem(values);
             toast("Item created", {type: "info"});
             this.setState({items: [...this.state.items, created]}, () => {
