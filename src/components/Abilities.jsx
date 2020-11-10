@@ -25,7 +25,7 @@ export default class Abilities extends React.Component {
     }
 
     onSubmit = async (values) => {
-        values.id = values.name.replaceAll(" ", "_").toUpperCase();
+        values.id = values.name.replaceAll(" ", "_").replaceAll("'", "").toUpperCase();
         values.owningChannel = window.localStorage.getItem("channel");
         try {
             let created = await ApiHelper.createAbility(values);
