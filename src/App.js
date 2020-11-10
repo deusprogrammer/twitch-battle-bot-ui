@@ -81,12 +81,13 @@ class App extends React.Component {
                     : null}
                     {this.state.isAdmin ?
                         <div style={{textAlign: "center"}}>
+                            <label>Channel:</label>
                             <select 
                                 value={this.state.channel}
                                 onChange={(evt) => {window.localStorage.setItem("channel", evt.target.value); window.location.reload();}}>
                                 { this.state.profile.connected.twitch.channels.map((channel) => {
                                     return (
-                                        <option value={channel}>channel</option>
+                                        <option value={channel}>{channel}</option>
                                     );
                                 })}
                             </select>
