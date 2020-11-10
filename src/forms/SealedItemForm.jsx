@@ -45,14 +45,6 @@ export default (props) =>  {
                                 <Checkbox field="claimed" />
                             </td>
                         </tr>
-                        <tr>
-                            <td style={{fontWeight: "bolder"}}>
-                                Claimed By:
-                            </td>
-                            <td>
-                                <Text field="claimedBy" />
-                            </td>
-                        </tr>
                     </fieldset>
                 </tbody>
             </table>
