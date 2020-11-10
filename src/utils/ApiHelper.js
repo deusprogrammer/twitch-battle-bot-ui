@@ -328,7 +328,7 @@ const updateItem = async (itemData) => {
     return updated.data;
 }
 
-const getSealedItems = async () => {
+const getSealedItems = async (channel) => {
     let url = `${config.BASE_URL}/sealed-items`;
     if (channel) {
         url += `owningChannel=${channel}`;
