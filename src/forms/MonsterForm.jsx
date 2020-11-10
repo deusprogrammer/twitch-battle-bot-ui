@@ -34,7 +34,7 @@ export default class MonsterForm extends React.Component {
     }
 
     componentDidMount = async () => {
-        let items = await ApiHelper.getItems();
+        let items = await ApiHelper.getItems(window.localStorage.getItem("channel"));
         let abilities = await ApiHelper.getAbilities();
         let actions = [];
         let drops = [];

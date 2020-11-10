@@ -45,7 +45,7 @@ export default class ItemForm extends React.Component {
 
     componentDidMount = async () => {
         let abilities = await ApiHelper.getAbilities();
-        let sealedItems = await ApiHelper.getSealedItems();
+        let sealedItems = await ApiHelper.getSealedItems(window.localStorage.getItem("channel"));
         let abilitiesAdded = [];
         let skillsAdded = [];
         let triggers = [];
