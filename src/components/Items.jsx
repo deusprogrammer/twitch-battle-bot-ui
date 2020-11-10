@@ -43,8 +43,8 @@ export default class Items extends React.Component {
 
     componentDidMount = async () => {
         document.title = `Items Admin`;
-
-        let items = await ApiHelper.getItems();
+        let channel = window.localStorage.getItem("channel");
+        let items = await ApiHelper.getItems(channel);
         this.abilityTable = await ApiHelper.getAbilityTable();
 
         items.forEach((item) => {
@@ -58,7 +58,9 @@ export default class Items extends React.Component {
                     ac: 0
                 }
             }
-        })
+        });
+
+        
 
         this.setState({items});
     }

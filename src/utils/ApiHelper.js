@@ -24,8 +24,13 @@ const recalculateStats = (userData, itemTable) => {
     return userData;
 }
 
-const getItems = async () => {
-    let items = await axios.get(`${config.BASE_URL}/items`, {
+const getItems = async (channel) => {
+    let url = `${config.BASE_URL}/items`;
+    if (channel) {
+        url += `owningChannel=${channel}`;
+    }
+
+    let items = await axios.get(url, {
         headers: {
             //Authorization: `Bearer ${BATTLE_BOT_JWT}`
             "X-Access-Token": localStorage.getItem("accessToken")
@@ -41,8 +46,13 @@ const getItemTable = async () => {
     return indexArrayToMap(items);
 }
 
-const getJobs = async () => {
-    let jobs = await axios.get(`${config.BASE_URL}/jobs`, {
+const getJobs = async (channel) => {
+    let url = `${config.BASE_URL}/jobs`;
+    if (channel) {
+        url += `owningChannel=${channel}`;
+    }
+
+    let jobs = await axios.get(url, {
         headers: {
             //Authorization: `Bearer ${BATTLE_BOT_JWT}`
             "X-Access-Token": localStorage.getItem("accessToken")
@@ -158,8 +168,13 @@ const getMonster = async (id) => {
     return monster.data;
 }
 
-const getMonsters = async () => {
-    let monsters = await axios.get(`${config.BASE_URL}/monsters`,
+const getMonsters = async (channel) => {
+    let url = `${config.BASE_URL}/monsters`;
+    if (channel) {
+        url += `owningChannel=${channel}`;
+    }
+
+    let monsters = await axios.get(url,
         {
             headers: {
                 "X-Access-Token": localStorage.getItem("accessToken")
@@ -169,8 +184,13 @@ const getMonsters = async () => {
     return monsters.data;
 }
 
-const getStatuses = async () => {
-    let statuses = await axios.get(`${config.BASE_URL}/statuses`,
+const getStatuses = async (channel) => {
+    let url = `${config.BASE_URL}/statuses`;
+    if (channel) {
+        url += `owningChannel=${channel}`;
+    }
+
+    let statuses = await axios.get(url,
     {
         headers: {
             "X-Access-Token": localStorage.getItem("accessToken")
@@ -231,8 +251,13 @@ const updateMonster = async (monsterData) => {
     return updated.data;
 }
 
-const getAbilities = async () => {
-    let abilities = await axios.get(`${config.BASE_URL}/abilities`,
+const getAbilities = async (channel) => {
+    let url = `${config.BASE_URL}/abilities`;
+    if (channel) {
+        url += `owningChannel=${channel}`;
+    }
+
+    let abilities = await axios.get(url,
         {
             headers: {
                 "X-Access-Token": localStorage.getItem("accessToken")
@@ -304,7 +329,12 @@ const updateItem = async (itemData) => {
 }
 
 const getSealedItems = async () => {
-    let items = await axios.get(`${config.BASE_URL}/sealed-items`, {
+    let url = `${config.BASE_URL}/sealed-items`;
+    if (channel) {
+        url += `owningChannel=${channel}`;
+    }
+
+    let items = await axios.get(url, {
         headers: {
             //Authorization: `Bearer ${BATTLE_BOT_JWT}`
             "X-Access-Token": localStorage.getItem("accessToken")

@@ -12,7 +12,8 @@ export default class Abilities extends React.Component {
 
     componentDidMount = async () => {
         document.title = `Statuses Admin`;
-        let statuses = await ApiHelper.getStatuses();
+        let channel = window.localStorage.getItem("channel");
+        let statuses = await ApiHelper.getStatuses(channel);
 
         this.setState({statuses});
     }

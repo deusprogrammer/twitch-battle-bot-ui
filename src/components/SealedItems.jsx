@@ -12,7 +12,8 @@ export default class Abilities extends React.Component {
 
     componentDidMount = async () => {
         document.title = `Sealed Item Admin`;
-        let sealedItems = await ApiHelper.getSealedItems();
+        let channel = window.localStorage.getItem("channel");
+        let sealedItems = await ApiHelper.getSealedItems(channel);
 
         this.setState({sealedItems});
     }
