@@ -50,7 +50,7 @@ export default (props) =>  {
                                 Claimed By:
                             </td>
                             <td>
-                                <Checkbox field="claimedBy" />
+                                <Text field="claimedBy" />
                             </td>
                         </tr>
                     </fieldset>
