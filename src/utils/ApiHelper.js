@@ -27,7 +27,7 @@ const recalculateStats = (userData, itemTable) => {
 const getItems = async (channel) => {
     let url = `${config.BASE_URL}/items`;
     if (channel) {
-        url += `owningChannel=${channel}`;
+        url += `?owningChannel=${channel}`;
     }
 
     let items = await axios.get(url, {
@@ -49,7 +49,7 @@ const getItemTable = async () => {
 const getJobs = async (channel) => {
     let url = `${config.BASE_URL}/jobs`;
     if (channel) {
-        url += `owningChannel=${channel}`;
+        url += `?owningChannel=${channel}`;
     }
 
     let jobs = await axios.get(url, {
@@ -171,7 +171,7 @@ const getMonster = async (id) => {
 const getMonsters = async (channel) => {
     let url = `${config.BASE_URL}/monsters`;
     if (channel) {
-        url += `owningChannel=${channel}`;
+        url += `?owningChannel=${channel}`;
     }
 
     let monsters = await axios.get(url,
@@ -187,7 +187,7 @@ const getMonsters = async (channel) => {
 const getStatuses = async (channel) => {
     let url = `${config.BASE_URL}/statuses`;
     if (channel) {
-        url += `owningChannel=${channel}`;
+        url += `?owningChannel=${channel}`;
     }
 
     let statuses = await axios.get(url,
@@ -254,7 +254,7 @@ const updateMonster = async (monsterData) => {
 const getAbilities = async (channel) => {
     let url = `${config.BASE_URL}/abilities`;
     if (channel) {
-        url += `owningChannel=${channel}`;
+        url += `?owningChannel=${channel}`;
     }
 
     let abilities = await axios.get(url,
@@ -331,7 +331,7 @@ const updateItem = async (itemData) => {
 const getSealedItems = async (channel) => {
     let url = `${config.BASE_URL}/sealed-items`;
     if (channel) {
-        url += `owningChannel=${channel}`;
+        url += `?owningChannel=${channel}`;
     }
 
     let items = await axios.get(url, {
