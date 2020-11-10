@@ -19,7 +19,6 @@ export default class Monster extends React.Component {
     }
 
     handleSubmit = async (values) => {
-        console.log("MONSTER: " + JSON.stringify(values, null, 5));
         values.id = this.state.monster.id;
         values.owningChannel = window.localStorage.getItem("channel");
 

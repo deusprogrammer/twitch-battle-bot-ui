@@ -8,16 +8,6 @@ import ItemForm from '../forms/ItemForm';
 export default class Item extends React.Component {
     state = {
         item: null
-        // {
-        //     "_id": "5f7e351ac1cf475d70236c15",
-        //     "id": "SPACE_KNIGHT_LEGS",
-        //     "type": "armor",
-        //     "slot": "legs",
-        //     "name": "Space Knight Legs",
-        //     "ac": 8,
-        //     "value": 0,
-        //     "__v": 0
-        // }
     }
 
     componentDidMount = async () => {
@@ -31,7 +21,7 @@ export default class Item extends React.Component {
     handleSubmit = async (values) => {
         values.id = this.state.item.id;
         values.owningChannel = window.localStorage.getItem("channel");
-        
+
         if (values.type === "consumable") {
             values.slot = "inventory";
         }

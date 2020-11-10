@@ -72,14 +72,12 @@ export default class Items extends React.Component {
 
     handleSubmit = async (values) => {
         values.id = values.name.replaceAll(" ", "_").replaceAll("'", "").toUpperCase();
+        values.owningChannel = window.localStorage.getItem("channel");
         if (values.type === "consumable") {
             values.slot = "inventory";
         }
 
         try {
-            values.owningChannel = window.localStorage.getItem("channel");
-            console.log("OWNING CHANNEL: " + window.localStorage.getItem("channel"));
-            console.log("ITEM: " + JSON.stringify(values));
             let created = await ApiHelper.createItem(values);
             toast("Item created", {type: "info"});
             this.setState({items: [...this.state.items, created]}, () => {
