@@ -4,7 +4,7 @@ import ApiHelper from '../utils/ApiHelper';
 
 export default class RegistrationCallBack extends React.Component {
     state = {
-        error: {},
+        error: false,
         ready: false
     }
 
@@ -14,7 +14,7 @@ export default class RegistrationCallBack extends React.Component {
             await ApiHelper.createBot(queryParam.get("code"));
             this.setState({ready: true});
         } catch (error) {
-            this.setState({error});
+            this.setState({error: true});
         }
     }
     
