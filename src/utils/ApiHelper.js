@@ -25,7 +25,11 @@ const recalculateStats = (userData, itemTable) => {
 }
 
 const createBot = async (twitchAuthCode) => {
-    let res = await axios.post(`${config.EXT_BASE_URL}/bots`, {
+    let url = `${config.EXT_BASE_URL}/bots`;
+
+    console.log("URL: " + url);
+
+    let res = await axios.post(url, {
         twitchAuthCode
     })
 
