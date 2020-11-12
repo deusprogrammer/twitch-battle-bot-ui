@@ -14,6 +14,8 @@ import Status from './components/Status';
 import Statuses from './components/Statuses';
 import SealedItem from './components/SealedItem';
 import SealedItems from './components/SealedItems';
+import RegistrationStart from './components/RegistrationStart';
+import RegistrationCallBack from './components/RegistrationCallBack';
 
 import ApiHelper from './utils/ApiHelper';
 
@@ -94,7 +96,10 @@ class App extends React.Component {
                         </div> : null
                     }
                     <Switch>
+                        
                         <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
+                        <Route exact path={`${process.env.PUBLIC_URL}/registration/start`} component={RegistrationStart} />
+                        <Route exact path={`${process.env.PUBLIC_URL}/registration/callback`} component={RegistrationCallBack} />
                         <Route exact path={`${process.env.PUBLIC_URL}/items`} component={Items} />
                         <Route exact path={`${process.env.PUBLIC_URL}/items/:id`} component={Item} />
                         <Route exact path={`${process.env.PUBLIC_URL}/sealed-items`} component={SealedItems} />

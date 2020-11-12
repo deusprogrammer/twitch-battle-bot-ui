@@ -24,6 +24,14 @@ const recalculateStats = (userData, itemTable) => {
     return userData;
 }
 
+const createBot = async (twitchAuthCode) => {
+    let res = await axios.post(`${config.EXT_BASE_URL}/bots`, {
+        twitchAuthCode
+    })
+
+    return res.data;
+}
+
 const getItems = async (channel) => {
     let url = `${config.BASE_URL}/items`;
     if (channel) {
@@ -32,7 +40,6 @@ const getItems = async (channel) => {
 
     let items = await axios.get(url, {
         headers: {
-            //Authorization: `Bearer ${BATTLE_BOT_JWT}`
             "X-Access-Token": localStorage.getItem("accessToken")
         }
     });
@@ -54,7 +61,6 @@ const getJobs = async (channel) => {
 
     let jobs = await axios.get(url, {
         headers: {
-            //Authorization: `Bearer ${BATTLE_BOT_JWT}`
             "X-Access-Token": localStorage.getItem("accessToken")
         }
     });
@@ -336,7 +342,6 @@ const getSealedItems = async (channel) => {
 
     let items = await axios.get(url, {
         headers: {
-            //Authorization: `Bearer ${BATTLE_BOT_JWT}`
             "X-Access-Token": localStorage.getItem("accessToken")
         }
     });
@@ -413,5 +418,6 @@ export default {
     getSealedItems,
     getSealedItem,
     createSealedItem,
-    updateSealedItem
+    updateSealedItem,
+    createBot
 }
