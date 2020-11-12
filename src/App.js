@@ -37,8 +37,7 @@ class App extends React.Component {
             return;
         }
 
-        let user = await ApiHelper.getUser("~self");
-        let res = await axios.get(`https://deusprogrammer.com/api/profile-svc/users/${user.name}`, {
+        let res = await axios.get(`https://deusprogrammer.com/api/profile-svc/users/~self`, {
             headers: {
                 "X-Access-Token": localStorage.getItem("accessToken")
             }

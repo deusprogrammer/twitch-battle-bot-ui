@@ -17,6 +17,11 @@ export default class RegistrationCallBack extends React.Component {
             this.setState({error: true});
         }
     }
+
+    login = () => {
+        window.localStorage.setItem("twitchRedirect", "https://deusprogrammer.com/util/twitch/");
+        window.location.replace("https://deusprogrammer.com/api/auth-svc/auth/twitch");
+    }
     
     render() {
         if (this.state.error) {
@@ -33,6 +38,8 @@ export default class RegistrationCallBack extends React.Component {
                 <div>
                     <h1>Thank You</h1>
                     <p>Your user has been created and your bot has been registered.  You may now use any of the admin console features above to create monsters, items, abilities, and such that belong to your channel.  Please refer to the guide for information about how these ideas work.</p>
+                    <p>Please click below to login.</p>
+                    <button onClick={this.login}>Login</button>
                 </div>
             )
         }
