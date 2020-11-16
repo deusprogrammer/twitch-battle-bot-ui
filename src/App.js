@@ -17,8 +17,6 @@ import SealedItems from './components/SealedItems';
 import RegistrationStart from './components/RegistrationStart';
 import RegistrationCallBack from './components/RegistrationCallBack';
 
-import ApiHelper from './utils/ApiHelper';
-
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import axios from 'axios';
@@ -72,7 +70,7 @@ class App extends React.Component {
                     </div>
                     {this.state.isAdmin ? 
                         <div style={{textAlign: "center"}}>
-                            <Link to={`${process.env.PUBLIC_URL}/items`}>Items</Link> | <Link to={`${process.env.PUBLIC_URL}/abilities`}>Abilities</Link> | <Link to={`${process.env.PUBLIC_URL}/statuses`}>Statuses</Link> | <Link to={`${process.env.PUBLIC_URL}/monsters`}>Monsters</Link>
+                            <Link to={`${process.env.PUBLIC_URL}/items`}>Items</Link> | <Link to={`${process.env.PUBLIC_URL}/abilities`}>Abilities</Link> | <Link to={`${process.env.PUBLIC_URL}/monsters`}>Monsters</Link>
                         </div>
                     : null}
                     {this.state.isBroadcaster ? 
@@ -105,8 +103,6 @@ class App extends React.Component {
                         <Route exact path={`${process.env.PUBLIC_URL}/sealed-items/:id`} component={SealedItem} />
                         <Route exact path={`${process.env.PUBLIC_URL}/abilities`} component={Abilities} />
                         <Route exact path={`${process.env.PUBLIC_URL}/abilities/:id`} component={Ability} />
-                        <Route exact path={`${process.env.PUBLIC_URL}/statuses`} component={Statuses} />
-                        <Route exact path={`${process.env.PUBLIC_URL}/statuses/:id`} component={Status} />
                         <Route exact path={`${process.env.PUBLIC_URL}/monsters`} component={Monsters} />
                         <Route exact path={`${process.env.PUBLIC_URL}/monsters/:id`} component={Monster} />
                         <Route exact path={`${process.env.PUBLIC_URL}/battlers/:id`} component={Battler} />

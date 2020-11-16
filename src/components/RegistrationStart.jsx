@@ -3,6 +3,9 @@ import React from 'react';
 const twitchAuthUrl = "https://id.twitch.tv/oauth2/authorize?client_id=uczfktv6o7vvdeqxnafizuq672r5od&redirect_uri=https://deusprogrammer.com/util/twitch/registration/callback&response_type=code&scope=channel:read:redemptions";
 
 export default () => {
+    // Clear access token
+    window.localStorage.removeItem("accessToken");
+    
     return (
         <div>
             <h1>Bot User Registration</h1>

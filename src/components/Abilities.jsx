@@ -50,6 +50,7 @@ export default class Abilities extends React.Component {
             <div>
                 <h1 style={{textAlign: "center"}}>Abilities List</h1>
                 <div>
+                    { this.state.items.length > 0 ? 
                     <div style={{float: "left"}}>
                         <h2>Abilities List</h2>
                             { ["NONE", "FIRE", "ICE", "LIGHTNING", "WATER", "EARTH", "DARK", "LIGHT", "HEALING", "BUFFING", "CLEANSING"].map((element) => {
@@ -67,7 +68,7 @@ export default class Abilities extends React.Component {
                                     )
                                 });
                             })}
-                    </div>
+                    </div> : null }
                     <div style={{float: "right"}}>
                         <h2>Create New Ability</h2>
                         <AbilityForm
