@@ -50,7 +50,7 @@ export default class Abilities extends React.Component {
             <div>
                 <h1 style={{textAlign: "center"}}>Abilities List</h1>
                 <div>
-                    { this.state.items.length > 0 ? 
+                    { this.state.abilities.length > 0 ? 
                     <div style={{float: "left"}}>
                         <h2>Abilities List</h2>
                             { ["NONE", "FIRE", "ICE", "LIGHTNING", "WATER", "EARTH", "DARK", "LIGHT", "HEALING", "BUFFING", "CLEANSING"].map((element) => {
