@@ -6,6 +6,7 @@ export default class Bot extends React.Component {
     }
 
     componentDidMount() {
+        document.title = "Your Bot";
         if (!this.state.channelId) {
             this.props.history.push(`${process.env.PUBLIC_URL}/registration/start`);
         }
@@ -20,11 +21,11 @@ export default class Bot extends React.Component {
                 <div style={{display: "table"}}>
                     <div style={{display: "table-row"}}>
                         <div style={{display: "table-cell", padding: "10px", fontWeight: "bolder"}}>Encounters Panel:</div>
-                        <div style={{display: "table-cell", padding: "10px"}}><input type="text" value={`https://deusprogrammer.com/util/battle-panel/encounters?channelId={this.state.channelId}`} style={{width: "700px"}} /></div>
+                        <div style={{display: "table-cell", padding: "10px"}}><input type="text" value={`https://deusprogrammer.com/util/battle-panel/encounters?channelId=${this.state.channelId}`} style={{width: "700px"}} /></div>
                     </div>
                     <div style={{display: "table-row"}}>
                         <div style={{display: "table-cell", padding: "10px", fontWeight: "bolder"}}>Notifications Panel:</div>
-                        <div style={{display: "table-cell", padding: "10px"}}><input type="text" value={`https://deusprogrammer.com/util/battle-panel/notifications?channelId={this.state.channelId}`} style={{width: "700px"}} /></div>
+                        <div style={{display: "table-cell", padding: "10px"}}><input type="text" value={`https://deusprogrammer.com/util/battle-panel/notifications?channelId=${this.state.channelId}`} style={{width: "700px"}} /></div>
                     </div>
                 </div>
                 <h3>Actions</h3>
