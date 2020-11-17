@@ -36,7 +36,10 @@ export default class Battler extends React.Component {
     }
 
     equipItemOnUser = async (item) => {
-        let user = {...this.state.user};
+        // Pull the user and tables fresh in case anything has changed
+        let user = await this.getUser(this.props.match.params.id);
+
+        //let user = {...this.state.user};
         let equipment = {...user.equipment};
         let inventory = [...user.inventory];
 
@@ -77,14 +80,16 @@ export default class Battler extends React.Component {
                 toast(`Equipped ${item.name}`, {type: "info"});
             } catch (e) {
                 console.error(e);
-                toast(`Failed to equip ${item.name}`, {type: "error"});
+                toast(`Failed to equip ${item.name}, please refresh and try again.`, {type: "error"});
                 this.setState({saving: false});
             }
         });
     }
 
     sellItem = async (item) => {
-        let user = {...this.state.user};
+        let user = await this.getUser(this.props.match.params.id);
+
+        //let user = {...this.state.user};
         let equipment = {...user.equipment};
         let inventory = [...user.inventory];
 
@@ -122,7 +127,7 @@ export default class Battler extends React.Component {
                 toast(`Sold ${item.name}`, {type: "info"});
             } catch (e) {
                 console.error(e);
-                toast(`Failed to sell ${item.name}`, {type: "error"});
+                toast(`Failed to sell ${item.name}, please refresh and try again.`, {type: "error"});
                 this.setState({saving: false});
             }
         });

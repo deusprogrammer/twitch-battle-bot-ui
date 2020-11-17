@@ -29,7 +29,7 @@ export default class Bot extends React.Component {
                     </div>
                 </div>
                 <h3>Actions</h3>
-                <button>Start</button><button>Stop</button><button>Restart</button>
+                <button disabled={true}>Start</button><button disabled={true}>Stop</button><button disabled={true}>Restart</button>
             </div>
         )
     }
