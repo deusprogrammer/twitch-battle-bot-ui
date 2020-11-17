@@ -10,8 +10,7 @@ import Monster from './components/Monster';
 import Monsters from './components/Monsters';
 import Ability from './components/Ability';
 import Abilities from './components/Abilities';
-import Status from './components/Status';
-import Statuses from './components/Statuses';
+import Bot from './components/Bot';
 import SealedItem from './components/SealedItem';
 import SealedItems from './components/SealedItems';
 import RegistrationStart from './components/RegistrationStart';
@@ -66,7 +65,7 @@ class App extends React.Component {
                 <ToastContainer />
                 <Router>
                     <div style={{textAlign: "center"}}>
-                        <Link to={`${process.env.PUBLIC_URL}/`}>Guide</Link> | <Link to={`${process.env.PUBLIC_URL}/battlers/~self`}>Battler</Link>
+                        <Link to={`${process.env.PUBLIC_URL}/`}>Guide</Link> | <Link to={`${process.env.PUBLIC_URL}/battlers/~self`}>Battler</Link> | {this.state.isAdmin ? <Link to={`${process.env.PUBLIC_URL}/bot`}>Your Bot</Link> : <Link to={`${process.env.PUBLIC_URL}/registration/start`}>Get a Bot</Link>}
                     </div>
                     {this.state.isAdmin ? 
                         <div style={{textAlign: "center"}}>
@@ -97,6 +96,7 @@ class App extends React.Component {
                         <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
                         <Route exact path={`${process.env.PUBLIC_URL}/registration/start`} component={RegistrationStart} />
                         <Route exact path={`${process.env.PUBLIC_URL}/registration/callback`} component={RegistrationCallBack} />
+                        <Route exact path={`${process.env.PUBLIC_URL}/bot`} component={Bot} />
                         <Route exact path={`${process.env.PUBLIC_URL}/items`} component={Items} />
                         <Route exact path={`${process.env.PUBLIC_URL}/items/:id`} component={Item} />
                         <Route exact path={`${process.env.PUBLIC_URL}/sealed-items`} component={SealedItems} />

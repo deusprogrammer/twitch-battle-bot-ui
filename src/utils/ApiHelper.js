@@ -27,11 +27,21 @@ const recalculateStats = (userData, itemTable) => {
 const createBot = async (twitchAuthCode) => {
     let url = `${config.EXT_BASE_URL}/bots`;
 
-    console.log("URL: " + url);
-
     let res = await axios.post(url, {
         twitchAuthCode
     })
+
+    return res.data;
+}
+
+const getBot = async (channel) => {
+    let url = `${config.BASE_URL}/bots/${channel}`;
+
+    let res = await axios.get(url, {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
 
     return res.data;
 }
@@ -423,5 +433,6 @@ export default {
     getSealedItem,
     createSealedItem,
     updateSealedItem,
-    createBot
+    createBot,
+    getBot
 }
