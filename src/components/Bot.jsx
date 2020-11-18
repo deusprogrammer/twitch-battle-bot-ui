@@ -4,6 +4,7 @@ import ApiHelper from '../utils/ApiHelper';
 export default class Bot extends React.Component {
     state = {
         channelId: parseInt(window.localStorage.getItem("channel")),
+        buttonDisable: false,
         botState: {
             running: false,
             created: false
@@ -21,11 +22,12 @@ export default class Bot extends React.Component {
 
         setInterval(async () => {
             botState = await ApiHelper.getBotState(this.state.channelId);
-            this.setState({botState});
+            this.setState({botState, buttonDisable: false});
         }, 5000);
     }
 
     changeBotState = async (state) => {
+        this.setState({buttonDisable: true});
         await ApiHelper.changeBotState(this.state.channelId, state);
     }
 
@@ -57,9 +59,9 @@ export default class Bot extends React.Component {
                     </div>
                 </div>
                 <h3>Actions</h3>
-                <button disabled={this.state.botState.running} onClick={() => {this.changeBotState("start")}}>Start</button>
-                <button disabled={!this.state.botState.running} onClick={() => {this.changeBotState("stop")}}>Stop</button>
-                <button onClick={() => {this.changeBotState("restart")}}>Restart</button>
+                <button disabled={this.state.botState.running || this.state.buttonDisable} onClick={() => {this.changeBotState("start")}}>Start</button>
+                <button disabled={!this.state.botState.running || this.state.buttonDisable} onClick={() => {this.changeBotState("stop")}}>Stop</button>
+                <button disabled={this.state.buttonDisable} onClick={() => {this.changeBotState("restart")}}>Restart</button>
             </div>
         )
     }
