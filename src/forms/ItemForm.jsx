@@ -94,8 +94,7 @@ export default class ItemForm extends React.Component {
                 initialValues={this.props.initialValues}
                 getApi={this.props.getApi}
                 onSubmit={this.props.onSubmit} 
-                onSubmitFailure={this.props.onFailure}
-                validationSchema={itemSchema}>
+                onSubmitFailure={this.props.onFailure}>
                 <table>
                     <tbody>
                         <fieldset>

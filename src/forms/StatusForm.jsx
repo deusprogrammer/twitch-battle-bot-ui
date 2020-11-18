@@ -17,8 +17,7 @@ export default class StatusForm extends React.Component {
                 initialValues={this.props.initialValues}
                 getApi={this.props.getApi}
                 onSubmit={this.props.onSubmit} 
-                onSubmitFailure={this.props.onFailure}
-                validationSchema={abilitySchema}>
+                onSubmitFailure={this.props.onFailure}>
                 <table>
                     <tbody>
                         <fieldset>

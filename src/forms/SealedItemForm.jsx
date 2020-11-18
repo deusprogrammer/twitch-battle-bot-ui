@@ -7,8 +7,7 @@ export default (props) =>  {
         <Form 
             initialValues={props.initialValues}
             getApi={props.getApi}
-            onSubmit={props.onSubmit} 
-            onSubmitFailure={props.onFailure}>
+            onSubmit={props.onSubmit}>
             <table>
                 <tbody>
                     <fieldset>
