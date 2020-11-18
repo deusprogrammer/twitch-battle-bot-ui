@@ -60,8 +60,6 @@ export default class Items extends React.Component {
             }
         });
 
-        
-
         this.setState({items});
     }
 

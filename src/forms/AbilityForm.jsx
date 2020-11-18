@@ -50,7 +50,7 @@ export default class AbilityForm extends React.Component {
             <Form 
                 initialValues={this.props.initialValues}
                 getApi={this.props.getApi}
-                onSubmit={this.props.onSubmit} 
+                onSubmit={(values) => {console.log("SUBMITTING"); this.props.onSubmit(values)}} 
                 onSubmitFailure={this.props.onFailure}
                 validationSchema={abilitySchema}>
                 <table>
