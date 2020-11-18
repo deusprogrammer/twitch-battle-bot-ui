@@ -28,7 +28,7 @@ export default class RegistrationCallBack extends React.Component {
             return (
                 <div>
                     <h1>Error Registering Bot</h1>
-                    <p>We were unable to create your bot.  Please contact deusprogrammer@gmail.com for assistance.</p>
+                    <p>We were unable to create your bot.  Please contact deusprogrammer@gmail.com for assistance.  The problem may be that you haven't been approved by the creator to make a bot.  This isn't personal, but due to the fact that I am running this on my home lab and can't handle the bandwidth if there are too many users =P.</p>
                 </div>
             )
         }
