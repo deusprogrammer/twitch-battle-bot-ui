@@ -58,9 +58,9 @@ const getBotState = async (channel) => {
     return res.data;
 }
 
-const changeBotState = async (channel, state) => {
+const changeBotState = async (channel, newState) => {
     let res = await axios.put(`${config.BASE_URL}/bots/${channel}/state`, {
-        state
+        newState
     }, {
         headers: {
             "X-Access-Token": localStorage.getItem("accessToken")
