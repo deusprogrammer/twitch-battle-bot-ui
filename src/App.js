@@ -48,7 +48,7 @@ class App extends React.Component {
 
         let isAdmin = false;
         let isBroadcaster = false;
-        if (profile.roles.includes("SUPER_USER")) {
+        if (profile.roles.includes("TWITCH_ADMIN")) {
             isAdmin = true;
         }
 

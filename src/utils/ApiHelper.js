@@ -46,6 +46,30 @@ const getBot = async (channel) => {
     return res.data;
 }
 
+const getBotState = async (channel) => {
+    let url = `${config.BASE_URL}/bots/${channel}/state`;
+
+    let res = await axios.get(url, {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
+
+    return res.data;
+}
+
+const changeBotState = async (channel, state) => {
+    let res = await axios.put(`${config.BASE_URL}/bots/${channel}/state`, {
+        state
+    }, {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    })
+
+    return res.data;
+}
+
 const getItems = async (channel) => {
     let url = `${config.BASE_URL}/items`;
     if (channel) {
@@ -434,5 +458,7 @@ export default {
     createSealedItem,
     updateSealedItem,
     createBot,
-    getBot
+    getBot,
+    getBotState,
+    changeBotState
 }
