@@ -17,12 +17,16 @@ export default class Bot extends React.Component {
         }
 
         let botState = await ApiHelper.getBotState(this.state.channelId);
-
         this.setState({botState});
+
+        setInterval(() => {
+            botState = await ApiHelper.getBotState(this.state.channelId);
+            this.setState({botState});
+        }, 5000);
     }
 
-    changeBotState = (state) => {
-        ApiHelper.changeBotState(this.state.channelId, state);
+    changeBotState = async (state) => {
+        await ApiHelper.changeBotState(this.state.channelId, state);
     }
 
     render() {
@@ -33,11 +37,11 @@ export default class Bot extends React.Component {
                 <div style={{display: "table"}}>
                     <div style={{display: "table-row"}}>
                         <div style={{display: "table-cell", padding: "10px", fontWeight: "bolder"}}>Created:</div>
-                        <div style={{display: "table-cell", padding: "10px"}}>{this.state.created ? "Yes" : "No"}</div>
+                        <div style={{display: "table-cell", padding: "10px"}}>{this.state.botState.created ? "Yes" : "No"}</div>
                     </div>
                     <div style={{display: "table-row"}}>
                         <div style={{display: "table-cell", padding: "10px", fontWeight: "bolder"}}>Running:</div>
-                        <div style={{display: "table-cell", padding: "10px"}}>{this.state.running ? "Yes" : "No"}</div>
+                        <div style={{display: "table-cell", padding: "10px"}}>{this.state.botState.running ? "Yes" : "No"}</div>
                     </div>
                 </div>
                 <h3>Panel URLs</h3>
