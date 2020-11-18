@@ -19,7 +19,7 @@ export default class Bot extends React.Component {
         let botState = await ApiHelper.getBotState(this.state.channelId);
         this.setState({botState});
 
-        setInterval(() => {
+        setInterval(async () => {
             botState = await ApiHelper.getBotState(this.state.channelId);
             this.setState({botState});
         }, 5000);
