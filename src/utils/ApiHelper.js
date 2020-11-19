@@ -312,14 +312,18 @@ const getAbilities = async (channel) => {
 }
 
 const getAbility = async (id) => {
-    let ability = await axios.get(`${config.BASE_URL}/abilities/${id}`,
-        {
-            headers: {
-                "X-Access-Token": localStorage.getItem("accessToken")
-            }
-        });
-
-    return ability.data;
+    try {
+        let ability = await axios.get(`${config.BASE_URL}/abilities/${id}`,
+            {
+                headers: {
+                    "X-Access-Token": localStorage.getItem("accessToken")
+                }
+            });
+        
+        return ability.data;
+    } catch (error) {
+        return null;
+    }
 }
 
 const createAbility = async (abilityData) => {
