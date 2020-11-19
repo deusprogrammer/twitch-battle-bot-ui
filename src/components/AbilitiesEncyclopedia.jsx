@@ -36,7 +36,7 @@ export default class AbilitiesEncyclopedia extends React.Component {
                                         slotName = "Fire Element";
                                         break;
                                     case "ICE":
-                                        slotNae = "Ice Element";
+                                        slotName = "Ice Element";
                                         break;
                                     case "LIGHTNING":
                                         slotName = "Lightning Element";
