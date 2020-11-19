@@ -50,7 +50,7 @@ export default class ItemsEncyclopedia extends React.Component {
                                     slotName = "Offhand Weapons";
                                     break;
                                 case "HEAD":
-                                    slotNae = "Head Armor";
+                                    slotName = "Head Armor";
                                     break;
                                 case "BODY":
                                     slotName = "Body Armor";
