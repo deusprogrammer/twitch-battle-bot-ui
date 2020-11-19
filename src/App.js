@@ -16,6 +16,10 @@ import SealedItems from './components/SealedItems';
 import RegistrationStart from './components/RegistrationStart';
 import RegistrationCallBack from './components/RegistrationCallBack';
 
+import AbilitiesEncyclopedia from './components/AbilitiesEncyclopedia';
+import ItemsEncyclopedia from './components/ItemsEncyclopedia';
+import MonstersEncyclopedia from './components/MonstersEncyclopedia';
+
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import axios from 'axios';
@@ -65,11 +69,14 @@ class App extends React.Component {
                 <ToastContainer />
                 <Router>
                     <div style={{textAlign: "center"}}>
-                        <Link to={`${process.env.PUBLIC_URL}/`}>Guide</Link> | <Link to={`${process.env.PUBLIC_URL}/battlers/~self`}>Battler</Link> | {this.state.isAdmin ? <Link to={`${process.env.PUBLIC_URL}/bot`}>Your Bot</Link> : <Link to={`${process.env.PUBLIC_URL}/registration/start`}>Get a Bot</Link>}
+                        <Link to={`${process.env.PUBLIC_URL}/`}>Guide</Link> | <Link to={`${process.env.PUBLIC_URL}/battlers/~self`}>Your Battler</Link> | {this.state.isAdmin ? <Link to={`${process.env.PUBLIC_URL}/bot`}>Your Bot</Link> : <Link to={`${process.env.PUBLIC_URL}/registration/start`}>Get a Bot</Link>}
+                    </div>
+                    <div style={{textAlign: "center"}}>
+                    <Link to={`${process.env.PUBLIC_URL}/encyclopedia/items`}>Item Encyclopedia</Link> | <Link to={`${process.env.PUBLIC_URL}/encyclopedia/abilities`}>Ability Encyclopedia</Link> | <Link to={`${process.env.PUBLIC_URL}/encyclopedia/monsters`}>Monster Encyclopedia</Link>
                     </div>
                     {this.state.isAdmin ? 
                         <div style={{textAlign: "center"}}>
-                            <Link to={`${process.env.PUBLIC_URL}/items`}>Items</Link> | <Link to={`${process.env.PUBLIC_URL}/abilities`}>Abilities</Link> | <Link to={`${process.env.PUBLIC_URL}/monsters`}>Monsters</Link>
+                            <Link to={`${process.env.PUBLIC_URL}/items`}>Item Console</Link> | <Link to={`${process.env.PUBLIC_URL}/abilities`}>Ability Console</Link> | <Link to={`${process.env.PUBLIC_URL}/monsters`}>Monster Console</Link>
                         </div>
                     : null}
                     {this.state.isBroadcaster ? 
@@ -106,6 +113,9 @@ class App extends React.Component {
                         <Route exact path={`${process.env.PUBLIC_URL}/monsters`} component={Monsters} />
                         <Route exact path={`${process.env.PUBLIC_URL}/monsters/:id`} component={Monster} />
                         <Route exact path={`${process.env.PUBLIC_URL}/battlers/:id`} component={Battler} />
+                        <Route exact path={`${process.env.PUBLIC_URL}/encyclopedia/abilities`} component={AbilitiesEncyclopedia} />
+                        <Route exact path={`${process.env.PUBLIC_URL}/encyclopedia/items`} component={ItemsEncyclopedia} />
+                        <Route exact path={`${process.env.PUBLIC_URL}/encyclopedia/monsters`} component={MonstersEncyclopedia} />
                     </Switch>
                 </Router>
             </div>
