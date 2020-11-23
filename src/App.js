@@ -32,6 +32,11 @@ class App extends React.Component {
         channel: window.localStorage.getItem("channel")
     }
 
+    login = () => {
+        window.localStorage.setItem("twitchRedirect", "https://deusprogrammer.com/util/twitch/");
+        window.location.replace("https://deusprogrammer.com/api/auth-svc/auth/twitch");
+    }
+
     componentDidMount = async () => {
         // If no access token is present, don't retrieve their information
         if (!localStorage.getItem("accessToken")) {
@@ -68,6 +73,9 @@ class App extends React.Component {
             <div style={{margin: "auto"}}>
                 <ToastContainer />
                 <Router>
+                    <div style={{textAlign: "right"}}>
+                        <button onClick={this.login}>Login</button>
+                    </div>
                     <div style={{textAlign: "center"}}>
                         <Link to={`${process.env.PUBLIC_URL}/`}>Guide</Link> | <Link to={`${process.env.PUBLIC_URL}/battlers/~self`}>Your Battler</Link> | {this.state.isAdmin ? <Link to={`${process.env.PUBLIC_URL}/bot`}>Your Bot</Link> : <Link to={`${process.env.PUBLIC_URL}/registration/start`}>Get a Bot</Link>}
                     </div>

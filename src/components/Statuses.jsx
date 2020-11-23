@@ -23,7 +23,15 @@ export default class Abilities extends React.Component {
     }
 
     onSubmit = async (values) => {
-        values.id = values.name.replaceAll(" ", "_").replaceAll("'", "").toUpperCase() + "-" + window.localStorage.getItem("channel");
+        values.id = values.name.replaceAll(" ", "_").replaceAll("'", "").toUpperCase();
+
+        let existing = await ApiHelper.getStatus(values.id);
+
+        if (existing) {
+            toast("Status with this name already exists!", {type: "error"});
+            return;
+        }
+
         values.owningChannel = parseInt(window.localStorage.getItem("channel"));
 
         try {

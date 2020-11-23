@@ -86,7 +86,15 @@ export default class Monsters extends React.Component {
     }
 
     onSubmit = async (values) => {
-        values.id = values.name.replaceAll(" ", "_").replaceAll("'", "").toUpperCase() + "-" + window.localStorage.getItem("channel");
+        values.id = values.name.replaceAll(" ", "_").replaceAll("'", "").toUpperCase();
+
+        let existing = await ApiHelper.getMonster(values.id);
+
+        if (existing) {
+            toast("Monster with this name already exists!", {type: "error"});
+            return;
+        }
+
         values.owningChannel = parseInt(window.localStorage.getItem("channel"));
 
         try {

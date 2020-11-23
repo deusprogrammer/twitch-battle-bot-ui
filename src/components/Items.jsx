@@ -69,7 +69,15 @@ export default class Items extends React.Component {
     }
 
     handleSubmit = async (values) => {
-        values.id = values.name.replaceAll(" ", "_").replaceAll("'", "").toUpperCase() + "-" + window.localStorage.getItem("channel");
+        values.id = values.name.replaceAll(" ", "_").replaceAll("'", "").toUpperCase();
+
+        let existing = await ApiHelper.getItem(values.id);
+
+        if (existing) {
+            toast("Item with this name already exists!", {type: "error"});
+            return;
+        }
+
         values.owningChannel = parseInt(window.localStorage.getItem("channel"));
         if (values.type === "consumable") {
             values.slot = "inventory";
