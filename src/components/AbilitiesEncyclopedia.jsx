@@ -22,7 +22,7 @@ export default class AbilitiesEncyclopedia extends React.Component {
     render() {
         return (
             <div>
-                <h1 style={{textAlign: "center"}}>Abilities List</h1>
+                <h1 style={{textAlign: "center"}}>Ability Encyclopedia</h1>
                 <div>
                     { this.state.abilities.length > 0 ? 
                     <div style={{margin: "auto"}}>

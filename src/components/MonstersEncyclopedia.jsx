@@ -19,7 +19,7 @@ export default class MonstersEncyclopedia extends React.Component {
     render() {
         return (
             <div>
-                <h1 style={{textAlign: "center"}}>Monster Admin Console</h1>
+                <h1 style={{textAlign: "center"}}>Monster Encyclopedia</h1>
                 <div>
                     { this.state.monsters.length > 0 ?
                     <div style={{margin: "auto"}}>

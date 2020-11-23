@@ -56,7 +56,7 @@ export default class Abilities extends React.Component {
     render() {
         return (
             <div>
-                <h1 style={{textAlign: "center"}}>Abilities List</h1>
+                <h1 style={{textAlign: "center"}}>Ability Admin Console</h1>
                 <div>
                     { this.state.abilities.length > 0 ? 
                     <div style={{float: "left"}}>

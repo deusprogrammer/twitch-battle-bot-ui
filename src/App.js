@@ -53,8 +53,7 @@ class App extends React.Component {
 
         window.localStorage.setItem("channel", profile.connected.twitch.channels.length > 0 ? profile.connected.twitch.channels[0] : null);
 
-        console.log("PROFILE: " + JSON.stringify(profile, null, 5));
-
+        let isLoggedIn = true;
         let isAdmin = false;
         let isBroadcaster = false;
         if (profile.roles.includes("TWITCH_BROADCASTER")) {
@@ -65,7 +64,7 @@ class App extends React.Component {
             isBroadcaster = true;
         }
 
-        this.setState({isAdmin, isBroadcaster, profile});
+        this.setState({isLoggedIn, isAdmin, isBroadcaster, profile});
     }
     
     render() {
@@ -74,7 +73,9 @@ class App extends React.Component {
                 <ToastContainer />
                 <Router>
                     <div style={{textAlign: "right"}}>
-                        <button onClick={this.login}>Login</button>
+                        {isLoggedIn ? 
+                            <button onClick={this.login}>Login</button> : <button onClick={() => {alert("This is not currently implemented")}}>My Profile</button>
+                        }
                     </div>
                     <div style={{textAlign: "center"}}>
                         <Link to={`${process.env.PUBLIC_URL}/`}>Guide</Link> | <Link to={`${process.env.PUBLIC_URL}/battlers/~self`}>Your Battler</Link> | {this.state.isAdmin ? <Link to={`${process.env.PUBLIC_URL}/bot`}>Your Bot</Link> : <Link to={`${process.env.PUBLIC_URL}/registration/start`}>Get a Bot</Link>}
