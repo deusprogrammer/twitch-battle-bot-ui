@@ -9,6 +9,7 @@ export default class RegistrationCallBack extends React.Component {
     }
 
     componentDidMount = async () => {
+        document.title = `Bot Registration`;
         let queryParam = new URLSearchParams(window.location.search);
         try {
             await ApiHelper.createBot(queryParam.get("code"));

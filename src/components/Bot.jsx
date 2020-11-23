@@ -12,7 +12,7 @@ export default class Bot extends React.Component {
     }
 
     async componentDidMount() {
-        document.title = "Your Bot";
+        document.title = "Bot Control Panel";
         if (!this.state.channelId) {
             this.props.history.push(`${process.env.PUBLIC_URL}/registration/start`);
         }

@@ -3,7 +3,6 @@ import {toast} from 'react-toastify';
 
 import ApiHelper from '../utils/ApiHelper';
 
-import ItemForm from '../forms/ItemForm';
 import ItemElement from '../elements/ItemElement';
 
 export default class ItemsEncyclopedia extends React.Component {

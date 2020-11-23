@@ -4,6 +4,7 @@ const twitchAuthUrl = "https://id.twitch.tv/oauth2/authorize?client_id=uczfktv6o
 
 export default class RegistrationStart extends React.Component {
     componentDidMount() {
+        document.title = `Bot Registration`;
         window.localStorage.removeItem("accessToken");
     }
 
