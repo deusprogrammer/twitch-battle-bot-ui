@@ -73,7 +73,7 @@ class App extends React.Component {
                 <ToastContainer />
                 <Router>
                     <div style={{textAlign: "right"}}>
-                        {isLoggedIn ? 
+                        {this.state.isLoggedIn ? 
                             <button onClick={this.login}>Login</button> : <button onClick={() => {alert("This is not currently implemented")}}>My Profile</button>
                         }
                     </div>
