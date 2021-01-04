@@ -49,7 +49,7 @@ const checkToken = async (channel, twitchAuthCode) => {
 const updateToken = async (channel, twitchAuthCode) => {
     let url = `${config.BASE_URL}/bots/${channel}/token`;
 
-    let res = await axios.post(url, {
+    let res = await axios.put(url, {
         twitchAuthCode
     },{
         headers: {
