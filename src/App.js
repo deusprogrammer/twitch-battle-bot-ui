@@ -15,6 +15,7 @@ import SealedItem from './components/SealedItem';
 import SealedItems from './components/SealedItems';
 import RegistrationStart from './components/RegistrationStart';
 import RegistrationCallBack from './components/RegistrationCallBack';
+import RegistrationRefresh from './components/RegistrationRefresh';
 
 import AbilitiesEncyclopedia from './components/AbilitiesEncyclopedia';
 import ItemsEncyclopedia from './components/ItemsEncyclopedia';
@@ -112,6 +113,7 @@ class App extends React.Component {
                         <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
                         <Route exact path={`${process.env.PUBLIC_URL}/registration/start`} component={RegistrationStart} />
                         <Route exact path={`${process.env.PUBLIC_URL}/registration/callback`} component={RegistrationCallBack} />
+                        <Route exact path={`${process.env.PUBLIC_URL}/registration/refresh`} component={RegistrationRefresh} />
                         <Route exact path={`${process.env.PUBLIC_URL}/bot`} component={Bot} />
                         <Route exact path={`${process.env.PUBLIC_URL}/items`} component={Items} />
                         <Route exact path={`${process.env.PUBLIC_URL}/items/:id`} component={Item} />

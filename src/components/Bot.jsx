@@ -1,6 +1,8 @@
 import React from 'react';
 import ApiHelper from '../utils/ApiHelper';
 
+const twitchAuthUrl = "https://id.twitch.tv/oauth2/authorize?client_id=uczfktv6o7vvdeqxnafizuq672r5od&redirect_uri=https://deusprogrammer.com/util/twitch/registration/refresh&response_type=code&scope=channel:read:redemptions";
+
 export default class Bot extends React.Component {
     state = {
         channelId: parseInt(window.localStorage.getItem("channel")),
@@ -16,6 +18,8 @@ export default class Bot extends React.Component {
         if (!this.state.channelId) {
             this.props.history.push(`${process.env.PUBLIC_URL}/registration/start`);
         }
+
+        // Check token state
 
         let botState = await ApiHelper.getBotState(this.state.channelId);
         this.setState({botState});
@@ -59,6 +63,9 @@ export default class Bot extends React.Component {
                     </div>
                 </div>
                 <h3>Actions</h3>
+                <a href={twitchAuthUrl}>
+                    <button>Refresh Authentication</button>
+                </a>
                 <button disabled={this.state.botState.running || this.state.buttonDisable} onClick={() => {this.changeBotState("start")}}>Start</button>
                 <button disabled={!this.state.botState.running || this.state.buttonDisable} onClick={() => {this.changeBotState("stop")}}>Stop</button>
                 <button disabled={this.state.buttonDisable} onClick={() => {this.changeBotState("restart")}}>Restart</button>

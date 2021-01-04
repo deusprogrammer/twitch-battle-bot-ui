@@ -34,6 +34,24 @@ const createBot = async (twitchAuthCode) => {
     return res.data;
 }
 
+const checkToken = async (twitchAuthCode) => {
+    let url = `${config.BASE_URL}/bots/${channel}/token`;
+
+    let res = await axios.get(url)
+
+    return res.data;
+}
+
+const updateToken = async (twitchAuthCode) => {
+    let url = `${config.BASE_URL}/bots/${channel}/token`;
+
+    let res = await axios.post(url, {
+        twitchAuthCode
+    })
+
+    return res.data;
+}
+
 const getBot = async (channel) => {
     let url = `${config.BASE_URL}/bots/${channel}`;
 
@@ -462,6 +480,8 @@ export default {
     createSealedItem,
     updateSealedItem,
     createBot,
+    checkToken,
+    updateToken,
     getBot,
     getBotState,
     changeBotState
