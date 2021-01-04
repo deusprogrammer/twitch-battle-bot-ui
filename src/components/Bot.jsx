@@ -50,6 +50,9 @@ export default class Bot extends React.Component {
                         <div style={{display: "table-cell", padding: "10px"}}>{this.state.botState.running ? "Yes" : "No"}</div>
                     </div>
                 </div>
+                <a href={twitchAuthUrl}>
+                    <button>Refresh Authentication</button>
+                </a>
                 <h3>Panel URLs</h3>
                 <p>Bring the below into your XSplit or OBS presentation layouts to show monsters and battle notifications.  It is recommended to place the encounter panel on either side of the screen, and the notification panel on the top or bottom of the screen.</p>
                 <div style={{display: "table"}}>
@@ -63,9 +66,6 @@ export default class Bot extends React.Component {
                     </div>
                 </div>
                 <h3>Actions</h3>
-                <a href={twitchAuthUrl}>
-                    <button>Refresh Authentication</button>
-                </a>
                 <button disabled={this.state.botState.running || this.state.buttonDisable} onClick={() => {this.changeBotState("start")}}>Start</button>
                 <button disabled={!this.state.botState.running || this.state.buttonDisable} onClick={() => {this.changeBotState("stop")}}>Stop</button>
                 <button disabled={this.state.buttonDisable} onClick={() => {this.changeBotState("restart")}}>Restart</button>
