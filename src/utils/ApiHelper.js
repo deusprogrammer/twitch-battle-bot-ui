@@ -34,7 +34,7 @@ const createBot = async (twitchAuthCode) => {
     return res.data;
 }
 
-const checkToken = async (channel, twitchAuthCode) => {
+const checkToken = async (channel) => {
     let url = `${config.BASE_URL}/bots/${channel}/token`;
 
     let res = await axios.get(url, {

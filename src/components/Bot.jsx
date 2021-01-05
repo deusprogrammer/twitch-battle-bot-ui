@@ -20,13 +20,14 @@ export default class Bot extends React.Component {
         }
 
         // Check token state
-
+        let tokenState = await ApiHelper.checkToken(this.state.channelId);
         let botState = await ApiHelper.getBotState(this.state.channelId);
-        this.setState({botState});
+        this.setState({botState, tokenState});
 
         setInterval(async () => {
+            tokenState = await ApiHelper.checkToken(this.state.channelId);
             botState = await ApiHelper.getBotState(this.state.channelId);
-            this.setState({botState, buttonDisable: false});
+            this.setState({botState, tokenState, buttonDisable: false});
         }, 5000);
     }
 
@@ -50,11 +51,16 @@ export default class Bot extends React.Component {
                         <div style={{display: "table-cell", padding: "10px"}}>{this.state.botState.running ? "Yes" : "No"}</div>
                     </div>
                 </div>
-                <div style={{textAlign: "center"}}>
-                    <a href={twitchAuthUrl}>
-                        <button>Refresh Authentication</button>
-                    </a>
+                <h3>Twitch Account Link</h3>
+                <div style={{display: "table"}}>
+                    <div style={{display: "table-row"}}>
+                        <div style={{display: "table-cell", padding: "10px", fontWeight: "bolder"}}>Valid:</div>
+                        <div style={{display: "table-cell", padding: "10px"}}>{this.state.tokenState.valid ? "Yes" : "No"}</div>
+                    </div>
                 </div>
+                <a href={twitchAuthUrl}>
+                    <button>Refresh Authentication</button>
+                </a>
                 <h3>Panel URLs</h3>
                 <p>Bring the below into your XSplit or OBS presentation layouts to show monsters and battle notifications.  It is recommended to place the encounter panel on either side of the screen, and the notification panel on the top or bottom of the screen.</p>
                 <div style={{display: "table"}}>
