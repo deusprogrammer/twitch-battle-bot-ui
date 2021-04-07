@@ -1,6 +1,8 @@
 import React from 'react';
 import ApiHelper from '../utils/ApiHelper';
 
+const twitchAuthUrl = "https://id.twitch.tv/oauth2/authorize?client_id=uczfktv6o7vvdeqxnafizuq672r5od&redirect_uri=https://deusprogrammer.com/util/twitch/registration/refresh&response_type=code&scope=channel:read:redemptions";
+
 export default class Bot extends React.Component {
     state = {
         channelId: parseInt(window.localStorage.getItem("channel")),
@@ -8,6 +10,9 @@ export default class Bot extends React.Component {
         botState: {
             running: false,
             created: false
+        },
+        tokenState: {
+            valid: false
         }
     }
 
@@ -17,12 +22,15 @@ export default class Bot extends React.Component {
             this.props.history.push(`${process.env.PUBLIC_URL}/registration/start`);
         }
 
+        // Check token state
+        let tokenState = await ApiHelper.checkToken(this.state.channelId);
         let botState = await ApiHelper.getBotState(this.state.channelId);
-        this.setState({botState});
+        this.setState({botState, tokenState});
 
         setInterval(async () => {
+            tokenState = await ApiHelper.checkToken(this.state.channelId);
             botState = await ApiHelper.getBotState(this.state.channelId);
-            this.setState({botState, buttonDisable: false});
+            this.setState({botState, tokenState, buttonDisable: false});
         }, 5000);
     }
 
@@ -46,6 +54,16 @@ export default class Bot extends React.Component {
                         <div style={{display: "table-cell", padding: "10px"}}>{this.state.botState.running ? "Yes" : "No"}</div>
                     </div>
                 </div>
+                <h3>Twitch Account Link</h3>
+                <div style={{display: "table"}}>
+                    <div style={{display: "table-row"}}>
+                        <div style={{display: "table-cell", padding: "10px", fontWeight: "bolder"}}>Valid:</div>
+                        <div style={{display: "table-cell", padding: "10px"}}>{this.state.tokenState.valid ? "Yes" : "No"}</div>
+                    </div>
+                </div>
+                <a href={twitchAuthUrl}>
+                    <button disabled={this.state.tokenState.valid}>Refresh Authentication</button>
+                </a>
                 <h3>Panel URLs</h3>
                 <p>Bring the below into your XSplit or OBS presentation layouts to show monsters and battle notifications.  It is recommended to place the encounter panel on either side of the screen, and the notification panel on the top or bottom of the screen.</p>
                 <div style={{display: "table"}}>
