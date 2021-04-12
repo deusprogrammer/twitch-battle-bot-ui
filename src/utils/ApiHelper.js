@@ -477,6 +477,26 @@ const getBotConfig = async (channelId) => {
     return found.data;
 }
 
+const getAdminConfigs = async () => {
+    let found = await axios.get(`${config.BASE_URL}/configs`, {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
+
+    return found.data;
+}
+
+const updateAdminConfigs = async (config) => {
+    let update = await axios.put(`${config.BASE_URL}/configs/${config.name}`, config, {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
+
+    return update.data;
+}
+
 export default {
     expandUser,
     recalculateStats,
@@ -514,5 +534,7 @@ export default {
     getBotState,
     changeBotState,
     updateBotConfig,
-    getBotConfig
+    getBotConfig,
+    getAdminConfigs,
+    updateAdminConfigs
 }
