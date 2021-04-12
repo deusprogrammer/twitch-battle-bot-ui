@@ -89,7 +89,7 @@ export default class Bot extends React.Component {
                         let configElementDescription = configElementDescriptions[configElement];
                         return (
                             <React.Fragment>
-                                <input type="checkbox" onChange={(e) => {this.onConfigChange(e, configElement)}} value={configElementValue} />&nbsp;<label>{configElementDescription}</label><br/>
+                                <input type="checkbox" onChange={(e) => {this.onConfigChange(e, configElement)}} checked={configElementValue} />&nbsp;<label>{configElementDescription}</label><br/>
                             </React.Fragment>
                         )
                     })}
