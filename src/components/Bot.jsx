@@ -3,6 +3,11 @@ import ApiHelper from '../utils/ApiHelper';
 
 const twitchAuthUrl = "https://id.twitch.tv/oauth2/authorize?client_id=uczfktv6o7vvdeqxnafizuq672r5od&redirect_uri=https://deusprogrammer.com/util/twitch/registration/refresh&response_type=code&scope=channel:read:redemptions";
 
+const configElementDescriptions = {
+    cbd: "Chat Battle Dungeon",
+    requests: "Request Queue"
+}
+
 export default class Bot extends React.Component {
     state = {
         channelId: parseInt(window.localStorage.getItem("channel")),
@@ -13,6 +18,10 @@ export default class Bot extends React.Component {
         },
         tokenState: {
             valid: false
+        },
+        config: {
+            cbd: true,
+            requests: true
         }
     }
 
@@ -37,6 +46,13 @@ export default class Bot extends React.Component {
     changeBotState = async (state) => {
         this.setState({buttonDisable: true});
         await ApiHelper.changeBotState(this.state.channelId, state);
+    }
+
+    onConfigChange = async (event, configItem) => {
+        let config = {...this.state.config};
+        config[configItem] = event.target.value;
+        await ApiHelper.updateBotConfig(config);
+        this.setState({config});
     }
 
     render() {
@@ -64,6 +80,18 @@ export default class Bot extends React.Component {
                 <a href={twitchAuthUrl}>
                     <button disabled={this.state.tokenState.valid}>Refresh Authentication</button>
                 </a>
+                <h3>Bot Configuration</h3>
+                <div>
+                    { Object.keys(this.state.config).map((configElement) => {
+                        let configElementValue = this.state.config[configElement];
+                        let configElementDescription = configElementDescriptions[configElement];
+                        return (
+                            <React.Fragment>
+                                <input type="checkbox" onChange={(e) => {this.onConfigChange(e, configElement)}} value={configElementValue} /><label>{configElementDescription}</label>        
+                            </React.Fragment>
+                        )
+                    })}
+                </div>
                 <h3>Panel URLs</h3>
                 <p>Bring the below into your XSplit or OBS presentation layouts to show monsters and battle notifications.  It is recommended to place the encounter panel on either side of the screen, and the notification panel on the top or bottom of the screen.</p>
                 <div style={{display: "table"}}>

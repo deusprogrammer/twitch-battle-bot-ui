@@ -457,6 +457,16 @@ const updateUser = async (userData) => {
     return updated.data;
 }
 
+const updateBotConfig = async (configData) => {
+    let updated = await axios.put(`${config.BASE_URL}/bots/${userData.name}/config`, configData, {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
+
+    return updated.data;
+}
+
 export default {
     expandUser,
     recalculateStats,
@@ -492,5 +502,6 @@ export default {
     updateToken,
     getBot,
     getBotState,
-    changeBotState
+    changeBotState,
+    updateBotConfig
 }
