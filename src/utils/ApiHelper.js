@@ -457,8 +457,8 @@ const updateUser = async (userData) => {
     return updated.data;
 }
 
-const updateBotConfig = async (configData) => {
-    let updated = await axios.put(`${config.BASE_URL}/bots/${userData.name}/config`, configData, {
+const updateBotConfig = async (channelId, configData) => {
+    let updated = await axios.put(`${config.BASE_URL}/bots/${channelId}/config`, configData, {
         headers: {
             "X-Access-Token": localStorage.getItem("accessToken")
         }

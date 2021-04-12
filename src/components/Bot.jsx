@@ -51,7 +51,7 @@ export default class Bot extends React.Component {
     onConfigChange = async (event, configItem) => {
         let config = {...this.state.config};
         config[configItem] = event.target.value;
-        await ApiHelper.updateBotConfig(config);
+        await ApiHelper.updateBotConfig(this.state.channelId, config);
         this.setState({config});
     }
 
