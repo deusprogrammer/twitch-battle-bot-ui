@@ -11,7 +11,7 @@ export default class AdminConfigs extends React.Component {
         let configList = await ApiHelper.getAdminConfigs();
         let configs = {}
         for (const config of configList) {
-            configs[config.name] = config.values;
+            configs[config.name] = config;
         }
         this.setState({configs});
     }
