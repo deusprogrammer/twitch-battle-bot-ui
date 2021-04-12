@@ -26,6 +26,7 @@ import './App.css';
 import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AdminConfigs from './components/AdminConfigs';
 
 class App extends React.Component {
     state = {
@@ -109,7 +110,6 @@ class App extends React.Component {
                         </div> : null
                     }
                     <Switch>
-                        
                         <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
                         <Route exact path={`${process.env.PUBLIC_URL}/registration/start`} component={RegistrationStart} />
                         <Route exact path={`${process.env.PUBLIC_URL}/registration/callback`} component={RegistrationCallBack} />
@@ -127,6 +127,7 @@ class App extends React.Component {
                         <Route exact path={`${process.env.PUBLIC_URL}/encyclopedia/abilities`} component={AbilitiesEncyclopedia} />
                         <Route exact path={`${process.env.PUBLIC_URL}/encyclopedia/items`} component={ItemsEncyclopedia} />
                         <Route exact path={`${process.env.PUBLIC_URL}/encyclopedia/monsters`} component={MonstersEncyclopedia} />
+                        <Route exact path={`${process.env.PUBLIC_URL}/admin/configs`} component={AdminConfigs} />
                     </Switch>
                 </Router>
             </div>
