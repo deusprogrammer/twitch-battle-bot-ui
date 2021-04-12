@@ -31,10 +31,12 @@ export default class Bot extends React.Component {
             this.props.history.push(`${process.env.PUBLIC_URL}/registration/start`);
         }
 
+        let config = await ApiHelper.getBotConfig(this.state.channelId);
+
         // Check token state
         let tokenState = await ApiHelper.checkToken(this.state.channelId);
         let botState = await ApiHelper.getBotState(this.state.channelId);
-        this.setState({botState, tokenState});
+        this.setState({botState, tokenState, config});
 
         setInterval(async () => {
             tokenState = await ApiHelper.checkToken(this.state.channelId);
@@ -87,7 +89,7 @@ export default class Bot extends React.Component {
                         let configElementDescription = configElementDescriptions[configElement];
                         return (
                             <React.Fragment>
-                                <input type="checkbox" onChange={(e) => {this.onConfigChange(e, configElement)}} value={configElementValue} /><label>{configElementDescription}</label>        
+                                <input type="checkbox" onChange={(e) => {this.onConfigChange(e, configElement)}} value={configElementValue} />&nbsp;<label>{configElementDescription}</label><br/>
                             </React.Fragment>
                         )
                     })}

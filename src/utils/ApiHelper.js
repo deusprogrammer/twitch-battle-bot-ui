@@ -467,6 +467,16 @@ const updateBotConfig = async (channelId, configData) => {
     return updated.data;
 }
 
+const getBotConfig = async (channelId) => {
+    let found = await axios.get(`${config.BASE_URL}/bots/${channelId}/config`, {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
+
+    return found.data;
+}
+
 export default {
     expandUser,
     recalculateStats,
@@ -503,5 +513,6 @@ export default {
     getBot,
     getBotState,
     changeBotState,
-    updateBotConfig
+    updateBotConfig,
+    getBotConfig
 }
