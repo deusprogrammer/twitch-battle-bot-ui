@@ -42,7 +42,8 @@ export default class AdminConfigs extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                    {this.state.configs.map((config) => {
+                    {Object.keys(this.state.configs).map((configName) => {
+                        let config = this.state.configs[configName];
                         return (
                             <tr>
                                 <td>{config.name}</td>
