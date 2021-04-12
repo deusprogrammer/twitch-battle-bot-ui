@@ -84,12 +84,13 @@ export default class Bot extends React.Component {
                 </a>
                 <h3>Bot Configuration</h3>
                 <div style={{marginLeft: "10px"}}>
+                    <p>Set the below checkboxes to enable or disable certain aspects of the bot.  You cannot change these settings while the bot is running.</p>
                     { Object.keys(this.state.config).map((configElement) => {
                         let configElementValue = this.state.config[configElement];
                         let configElementDescription = configElementDescriptions[configElement];
                         return (
                             <React.Fragment>
-                                <input type="checkbox" onChange={(e) => {this.onConfigChange(e, configElement)}} checked={configElementValue} />&nbsp;<label>{configElementDescription}</label><br/>
+                                <input type="checkbox" onChange={(e) => {this.onConfigChange(e, configElement)}} checked={configElementValue} disabled={this.state.botState.running} />&nbsp;<label>{configElementDescription}</label><br/>
                             </React.Fragment>
                         )
                     })}
