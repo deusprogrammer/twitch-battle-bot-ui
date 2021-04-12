@@ -83,7 +83,7 @@ export default class Bot extends React.Component {
                     <button disabled={this.state.tokenState.valid}>Refresh Authentication</button>
                 </a>
                 <h3>Bot Configuration</h3>
-                <div>
+                <div style={{marginLeft: "10px"}}>
                     { Object.keys(this.state.config).map((configElement) => {
                         let configElementValue = this.state.config[configElement];
                         let configElementDescription = configElementDescriptions[configElement];
