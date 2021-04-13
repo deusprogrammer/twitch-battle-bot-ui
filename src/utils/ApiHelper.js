@@ -487,8 +487,8 @@ const getAdminConfigs = async () => {
     return found.data;
 }
 
-const updateAdminConfigs = async (config) => {
-    let update = await axios.put(`${config.BASE_URL}/configs/${config.name}`, config, {
+const updateAdminConfigs = async (newConfig) => {
+    let update = await axios.put(`${config.BASE_URL}/configs/${newConfig.name}`, config, {
         headers: {
             "X-Access-Token": localStorage.getItem("accessToken")
         }
