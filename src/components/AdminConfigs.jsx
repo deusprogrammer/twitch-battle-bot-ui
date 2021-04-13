@@ -25,7 +25,7 @@ export default class AdminConfigs extends React.Component {
     onSaveConfig = async (configName) => {
         this.setState({saving: true});
         let configs = {...this.state.configs};
-        config = configs[configName];
+        let config = configs[configName];
         config =  {
             name: configName,
             values: config.values.split(",").map((value) => {return value.trim()})
