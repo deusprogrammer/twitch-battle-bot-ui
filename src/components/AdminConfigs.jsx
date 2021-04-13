@@ -30,8 +30,7 @@ export default class AdminConfigs extends React.Component {
             name: configName,
             values: config.split(",").map((value) => {return value.trim()})
         };
-        console.log("CONFIG: " + JSON.stringify(config, null, 5));
-        //await ApiHelper.updateAdminConfigs(config);
+        await ApiHelper.updateAdminConfigs(config);
         this.setState({saving: false});
     }
 
