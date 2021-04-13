@@ -55,7 +55,7 @@ export default class AdminConfigs extends React.Component {
                                     <textarea value={configValues} onChange={(e) => {this.onConfigChange(configName, e.target.value)}}/>
                                 </td>
                                 <td>
-                                    <button type="button" disabled={this.state.saving} onChange={() => {this.onSaveConfig(configName)}}>Save</button>
+                                    <button type="button" disabled={this.state.saving} onClick={() => {this.onSaveConfig(configName)}}>Save</button>
                                 </td>
                             </tr>
                         )
