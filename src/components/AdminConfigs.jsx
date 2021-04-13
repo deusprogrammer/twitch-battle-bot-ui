@@ -47,15 +47,15 @@ export default class AdminConfigs extends React.Component {
                     </thead>
                     <tbody>
                     {Object.keys(this.state.configs).map((configName) => {
-                        let config = this.state.configs[configName];
+                        let configValues = this.state.configs[configName];
                         return (
                             <tr>
-                                <td>{config.name}</td>
+                                <td>{configName}</td>
                                 <td>
-                                    <textarea value={config.values} onChange={(e) => {this.onConfigChange(config.name, e.target.value)}}/>
+                                    <textarea value={configValues} onChange={(e) => {this.onConfigChange(configName, e.target.value)}}/>
                                 </td>
                                 <td>
-                                    <button type="button" disabled={this.state.saving} onChange={() => {this.onSaveConfig(config.name)}}>Save</button>
+                                    <button type="button" disabled={this.state.saving} onChange={() => {this.onSaveConfig(configName)}}>Save</button>
                                 </td>
                             </tr>
                         )
