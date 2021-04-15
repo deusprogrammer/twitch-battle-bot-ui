@@ -9,7 +9,6 @@ export default class RegistrationRefresh extends React.Component {
     }
 
     componentDidMount = async () => {
-        console.log("MOUNTING");
         document.title = `Auth Refresh`;
         let queryParam = new URLSearchParams(window.location.search);
         let channel = parseInt(window.localStorage.getItem("channel"));

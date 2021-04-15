@@ -267,7 +267,7 @@ const getStatuses = async (channel) => {
         }
     });
 
-return statuses.data;
+    return statuses.data;
 }
 
 const getStatus = async (id) => {
