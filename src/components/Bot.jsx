@@ -62,30 +62,34 @@ export default class Bot extends React.Component {
             <div>
                 <h1>Your Bot</h1>
                 <h3>Current State</h3>
-                <div style={{display: "table"}}>
-                    <div style={{display: "table-row"}}>
-                        <div style={{display: "table-cell", padding: "10px", fontWeight: "bolder"}}>Created:</div>
-                        <div style={{display: "table-cell", padding: "10px"}}>{this.state.botState.created ? "Yes" : "No"}</div>
-                    </div>
-                    <div style={{display: "table-row"}}>
-                        <div style={{display: "table-cell", padding: "10px", fontWeight: "bolder"}}>Running:</div>
-                        <div style={{display: "table-cell", padding: "10px"}}>{this.state.botState.running ? "Yes" : "No"}</div>
+                <div style={{marginLeft: "10px"}}>
+                    <div style={{display: "table"}}>
+                        <div style={{display: "table-row"}}>
+                            <div style={{display: "table-cell", padding: "10px", fontWeight: "bolder"}}>Created:</div>
+                            <div style={{display: "table-cell", padding: "10px"}}>{this.state.botState.created ? "Yes" : "No"}</div>
+                        </div>
+                        <div style={{display: "table-row"}}>
+                            <div style={{display: "table-cell", padding: "10px", fontWeight: "bolder"}}>Running:</div>
+                            <div style={{display: "table-cell", padding: "10px"}}>{this.state.botState.running ? "Yes" : "No"}</div>
+                        </div>
                     </div>
                 </div>
                 <h3>Twitch Account Link</h3>
-                <div style={{display: "table"}}>
-                    <div style={{display: "table-row"}}>
-                        <div style={{display: "table-cell", padding: "10px", fontWeight: "bolder"}}>Valid:</div>
-                        <div style={{display: "table-cell", padding: "10px"}}>{this.state.tokenState.valid ? "Yes" : "No"}</div>
+                <div style={{marginLeft: "10px"}}>
+                    <div style={{display: "table"}}>
+                        <div style={{display: "table-row"}}>
+                            <div style={{display: "table-cell", padding: "10px", fontWeight: "bolder"}}>Valid:</div>
+                            <div style={{display: "table-cell", padding: "10px"}}>{this.state.tokenState.valid ? "Yes" : "No"}</div>
+                        </div>
                     </div>
+                    <a href={twitchAuthUrl}>
+                        <button disabled={this.state.tokenState.valid}>Refresh Authentication</button>
+                    </a>
                 </div>
-                <a href={twitchAuthUrl}>
-                    <button disabled={this.state.tokenState.valid}>Refresh Authentication</button>
-                </a>
                 <h3>Bot Configuration</h3>
                 <div>
                     <p>Set the below checkboxes to enable or disable certain aspects of the bot.  You cannot change these settings while the bot is running.</p>
-                    <div  style={{marginLeft: "10px"}}>
+                    <div style={{marginLeft: "10px"}}>
                     { Object.keys(this.state.config).map((configElement) => {
                         let configElementValue = this.state.config[configElement];
                         let configElementDescription = configElementDescriptions[configElement];
@@ -126,9 +130,11 @@ export default class Bot extends React.Component {
                     </div>
                 </div>
                 <h3>Actions</h3>
-                <button disabled={this.state.botState.running || this.state.buttonDisable} onClick={() => {this.changeBotState("start")}}>Start</button>
-                <button disabled={!this.state.botState.running || this.state.buttonDisable} onClick={() => {this.changeBotState("stop")}}>Stop</button>
-                <button disabled={this.state.buttonDisable} onClick={() => {this.changeBotState("restart")}}>Restart</button>
+                <div style={{marginLeft: "10px"}}>
+                    <button disabled={this.state.botState.running || this.state.buttonDisable} onClick={() => {this.changeBotState("start")}}>Start</button>
+                    <button disabled={!this.state.botState.running || this.state.buttonDisable} onClick={() => {this.changeBotState("stop")}}>Stop</button>
+                    <button disabled={this.state.buttonDisable} onClick={() => {this.changeBotState("restart")}}>Restart</button>
+                </div>
             </div>
         )
     }
