@@ -75,6 +75,7 @@ export default class Bot extends React.Component {
                     </div>
                 </div>
                 <h3>Twitch Account Link</h3>
+                <p>If you haven't run your bot in a while, you might need to reauthorize access for the bot.  If you are encountering issues with the bot starting, just click the below button</p>
                 <div style={{marginLeft: "10px"}}>
                     <div style={{display: "table"}}>
                         <div style={{display: "table-row"}}>
