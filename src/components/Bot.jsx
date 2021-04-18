@@ -82,7 +82,7 @@ export default class Bot extends React.Component {
                         </div>
                     </div>
                 </div>
-                <h3>Twitch Account Link</h3>
+                {/* <h3>Twitch Account Link</h3>
                 <p>If you haven't run your bot in a while, you might need to reauthorize access for the bot.  If you are encountering issues with the bot starting, just click the below button</p>
                 <div style={{marginLeft: "10px"}}>
                     <div style={{display: "table"}}>
@@ -94,7 +94,7 @@ export default class Bot extends React.Component {
                     <a href={twitchAuthUrl}>
                         <button disabled={this.state.tokenState.valid}>Refresh Authentication</button>
                     </a>
-                </div>
+                </div> */}
                 <h3>Bot Configuration</h3>
                 <div>
                     <p>Set the below checkboxes to enable or disable certain aspects of the bot.  You cannot change these settings while the bot is running.</p>
