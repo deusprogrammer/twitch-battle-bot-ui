@@ -137,6 +137,10 @@ export default class Bot extends React.Component {
                         <div style={{display: "table-cell", padding: "10px", fontWeight: "bolder"}}>BIRD UP:</div>
                         <div style={{display: "table-cell", padding: "10px"}}><input type="text" value={`https://deusprogrammer.com/util/twitch-tools/birdup?channelId=${this.state.channelId}`} style={{width: "700px"}} /></div>
                     </div>
+                    <div style={{display: "table-row"}}>
+                        <div style={{display: "table-cell", padding: "10px", fontWeight: "bolder"}}>Bad Apple:</div>
+                        <div style={{display: "table-cell", padding: "10px"}}><input type="text" value={`https://deusprogrammer.com/util/twitch-tools/badapple?channelId=${this.state.channelId}`} style={{width: "700px"}} /></div>
+                    </div>
                 </div>
                 <h3>Actions</h3>
                 <div style={{marginLeft: "10px"}}>
