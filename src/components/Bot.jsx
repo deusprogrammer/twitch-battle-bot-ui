@@ -135,7 +135,7 @@ export default class Bot extends React.Component {
                     </div>
                     <div style={{display: "table-row"}}>
                         <div style={{display: "table-cell", padding: "10px", fontWeight: "bolder"}}>Animation Overlay:</div>
-                        <div style={{display: "table-cell", padding: "10px"}}><input type="text" value={`https://deusprogrammer.com/util/twitch-tools/birdup?channelId=${this.state.channelId}`} style={{width: "700px"}} /></div>
+                        <div style={{display: "table-cell", padding: "10px"}}><input type="text" value={`https://deusprogrammer.com/util/twitch-tools/multi?channelId=${this.state.channelId}`} style={{width: "700px"}} /></div>
                     </div>
                 </div>
                 <h3>Actions</h3>
