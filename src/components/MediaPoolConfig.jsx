@@ -1,5 +1,6 @@
 import React from 'react';
 import ApiHelper from '../utils/ApiHelper';
+import config from '../config/config';
 
 export default class MediaPoolConfig extends React.Component {
     state = {
@@ -88,6 +89,7 @@ export default class MediaPoolConfig extends React.Component {
     storeMedia = async (type) => {
         let mediaPool = {};
         let mediaData = {};
+        let mediaUrl = "";S
         if (type === "audio") {
             mediaData.mimeType = "audio/mp3";
             mediaData.imagePayload = this.state.uploadAudioData;
@@ -136,7 +138,7 @@ export default class MediaPoolConfig extends React.Component {
                     <div style={{display: "table-cell"}}>
                         <h3>My Audio</h3>
                         <ul>
-                            { this.state.audioPool.map((element) => {
+                            { this.state.audioPool.map((element, index) => {
                                 return <li><input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "audio", index)}} checked={element.startsWith("*")}/>{element.replace("*", "")}</li>
                             })}                       
                         </ul>
