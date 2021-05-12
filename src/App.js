@@ -27,6 +27,7 @@ import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AdminConfigs from './components/AdminConfigs';
+import MediaPoolConfig from './components/MediaPoolConfig';
 
 class App extends React.Component {
     state = {
@@ -115,6 +116,7 @@ class App extends React.Component {
                         <Route exact path={`${process.env.PUBLIC_URL}/registration/callback`} component={RegistrationCallBack} />
                         <Route exact path={`${process.env.PUBLIC_URL}/registration/refresh`} component={RegistrationRefresh} />
                         <Route exact path={`${process.env.PUBLIC_URL}/bot`} component={Bot} />
+                        <Route exact path={`${process.env.PUBLIC_URL}/bot/media`} component={MediaPoolConfig} />
                         <Route exact path={`${process.env.PUBLIC_URL}/items`} component={Items} />
                         <Route exact path={`${process.env.PUBLIC_URL}/items/:id`} component={Item} />
                         <Route exact path={`${process.env.PUBLIC_URL}/sealed-items`} component={SealedItems} />

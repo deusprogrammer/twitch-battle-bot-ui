@@ -84,6 +84,46 @@ const getBotState = async (channel) => {
     return res.data;
 }
 
+const getAllMedia = async (extension) => {
+    let url = `${config.MEDIA_SERVER_URL}/media?extension=${extension}`;
+
+    let res = await axios.get(url);
+
+    return res.data;
+}
+
+const getMedia = async (id, mimeType) => {
+    let url = `${config.MEDIA_SERVER_URL}/media/${id}`;
+
+    let res = await axios.get(url, {
+        headers: {
+            "Accept": mimeType
+        }
+    });
+
+    return res.data;
+}
+
+const getMediaMetaData = async (id) => {
+    let url = `${config.MEDIA_SERVER_URL}/media/${id}`;
+
+    let res = await axios.get(url, {
+        headers: {
+            "Accept": "application/json"
+        }
+    });
+
+    return res.data;
+}
+
+const storeMedia = async (mediaObject) => {
+    let url = `${config.MEDIA_SERVER_URL}/media`;
+
+    let res = await axios.post(url, mediaObject);
+
+    return res.data;
+}
+
 const changeBotState = async (channel, newState) => {
     let res = await axios.put(`${config.BASE_URL}/bots/${channel}/state`, {
         newState
@@ -532,6 +572,10 @@ export default {
     updateToken,
     getBot,
     getBotState,
+    getAllMedia,
+    getMedia,
+    getMediaMetaData,
+    storeMedia,
     changeBotState,
     updateBotConfig,
     getBotConfig,
