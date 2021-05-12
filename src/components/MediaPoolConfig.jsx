@@ -101,7 +101,9 @@ export default class MediaPoolConfig extends React.Component {
                     </div>
                 </div>
                 <div>
-                    <audio src={this.state.uploadAudioDataUrl} />
+                    <audio>
+                        <source src={this.state.uploadAudioDataUrl} />
+                    </audio>
                     <input onChange={(e) => {this.onFileLoaded(e)}} type="file" />
                     <button onClick={() => {this.storeMedia("audio")}} disabled={this.state.uploadAudioData ? false : true}>Store Audio</button>
                 </div>
