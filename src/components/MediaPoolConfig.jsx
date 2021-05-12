@@ -11,7 +11,7 @@ export default class MediaPoolConfig extends React.Component {
         this.videoUrlRef = React.createRef();
         this.videoDataRef = React.createRef();
 
-        state = {
+        this.state = {
             channelId: parseInt(window.localStorage.getItem("channel")),
             videoPool: [],
             audioPool: [],
@@ -140,7 +140,7 @@ export default class MediaPoolConfig extends React.Component {
         this.audioDataRef.current.files = [];
         this.videoUrlRef.current.value = null;
         this.videoDataRef.current.files = [];
-        
+
         this.setState({uploadAudioData: "", uploadAudioDataUrl: "", uploadAudioFileName: "", uploadVideoData: "", uploadVideoDataUrl: "", uploadVideoFileName: ""});
         this.loadMediaData();
     }
