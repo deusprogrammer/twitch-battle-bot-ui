@@ -175,3 +175,8 @@ a:hover {
   padding: 5px;
   border-radius: 20px;
 }
+
+.selected {
+  background-color: blue;
+  color: white;
+}
