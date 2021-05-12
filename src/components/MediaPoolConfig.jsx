@@ -72,6 +72,8 @@ export default class MediaPoolConfig extends React.Component {
             return;
         }
 
+        this.setState({uploadAudioData: "", uploadAudioDataUrl: "", uploadAudioFileName: "", uploadVideoData: "", uploadVideoDataUrl: "", uploadVideoFileName: ""});
+
         try {
             await ApiHelper.storeMedia(mediaData);
             this.loadMediaData();
