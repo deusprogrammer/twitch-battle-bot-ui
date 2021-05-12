@@ -3,18 +3,27 @@ import ApiHelper from '../utils/ApiHelper';
 import config from '../config/config';
 
 export default class MediaPoolConfig extends React.Component {
-    state = {
-        channelId: parseInt(window.localStorage.getItem("channel")),
-        videoPool: [],
-        audioPool: [],
-        uploadVideoData: "",
-        uploadAudioData: "",
-        uploadVideoDataUrl: "",
-        uploadAudioDataUrl: "",
-        addVideoUrl: "",
-        addAudioUrl: "",
-        uploadVideoFileName: "",
-        uploadAudioFileName: ""
+    constructor(props) {
+        super(props);
+
+        this.audioUrlRef = React.createRef();
+        this.audioDataRef = React.createRef();
+        this.videoUrlRef = React.createRef();
+        this.videoDataRef = React.createRef();
+
+        state = {
+            channelId: parseInt(window.localStorage.getItem("channel")),
+            videoPool: [],
+            audioPool: [],
+            uploadVideoData: "",
+            uploadAudioData: "",
+            uploadVideoDataUrl: "",
+            uploadAudioDataUrl: "",
+            addVideoUrl: "",
+            addAudioUrl: "",
+            uploadVideoFileName: "",
+            uploadAudioFileName: ""
+        }
     }
 
     componentDidMount = async () => {
@@ -127,6 +136,11 @@ export default class MediaPoolConfig extends React.Component {
             console.error(e);
         }
 
+        this.audioUrlRef.current.value = null;
+        this.audioDataRef.current.files = [];
+        this.videoUrlRef.current.value = null;
+        this.videoDataRef.current.files = [];
+        
         this.setState({uploadAudioData: "", uploadAudioDataUrl: "", uploadAudioFileName: "", uploadVideoData: "", uploadVideoDataUrl: "", uploadVideoFileName: ""});
         this.loadMediaData();
     }
@@ -146,9 +160,9 @@ export default class MediaPoolConfig extends React.Component {
                 </div>
                 <div>
                     <audio src={this.state.uploadAudioDataUrl} width="300px" controls /><br/>
-                    <input onChange={(e) => {this.onFileLoaded(e)}} accept=".mp3" type="file" disabled={this.state.addAudioUrl ? true : false} /><br/>
+                    <input ref={this.audioDataRef} onChange={(e) => {this.onFileLoaded(e)}} accept=".mp3" type="file" disabled={this.state.addAudioUrl ? true : false} /><br/>
                     <span>or</span><br/>
-                    <input onChange={(e) => {this.onChangeUrl(e, "audio")}} type="text" placeholder="Audio URL" disabled={this.state.uploadAudioDataUrl ? true : false} /><br/>
+                    <input ref={this.audioUrlRef} onChange={(e) => {this.onChangeUrl(e, "audio")}} type="text" placeholder="Audio URL" disabled={this.state.uploadAudioDataUrl ? true : false} /><br/>
                     <button onClick={() => {this.storeMedia("audio")}} disabled={this.state.uploadAudioData || this.state.addAudioUrl ? false : true}>Store Audio</button>
                 </div>
                 <div style={{display: "table"}}>
@@ -163,9 +177,9 @@ export default class MediaPoolConfig extends React.Component {
                 </div>
                 <div>
                     <video src={this.state.uploadVideoDataUrl} width="300px" controls /><br/>
-                    <input onChange={(e) => {this.onFileLoaded(e)}} accept=".mp4" type="file" disabled={this.state.addVideoUrl ? true : false} /><br/>
+                    <input ref={this.videoDataRef} onChange={(e) => {this.onFileLoaded(e)}} accept=".mp4" type="file" disabled={this.state.addVideoUrl ? true : false} /><br/>
                     <span>or</span><br/>
-                    <input onChange={(e) => {this.onChangeUrl(e, "video")}} type="text" placeholder="Video URL" disabled={this.state.uploadVideoDataUrl ? true : false} /><br/>
+                    <input ref={this.videoUrlRef} onChange={(e) => {this.onChangeUrl(e, "video")}} type="text" placeholder="Video URL" disabled={this.state.uploadVideoDataUrl ? true : false} /><br/>
                     <button onClick={() => {this.storeMedia("video")}} disabled={this.state.uploadVideoData || this.state.addVideoUrl ? false : true}>Store Video</button>
                 </div>
             </div>
