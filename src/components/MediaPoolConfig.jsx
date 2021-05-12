@@ -22,7 +22,9 @@ export default class MediaPoolConfig extends React.Component {
             addVideoUrl: "",
             addAudioUrl: "",
             uploadVideoFileName: "",
-            uploadAudioFileName: ""
+            uploadAudioFileName: "",
+            videoPreview: {},
+            audioPreview: {}
         }
     }
 
@@ -153,9 +155,19 @@ export default class MediaPoolConfig extends React.Component {
                         <h3>My Audio</h3>
                         <ul>
                             { this.state.audioPool.map((element, index) => {
-                                return <li><input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "audio", index)}} checked={!element.startsWith("*")}/>{element.replace("*", "")}</li>
+                                return (
+                                    <li>
+                                        <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "audio", index)}} checked={!element.startsWith("*")}/>
+                                        <span style={{cursor: "pointer"}} onClick={() => {this.setState({audioPreview: element.replace("*", "")})}}>
+                                            {element.replace("*", "")}
+                                        </span>
+                                    </li>)
                             })}                       
                         </ul>
+                    </div>
+                    <div style={{display: "table-cell"}}>
+                        <h3>Preview</h3>
+                        <audio src={this.state.audioPreview} width="300px" controls />
                     </div>
                 </div>
                 <div>
@@ -170,9 +182,18 @@ export default class MediaPoolConfig extends React.Component {
                         <h3>My Video</h3>
                         <ul>
                             { this.state.videoPool.map((element, index) => {
-                                return <li><input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "video", index)}} checked={!element.startsWith("*")}/>{element.replace("*", "")}</li>
+                                return (<li>
+                                            <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "video", index)}} checked={!element.startsWith("*")}/>
+                                            <span style={{cursor: "pointer"}} onClick={() => {this.setState({videoPreview: element.replace("*", "")})}}>
+                                                {element.replace("*", "")}
+                                            </span>
+                                        </li>)
                             })}                        
                         </ul>
+                    </div>
+                    <div style={{display: "table-cell"}}>
+                        <h3>Preview</h3>
+                        <video src={this.state.videoPreview} width="300px" controls />
                     </div>
                 </div>
                 <div>
