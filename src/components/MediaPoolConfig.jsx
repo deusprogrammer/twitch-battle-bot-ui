@@ -89,7 +89,7 @@ export default class MediaPoolConfig extends React.Component {
     storeMedia = async (type) => {
         let mediaPool = {};
         let mediaData = {};
-        let mediaUrl = "";S
+        let mediaUrl = "";
         if (type === "audio") {
             mediaData.mimeType = "audio/mp3";
             mediaData.imagePayload = this.state.uploadAudioData;
