@@ -12,7 +12,8 @@ export default class MediaPoolConfig extends React.Component {
         uploadAudioData: "",
         uploadVideoDataUrl: "",
         uploadAudioDataUrl: "",
-        uploadFileName: ""
+        uploadVideoFileName: "",
+        uploadAudioFileName: ""
     }
 
     componentDidMount = async () => {
@@ -49,9 +50,9 @@ export default class MediaPoolConfig extends React.Component {
             let base64Media = fr.result.substring(fr.result.indexOf(',') + 1);
 
             if (ext === "mp4") {
-                this.setState({uploadVideoData: base64Media, uploadVideoDataUrl: fr.result, uploadFileName});
+                this.setState({uploadVideoData: base64Media, uploadVideoDataUrl: fr.result, uploadVideoFileName: uploadFileName});
             } else if (ext === "mp3") {
-                this.setState({uploadAudioData: base64Media, uploadAudioDataUrl: fr.result, uploadFileName});
+                this.setState({uploadAudioData: base64Media, uploadAudioDataUrl: fr.result, uploadAudioFileName: uploadFileName});
             }
         }
 
@@ -101,7 +102,7 @@ export default class MediaPoolConfig extends React.Component {
                     </div>
                 </div>
                 <div>
-                    <audio src={this.state.uploadAudioDataUrl} controls />
+                    <audio src={this.state.uploadAudioDataUrl} width="200px" controls />
                     <input onChange={(e) => {this.onFileLoaded(e)}} type="file" />
                     <button onClick={() => {this.storeMedia("audio")}} disabled={this.state.uploadAudioData ? false : true}>Store Audio</button>
                 </div>
@@ -124,7 +125,7 @@ export default class MediaPoolConfig extends React.Component {
                     </div>
                 </div>
                 <div>
-                    <video src={this.state.uploadVideoDataUrl} controls />
+                    <video src={this.state.uploadVideoDataUrl} width="200px" controls />
                     <input onChange={(e) => {this.onFileLoaded(e)}} type="file" />
                     <button onClick={() => {this.storeMedia("video")}} disabled={this.state.uploadVideoData ? false : true}>Store Video</button>
                 </div>
