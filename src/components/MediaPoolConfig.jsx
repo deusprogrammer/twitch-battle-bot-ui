@@ -108,8 +108,8 @@ export default class MediaPoolConfig extends React.Component {
 
         if (!this.state.addAudioUrl && !this.state.addVideoUrl) {
             try {
-                let mediaId = await ApiHelper.storeMedia(mediaData);
-                mediaPool.push(`${config.MEDIA_SERVER_URL}/media/${mediaId}`);
+                let {_id} = await ApiHelper.storeMedia(mediaData);
+                mediaPool.push(`${config.MEDIA_SERVER_URL}/media/${_id}`);
             } catch (e) {
                 console.error(e);
             }
@@ -139,7 +139,7 @@ export default class MediaPoolConfig extends React.Component {
                         <h3>My Audio</h3>
                         <ul>
                             { this.state.audioPool.map((element, index) => {
-                                return <li><input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "audio", index)}} checked={element.startsWith("*")}/>{element.replace("*", "")}</li>
+                                return <li><input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "audio", index)}} checked={!element.startsWith("*")}/>{element.replace("*", "")}</li>
                             })}                       
                         </ul>
                     </div>
@@ -156,7 +156,7 @@ export default class MediaPoolConfig extends React.Component {
                         <h3>My Video</h3>
                         <ul>
                             { this.state.videoPool.map((element, index) => {
-                                return <li><input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "video", index)}} checked={element.startsWith("*")}/>{element.replace("*", "")}</li>
+                                return <li><input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "video", index)}} checked={!element.startsWith("*")}/>{element.replace("*", "")}</li>
                             })}                        
                         </ul>
                     </div>
