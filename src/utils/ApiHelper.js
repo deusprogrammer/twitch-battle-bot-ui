@@ -518,7 +518,7 @@ const getBotConfig = async (channelId) => {
 }
 
 const updateBotMediaPool = async (channelId, poolType, pool) => {
-    let updated = await axios.put(`${config.BASE_URL}/bots/${channelId}/pool/${poolType}`, pool, {
+    let updated = await axios.put(`${config.BASE_URL}/bots/${channelId}/media/${poolType}`, pool, {
         headers: {
             "X-Access-Token": localStorage.getItem("accessToken")
         }
