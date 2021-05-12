@@ -120,7 +120,7 @@ export default class MediaPoolConfig extends React.Component {
         if (!this.state.addAudioUrl && !this.state.addVideoUrl) {
             try {
                 let {_id} = await ApiHelper.storeMedia(mediaData);
-                mediaPool.push(`${config.MEDIA_SERVER_URL}/media/${_id}`);
+                mediaPool.push(`${config.MEDIA_SERVER_URL}/media/${_id}/file`);
             } catch (e) {
                 console.error(e);
             }
@@ -158,7 +158,7 @@ export default class MediaPoolConfig extends React.Component {
                                 return (
                                     <li>
                                         <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "audio", index)}} checked={!element.startsWith("*")}/>
-                                        <span className={this.state.audioPreview === element + "/file" ? "selected" : ""} style={{cursor: "pointer"}} onClick={() => {this.setState({audioPreview: element.replace("*", "") + "/file"})}}>
+                                        <span className={this.state.audioPreview === element  ? "selected" : ""} style={{cursor: "pointer"}} onClick={() => {this.setState({audioPreview: element.replace("*", "") })}}>
                                             {element.replace("*", "")}
                                         </span>
                                     </li>)
@@ -184,7 +184,7 @@ export default class MediaPoolConfig extends React.Component {
                             { this.state.videoPool.map((element, index) => {
                                 return (<li>
                                             <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "video", index)}} checked={!element.startsWith("*")}/>
-                                            <span className={this.state.videoPreview === element + "/file" ? "selected" : ""} style={{cursor: "pointer"}} onClick={() => {this.setState({videoPreview: element.replace("*", "") + "/file"})}}>
+                                            <span className={this.state.videoPreview === element  ? "selected" : ""} style={{cursor: "pointer"}} onClick={() => {this.setState({videoPreview: element.replace("*", "") })}}>
                                                 {element.replace("*", "")}
                                             </span>
                                         </li>)
