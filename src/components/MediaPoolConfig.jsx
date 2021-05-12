@@ -102,7 +102,7 @@ export default class MediaPoolConfig extends React.Component {
                     </div>
                 </div>
                 <div>
-                    <audio src={this.state.uploadAudioDataUrl} width="200px" controls />
+                    <audio src={this.state.uploadAudioDataUrl} width="300px" controls />
                     <input onChange={(e) => {this.onFileLoaded(e)}} type="file" />
                     <button onClick={() => {this.storeMedia("audio")}} disabled={this.state.uploadAudioData ? false : true}>Store Audio</button>
                 </div>
@@ -125,7 +125,7 @@ export default class MediaPoolConfig extends React.Component {
                     </div>
                 </div>
                 <div>
-                    <video src={this.state.uploadVideoDataUrl} width="200px" controls />
+                    <video src={this.state.uploadVideoDataUrl} width="300px" controls />
                     <input onChange={(e) => {this.onFileLoaded(e)}} type="file" />
                     <button onClick={() => {this.storeMedia("video")}} disabled={this.state.uploadVideoData ? false : true}>Store Video</button>
                 </div>
