@@ -65,9 +65,11 @@ export default class MediaPoolConfig extends React.Component {
         if (type === "audio") {
             mediaData.mimeType = "audio/mp3";
             mediaData.imagePayload = this.state.uploadAudioData;
+            mediaData.title = this.state.uploadAudioFileName;
         } else if (type === "video") {
             mediaData.mimeType = "video/mp4";
             mediaData.imagePayload = this.state.uploadVideoData;
+            mediaData.title = this.state.uploadVideoFileName;
         } else {
             return;
         }
