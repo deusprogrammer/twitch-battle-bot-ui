@@ -25,8 +25,8 @@ export default class MediaPoolConfig extends React.Component {
     }
 
     loadMediaData = async () => {
-        let allVideos = await ApiHelper.getAllMedia("mp4");
-        let allAudio = await ApiHelper.getAllMedia("mp3");
+        let allVideos = await ApiHelper.getAllMedia("video/mp4");
+        let allAudio = await ApiHelper.getAllMedia("audio/mp3");
         let {videoPool, audioPool} = await ApiHelper.getBot(this.state.channelId);
         videoPool = videoPool.map(async (element) => {
             return await ApiHelper.getMediaMetaData(element);
