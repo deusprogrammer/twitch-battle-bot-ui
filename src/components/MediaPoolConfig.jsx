@@ -111,7 +111,7 @@ export default class MediaPoolConfig extends React.Component {
                         <ul>
                             { this.state.allVideos.map((element) => {
                                 return <li>{element.title}<button>Add</button></li>
-                            })};
+                            })}
                         </ul>
                     </div>
                     <div style={{display: "table-cell"}}>
@@ -119,7 +119,7 @@ export default class MediaPoolConfig extends React.Component {
                         <ul>
                             { this.state.videoPool.map((element) => {
                                 return <li>{element.title}<button>Remove</button></li>
-                            })};                        
+                            })}                        
                         </ul>
                     </div>
                 </div>
