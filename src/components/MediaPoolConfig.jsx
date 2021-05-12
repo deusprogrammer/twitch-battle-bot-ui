@@ -184,7 +184,7 @@ export default class MediaPoolConfig extends React.Component {
                             { this.state.videoPool.map((element, index) => {
                                 return (<li>
                                             <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "video", index)}} checked={!element.startsWith("*")}/>
-                                            <span className={this.state.VideoPreview === element + "/file" ? "selected" : ""} style={{cursor: "pointer"}} onClick={() => {this.setState({videoPreview: element.replace("*", "") + "/file"})}}>
+                                            <span className={this.state.videoPreview === element + "/file" ? "selected" : ""} style={{cursor: "pointer"}} onClick={() => {this.setState({videoPreview: element.replace("*", "") + "/file"})}}>
                                                 {element.replace("*", "")}
                                             </span>
                                         </li>)
