@@ -4,14 +4,14 @@ import ApiHelper from '../utils/ApiHelper';
 export default class MediaPoolConfig extends React.Component {
     state = {
         channelId: parseInt(window.localStorage.getItem("channel")),
-        allVideos: [],
-        allAudio: [],
         videoPool: [],
         audioPool: [],
         uploadVideoData: "",
         uploadAudioData: "",
         uploadVideoDataUrl: "",
         uploadAudioDataUrl: "",
+        addVideoUrl: "",
+        addAudioUrl: "",
         uploadVideoFileName: "",
         uploadAudioFileName: ""
     }
@@ -25,17 +25,8 @@ export default class MediaPoolConfig extends React.Component {
     }
 
     loadMediaData = async () => {
-        let allVideos = await ApiHelper.getAllMedia("video/mp4");
-        let allAudio = await ApiHelper.getAllMedia("audio/mp3");
         let {videoPool, audioPool} = await ApiHelper.getBot(this.state.channelId);
-        videoPool = videoPool.map(async (element) => {
-            return await ApiHelper.getMediaMetaData(element);
-        });
-        audioPool = audioPool.map(async (element) => {
-            return await ApiHelper.getMediaMetaData(element);
-        });
-
-        this.setState({allVideos, allAudio, videoPool, audioPool});
+        this.setState({videoPool, audioPool});
     }
 
     onFileLoaded = (e) => {
@@ -59,29 +50,83 @@ export default class MediaPoolConfig extends React.Component {
         fr.readAsDataURL(file);
     }
 
-    storeMedia = async (type) => {
-        let mediaData = {}
+    onChangeUrl = (e, type) => {
+        if (type === "video") {
+            this.setState({addVideoUrl: e.target.value});
+        } else if (type ==="audio") {
+            this.setState({addAudioUrl: e.target.value});
+        }
+    }
 
+    onDisableMedia = async (e, type, index) => {
+        let mediaPool = {};
         if (type === "audio") {
-            mediaData.mimeType = "audio/mp3";
-            mediaData.imagePayload = this.state.uploadAudioData;
-            mediaData.title = this.state.uploadAudioFileName;
+            mediaPool = [...this.state.audioPool];
         } else if (type === "video") {
-            mediaData.mimeType = "video/mp4";
-            mediaData.imagePayload = this.state.uploadVideoData;
-            mediaData.title = this.state.uploadVideoFileName;
+            mediaPool = [...this.state.videoPool];
         } else {
             return;
         }
 
-        this.setState({uploadAudioData: "", uploadAudioDataUrl: "", uploadAudioFileName: "", uploadVideoData: "", uploadVideoDataUrl: "", uploadVideoFileName: ""});
+        mediaPool[index] = (e.target.value ? "*" : "") + mediaPool[index].replace("*", "");
 
         try {
-            await ApiHelper.storeMedia(mediaData);
-            this.loadMediaData();
+            if (type === "audio") {
+                this.setState({audioPool: mediaPool});
+                await ApiHelper.updateBotMediaPool(this.state.channelId, "audio", mediaPool);
+            } else if (type === "video") {
+                this.setState({videoPool: mediaPool});
+                await ApiHelper.updateBotMediaPool(this.state.channelId, "video", mediaPool);
+            } else {
+                return;
+            }
+        } catch(e) {
+            console.error(e);
+        }
+    }
+
+    storeMedia = async (type) => {
+        let mediaPool = {};
+        let mediaData = {};
+        if (type === "audio") {
+            mediaData.mimeType = "audio/mp3";
+            mediaData.imagePayload = this.state.uploadAudioData;
+            mediaData.title = this.state.uploadAudioFileName;
+            mediaPool = [...this.state.audioPool];
+            mediaUrl = this.state.addAudioUrl;
+        } else if (type === "video") {
+            mediaData.mimeType = "video/mp4";
+            mediaData.imagePayload = this.state.uploadVideoData;
+            mediaData.title = this.state.uploadVideoFileName;
+            mediaPool = [...this.state.videoPool];
+            mediaUrl = this.state.addVideoUrl;
+        } else {
+            return;
+        }
+
+        if (!this.state.addAudioUrl && !this.state.addVideoUrl) {
+            try {
+                let mediaId = await ApiHelper.storeMedia(mediaData);
+                mediaPool.push(`${config.MEDIA_SERVER_URL}/media/${mediaId}`);
+            } catch (e) {
+                console.error(e);
+            }
+        } else {
+            try {
+                mediaPool.push(mediaUrl);
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        try {
+            await ApiHelper.updateBotMediaPool(this.state.channelId, type, mediaPool);
         } catch (e) {
             console.error(e);
         }
+
+        this.setState({uploadAudioData: "", uploadAudioDataUrl: "", uploadAudioFileName: "", uploadVideoData: "", uploadVideoDataUrl: "", uploadVideoFileName: ""});
+        this.loadMediaData();
     }
 
     render() {
@@ -89,49 +134,37 @@ export default class MediaPoolConfig extends React.Component {
             <div>
                 <div style={{display: "table"}}>
                     <div style={{display: "table-cell"}}>
-                        <h3>Available Audio</h3>
-                        <ul>
-                            { this.state.allAudio.map((element) => {
-                                return <li>{element.title}<button>Add</button></li>
-                            })}
-                        </ul>
-                    </div>
-                    <div style={{display: "table-cell"}}>
                         <h3>My Audio</h3>
                         <ul>
                             { this.state.audioPool.map((element) => {
-                                return <li>{element.title}<button>Remove</button></li>
+                                return <li><input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "audio", index)}} checked={element.startsWith("*")}/>{element.replace("*", "")}</li>
                             })}                       
                         </ul>
                     </div>
                 </div>
                 <div>
-                    <audio src={this.state.uploadAudioDataUrl} width="300px" controls />
-                    <input onChange={(e) => {this.onFileLoaded(e)}} accept=".mp3" type="file" />
-                    <button onClick={() => {this.storeMedia("audio")}} disabled={this.state.uploadAudioData ? false : true}>Store Audio</button>
+                    <audio src={this.state.uploadAudioDataUrl} width="300px" controls /><br/>
+                    <input onChange={(e) => {this.onFileLoaded(e)}} accept=".mp3" type="file" disabled={this.state.addAudioUrl ? true : false} /><br/>
+                    <span>or</span><br/>
+                    <input onChange={(e) => {this.onChangeUrl(e, "audio")}} type="text" placeholder="Audio URL" disabled={this.state.uploadAudioDataUrl ? true : false} /><br/>
+                    <button onClick={() => {this.storeMedia("audio")}} disabled={this.state.uploadAudioData || this.state.addAudioUrl ? false : true}>Store Audio</button>
                 </div>
                 <div style={{display: "table"}}>
                     <div style={{display: "table-cell"}}>
-                        <h3>Available Video</h3>
+                        <h3>My Video</h3>
                         <ul>
-                            { this.state.allVideos.map((element) => {
-                                return <li>{element.title}<button>Add</button></li>
-                            })}
-                        </ul>
-                    </div>
-                    <div style={{display: "table-cell"}}>
-                        <h3>My Audio</h3>
-                        <ul>
-                            { this.state.videoPool.map((element) => {
-                                return <li>{element.title}<button>Remove</button></li>
+                            { this.state.videoPool.map((element, index) => {
+                                return <li><input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "video", index)}} checked={element.startsWith("*")}/>{element.replace("*", "")}</li>
                             })}                        
                         </ul>
                     </div>
                 </div>
                 <div>
-                    <video src={this.state.uploadVideoDataUrl} width="300px" controls />
-                    <input onChange={(e) => {this.onFileLoaded(e)}} accept=".mp4" type="file" />
-                    <button onClick={() => {this.storeMedia("video")}} disabled={this.state.uploadVideoData ? false : true}>Store Video</button>
+                    <video src={this.state.uploadVideoDataUrl} width="300px" controls /><br/>
+                    <input onChange={(e) => {this.onFileLoaded(e)}} accept=".mp4" type="file" disabled={this.state.addVideoUrl ? true : false} /><br/>
+                    <span>or</span><br/>
+                    <input onChange={(e) => {this.onChangeUrl(e, "video")}} type="text" placeholder="Video URL" disabled={this.state.uploadVideoDataUrl ? true : false} /><br/>
+                    <button onClick={() => {this.storeMedia("video")}} disabled={this.state.uploadVideoData || this.state.addVideoUrl ? false : true}>Store Video</button>
                 </div>
             </div>
         )

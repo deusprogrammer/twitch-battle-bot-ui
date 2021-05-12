@@ -517,6 +517,16 @@ const getBotConfig = async (channelId) => {
     return found.data;
 }
 
+const updateBotMediaPool = async (channelId, poolType, pool) => {
+    let updated = await axios.put(`${config.BASE_URL}/bots/${channelId}/pool/${poolType}`, pool, {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
+
+    return updated.data;
+}
+
 const getAdminConfigs = async () => {
     let found = await axios.get(`${config.BASE_URL}/configs`, {
         headers: {
@@ -579,6 +589,7 @@ export default {
     changeBotState,
     updateBotConfig,
     getBotConfig,
+    updateBotMediaPool,
     getAdminConfigs,
     updateAdminConfigs
 }
