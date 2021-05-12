@@ -42,8 +42,8 @@ export default class MediaPoolConfig extends React.Component {
         let file = e.target.files[0];
 
         const uploadFileName = file.name;
-        const lastDot = name.lastIndexOf('.');
-        const ext = name.substring(lastDot + 1);
+        const lastDot = uploadFileName.lastIndexOf('.');
+        const ext = uploadFileName.substring(lastDot + 1);
 
         fr.onload = () => {
             let base64Media = fr.result.substring(fr.result.indexOf(',') + 1);
@@ -62,11 +62,11 @@ export default class MediaPoolConfig extends React.Component {
         let mediaData = {}
 
         if (type === "audio") {
-            mediaType.mimeType = "audio/mp3";
-            mediaType.imagePayload = this.state.uploadAudioData;
+            mediaData.mimeType = "audio/mp3";
+            mediaData.imagePayload = this.state.uploadAudioData;
         } else if (type === "video") {
-            mediaType.mimeType = "video/mp4";
-            mediaType.imagePayload = this.state.uploadVideoData;
+            mediaData.mimeType = "video/mp4";
+            mediaData.imagePayload = this.state.uploadVideoData;
         } else {
             return;
         }
