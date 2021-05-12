@@ -109,7 +109,7 @@ export default class MediaPoolConfig extends React.Component {
                     <div style={{display: "table-cell"}}>
                         <h3>Available Video</h3>
                         <ul>
-                            { this.state.allVideo.map((element) => {
+                            { this.state.allVideos.map((element) => {
                                 return <li>{element.title}<button>Add</button></li>
                             })};
                         </ul>
