@@ -137,9 +137,9 @@ export default class MediaPoolConfig extends React.Component {
         }
 
         this.audioUrlRef.current.value = null;
-        this.audioDataRef.current.files = [];
+        this.audioDataRef.current.value = null;
         this.videoUrlRef.current.value = null;
-        this.videoDataRef.current.files = [];
+        this.videoDataRef.current.value = null;
 
         this.setState({uploadAudioData: "", uploadAudioDataUrl: "", uploadAudioFileName: "", uploadVideoData: "", uploadVideoDataUrl: "", uploadVideoFileName: ""});
         this.loadMediaData();
