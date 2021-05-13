@@ -120,13 +120,19 @@ export default class MediaPoolConfig extends React.Component {
         if (!this.state.addAudioUrl && !this.state.addVideoUrl) {
             try {
                 let {_id} = await ApiHelper.storeMedia(mediaData);
-                mediaPool.push(`${config.MEDIA_SERVER_URL}/media/${_id}/file`);
+                mediaPool.push({
+                    name: type + (mediaPool.length + 1),
+                    url: `${config.MEDIA_SERVER_URL}/media/${_id}/file`
+                });
             } catch (e) {
                 console.error(e);
             }
         } else {
             try {
-                mediaPool.push(mediaUrl);
+                mediaPool.push({
+                    name: type + (mediaPool.length + 1),
+                    url: mediaUrl
+                });
             } catch (e) {
                 console.error(e);
             }
