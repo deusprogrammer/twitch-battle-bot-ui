@@ -153,6 +153,46 @@ export default class MediaPoolConfig extends React.Component {
         this.loadMediaData();
     }
 
+    updateMedia = (e, index, type) => {
+        let mediaPool = [];
+
+        if (type === "audio") {
+            mediaPool = [...this.state.audioPool];
+        } else if (type === "video") {
+            mediaPool = [...this.state.videoPool];
+        } else {
+            return;
+        }
+
+        mediaPool[index].name = e.target.value;
+
+        if (type === "audio") {
+            this.setState({audioPool: mediaPool});
+        } else if (type === "video") {
+            this.setState({videoPool: mediaPool});
+        } else {
+            return;
+        }
+    }
+
+    saveMediaConfig = (type) => {
+        let mediaPool = [];
+
+        if (type === "audio") {
+            mediaPool = [...this.state.audioPool];
+        } else if (type === "video") {
+            mediaPool = [...this.state.videoPool];
+        } else {
+            return;
+        }
+
+        try {
+            await ApiHelper.updateBotMediaPool(this.state.channelId, type, mediaPool);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
     render() {
         return (
             <div>
@@ -165,7 +205,7 @@ export default class MediaPoolConfig extends React.Component {
                                     <li>
                                         <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "audio", index)}} checked={!element.name.startsWith("*")}/>
                                         <span className={this.state.audioPreview === element.url  ? "selected" : ""} style={{cursor: "pointer"}} onClick={() => {this.setState({audioPreview: element.url.replace("*", "") })}}>
-                                            {element.name}
+                                            <input type="text" value={element.name} onChange={(e) => {this.updateMedia(e, index, "audio")}} onBlur={() => {this.saveMediaConfig("audio")}} />
                                         </span>
                                     </li>)
                             })}                       
@@ -191,7 +231,7 @@ export default class MediaPoolConfig extends React.Component {
                                 return (<li>
                                             <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "video", index)}} checked={!element.url.startsWith("*")}/>
                                             <span className={this.state.videoPreview === element.url  ? "selected" : ""} style={{cursor: "pointer"}} onClick={() => {this.setState({videoPreview: element.url.replace("*", "") })}}>
-                                                {element.name}
+                                                <input type="text" value={element.name} onChange={(e) => {this.updateMedia(e, index, "video")}} onBlur={() => {this.saveMediaConfig("video")}} />
                                             </span>
                                         </li>)
                             })}                        
