@@ -175,7 +175,7 @@ export default class MediaPoolConfig extends React.Component {
         }
     }
 
-    saveMediaConfig = (type) => {
+    saveMediaConfig = async (type) => {
         let mediaPool = [];
 
         if (type === "audio") {
