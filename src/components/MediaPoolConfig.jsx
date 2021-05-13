@@ -94,7 +94,7 @@ export default class MediaPoolConfig extends React.Component {
             } else {
                 return;
             }
-            toast(`Updated video state`);
+            toast(`Updated video state`, {type: "info"});
             this.setState({saving: false});
         } catch(e) {
             console.error(e);
@@ -148,7 +148,7 @@ export default class MediaPoolConfig extends React.Component {
         } catch (e) {
             console.error(e);
         }
-        toast(`Media stored successfully`);
+        toast(`Media stored successfully`, {type: "info"});
         this.setState({saving: false});
 
         this.audioUrlRef.current.value = null;
@@ -197,7 +197,7 @@ export default class MediaPoolConfig extends React.Component {
             this.setState({saving: true});
             await ApiHelper.updateBotMediaPool(this.state.channelId, type, mediaPool);
             this.setState({saving: false});
-            toast(`Media config save successful`);
+            toast(`Media config save successful`, {type: "info"});
         } catch (e) {
             console.error(e);
         }

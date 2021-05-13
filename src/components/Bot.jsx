@@ -58,14 +58,14 @@ export default class Bot extends React.Component {
     changeBotState = async (state) => {
         this.setState({buttonDisable: true});
         await ApiHelper.changeBotState(this.state.channelId, state);
-        toast(`Bot ${state} successful`);
+        toast(`Bot ${state} successful`, {type: "info"});
     }
 
     onConfigChange = async (event, configItem) => {
         let config = {...this.state.config};
         config[configItem] = event.target.checked;
         await ApiHelper.updateBotConfig(this.state.channelId, config);
-        toast(`Bot config saved`);
+        toast(`Bot config saved`, {type: "info"});
         this.setState({config});
     }
 
