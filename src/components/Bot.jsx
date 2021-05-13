@@ -141,9 +141,10 @@ export default class Bot extends React.Component {
                         <div style={{display: "table-cell", padding: "10px", fontWeight: "bolder"}}>Animation Overlay:</div>
                         <div style={{display: "table-cell", padding: "10px"}}><input type="text" value={`https://deusprogrammer.com/util/twitch-tools/multi?channelId=${this.state.channelId}`} style={{width: "700px"}} /></div>
                     </div>
-                    <div>
-                        <Link to={`${process.env.PUBLIC_URL}/media/bot`}>Configure Media Pool</Link>
-                    </div>
+                </div>
+                <h3>Panel Tools</h3>
+                <div style={{marginLeft: "10px"}}>
+                    <Link to={`${process.env.PUBLIC_URL}/media/bot`}><button type="button">Configure Media Pool</button></Link>
                 </div>
                 <h3>Actions</h3>
                 <div style={{marginLeft: "10px"}}>
