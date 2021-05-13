@@ -1,5 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import ApiHelper from '../utils/ApiHelper';
+import {toast} from 'react-toastify';
 
 const twitchAuthUrl = "https://id.twitch.tv/oauth2/authorize?client_id=uczfktv6o7vvdeqxnafizuq672r5od&redirect_uri=https://deusprogrammer.com/util/twitch/registration/refresh&response_type=code&scope=channel:read:redemptions";
 
@@ -56,12 +58,14 @@ export default class Bot extends React.Component {
     changeBotState = async (state) => {
         this.setState({buttonDisable: true});
         await ApiHelper.changeBotState(this.state.channelId, state);
+        toast(`Bot ${state} successful`);
     }
 
     onConfigChange = async (event, configItem) => {
         let config = {...this.state.config};
         config[configItem] = event.target.checked;
         await ApiHelper.updateBotConfig(this.state.channelId, config);
+        toast(`Bot config saved`);
         this.setState({config});
     }
 
@@ -136,6 +140,9 @@ export default class Bot extends React.Component {
                     <div style={{display: "table-row"}}>
                         <div style={{display: "table-cell", padding: "10px", fontWeight: "bolder"}}>Animation Overlay:</div>
                         <div style={{display: "table-cell", padding: "10px"}}><input type="text" value={`https://deusprogrammer.com/util/twitch-tools/multi?channelId=${this.state.channelId}`} style={{width: "700px"}} /></div>
+                    </div>
+                    <div>
+                        <Link to={`${process.env.PUBLIC_URL}/media/bot`}>Configure Media Pool</Link>
                     </div>
                 </div>
                 <h3>Actions</h3>

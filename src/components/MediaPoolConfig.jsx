@@ -1,6 +1,7 @@
 import React from 'react';
 import ApiHelper from '../utils/ApiHelper';
 import config from '../config/config';
+import {toast} from 'react-toastify';
 
 export default class MediaPoolConfig extends React.Component {
     constructor(props) {
@@ -24,7 +25,8 @@ export default class MediaPoolConfig extends React.Component {
             uploadVideoFileName: "",
             uploadAudioFileName: "",
             videoPreview: {},
-            audioPreview: {}
+            audioPreview: {},
+            saving: false
         }
     }
 
@@ -84,14 +86,16 @@ export default class MediaPoolConfig extends React.Component {
 
         try {
             if (type === "audio") {
-                this.setState({audioPool: mediaPool});
+                this.setState({audioPool: mediaPool, saving: true});
                 await ApiHelper.updateBotMediaPool(this.state.channelId, "audio", mediaPool);
             } else if (type === "video") {
-                this.setState({videoPool: mediaPool});
+                this.setState({videoPool: mediaPool, saving: true});
                 await ApiHelper.updateBotMediaPool(this.state.channelId, "video", mediaPool);
             } else {
                 return;
             }
+            toast(`Updated video state`);
+            this.setState({saving: false});
         } catch(e) {
             console.error(e);
         }
@@ -117,6 +121,7 @@ export default class MediaPoolConfig extends React.Component {
             return;
         }
 
+        this.setState({saving: true});
         if (!this.state.addAudioUrl && !this.state.addVideoUrl) {
             try {
                 let {_id} = await ApiHelper.storeMedia(mediaData);
@@ -143,6 +148,8 @@ export default class MediaPoolConfig extends React.Component {
         } catch (e) {
             console.error(e);
         }
+        toast(`Media stored successfully`);
+        this.setState({saving: false});
 
         this.audioUrlRef.current.value = null;
         this.audioDataRef.current.value = null;
@@ -187,7 +194,10 @@ export default class MediaPoolConfig extends React.Component {
         }
 
         try {
+            this.setState({saving: true});
             await ApiHelper.updateBotMediaPool(this.state.channelId, type, mediaPool);
+            this.setState({saving: false});
+            toast(`Media config save successful`);
         } catch (e) {
             console.error(e);
         }
@@ -203,9 +213,9 @@ export default class MediaPoolConfig extends React.Component {
                             { this.state.audioPool.map((element, index) => {
                                 return (
                                     <li>
-                                        <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "audio", index)}} checked={!element.name.startsWith("*")}/>
+                                        <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "audio", index)}} checked={!element.name.startsWith("*")} disabled={this.state.saving}/>
                                         <span className={this.state.audioPreview === element.url  ? "selected" : ""} style={{cursor: "pointer"}} onClick={() => {this.setState({audioPreview: element.url.replace("*", "") })}}>
-                                            <input type="text" value={element.name} onChange={(e) => {this.updateMedia(e, index, "audio")}} onBlur={() => {this.saveMediaConfig("audio")}} />
+                                            <input type="text" value={element.name} onChange={(e) => {this.updateMedia(e, index, "audio")}} onBlur={() => {this.saveMediaConfig("audio")}} disabled={this.state.saving} />
                                         </span>
                                     </li>)
                             })}                       
@@ -222,7 +232,7 @@ export default class MediaPoolConfig extends React.Component {
                     <input ref={this.audioDataRef} onChange={(e) => {this.onFileLoaded(e)}} accept=".mp3" type="file" disabled={this.state.addAudioUrl ? true : false} /><br/>
                     <span>or</span><br/>
                     <input ref={this.audioUrlRef} onChange={(e) => {this.onChangeUrl(e, "audio")}} type="text" placeholder="Audio URL" disabled={this.state.uploadAudioDataUrl ? true : false} /><br/>
-                    <button onClick={() => {this.storeMedia("audio")}} disabled={this.state.uploadAudioData || this.state.addAudioUrl ? false : true}>Store Audio</button>
+                    <button onClick={() => {this.storeMedia("audio")}} disabled={this.state.uploadAudioData || this.state.addAudioUrl || this.state.saving ? false : true}>Store Audio</button>
                 </div>
                 <div style={{display: "table"}}>
                     <div style={{display: "table-cell"}}>
@@ -230,9 +240,9 @@ export default class MediaPoolConfig extends React.Component {
                         <ul>
                             { this.state.videoPool.map((element, index) => {
                                 return (<li>
-                                            <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "video", index)}} checked={!element.url.startsWith("*")}/>
+                                            <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "video", index)}} checked={!element.url.startsWith("*")} disabled={this.state.saving}/>
                                             <span className={this.state.videoPreview === element.url  ? "selected" : ""} style={{cursor: "pointer"}} onClick={() => {this.setState({videoPreview: element.url.replace("*", "") })}}>
-                                                <input type="text" value={element.name} onChange={(e) => {this.updateMedia(e, index, "video")}} onBlur={() => {this.saveMediaConfig("video")}} />
+                                                <input type="text" value={element.name} onChange={(e) => {this.updateMedia(e, index, "video")}} onBlur={() => {this.saveMediaConfig("video")}} disabled={this.state.saving} />
                                             </span>
                                         </li>)
                             })}                        
@@ -249,7 +259,7 @@ export default class MediaPoolConfig extends React.Component {
                     <input ref={this.videoDataRef} onChange={(e) => {this.onFileLoaded(e)}} accept=".mp4" type="file" disabled={this.state.addVideoUrl ? true : false} /><br/>
                     <span>or</span><br/>
                     <input ref={this.videoUrlRef} onChange={(e) => {this.onChangeUrl(e, "video")}} type="text" placeholder="Video URL" disabled={this.state.uploadVideoDataUrl ? true : false} /><br/>
-                    <button onClick={() => {this.storeMedia("video")}} disabled={this.state.uploadVideoData || this.state.addVideoUrl ? false : true}>Store Video</button>
+                    <button onClick={() => {this.storeMedia("video")}} disabled={this.state.uploadVideoData || this.state.addVideoUrl || this.state.saving ? false : true}>Store Video</button>
                 </div>
             </div>
         )
