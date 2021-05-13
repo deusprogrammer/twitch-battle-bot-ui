@@ -216,7 +216,8 @@ export default class MediaPoolConfig extends React.Component {
                         <audio src={this.state.audioPreview} width="300px" controls />
                     </div>
                 </div>
-                <div>
+                <div style={{border: "1px solid black"}}>
+                    <h3>Add New Audio</h3>
                     <audio src={this.state.uploadAudioDataUrl} width="300px" controls /><br/>
                     <input ref={this.audioDataRef} onChange={(e) => {this.onFileLoaded(e)}} accept=".mp3" type="file" disabled={this.state.addAudioUrl ? true : false} /><br/>
                     <span>or</span><br/>
@@ -242,7 +243,8 @@ export default class MediaPoolConfig extends React.Component {
                         <video src={this.state.videoPreview} width="300px" controls />
                     </div>
                 </div>
-                <div>
+                <div style={{border: "1px solid black"}}>
+                    <h3>Add New Video</h3>
                     <video src={this.state.uploadVideoDataUrl} width="300px" controls /><br/>
                     <input ref={this.videoDataRef} onChange={(e) => {this.onFileLoaded(e)}} accept=".mp4" type="file" disabled={this.state.addVideoUrl ? true : false} /><br/>
                     <span>or</span><br/>
