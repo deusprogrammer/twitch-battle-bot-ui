@@ -84,7 +84,7 @@ class App extends React.Component {
                         <Link to={`${process.env.PUBLIC_URL}/`}>Guide</Link> | <Link to={`${process.env.PUBLIC_URL}/battlers/~self`}>Your Battler</Link> | {this.state.isAdmin ? <Link to={`${process.env.PUBLIC_URL}/bot`}>Your Bot</Link> : <Link to={`${process.env.PUBLIC_URL}/registration/start`}>Get a Bot</Link>}
                     </div>
                     <div style={{textAlign: "center"}}>
-                    <Link to={`${process.env.PUBLIC_URL}/encyclopedia/items`}>Item Encyclopedia</Link> | <Link to={`${process.env.PUBLIC_URL}/encyclopedia/abilities`}>Ability Encyclopedia</Link> | <Link to={`${process.env.PUBLIC_URL}/encyclopedia/monsters`}>Monster Encyclopedia</Link>
+                        <Link to={`${process.env.PUBLIC_URL}/encyclopedia/items`}>Item Encyclopedia</Link> | <Link to={`${process.env.PUBLIC_URL}/encyclopedia/abilities`}>Ability Encyclopedia</Link> | <Link to={`${process.env.PUBLIC_URL}/encyclopedia/monsters`}>Monster Encyclopedia</Link>
                     </div>
                     {this.state.isAdmin ? 
                         <div style={{textAlign: "center"}}>
