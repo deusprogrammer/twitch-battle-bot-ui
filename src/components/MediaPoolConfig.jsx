@@ -82,7 +82,7 @@ export default class MediaPoolConfig extends React.Component {
             return;
         }
 
-        mediaPool[index] = (e.target.checked ? "" : "*") + mediaPool[index].replace("*", "");
+        mediaPool[index].url = (e.target.checked ? "" : "*") + mediaPool[index].url.replace("*", "");
 
         try {
             if (type === "audio") {
