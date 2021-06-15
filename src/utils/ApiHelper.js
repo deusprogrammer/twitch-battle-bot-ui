@@ -119,7 +119,11 @@ const getMediaMetaData = async (id) => {
 const storeMedia = async (mediaObject) => {
     let url = `${config.MEDIA_SERVER_URL}/media`;
 
-    let res = await axios.post(url, mediaObject);
+    let res = await axios.post(url, mediaObject, {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
 
     return res.data;
 }
