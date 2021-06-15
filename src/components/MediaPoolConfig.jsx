@@ -98,6 +98,8 @@ export default class MediaPoolConfig extends React.Component {
             this.setState({saving: false});
         } catch(e) {
             console.error(e);
+            toast("Failed to update media pool!")
+            return;
         }
     }
 
@@ -131,22 +133,22 @@ export default class MediaPoolConfig extends React.Component {
                 });
             } catch (e) {
                 console.error(e);
+                toast("Failed to store video file!")
+                return;
             }
         } else {
-            try {
-                mediaPool.push({
-                    name: type + (mediaPool.length + 1),
-                    url: mediaUrl
-                });
-            } catch (e) {
-                console.error(e);
-            }
+            mediaPool.push({
+                name: type + (mediaPool.length + 1),
+                url: mediaUrl
+            });
         }
 
         try {
             await ApiHelper.updateBotMediaPool(this.state.channelId, type, mediaPool);
         } catch (e) {
             console.error(e);
+            toast("Failed to update media pool!")
+            return;
         }
         toast(`Media stored successfully`, {type: "info"});
         this.setState({saving: false});
@@ -200,6 +202,8 @@ export default class MediaPoolConfig extends React.Component {
             toast(`Media config save successful`, {type: "info"});
         } catch (e) {
             console.error(e);
+            toast("Failed to save media pool config!")
+            return;
         }
     }
 
