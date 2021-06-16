@@ -249,7 +249,7 @@ export default class MediaPoolConfig extends React.Component {
                                 return (
                                     <li>
                                         <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "audio", index)}} checked={!element.name.startsWith("*")} disabled={this.state.saving}/>
-                                        <button onClick={() => {this.onDeleteMedia("sound", index)}}>X</button>
+                                        <button onClick={() => {this.onDeleteMedia("audio", index)}}>X</button>
                                         <span className={this.state.audioPreview === element.url  ? "selected" : ""} style={{cursor: "pointer"}} onClick={() => {this.setState({audioPreview: element.url.replace("*", "") })}}>
                                             <input type="text" value={element.name} onChange={(e) => {this.updateMedia(e, index, "audio")}} onBlur={() => {this.saveMediaConfig("audio")}} disabled={this.state.saving} />
                                         </span>
