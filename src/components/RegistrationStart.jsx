@@ -1,6 +1,6 @@
 import React from 'react';
 
-const twitchAuthUrl = "https://id.twitch.tv/oauth2/authorize?client_id=uczfktv6o7vvdeqxnafizuq672r5od&redirect_uri=https://deusprogrammer.com/util/twitch/registration/callback&response_type=code&scope=channel:read:redemptions,channel:read:subscriptions,bits:read";
+const twitchAuthUrl = "https://id.twitch.tv/oauth2/authorize?client_id=uczfktv6o7vvdeqxnafizuq672r5od&redirect_uri=https://deusprogrammer.com/util/twitch/registration/callback&response_type=code&scope=channel:read:redemptions%20channel:read:subscriptions%20bits:read";
 
 export default class RegistrationStart extends React.Component {
     componentDidMount() {
