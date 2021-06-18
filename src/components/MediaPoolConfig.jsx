@@ -82,7 +82,7 @@ export default class MediaPoolConfig extends React.Component {
             return;
         }
 
-        mediaPool[index] = (e.target.checked ? "" : "*") + mediaPool[index].replace("*", "");
+        mediaPool[index].url = (e.target.checked ? "" : "*") + mediaPool[index].url.replace("*", "");
 
         try {
             if (type === "audio") {
@@ -94,10 +94,43 @@ export default class MediaPoolConfig extends React.Component {
             } else {
                 return;
             }
-            toast(`Updated video state`, {type: "info"});
+            toast(`Disabled media`, {type: "info"});
             this.setState({saving: false});
         } catch(e) {
             console.error(e);
+            toast("Failed to update media pool!");
+            return;
+        }
+    }
+
+    onDeleteMedia = async (type, index) => {
+        let mediaPool = {};
+        if (type === "audio") {
+            mediaPool = [...this.state.audioPool];
+        } else if (type === "video") {
+            mediaPool = [...this.state.videoPool];
+        } else {
+            return;
+        }
+
+        mediaPool.splice(index, 1);
+
+        try {
+            if (type === "audio") {
+                this.setState({audioPool: mediaPool, saving: true});
+                await ApiHelper.updateBotMediaPool(this.state.channelId, "audio", mediaPool);
+            } else if (type === "video") {
+                this.setState({videoPool: mediaPool, saving: true});
+                await ApiHelper.updateBotMediaPool(this.state.channelId, "video", mediaPool);
+            } else {
+                return;
+            }
+            toast(`Deleted media`, {type: "info"});
+            this.setState({saving: false});
+        } catch(e) {
+            console.error(e);
+            toast("Failed to update media pool!")
+            return;
         }
     }
 
@@ -131,22 +164,22 @@ export default class MediaPoolConfig extends React.Component {
                 });
             } catch (e) {
                 console.error(e);
+                toast("Failed to store video file!")
+                return;
             }
         } else {
-            try {
-                mediaPool.push({
-                    name: type + (mediaPool.length + 1),
-                    url: mediaUrl
-                });
-            } catch (e) {
-                console.error(e);
-            }
+            mediaPool.push({
+                name: type + (mediaPool.length + 1),
+                url: mediaUrl
+            });
         }
 
         try {
             await ApiHelper.updateBotMediaPool(this.state.channelId, type, mediaPool);
         } catch (e) {
             console.error(e);
+            toast("Failed to update media pool!")
+            return;
         }
         toast(`Media stored successfully`, {type: "info"});
         this.setState({saving: false});
@@ -200,6 +233,8 @@ export default class MediaPoolConfig extends React.Component {
             toast(`Media config save successful`, {type: "info"});
         } catch (e) {
             console.error(e);
+            toast("Failed to save media pool config!")
+            return;
         }
     }
 
@@ -214,6 +249,7 @@ export default class MediaPoolConfig extends React.Component {
                                 return (
                                     <li>
                                         <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "audio", index)}} checked={!element.name.startsWith("*")} disabled={this.state.saving}/>
+                                        <button onClick={() => {this.onDeleteMedia("audio", index)}}>X</button>
                                         <span className={this.state.audioPreview === element.url  ? "selected" : ""} style={{cursor: "pointer"}} onClick={() => {this.setState({audioPreview: element.url.replace("*", "") })}}>
                                             <input type="text" value={element.name} onChange={(e) => {this.updateMedia(e, index, "audio")}} onBlur={() => {this.saveMediaConfig("audio")}} disabled={this.state.saving} />
                                         </span>
@@ -241,6 +277,7 @@ export default class MediaPoolConfig extends React.Component {
                             { this.state.videoPool.map((element, index) => {
                                 return (<li>
                                             <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "video", index)}} checked={!element.url.startsWith("*")} disabled={this.state.saving}/>
+                                            <button onClick={() => {this.onDeleteMedia("video", index)}}>X</button>
                                             <span className={this.state.videoPreview === element.url  ? "selected" : ""} style={{cursor: "pointer"}} onClick={() => {this.setState({videoPreview: element.url.replace("*", "") })}}>
                                                 <input type="text" value={element.name} onChange={(e) => {this.updateMedia(e, index, "video")}} onBlur={() => {this.saveMediaConfig("video")}} disabled={this.state.saving} />
                                             </span>
