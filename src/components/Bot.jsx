@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import ApiHelper from '../utils/ApiHelper';
 import {toast} from 'react-toastify';
 
-const twitchAuthUrl = "https://id.twitch.tv/oauth2/authorize?client_id=uczfktv6o7vvdeqxnafizuq672r5od&redirect_uri=https://deusprogrammer.com/util/twitch/registration/refresh&response_type=code&scope=channel:read:redemptions%20channel:read:subscriptions%20bits:read%20channel_subscriptions";
+const twitchAuthUrl = "https://id.twitch.tv/oauth2/authorize?client_id=uczfktv6o7vvdeqxnafizuq672r5od&redirect_uri=https://deusprogrammer.com/util/twitch/registration/refresh&response_type=code&scope=channel:read:redemptions%20channel:read:subscriptions%20bits:read";
 
 const configElementDescriptions = {
     cbd: "Chat Battle Dungeon",
