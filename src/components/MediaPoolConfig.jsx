@@ -278,12 +278,12 @@ export default class MediaPoolConfig extends React.Component {
                                 return (<li>
                                             <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "video", index)}} checked={!element.url.startsWith("*")} disabled={this.state.saving}/>
                                             <button onClick={() => {this.onDeleteMedia("video", index)}}>X</button>
-                                            <select defaultValue="none" value={element.chromaKey}>
+                                            {/* <select defaultValue="none" value={element.chromaKey}>
                                                 <option value="red">Remove Red</option>
                                                 <option value="green">Remove Green</option>
                                                 <option value="blue">Remove Blue</option>
                                                 <option value="none">No Chroma</option>
-                                            </select>
+                                            </select> */}
                                             <span className={this.state.videoPreview === element.url  ? "selected" : ""} style={{cursor: "pointer"}} onClick={() => {this.setState({videoPreview: element.url.replace("*", "") })}}>
                                                 <input type="text" value={element.name} onChange={(e) => {this.updateMedia(e, index, "video")}} onBlur={() => {this.saveMediaConfig("video")}} disabled={this.state.saving} />
                                             </span>
