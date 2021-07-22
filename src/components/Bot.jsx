@@ -37,6 +37,12 @@ export default class Bot extends React.Component {
 
         let config = await ApiHelper.getBotConfig(this.state.channelId);
 
+        Object.keys(this.state.config).forEach((key) => {
+            if (!config[key]) {
+                config[key] = false;
+            }
+        });
+
         // Check token state
         let tokenState = await ApiHelper.checkToken(this.state.channelId);
         let botState = await ApiHelper.getBotState(this.state.channelId);
