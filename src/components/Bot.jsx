@@ -7,7 +7,8 @@ const twitchAuthUrl = "https://id.twitch.tv/oauth2/authorize?client_id=uczfktv6o
 
 const configElementDescriptions = {
     cbd: "Chat Battle Dungeon",
-    requests: "Request Queue"
+    requests: "Request Queue",
+    rewards: "Rewards"
 }
 
 export default class Bot extends React.Component {
@@ -23,7 +24,8 @@ export default class Bot extends React.Component {
         },
         config: {
             cbd: true,
-            requests: true
+            requests: true,
+            rewards: true
         }
     }
 
