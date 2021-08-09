@@ -198,6 +198,7 @@ export default class MonsterForm extends React.Component {
                                                 <td>
                                                     <Select field="abilityId">
                                                         <Option value={null}>{"Select an ability..."}</Option>
+                                                        <Option value={"ATTACK"}>{"Attack"}</Option>
                                                         { this.state.abilities.map((ability) => {
                                                             return (
                                                                 <Option value={ability.id}>{ability.name}</Option>
