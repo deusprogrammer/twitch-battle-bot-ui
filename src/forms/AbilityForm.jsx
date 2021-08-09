@@ -173,7 +173,7 @@ export default class AbilityForm extends React.Component {
                                     <Select field="target">
                                         <Option value={null}>Select Target Type</Option>
                                         <Option value={"ENEMY"}>ENEMY</Option>
-                                        <Option value={"CHAT"}>CHAT</Option>
+                                        <Option value={"CHAT"}>FRIENDLY</Option>
                                         <Option value={"ANY"}>ANY</Option>
                                     </Select>
                                 </td>

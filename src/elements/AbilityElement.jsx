@@ -27,23 +27,23 @@ let AbilityElement = (props) => {
     switch (ability.target) {
         case "ENEMY":
             if (ability.area === "ALL") {
-                target = "all enemies";
+                target = "all hostiles";
             } else {
-                target = "one enemy";
+                target = "one hostiles";
             }
             break;
         case "CHAT":
             if (ability.area === "ALL") {
-                target = "all players";
+                target = "all friendlies";
             } else {
-                target = "one player";
+                target = "one friendly";
             }
             break;
         case "ANY":
             if (ability.area === "ALL") {
-                target = "all enemies and players";
+                target = "all hostiles and players";
             } else {
-                target = "one enemy or player";
+                target = "one hostile or player";
             }
             break;
     }
