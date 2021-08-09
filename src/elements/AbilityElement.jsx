@@ -29,7 +29,7 @@ let AbilityElement = (props) => {
             if (ability.area === "ALL") {
                 target = "all hostiles";
             } else {
-                target = "one hostiles";
+                target = "one hostile";
             }
             break;
         case "CHAT":
