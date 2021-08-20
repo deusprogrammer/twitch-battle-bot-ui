@@ -148,6 +148,16 @@ export default (props) => {
                                 })}
                             </div>
                             <div style={{clear: "both"}} />
+                            <div className="item-stats">
+                                <div style={{float: "left", height: "25px", lineHeight: "25px"}}><b>Stat Mods:</b></div>
+                                {["Fire", "Ice", "Lightning", "Water", "Earth", "Dark", "Light"].map((resistance) => {
+                                    let elementColor = elementColors[resistance.toUpperCase];
+                                    let color = elementColor.c;
+                                    let backgroundColor = elementColor.b;
+                                    return <div style={{float: "left", color, backgroundColor}}>{modStat}: {item.resistances[resistance.toLowerCase()]}</div>
+                                })}
+                            </div>
+                            <div style={{clear: "both"}} />
                         </div>                   
                     : null}
                     <div style={{clear: "both"}} />
