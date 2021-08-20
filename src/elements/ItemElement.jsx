@@ -149,7 +149,7 @@ export default (props) => {
                             </div>
                             <div style={{clear: "both"}} />
                             <div className="item-stats">
-                                <div style={{float: "left", height: "25px", lineHeight: "25px"}}><b>Stat Mods:</b></div>
+                                <div style={{float: "left", height: "25px", lineHeight: "25px"}}><b>Resistances:</b></div>
                                 {["Fire", "Ice", "Lightning", "Water", "Earth", "Dark", "Light"].map((resistance) => {
                                     let elementColor = elementColors[resistance.toUpperCase()];
                                     let color = elementColor.c;
