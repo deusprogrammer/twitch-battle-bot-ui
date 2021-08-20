@@ -154,7 +154,7 @@ export default (props) => {
                                     let elementColor = elementColors[resistance.toUpperCase()];
                                     let color = elementColor.c;
                                     let backgroundColor = elementColor.b;
-                                    return <div style={{float: "left", color, backgroundColor, width: "100px", textAlign: "center"}}>{resistance}: {item.resistances[resistance.toLowerCase()]}</div>
+                                    return <div style={{float: "left", color, backgroundColor, width: "100px", textAlign: "center"}}>{resistance}: {item.resistances[resistance.toLowerCase()]*5}%</div>
                                 })}
                             </div>
                             <div style={{clear: "both"}} />
