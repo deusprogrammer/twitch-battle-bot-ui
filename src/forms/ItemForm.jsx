@@ -394,6 +394,65 @@ export default class ItemForm extends React.Component {
                                 </tr>
                             </fieldset>
                             <fieldset>
+                                <legend>Resistances</legend>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Fire:
+                                    </td>
+                                    <td>
+                                        <Text field="resistances.fire" type="number"></Text>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Ice:
+                                    </td>
+                                    <td>
+                                        <Text field="resistances.ice" type="number"></Text>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Lightning:
+                                    </td>
+                                    <td>
+                                        <Text field="resistances.lightning" type="number"></Text>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Water:
+                                    </td>
+                                    <td>
+                                        <Text field="resistances.water" type="number"></Text>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Earth:
+                                    </td>
+                                    <td>
+                                        <Text field="resistances.earth" type="number"></Text>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Dark:
+                                    </td>
+                                    <td>
+                                        <Text field="resistances.dark" type="number"></Text>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{fontWeight: "bolder"}}>
+                                        Light:
+                                    </td>
+                                    <td>
+                                        <Text field="resistances.light" type="number"></Text>
+                                    </td>
+                                </tr>
+                            </fieldset>
+                            <fieldset>
                                 <legend>Abilities</legend>
                                 { this.state.abilitiesAdded.map((abilityAdded, index) => {
                                     return (
