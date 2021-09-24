@@ -334,7 +334,7 @@ export default class MediaPoolConfig extends React.Component {
                             })}                       
                         </ul>
                     </div>
-                    {this.state.selectedAudioIndex > this.state.audioPool.length ?
+                    {this.state.selectedAudioIndex < this.state.audioPool.length ?
                     <div style={{display: "table-cell", verticalAlign: "middle"}}>
                         <h3>Preview</h3>
                         <audio 
@@ -381,7 +381,7 @@ export default class MediaPoolConfig extends React.Component {
                             })}                        
                         </ul>
                     </div>
-                    {this.state.selectedVideoIndex > this.state.videoPool.length ?
+                    {this.state.selectedVideoIndex < this.state.videoPool.length ?
                     <div style={{display: "table-cell", verticalAlign: "middle"}}>
                         <h3>Preview</h3>
                         <video 
