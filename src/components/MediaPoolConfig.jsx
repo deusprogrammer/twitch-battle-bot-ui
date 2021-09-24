@@ -239,7 +239,7 @@ export default class MediaPoolConfig extends React.Component {
         }
     }
 
-    updateVolume = (e, index, type) => {
+    updateVolume = (index, type) => {
         let mediaPool = [];
 
         if (type === "audio") {
@@ -250,7 +250,16 @@ export default class MediaPoolConfig extends React.Component {
             return;
         }
 
-        mediaPool[index].volume = e.target.value;
+        let selector = `${type}-preview`;
+        let mediaElement = document.getElementById(selector);
+        let volume = 1;
+        if (mediaElement) {
+            volume = mediaElement.volume;
+        }
+
+        console.log(`Changed ${type} volume to ${volume} on index ${index}`)
+
+        mediaPool[index].volume = volume;
 
         if (type === "audio") {
             this.setState({audioPool: mediaPool});
@@ -328,11 +337,14 @@ export default class MediaPoolConfig extends React.Component {
                     <div style={{display: "table-cell", verticalAlign: "middle"}}>
                         <h3>Preview</h3>
                         <audio 
+                            id="audio-preview"
                             src={this.state.audioPreview} 
                             width="300px" 
                             controls 
-                            onBlur={() => {this.saveMediaConfig("video")}} 
+                            onBlur={() => {this.saveMediaConfig("video")}}
+                            volume={this.state.audioPool[this.state.selectedAudioIndex].volume}
                             onVolumeChange={(e) => {this.updateVolume(e, this.state.selectedAudioIndex, "audio")}} />
+                        <div>Volume: {this.state.audioPool[this.state.selectedAudioIndex].volume}</div>
                     </div>
                 </div>
                 <div style={{border: "1px solid black"}}>
@@ -371,11 +383,14 @@ export default class MediaPoolConfig extends React.Component {
                     <div style={{display: "table-cell", verticalAlign: "middle"}}>
                         <h3>Preview</h3>
                         <video 
+                            id="video-preview"
                             src={this.state.videoPreview} 
                             width="300px" 
                             controls 
                             onBlur={() => {this.saveMediaConfig("video")}} 
+                            volume={this.state.videoPool[this.state.selectedVideoIndex].volume}
                             onVolumeChange={(e) => {this.updateVolume(e, this.state.selectedVideoIndex, "video")}} />
+                        <div>Volume: {this.state.audioPool[this.state.selectedAudioIndex].volume}</div>
                     </div>
                 </div>
                 <div style={{border: "1px solid black"}}>
