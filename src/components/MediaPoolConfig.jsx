@@ -314,14 +314,18 @@ export default class MediaPoolConfig extends React.Component {
                         <h3>My Audio</h3>
                         <ul>
                             { this.state.audioPool.map((element, index) => {
+                                if (!element.volume) {
+                                    element.volume = 1.0;
+                                }
+                                
                                 return (
                                     <li>
                                         <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "audio", index)}} checked={!element.name.startsWith("*")} disabled={this.state.saving}/>
                                         <button onClick={() => {this.onDeleteMedia("audio", index)}}>X</button>
                                         <span className={this.state.audioPreview === element.url  ? "selected" : ""} style={{cursor: "pointer"}} onClick={() => {this.setState({audioPreview: element.url.replace("*", ""), selectedAudioIndex: index })}}>
-                                            <input type="range" min={0} max={1} step={0.1} onChange={(e) => {this.updateVolume(e, index, "audio")}} />
-                                            {element.volume * 100}%
                                             <input type="text" value={element.name} onChange={(e) => {this.updateMedia(e, index, "audio")}} onBlur={() => {this.saveMediaConfig("audio")}} disabled={this.state.saving} />
+                                            <input type="range" min={0} max={1} step={0.1} value={element.volume} onBlur={() => {this.saveMediaConfig("audio")}} onChange={(e) => {this.updateVolume(e, index, "audio")}} />
+                                            Volume: {element.volume * 100}%
                                         </span>
                                     </li>)
                             })}                       
@@ -352,6 +356,10 @@ export default class MediaPoolConfig extends React.Component {
                         <h3>My Video</h3>
                         <ul>
                             { this.state.videoPool.map((element, index) => {
+                                if (!element.volume) {
+                                    element.volume = 1.0;
+                                }
+
                                 return (<li>
                                             <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "video", index)}} checked={!element.url.startsWith("*")} disabled={this.state.saving}/>
                                             <button onClick={() => {this.onDeleteMedia("video", index)}}>X</button>
@@ -366,9 +374,9 @@ export default class MediaPoolConfig extends React.Component {
                                                     <option value="none">No Chroma</option>
                                             </select>
                                             <span className={this.state.videoPreview === element.url  ? "selected" : ""} style={{cursor: "pointer"}} onClick={() => {this.setState({videoPreview: element.url.replace("*", ""), selectedVideoIndex: index })}}>
-                                                <input type="range" min={0} max={1} step={0.1} onChange={(e) => {this.updateVolume(e, index, "video")}} />
-                                                {element.volume * 100}%
                                                 <input type="text" value={element.name} onChange={(e) => {this.updateMedia(e, index, "video")}} onBlur={() => {this.saveMediaConfig("video")}} disabled={this.state.saving} />
+                                                <input type="range" min={0} max={1} step={0.1} value={element.volume} onBlur={() => {this.saveMediaConfig("video")}} onChange={(e) => {this.updateVolume(e, index, "video")}} />
+                                                Volume: {element.volume * 100}%
                                             </span>
                                         </li>)
                             })}                        
