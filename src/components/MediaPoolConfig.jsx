@@ -334,6 +334,7 @@ export default class MediaPoolConfig extends React.Component {
                             })}                       
                         </ul>
                     </div>
+                    {this.state.selectedAudioIndex > this.state.audioPool.size ?
                     <div style={{display: "table-cell", verticalAlign: "middle"}}>
                         <h3>Preview</h3>
                         <audio 
@@ -345,7 +346,7 @@ export default class MediaPoolConfig extends React.Component {
                             volume={this.state.audioPool[this.state.selectedAudioIndex].volume}
                             onVolumeChange={(e) => {this.updateVolume(e, this.state.selectedAudioIndex, "audio")}} />
                         <div>Volume: {this.state.audioPool[this.state.selectedAudioIndex].volume}</div>
-                    </div>
+                    </div> : null}
                 </div>
                 <div style={{border: "1px solid black"}}>
                     <h3>Add New Audio</h3>
@@ -380,6 +381,7 @@ export default class MediaPoolConfig extends React.Component {
                             })}                        
                         </ul>
                     </div>
+                    {this.state.selectedVideoIndex > this.state.videoPool.size ?
                     <div style={{display: "table-cell", verticalAlign: "middle"}}>
                         <h3>Preview</h3>
                         <video 
@@ -391,7 +393,7 @@ export default class MediaPoolConfig extends React.Component {
                             volume={this.state.videoPool[this.state.selectedVideoIndex].volume}
                             onVolumeChange={(e) => {this.updateVolume(e, this.state.selectedVideoIndex, "video")}} />
                         <div>Volume: {this.state.audioPool[this.state.selectedAudioIndex].volume}</div>
-                    </div>
+                    </div>: null}
                 </div>
                 <div style={{border: "1px solid black"}}>
                     <h3>Add New Video</h3>
