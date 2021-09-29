@@ -250,7 +250,7 @@ export default class MediaPoolConfig extends React.Component {
             return;
         }
 
-        mediaPool[index].volume = e.target.value;
+        mediaPool[index].volume = parseFloat(e.target.value);
 
         if (type === "audio") {
             this.setState({audioPool: mediaPool});
@@ -272,7 +272,7 @@ export default class MediaPoolConfig extends React.Component {
             return;
         }
 
-        mediaPool[index][portion] = parseFloat(e.target.value);
+        mediaPool[index][portion] = e.target.value;
 
         if (type === "audio") {
             this.setState({audioPool: mediaPool});
