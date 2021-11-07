@@ -501,6 +501,32 @@ const updateUser = async (userData) => {
     return updated.data;
 }
 
+const equipItem = async (userName, id) => {
+    let updated = await axios.post(`${config.BASE_URL}/users/${userName}/changes`, {
+        type: "equip",
+        id
+    }, {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
+
+    return updated.data;
+}
+
+const sellItem = async (userName, id) => {
+    let updated = await axios.post(`${config.BASE_URL}/users/${userName}/changes`, {
+        type: "sell",
+        id
+    }, {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
+
+    return updated.data;
+}
+
 const updateBotConfig = async (channelId, configData) => {
     let updated = await axios.put(`${config.BASE_URL}/bots/${channelId}/config`, configData, {
         headers: {
@@ -552,6 +578,8 @@ const updateAdminConfigs = async (newConfig) => {
 }
 
 export default {
+    equipItem,
+    sellItem,
     expandUser,
     recalculateStats,
     getItemTable,

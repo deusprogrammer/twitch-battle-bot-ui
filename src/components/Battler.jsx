@@ -36,46 +36,11 @@ export default class Battler extends React.Component {
     }
 
     equipItemOnUser = async (item) => {
-        // Pull the user and tables fresh in case anything has changed
-        let user = await this.getUser(this.props.match.params.id);
-
-        //let user = {...this.state.user};
-        let equipment = {...user.equipment};
-        let inventory = [...user.inventory];
-
-        // Find the first instance of the item in the inventory list
-        let index = user.inventory.findIndex(search => search.id === item.id);
-
-        // Update version in state
-        let oldItem = equipment[item.slot];
-        equipment[item.slot] = item;
-        if (oldItem) {
-            inventory[index] = oldItem;
-        } else {
-            delete inventory[index];
-        }
-
         this.setState({saving: true}, async () => {
-            // Create stripped down version for update call
-            let strippedUser = {...user};
-            strippedUser.totalAC = null;
-            strippedUser.equipment = {};
-            strippedUser.inventory = [];
-            strippedUser.currentJob = {
-                id: user.currentJob.id
-            };
-
-            Object.keys(equipment).forEach((slot) => {
-                strippedUser.equipment[slot] = {id: equipment[slot].id};
-            });
-            inventory.forEach((inventoryItem) => {
-                strippedUser.inventory.push(inventoryItem.id);
-            });
-
             // Update and store updated version of user
             try {
-                await ApiHelper.updateUser(strippedUser);
-                let updated = await this.getUser(user.name);
+                await ApiHelper.equipItem(this.state.user.name, item.id);
+                let updated = await this.getUser(this.state.user.name);
                 this.setState({saving: false, user: updated});
                 toast(`Equipped ${item.name}`, {type: "info"});
             } catch (e) {
@@ -87,42 +52,11 @@ export default class Battler extends React.Component {
     }
 
     sellItem = async (item) => {
-        let user = await this.getUser(this.props.match.params.id);
-
-        //let user = {...this.state.user};
-        let equipment = {...user.equipment};
-        let inventory = [...user.inventory];
-
-        // Find the first instance of the item in the inventory list
-        let index = user.inventory.findIndex(search => search.id === item.id);
-
-        // Remove item from inventory
-        delete inventory[index];
-
-        // Update gold
-        user.gold += item.value;
-
         this.setState({saving: true}, async () => {
-            // Create stripped down version for update call
-            let strippedUser = {...user};
-            strippedUser.totalAC = null;
-            strippedUser.equipment = {};
-            strippedUser.inventory = [];
-            strippedUser.currentJob = {
-                id: user.currentJob.id
-            };
-
-            Object.keys(equipment).forEach((slot) => {
-                strippedUser.equipment[slot] = {id: equipment[slot].id};
-            });
-            inventory.forEach((inventoryItem) => {
-                strippedUser.inventory.push(inventoryItem.id);
-            });
-
             // Update and store updated version of user
             try {
-                await ApiHelper.updateUser(strippedUser);
-                let updated = await this.getUser(user.name);
+                await ApiHelper.sellItem(this.state.user.name, item.id);
+                let updated = await this.getUser(this.state.user.name);
                 this.setState({saving: false, user: updated});
                 toast(`Sold ${item.name}`, {type: "info"});
             } catch (e) {

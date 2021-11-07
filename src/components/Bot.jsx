@@ -23,6 +23,9 @@ export default class Bot extends React.Component {
         tokenState: {
             valid: false
         },
+        botConfig: {
+            raidTheme: "ZELDA"
+        },
         config: {
             cbd: true,
             requests: true,
@@ -48,7 +51,8 @@ export default class Bot extends React.Component {
         // Check token state
         let tokenState = await ApiHelper.checkToken(this.state.channelId);
         let botState = await ApiHelper.getBotState(this.state.channelId);
-        this.setState({botState, tokenState, config});
+        let botConfig = await ApiHelper.getBot(this.state.channelId);
+        this.setState({botState, tokenState, config, botConfig});
 
         if (!tokenState.valid) {
             window.location.replace(twitchAuthUrl);
