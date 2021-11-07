@@ -220,13 +220,13 @@ export default class Battler extends React.Component {
                                             <React.Fragment>
                                                 <tr 
                                                     data-tip 
-                                                    data-for={`${item.slot}-inv-tip`}
+                                                    data-for={`${item.id}-inv-tip`}
                                                     style={{cursor: "pointer"}}>
                                                         <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.toUpperCase()}</td>
                                                         <td>{item.name}</td>
                                                         <td>{count}</td>
                                                 </tr>
-                                                <ReactToolTip id={`${item.slot}-inv-tip`} place="right" effect="solid" delayHide={500} delayShow={500} delayUpdate={500}>
+                                                <ReactToolTip id={`${item.id}-inv-tip`} place="right" effect="solid" delayHide={500} delayShow={500} delayUpdate={500}>
                                                     <ItemElement 
                                                         item={item} 
                                                         abilityTable={this.abilityTable} />
