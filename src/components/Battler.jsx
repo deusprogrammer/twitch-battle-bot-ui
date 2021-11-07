@@ -208,23 +208,34 @@ export default class Battler extends React.Component {
                         </div>
                         <div className="col-md-4">
                             <h3>Inventory</h3>
-                            { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY", "MIKU", "MONSTER", "DIGITAL", "PHYSICAL"].map((slot) => {
-                                return Object.keys(user.condensedInventory).map((itemKey) => {
-                                    const item = user.condensedInventory[itemKey].item;
-                                    const count = user.condensedInventory[itemKey].count;
-                                    if (item.slot.toUpperCase() !== slot) {
-                                        return;
-                                    }
-                                    return (
-                                        <ItemElement 
-                                            item={item} 
-                                            abilityTable={this.abilityTable} 
-                                            count={count} 
-                                            onEquip={(item) => {this.equipItemOnUser(item)}} 
-                                            onSell={(item) => {this.sellItem(item)}} />
-                                    )
-                                })}
-                            )}
+                            <table>
+                                { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY", "MIKU", "MONSTER", "DIGITAL", "PHYSICAL"].map((slot) => {
+                                    return Object.keys(user.condensedInventory).map((itemKey) => {
+                                        const item = user.condensedInventory[itemKey].item;
+                                        const count = user.condensedInventory[itemKey].count;
+                                        if (item.slot.toUpperCase() !== slot) {
+                                            return;
+                                        }
+                                        return (
+                                            <React.Fragment>
+                                                <tr 
+                                                    data-tip 
+                                                    data-for={`${item.slot}-tip`}
+                                                    style={{cursor: "pointer"}}>
+                                                        <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.toUpperCase()}</td>
+                                                        <td>{item.name}</td>
+                                                        <td>{count}</td>
+                                                </tr>
+                                                <ReactToolTip id={`${item.slot}-tip`} place="right" effect="solid" delayHide={500} delayShow={500} delayUpdate={500}>
+                                                    <ItemElement 
+                                                        item={item} 
+                                                        abilityTable={this.abilityTable} />
+                                                </ReactToolTip>
+                                            </React.Fragment>
+                                        )
+                                    })}
+                                )}
+                            </table>
                         </div>
                     </div>
                 </div>
