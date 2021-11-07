@@ -226,8 +226,8 @@ export default class Battler extends React.Component {
                                                         <td>{item.name}</td>
                                                         <td>{count}</td>
                                                         <td>
-                                                            <button type="button" class="btn btn-primary" onClick={() => {this.equipItemOnUser(item)}}>Equip</button>
-                                                            <button type="button" class="btn btn-primary" onClick={() => {this.sellItem(item)}}>Sell</button>
+                                                            <button type="button" class="btn btn-primary" onClick={() => {this.equipItemOnUser(item)}}>Equip</button><br/>
+                                                            <button type="button" class="btn btn-primary" onClick={() => {this.sellItem(item)}}>Sell</button><br/>
                                                             <button type="button" class="btn btn-primary" onClick={() => {navigator.clipboard.writeText(item.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
                                                         </td>
                                                 </tr>
