@@ -161,7 +161,7 @@ export default class Battler extends React.Component {
                                     })}
                             </table>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-md-4">
                             <h3>Abilities</h3>
                             {user.abilities.length > 0 ?
                                 <table>
@@ -206,7 +206,7 @@ export default class Battler extends React.Component {
                                 </table> : null 
                             }
                         </div>
-                        <div className="col-md-5">
+                        <div className="col-md-4">
                             <h3>Inventory</h3>
                             <table>
                                 { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY", "MIKU", "MONSTER", "DIGITAL", "PHYSICAL"].map((slot) => {
@@ -225,9 +225,11 @@ export default class Battler extends React.Component {
                                                         <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.toUpperCase()}</td>
                                                         <td>{item.name}</td>
                                                         <td>{count}</td>
-                                                        <td><button type="button" class="btn btn-primary" onClick={() => {this.equipItemOnUser(item)}}>Equip</button></td>
-                                                        <td><button type="button" class="btn btn-primary" onClick={() => {this.sellItem(item)}}>Sell</button></td>
-                                                        <td><button type="button" class="btn btn-primary" onClick={() => {navigator.clipboard.writeText(item.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button></td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-primary" onClick={() => {this.equipItemOnUser(item)}}>Equip</button>
+                                                            <button type="button" class="btn btn-primary" onClick={() => {this.sellItem(item)}}>Sell</button>
+                                                            <button type="button" class="btn btn-primary" onClick={() => {navigator.clipboard.writeText(item.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
+                                                        </td>
                                                 </tr>
                                                 <ReactToolTip id={`${item.id}-inv-tip`} place="right" effect="solid" delayHide={500} delayShow={500} delayUpdate={500}>
                                                     <ItemElement 
