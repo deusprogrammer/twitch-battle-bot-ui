@@ -44,6 +44,7 @@ const RaidAlertCustomizer = (props) => {
         sfx.file = await storeAudio(sfx.file, "Raid-SFX");
 
         let config = {
+            twitchChannel: parseInt(window.localStorage.getItem("channel")),
             message: "TEST",
             sprites: sprites.map((sprite) => {
                 return {
@@ -244,31 +245,6 @@ const RaidAlertCustomizer = (props) => {
                 </tbody>
             </table>
             <hr />
-            <pre>
-                {
-                    JSON.stringify({
-                        message: "TEST",
-                        sprites: sprites.map((sprite) => {
-                            return {
-                                file: "TBA",
-                                startFrame: sprite.startFrame,
-                                endFrame: sprite.endFrame,
-                                frameWidth: sprite.frameWidth,
-                                frameHeight: sprite.frameHeight,
-                                frameRate: sprite.frameRate
-                            }
-                        }),
-                        music: {
-                            file: "TBA",
-                            volume: 1
-                        },
-                        leavingSound: {
-                            file: "TBA",
-                            volume: 1
-                        }
-                    }, null, 5)
-                }
-            </pre>
             <button onClick={async () => {
                 await storeRaidAlert();
             }}>
