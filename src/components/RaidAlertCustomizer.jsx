@@ -37,11 +37,11 @@ const RaidAlertCustomizer = (props) => {
 
     const storeRaidAlert = async () => {
         for (let sprite of sprites) {
-            sprite.file = await storeImage(sprite.file, "Raid-Sprite");
+            sprite.file = await storeImage(sprite.file.substring(fr.result.indexOf(',') + 1), "Raid-Sprite");
         }
 
-        bgm.file = await storeAudio(bgm.file, "Raid-BGM");
-        sfx.file = await storeAudio(sfx.file, "Raid-SFX");
+        bgm.file = await storeAudio(bgm.file.substring(fr.result.indexOf(',') + 1), "Raid-BGM");
+        sfx.file = await storeAudio(sfx.file.substring(fr.result.indexOf(',') + 1), "Raid-SFX");
 
         let config = {
             twitchChannel: parseInt(window.localStorage.getItem("channel")),
