@@ -36,9 +36,9 @@ const RaidAlertCustomizer = (props) => {
     }
 
     const storeRaidAlert = async () => {
-        for (let sprite of sprites) { {
+        for (let sprite of sprites) {
             sprite.file = await storeImage(sprite.file, "Raid-Sprite");
-        };
+        }
 
         bgm.file = await storeAudio(bgm.file, "Raid-BGM");
         sfx.file = await storeAudio(sfx.file, "Raid-SFX");
