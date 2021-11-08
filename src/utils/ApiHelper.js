@@ -557,6 +557,26 @@ const updateBotMediaPool = async (channelId, poolType, pool) => {
     return updated.data;
 }
 
+const storeRaidAlert = async (raidAlert) => {
+    let created = await axios.post(`${config.BASE_URL}/raid-configs/`, raidAlert, {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
+
+    return created.data;
+}
+
+const getRaidAlert = async (id) => {
+    let found = await axios.get(`${config.BASE_URL}/raid-configs/${id}`, {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
+
+    return found.data;
+}
+
 const getAdminConfigs = async () => {
     let found = await axios.get(`${config.BASE_URL}/configs`, {
         headers: {
@@ -578,6 +598,8 @@ const updateAdminConfigs = async (newConfig) => {
 }
 
 export default {
+    storeRaidAlert,
+    getRaidAlert,
     equipItem,
     sellItem,
     expandUser,
