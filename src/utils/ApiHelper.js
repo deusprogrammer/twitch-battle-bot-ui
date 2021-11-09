@@ -578,7 +578,7 @@ const getRaidAlert = async (id) => {
 }
 
 const getRaidAlerts = async (channel) => {
-    let found = await axios.get(`${config.BASE_URL}/raid-configs?channel=${channel}`, {
+    let found = await axios.get(`${config.BASE_URL}/raid-configs?twitchChannel=${channel}`, {
         headers: {
             "X-Access-Token": localStorage.getItem("accessToken")
         }
