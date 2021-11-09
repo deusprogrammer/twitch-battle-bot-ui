@@ -4,8 +4,23 @@ import Animation from '../elements/Animation';
 import ApiHelper from '../utils/ApiHelper';
 import config from '../config/config';
 
+const readFileAsDataUri = (file) => {
+    return new Promise(function(resolve,reject){
+        let fr = new FileReader();
+
+        fr.onload = function(){
+            resolve(fr.result);
+        };
+
+        fr.onerror = function(){
+            reject(fr);
+        };
+
+        fr.readAsDataURL(file)
+    });
+}
+
 const RaidAlertCustomizer = (props) => {
-    const [file, setFile] = useState(null);
     const [sprites, setSprites] = useState([]);
     const [sfx, setSFX] = useState({});
     const [bgm, setBGM] = useState({});
@@ -80,18 +95,34 @@ const RaidAlertCustomizer = (props) => {
             <hr />
             <h2>Metadata</h2>
             <div>
-                <input 
-                    type="text" 
-                    value={name}
-                    onChange={(e) => {
-                        setName(e.target.value);
-                    }} /><br/>
-                <input 
-                    type="text" 
-                    value={message}
-                    onChange={(e) => {
-                        setMessage(e.target.value);
-                    }} />
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Name:</td>
+                            <td>
+                                <input 
+                                    type="text" 
+                                    style={{width: "400px"}}
+                                    value={name}
+                                    onChange={(e) => {
+                                        setName(e.target.value);
+                                    }} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Message Template:</td>
+                            <td>
+                                <input 
+                                    type="text" 
+                                    style={{width: "400px"}}
+                                    value={message}
+                                    onChange={(e) => {
+                                        setMessage(e.target.value);
+                                    }} />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <hr />
             <div>
@@ -129,7 +160,7 @@ const RaidAlertCustomizer = (props) => {
                                                     onChange={(e) => {
                                                         const temp = [...sprites];
                                                         sprite.frames = e.target.value ? parseInt(e.target.value) : 1;
-                                                        sprite.endFrame = sprite.frames;
+                                                        sprite.endFrame = sprite.frames - 1;
                                                         temp[index] = sprite;
                                                         setSprites(temp);
                                                     }} />
@@ -189,33 +220,28 @@ const RaidAlertCustomizer = (props) => {
                     type="file" 
                     ref={fileInput}
                     accept=".png"
+                    multiple
                     onChange={(e) => {
-                        const f = e.target.files[0];
-                        setFile(f);
-                    }}/>
-                <button
-                    disabled={file === null}
-                    onClick={() => {
-                        const fr = new FileReader();
-                        fr.addEventListener("load", (event) => {
-                            const sprite = {
-                                file: event.target.result,
-                                width: 0,
-                                height: 0,
-                                frames: 1,
-                                startFrame: 0,
-                                endFrame: 0,
-                                frameRate: 15
-                            };
-
-                            const temp = [...sprites];
-                            temp.push(sprite);
-                            setSprites(temp);
+                        let readers = [];
+                        for (let file of e.target.files) {
+                            readers.push(readFileAsDataUri(file));
+                        };
+                        Promise.all(readers).then((results) => {
+                            let newSprites = results.map((dataUri) => {
+                                return {
+                                    file: dataUri,
+                                    width: 0,
+                                    height: 0,
+                                    frames: 1,
+                                    startFrame: 0,
+                                    endFrame: 0,
+                                    frameRate: 15
+                                };
+                            });
+                            setSprites([...sprites, ...newSprites]);
                             fileInput.current.value = '';
-                        })
-                        fr.readAsDataURL(file);
-                        setFile(null);
-                    }}>Add Sprite</button>
+                        });
+                    }}/>
             </div>
             <hr />
             <h2>Sounds</h2>
