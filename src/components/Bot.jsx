@@ -73,8 +73,8 @@ export default class Bot extends React.Component {
         }, 5000);
     }
 
-    updateRaidConfig = async (selectedRaidConfig) => {
-        this.setState({selectedRaidConfig});
+    updateRaidConfig = async (event) => {
+        this.setState({selectedRaidConfig: event.target.value});
         await ApiHelper.updateRaidAlertConfig(this.state.channelId, {theme: selectedRaidConfig.theme, customId: selectedRaidConfig.id});
         toast(`Raid config saved`, {type: "info"});
     }
@@ -145,10 +145,9 @@ export default class Bot extends React.Component {
                 <h3>Raid Alert</h3>
                 <div>
                     <div style={{marginLeft: "10px"}}>
-                        <select value={this.state.selectedRaidConfig} onChange={async (e) => {await this.updateRaidConfig(e.target.value)}}>
+                        <select value={this.state.selectedRaidConfig} onChange={(e) => {this.updateRaidConfig(e)}}>
                             { this.state.customRaidConfigs.map((raidConfig) => {
                                 const value = {theme: raidConfig.theme ? raidConfig.theme : "STORED", id: raidConfig._id};
-                                console.log("RAID CONFIG VALUE: " + JSON.stringify(value, null, 5));
                                 return (
                                     <React.Fragment>
                                         <option value={value}>{raidConfig.name}</option>
