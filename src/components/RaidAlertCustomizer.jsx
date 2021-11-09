@@ -10,6 +10,7 @@ const RaidAlertCustomizer = (props) => {
     const [sfx, setSFX] = useState({});
     const [bgm, setBGM] = useState({});
     const [name, setName] = useState("Sprite");
+    const [message, setMessage] = useState("Incoming raid of size ${raidSize} from ${raider}");
     const fileInput = useRef();
     const bgmFileInput = useRef();
     const sfxFileInput = useRef();
@@ -47,7 +48,7 @@ const RaidAlertCustomizer = (props) => {
         let config = {
             twitchChannel: parseInt(window.localStorage.getItem("channel")),
             name,
-            message: "TEST",
+            message,
             sprites: sprites.map((sprite) => {
                 return {
                     file: sprite.file,
@@ -84,6 +85,12 @@ const RaidAlertCustomizer = (props) => {
                     value={name}
                     onChange={(e) => {
                         setName(e.target.value);
+                    }} />
+                <input 
+                    type="text" 
+                    value={message}
+                    onChange={(e) => {
+                        setMessage(e.target.value);
                     }} />
             </div>
             <hr />
