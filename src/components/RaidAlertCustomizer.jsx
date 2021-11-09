@@ -68,8 +68,8 @@ const RaidAlertCustomizer = (props) => {
             }
         };
 
-        let {data} = await ApiHelper.storeRaidAlert(config);
-        return data._id;
+        let {_id} = await ApiHelper.storeRaidAlert(config);
+        return _id;
     }
 
     return (
