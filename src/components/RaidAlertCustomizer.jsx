@@ -9,6 +9,7 @@ const RaidAlertCustomizer = (props) => {
     const [sprites, setSprites] = useState([]);
     const [sfx, setSFX] = useState({});
     const [bgm, setBGM] = useState({});
+    const [name, setName] = useState({});
     const fileInput = useRef();
     const bgmFileInput = useRef();
     const sfxFileInput = useRef();
@@ -21,7 +22,7 @@ const RaidAlertCustomizer = (props) => {
         };
 
         let {_id} = await ApiHelper.storeMedia(mediaData);
-        return `${config.MEDIA_SERVER_URL}/media/${_id}/file`;
+        return `${config.MEDIA_SERVER_URL}/media/${_id}/file.mp3`;
     }
 
     const storeImage = async (imagePayload, title) => {
@@ -32,7 +33,7 @@ const RaidAlertCustomizer = (props) => {
         };
 
         let {_id} = await ApiHelper.storeMedia(mediaData);
-        return `${config.MEDIA_SERVER_URL}/media/${_id}/file`;
+        return `${config.MEDIA_SERVER_URL}/media/${_id}/file.png`;
     }
 
     const storeRaidAlert = async () => {
@@ -45,6 +46,7 @@ const RaidAlertCustomizer = (props) => {
 
         let config = {
             twitchChannel: parseInt(window.localStorage.getItem("channel")),
+            name,
             message: "TEST",
             sprites: sprites.map((sprite) => {
                 return {
@@ -66,13 +68,24 @@ const RaidAlertCustomizer = (props) => {
             }
         };
 
-        await ApiHelper.storeRaidAlert(config);
+        let {data} = await ApiHelper.storeRaidAlert(config);
+        return data._id;
     }
 
     return (
         <div>
             <hr />
             <h1>Create a New Custom Raid Alert</h1>
+            <hr />
+            <h2>Metadata</h2>
+            <div>
+                <input 
+                    type="text" 
+                    value={name}
+                    onChange={(e) => {
+                        setName(e.target.value);
+                    }} />
+            </div>
             <hr />
             <div>
                 <h2>Sprites</h2>
@@ -168,6 +181,7 @@ const RaidAlertCustomizer = (props) => {
                 <input 
                     type="file" 
                     ref={fileInput}
+                    accept=".png"
                     onChange={(e) => {
                         const f = e.target.files[0];
                         setFile(f);
@@ -206,6 +220,7 @@ const RaidAlertCustomizer = (props) => {
                             <input 
                                 type="file" 
                                 ref={bgmFileInput}
+                                accept=".mp3"
                                 onChange={(e) => {
                                     const f = e.target.files[0];
                                     const fr = new FileReader();
@@ -227,6 +242,7 @@ const RaidAlertCustomizer = (props) => {
                             <input 
                                 type="file" 
                                 ref={sfxFileInput}
+                                accept=".mp3"
                                 onChange={(e) => {
                                     const f = e.target.files[0];
                                     const fr = new FileReader();
@@ -246,7 +262,8 @@ const RaidAlertCustomizer = (props) => {
             </table>
             <hr />
             <button onClick={async () => {
-                await storeRaidAlert();
+                let id = await storeRaidAlert();
+                window.location = `${config.BASE_URL}/util/twitch-tools/raid-test?raider=wagnus&raidSize=1000&theme=STORED&key=${id}`;
             }}>
                 Create
             </button>
