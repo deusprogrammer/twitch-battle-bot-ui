@@ -238,7 +238,7 @@ const RaidAlertCustomizer = (props) => {
                                 }}/>
                         </td><td style={{verticalAlign: "middle"}}>
                             <audio 
-                                src={bgm.url}
+                                src={bgm.file}
                                 width="300px" 
                                 controls  />
                         </td>
@@ -260,7 +260,7 @@ const RaidAlertCustomizer = (props) => {
                                 }}/>
                         </td><td style={{verticalAlign: "middle"}}>
                             <audio 
-                                src={sfx.url} 
+                                src={sfx.file} 
                                 width="300px" 
                                 controls />
                         </td>
