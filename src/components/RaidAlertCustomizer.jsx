@@ -270,7 +270,7 @@ const RaidAlertCustomizer = (props) => {
             <hr />
             <button onClick={async () => {
                 let id = await storeRaidAlert();
-                window.location = `${config.BASE_URL}/util/twitch-tools/raid-test?raider=wagnus&raidSize=1000&theme=STORED&key=${id}`;
+                window.location = `https://deusprogrammer.com/util/twitch-tools/raid-test?raider=wagnus&raidSize=1000&theme=STORED&key=${id}`;
             }}>
                 Create
             </button>
