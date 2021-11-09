@@ -151,7 +151,7 @@ export default class Bot extends React.Component {
                             { this.state.customRaidConfigs.map((raidConfig) => {
                                 return (
                                     <React.Fragment>
-                                        <option value={`${raidConfig.id ? "STORED" : raidConfig.theme}:${raidConfig.id}`}>{raidConfig.name}</option>
+                                        <option value={`${raidConfig._id ? "STORED" : raidConfig.theme}:${raidConfig._id}`}>{raidConfig.name}</option>
                                     </React.Fragment>
                                 )
                             })}
