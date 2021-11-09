@@ -147,7 +147,7 @@ export default class Bot extends React.Component {
                     <div style={{marginLeft: "10px"}}>
                         <select value={this.state.selectedRaidConfig} onChange={(e) => {this.updateRaidConfig(e.target.value)}}>
                             { this.state.customRaidConfigs.map((raidConfig) => {
-                                const value = {theme: "STORED", id: raidConfig.id};
+                                const value = {theme: raidConfig.theme, id: raidConfig._id};
                                 console.log("RAID CONFIG VALUE: " + JSON.stringify(value, null, 5));
                                 return (
                                     <React.Fragment>
