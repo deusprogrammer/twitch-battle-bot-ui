@@ -85,7 +85,7 @@ const RaidAlertCustomizer = (props) => {
                     value={name}
                     onChange={(e) => {
                         setName(e.target.value);
-                    }} />
+                    }} /><br/>
                 <input 
                     type="text" 
                     value={message}
