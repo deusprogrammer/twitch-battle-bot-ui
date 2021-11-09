@@ -27,7 +27,7 @@ const Animation = (props) => {
             this.frameHeight = this.height;
 
             this.interval = setInterval(() => {
-                if (this.frame + 1 >= endFrame) {
+                if (this.frame + 1 > endFrame) {
                     this.frame = startFrame;
                 } else {
                     this.frame++;
