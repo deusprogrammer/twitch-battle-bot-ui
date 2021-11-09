@@ -55,7 +55,7 @@ export default class Bot extends React.Component {
         let botState = await ApiHelper.getBotState(this.state.channelId);
         let botConfig = await ApiHelper.getBot(this.state.channelId);
         let customRaidConfigs = await ApiHelper.getRaidAlerts(this.state.channelId);
-        customRaidConfigs = [...customRaidConfigs, {name: "Yoshi", theme: "YOSHI", id: null}, {name: "Zelda 2", theme: "ZELDA2", id: null}]
+        customRaidConfigs = [...customRaidConfigs, {name: "Yoshi [Built In]", theme: "YOSHI", id: null}, {name: "Zelda 2 [Built In]", theme: "ZELDA2", id: null}];
         this.setState({botState, tokenState, config, botConfig, customRaidConfigs});
 
         if (!tokenState.valid) {
@@ -145,7 +145,7 @@ export default class Bot extends React.Component {
                 <h3>Raid Alert</h3>
                 <div>
                     <div style={{marginLeft: "10px"}}>
-                        <select value={this.state.selectedRaidConfig} onChange={(e) => {this.updateRaidConfig(e.target.value)}}>
+                        <select value={this.state.selectedRaidConfig} onChange={async (e) => {await this.updateRaidConfig(e.target.value)}}>
                             { this.state.customRaidConfigs.map((raidConfig) => {
                                 const value = {theme: raidConfig.theme ? raidConfig.theme : "STORED", id: raidConfig._id};
                                 console.log("RAID CONFIG VALUE: " + JSON.stringify(value, null, 5));
@@ -156,20 +156,6 @@ export default class Bot extends React.Component {
                                 )
                             })}
                         </select>
-                    </div>
-                </div>
-                <div>
-                    <p>Set the below checkboxes to enable or disable certain aspects of the bot.  You cannot change these settings while the bot is running.</p>
-                    <div style={{marginLeft: "10px"}}>
-                    { Object.keys(this.state.config).map((configElement) => {
-                        let configElementValue = this.state.config[configElement];
-                        let configElementDescription = configElementDescriptions[configElement];
-                        return (
-                            <React.Fragment>
-                                <input type="checkbox" onChange={(e) => {this.onConfigChange(e, configElement)}} checked={configElementValue} disabled={this.state.botState.running} />&nbsp;<label>{configElementDescription}</label><br/>
-                            </React.Fragment>
-                        )
-                    })}
                     </div>
                 </div>
                 <h3>Panel URLs</h3>
