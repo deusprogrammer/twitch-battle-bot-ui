@@ -17,7 +17,7 @@ export default class Bot extends React.Component {
         channelId: parseInt(window.localStorage.getItem("channel")),
         buttonDisable: false,
         customRaidConfigs: [],
-        selectedRaidConfig: {},
+        selectedRaidConfig: "",
         botState: {
             running: false,
             created: false
@@ -56,7 +56,7 @@ export default class Bot extends React.Component {
         let botConfig = await ApiHelper.getBot(this.state.channelId);
         let customRaidConfigs = await ApiHelper.getRaidAlerts(this.state.channelId);
         customRaidConfigs = [...customRaidConfigs, {name: "Yoshi [Built In]", theme: "YOSHI", id: null}, {name: "Zelda 2 [Built In]", theme: "ZELDA2", id: null}];
-        this.setState({botState, tokenState, config, botConfig, customRaidConfigs});
+        this.setState({botState, tokenState, config, botConfig, customRaidConfigs, selectedRaidConfig: `${botConfig.raidConfig.theme}:${botConfig.raidConfig.customId}`});
 
         if (!tokenState.valid) {
             window.location.replace(twitchAuthUrl);
@@ -74,9 +74,10 @@ export default class Bot extends React.Component {
     }
 
     updateRaidConfig = async (event) => {
-        let selectedRaidConfig = event.target.value;
-        this.setState({selectedRaidConfig});
-        await ApiHelper.updateRaidAlertConfig(this.state.channelId, {theme: selectedRaidConfig.theme, customId: selectedRaidConfig.id});
+        let key = event.target.value;
+        let [theme, customId] = key.split(":");
+        this.setState({selectedRaidConfig: key});
+        await ApiHelper.updateRaidAlertConfig(this.state.channelId, {theme, customId});
         toast(`Raid config saved`, {type: "info"});
     }
 
@@ -148,10 +149,9 @@ export default class Bot extends React.Component {
                     <div style={{marginLeft: "10px"}}>
                         <select value={this.state.selectedRaidConfig} onChange={(e) => {this.updateRaidConfig(e)}}>
                             { this.state.customRaidConfigs.map((raidConfig) => {
-                                const v = {theme: raidConfig.theme ? raidConfig.theme : "STORED", id: raidConfig._id};
                                 return (
                                     <React.Fragment>
-                                        <option value={v}>{raidConfig.name}</option>
+                                        <option value={`${raidConfig.id ? "STORED" : raidConfig.theme}:${raidConfig.id}`}>{raidConfig.name}</option>
                                     </React.Fragment>
                                 )
                             })}
