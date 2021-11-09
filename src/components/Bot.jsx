@@ -16,6 +16,8 @@ export default class Bot extends React.Component {
     state = {
         channelId: parseInt(window.localStorage.getItem("channel")),
         buttonDisable: false,
+        customRaidConfigs: [],
+        selectedRaidConfig: {},
         botState: {
             running: false,
             created: false
@@ -52,7 +54,9 @@ export default class Bot extends React.Component {
         let tokenState = await ApiHelper.checkToken(this.state.channelId);
         let botState = await ApiHelper.getBotState(this.state.channelId);
         let botConfig = await ApiHelper.getBot(this.state.channelId);
-        this.setState({botState, tokenState, config, botConfig});
+        let customRaidConfigs = await ApiHelper.getRaidAlerts(this.state.channelId);
+        customRaidConfigs = [...customRaidConfigs, {name: "Yoshi", theme: "YOSHI", id: null}, {name: "Zelda 2", theme: "ZELDA2", id: null}]
+        this.setState({botState, tokenState, config, botConfig, customRaidConfigs});
 
         if (!tokenState.valid) {
             window.location.replace(twitchAuthUrl);
@@ -67,6 +71,12 @@ export default class Bot extends React.Component {
                 window.location.replace(twitchAuthUrl);
             }
         }, 5000);
+    }
+
+    updateRaidConfig = async (selectedRaidConfig) => {
+        this.setState({selectedRaidConfig});
+        await ApiHelper.updateRaidAlertConfig(this.state.channelId, {theme: selectedRaidConfig.theme, customId: selectedRaidConfig.id});
+        toast(`Raid config saved`, {type: "info"});
     }
 
     changeBotState = async (state) => {
@@ -118,6 +128,34 @@ export default class Bot extends React.Component {
                     </a>
                 </div>
                 <h3>Bot Configuration</h3>
+                <div>
+                    <p>Set the below checkboxes to enable or disable certain aspects of the bot.  You cannot change these settings while the bot is running.</p>
+                    <div style={{marginLeft: "10px"}}>
+                    { Object.keys(this.state.config).map((configElement) => {
+                        let configElementValue = this.state.config[configElement];
+                        let configElementDescription = configElementDescriptions[configElement];
+                        return (
+                            <React.Fragment>
+                                <input type="checkbox" onChange={(e) => {this.onConfigChange(e, configElement)}} checked={configElementValue} disabled={this.state.botState.running} />&nbsp;<label>{configElementDescription}</label><br/>
+                            </React.Fragment>
+                        )
+                    })}
+                    </div>
+                </div>
+                <h3>Raid Alert</h3>
+                <div>
+                    <div style={{marginLeft: "10px"}}>
+                        <select value={this.state.selectedRaidConfig} onChange={(e) => {this.updateRaidConfig(e.target.value)}}>
+                            { Object.keys(this.state.customRaidConfigs).map((raidConfig) => {
+                                return (
+                                    <React.Fragment>
+                                        <option value={{theme: "STORED", id: raidConfig.id}}>{raidConfig.name}</option>
+                                    </React.Fragment>
+                                )
+                            })}
+                        </select>
+                    </div>
+                </div>
                 <div>
                     <p>Set the below checkboxes to enable or disable certain aspects of the bot.  You cannot change these settings while the bot is running.</p>
                     <div style={{marginLeft: "10px"}}>
