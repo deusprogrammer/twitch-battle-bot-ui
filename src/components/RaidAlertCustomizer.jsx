@@ -9,7 +9,7 @@ const RaidAlertCustomizer = (props) => {
     const [sprites, setSprites] = useState([]);
     const [sfx, setSFX] = useState({});
     const [bgm, setBGM] = useState({});
-    const [name, setName] = useState({});
+    const [name, setName] = useState("Sprite");
     const fileInput = useRef();
     const bgmFileInput = useRef();
     const sfxFileInput = useRef();
