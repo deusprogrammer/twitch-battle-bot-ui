@@ -306,7 +306,7 @@ const RaidAlertCustomizer = (props) => {
             </table>
             <hr />
             <button 
-                disabled={!name || !message || !sfx || !bgm || sprites.length <= 0 || saving}
+                disabled={!name || !message || !sfx.file || !bgm.file || sprites.length <= 0 || saving}
                 onClick={async () => {
                     setSaving(true);
                     let id = await storeRaidAlert();
