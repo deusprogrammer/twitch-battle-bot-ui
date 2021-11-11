@@ -156,8 +156,17 @@ export default class Battler extends React.Component {
                         <div className="col-md-3">
                             <h3>Equipment</h3>
                             <table>
-                                    { Object.keys(user.equipment).map((slot) => {
+                                    { ["HAND", "HEAD", "ARMS", "BODY", "LEGS", "ACCESSORY"].map((slot) => {
                                         let item = user.equipment[slot];
+                                        if (!item) {
+                                            return (
+                                                <tr>
+                                                    <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.replace("ACCESSORY", "ACC").toUpperCase()}</td>
+                                                    <td>None</td>
+                                                    <td></td>
+                                                </tr>
+                                            )
+                                        }
                                         return (
                                             <React.Fragment>
                                                 <tr 
@@ -241,7 +250,7 @@ export default class Battler extends React.Component {
                                                     data-tip 
                                                     data-for={`${item.id}-inv-tip`}
                                                     style={{cursor: "pointer"}}>
-                                                        <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.toUpperCase()}</td>
+                                                        <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.replace("ACCESSORY", "ACC").toUpperCase()}</td>
                                                         <td>{item.name}</td>
                                                         <td>{count}</td>
                                                         <td>
