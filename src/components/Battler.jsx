@@ -157,7 +157,7 @@ export default class Battler extends React.Component {
                             <h3>Equipment</h3>
                             <table>
                                     { ["HAND", "HEAD", "ARMS", "BODY", "LEGS", "ACCESSORY"].map((slot) => {
-                                        let item = user.equipment[slot];
+                                        let item = user.equipment[slot.toLowerCase()];
                                         if (!item) {
                                             return (
                                                 <tr>
