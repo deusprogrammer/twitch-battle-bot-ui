@@ -161,7 +161,7 @@ export default class Battler extends React.Component {
                                         if (!item) {
                                             return (
                                                 <tr>
-                                                    <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.replace("ACCESSORY", "ACC").toUpperCase()}</td>
+                                                    <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.replace("ACCESSORY", "ACCS").toUpperCase()}</td>
                                                     <td>None</td>
                                                     <td></td>
                                                 </tr>
@@ -173,7 +173,7 @@ export default class Battler extends React.Component {
                                                     data-tip 
                                                     data-for={`${item.slot}-tip`}
                                                     style={{cursor: "pointer"}}>
-                                                        <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.toUpperCase()}</td>
+                                                        <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.replace("ACCESSORY", "ACCS").toUpperCase()}</td>
                                                         <td>{item.name}</td>
                                                         <td>
                                                             <button type="button" class="btn btn-primary" onClick={() => {this.unequipItem(item)}}>Unequip</button>
@@ -250,11 +250,11 @@ export default class Battler extends React.Component {
                                                     data-tip 
                                                     data-for={`${item.id}-inv-tip`}
                                                     style={{cursor: "pointer"}}>
-                                                        <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.replace("ACCESSORY", "ACC").toUpperCase()}</td>
+                                                        <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.replace("ACCESSORY", "ACCS").toUpperCase()}</td>
                                                         <td>{item.name}</td>
                                                         <td>{count}</td>
                                                         <td>
-                                                            <button type="button" class="btn btn-primary" onClick={() => {this.equipItemOnUser(item)}}>Equip</button>
+                                                            {item.slot !== "INVENTORY" ? <button type="button" class="btn btn-primary" onClick={() => {this.equipItemOnUser(item)}}>Equip</button> : null}
                                                             <button type="button" class="btn btn-primary" onClick={() => {this.sellItem(item)}}>Sell</button>
                                                         </td>
                                                 </tr>
