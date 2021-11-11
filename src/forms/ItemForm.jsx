@@ -51,6 +51,7 @@ export default class ItemForm extends React.Component {
         let sealedItems = await ApiHelper.getSealedItems(window.localStorage.getItem("channel"));
         let abilitiesAdded = [];
         let skillsAdded = [];
+        let unlocksAdded = [];
         let triggers = [];
         if (this.props.initialValues) {
             abilitiesAdded = this.props.initialValues.abilities;
@@ -59,7 +60,7 @@ export default class ItemForm extends React.Component {
             triggers = this.props.initialValues.triggers;
         }
 
-        this.setState({sealedItems, abilities, abilitiesAdded, skillsAdded, triggers, unlocks});
+        this.setState({sealedItems, abilities, abilitiesAdded, skillsAdded, triggers, unlocks, unlocksAdded});
     }
 
     addAbility = () => {
