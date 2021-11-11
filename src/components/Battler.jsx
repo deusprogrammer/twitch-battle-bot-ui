@@ -163,7 +163,7 @@ export default class Battler extends React.Component {
                                         let item = user.equipment[slot.toLowerCase()];
                                         if (!item) {
                                             return (
-                                                <tr>
+                                                <tr style={{height: "40px"}}>
                                                     <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.replace("ACCESSORY", "ACCS").toUpperCase()}</td>
                                                     <td>None</td>
                                                     <td></td>
@@ -175,7 +175,7 @@ export default class Battler extends React.Component {
                                                 <tr 
                                                     data-tip 
                                                     data-for={`${item.slot}-tip`}
-                                                    style={{cursor: "pointer"}}>
+                                                    style={{cursor: "pointer", height: "40px"}}>
                                                         <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.replace("ACCESSORY", "ACCS").toUpperCase()}</td>
                                                         <td>{item.name}</td>
                                                         <td>
