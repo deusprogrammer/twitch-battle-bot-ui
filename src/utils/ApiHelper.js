@@ -636,6 +636,7 @@ export default {
     getRaidAlert,
     updateRaidAlertConfig,
     equipItem,
+    unequipItem,
     sellItem,
     expandUser,
     recalculateStats,
