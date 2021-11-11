@@ -51,6 +51,22 @@ export default class Battler extends React.Component {
         });
     }
 
+    unequipItem = async (item) => {
+        this.setState({saving: true}, async () => {
+            // Update and store updated version of user
+            try {
+                await ApiHelper.unequipItem(this.state.user.name, item.id);
+                let updated = await this.getUser(this.state.user.name);
+                this.setState({saving: false, user: updated});
+                toast(`Unequipped ${item.name}`, {type: "info"});
+            } catch (e) {
+                console.error(e);
+                toast(`Failed to equip ${item.name}, please refresh and try again.`, {type: "error"});
+                this.setState({saving: false});
+            }
+        });
+    }
+
     sellItem = async (item) => {
         this.setState({saving: true}, async () => {
             // Update and store updated version of user
@@ -150,6 +166,9 @@ export default class Battler extends React.Component {
                                                     style={{cursor: "pointer"}}>
                                                         <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.toUpperCase()}</td>
                                                         <td>{item.name}</td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-primary" onClick={() => {this.unequipItem(item)}}>Unequip</button>
+                                                        </td>
                                                 </tr>
                                                 <ReactToolTip id={`${item.slot}-tip`} place="right" effect="solid" clickable={true} delayHide={500} delayShow={500} delayUpdate={500}>
                                                     <ItemElement 

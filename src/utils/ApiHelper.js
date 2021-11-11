@@ -514,6 +514,19 @@ const equipItem = async (userName, id) => {
     return updated.data;
 }
 
+const unequipItem = async (userName, id) => {
+    let updated = await axios.post(`${config.BASE_URL}/users/${userName}/changes`, {
+        type: "unequip",
+        id
+    }, {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
+
+    return updated.data;
+}
+
 const sellItem = async (userName, id) => {
     let updated = await axios.post(`${config.BASE_URL}/users/${userName}/changes`, {
         type: "sell",
