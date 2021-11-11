@@ -37,6 +37,7 @@ export default class ItemForm extends React.Component {
     state = {
         sealedItems: [],
         abilities: [],
+        unlocks: [],
         skills: [],
         triggers: [],
         abilitiesAdded: [],
@@ -45,6 +46,7 @@ export default class ItemForm extends React.Component {
 
     componentDidMount = async () => {
         let abilities = await ApiHelper.getAbilities();
+        let unlocks = ["$speak", "$listen"];
         let sealedItems = await ApiHelper.getSealedItems(window.localStorage.getItem("channel"));
         let abilitiesAdded = [];
         let skillsAdded = [];
@@ -55,7 +57,7 @@ export default class ItemForm extends React.Component {
             triggers = this.props.initialValues.triggers;
         }
 
-        this.setState({sealedItems, abilities, abilitiesAdded, skillsAdded, triggers});
+        this.setState({sealedItems, abilities, abilitiesAdded, skillsAdded, triggers, unlocks});
     }
 
     addAbility = () => {
@@ -68,6 +70,18 @@ export default class ItemForm extends React.Component {
         let abilitiesAdded = [...this.state.abilitiesAdded];
         abilitiesAdded.splice(index, 1);
         this.setState({abilitiesAdded});
+    }
+
+    addUnlock = () => {
+        let unlocksAdded = [...this.state.unlocksAdded];
+        unlocksAdded.push({});
+        this.setState({unlocksAdded});
+    }
+
+    removeUnlock = (index) => {
+        let unlocksAdded = [...this.state.unlocksAdded];
+        unlocksAdded.splice(index, 1);
+        this.setState({unlocksAdded});
     }
 
     addSkill = () => {
@@ -456,8 +470,8 @@ export default class ItemForm extends React.Component {
                                 <legend>Abilities</legend>
                                 { this.state.abilitiesAdded.map((abilityAdded, index) => {
                                     return (
-                                        <fieldset key={`actions[${index}]`}>
-                                            <legend>{`actions[${index}]`}</legend>
+                                        <fieldset key={`abilities[${index}]`}>
+                                            <legend>{`abilities[${index}]`}</legend>
                                             <tr>
                                                 <td>
                                                     <Select field={`abilities[${index}]`}>
@@ -480,6 +494,36 @@ export default class ItemForm extends React.Component {
                                 }
                                 <tr>
                                     <td><button type="button" class="btn btn-primary" onClick={() => {this.addAbility()}}>Add New Ability</button></td>
+                                </tr>
+                            </fieldset>
+                            <fieldset>
+                                <legend>Unlocks</legend>
+                                { this.state.unlocksAdded.map((unlockAdded, index) => {
+                                    return (
+                                        <fieldset key={`unlocks[${index}]`}>
+                                            <legend>{`unlocks[${index}]`}</legend>
+                                            <tr>
+                                                <td>
+                                                    <Select field={`unlocks[${index}]`}>
+                                                        <Option value={null}>{"Select an unlock..."}</Option>
+                                                        { this.state.unlocks.map((unlock) => {
+                                                            return (
+                                                                <Option value={unlock}>{unlock}</Option>
+                                                            )
+                                                        })}
+                                                    </Select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <button type="button" class="btn btn-primary" onClick={() => this.removeUnlock(index)}>Remove Unlock</button>
+                                                </td>
+                                            </tr>
+                                        </fieldset>
+                                    )})
+                                }
+                                <tr>
+                                    <td><button type="button" class="btn btn-primary" onClick={() => {this.addUnlock()}}>Add New Unlock</button></td>
                                 </tr>
                             </fieldset>
                         </Relevant>
