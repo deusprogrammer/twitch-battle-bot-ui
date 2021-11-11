@@ -41,6 +41,7 @@ export default class ItemForm extends React.Component {
         skills: [],
         triggers: [],
         abilitiesAdded: [],
+        unlocksAdded: [],
         skillsAdded: []
     };
 
