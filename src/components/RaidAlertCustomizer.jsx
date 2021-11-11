@@ -26,6 +26,7 @@ const RaidAlertCustomizer = (props) => {
     const [bgm, setBGM] = useState({});
     const [name, setName] = useState("Sprite");
     const [message, setMessage] = useState("Incoming raid of size ${raidSize} from ${raider}");
+    const [saving, setSaving] = useState(false);
     const fileInput = useRef();
     const bgmFileInput = useRef();
     const sfxFileInput = useRef();
@@ -104,6 +105,7 @@ const RaidAlertCustomizer = (props) => {
                                     type="text" 
                                     style={{width: "400px"}}
                                     value={name}
+                                    disabled={saving}
                                     onChange={(e) => {
                                         setName(e.target.value);
                                     }} />
@@ -116,6 +118,7 @@ const RaidAlertCustomizer = (props) => {
                                     type="text" 
                                     style={{width: "400px"}}
                                     value={message}
+                                    disabled={saving}
                                     onChange={(e) => {
                                         setMessage(e.target.value);
                                     }} />
@@ -157,6 +160,7 @@ const RaidAlertCustomizer = (props) => {
                                                 <input 
                                                     type="number" 
                                                     value={sprite.frames} 
+                                                    disabled={saving}
                                                     onChange={(e) => {
                                                         const temp = [...sprites];
                                                         sprite.frames = e.target.value ? parseInt(e.target.value) : 1;
@@ -172,6 +176,7 @@ const RaidAlertCustomizer = (props) => {
                                                 <input 
                                                     type="number" 
                                                     value={sprite.frameRate} 
+                                                    disabled={saving}
                                                     onChange={(e) => {
                                                         const temp = [...sprites];
                                                         sprite.frameRate = e.target.value ? parseInt(e.target.value) : 15;
@@ -186,6 +191,7 @@ const RaidAlertCustomizer = (props) => {
                                                 <input 
                                                     type="number" 
                                                     value={sprite.startFrame} 
+                                                    disabled={saving}
                                                     onChange={(e) => {
                                                         const temp = [...sprites];
                                                         sprite.startFrame = e.target.value ? parseInt(e.target.value) : 0;
@@ -200,6 +206,7 @@ const RaidAlertCustomizer = (props) => {
                                                 <input 
                                                     type="number" 
                                                     value={sprite.endFrame} 
+                                                    disabled={saving}
                                                     onChange={(e) => {
                                                         const temp = [...sprites];
                                                         sprite.endFrame = e.target.value ? parseInt(e.target.value) : sprite.frames;
@@ -221,6 +228,7 @@ const RaidAlertCustomizer = (props) => {
                     ref={fileInput}
                     accept=".png"
                     multiple
+                    disabled={saving}
                     onChange={(e) => {
                         let readers = [];
                         for (let file of e.target.files) {
@@ -254,6 +262,7 @@ const RaidAlertCustomizer = (props) => {
                                 type="file" 
                                 ref={bgmFileInput}
                                 accept=".mp3"
+                                disabled={saving}
                                 onChange={(e) => {
                                     const f = e.target.files[0];
                                     const fr = new FileReader();
@@ -262,7 +271,8 @@ const RaidAlertCustomizer = (props) => {
                                     });
                                     fr.readAsDataURL(f);
                                 }}/>
-                        </td><td style={{verticalAlign: "middle"}}>
+                        </td>
+                        <td style={{verticalAlign: "middle"}}>
                             <audio 
                                 src={bgm.file}
                                 width="300px" 
@@ -276,6 +286,7 @@ const RaidAlertCustomizer = (props) => {
                                 type="file" 
                                 ref={sfxFileInput}
                                 accept=".mp3"
+                                disabled={saving}
                                 onChange={(e) => {
                                     const f = e.target.files[0];
                                     const fr = new FileReader();
@@ -294,9 +305,13 @@ const RaidAlertCustomizer = (props) => {
                 </tbody>
             </table>
             <hr />
-            <button onClick={async () => {
-                let id = await storeRaidAlert();
-                window.location = `https://deusprogrammer.com/util/twitch-tools/raid-test?raider=wagnus&raidSize=1000&theme=STORED&key=${id}`;
+            <button 
+                disabled={(!name && !message && !sfx && !bgm & sprites.length <= 0) || saving}
+                onClick={async () => {
+                    setSaving(true);
+                    let id = await storeRaidAlert();
+                    setSaving(false);
+                    window.location = `https://deusprogrammer.com/util/twitch-tools/raid-test?raider=wagnus&raidSize=1000&theme=STORED&key=${id}`;
             }}>
                 Create
             </button>
