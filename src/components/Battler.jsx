@@ -176,7 +176,7 @@ export default class Battler extends React.Component {
                                                         <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.replace("ACCESSORY", "ACCS").toUpperCase()}</td>
                                                         <td>{item.name}</td>
                                                         <td>
-                                                            <button type="button" class="btn btn-primary" onClick={() => {this.unequipItem(item)}}>Unequip</button>
+                                                            {slot !== "HAND" ? <button type="button" class="btn btn-primary" onClick={() => {this.unequipItem(item)}}>Unequip</button> : null}
                                                         </td>
                                                 </tr>
                                                 <ReactToolTip id={`${item.slot}-tip`} place="right" effect="solid" clickable={true} delayHide={500} delayShow={500} delayUpdate={500}>
