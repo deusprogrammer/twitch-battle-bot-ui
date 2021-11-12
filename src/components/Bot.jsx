@@ -186,6 +186,11 @@ export default class Bot extends React.Component {
                         <div style={{display: "table-cell", padding: "10px"}}><input type="text" value={`https://deusprogrammer.com/util/twitch-tools/multi?channelId=${this.state.channelId}`} style={{width: "700px"}} /></div>
                     </div>
                 </div>
+                <h3>Stand Alone Panels</h3>
+                <div style={{marginLeft: "10px"}}>
+                    <Link to={`https://deusprogrammer.com/util/twitch-tools/wtd?channelId=${this.state.channelId}`}><button type="button">What the Dub</button></Link><br />
+                    <Link to={`https://deusprogrammer.com/util/twitch-tools/tts?channelId=${this.state.channelId}`}><button type="button">Text to Speech</button></Link>
+                </div>
                 <h3>Panel Tools</h3>
                 <div style={{marginLeft: "10px"}}>
                     <Link to={`${process.env.PUBLIC_URL}/bot/media`}><button type="button">Configure Media Pool</button></Link><br />
