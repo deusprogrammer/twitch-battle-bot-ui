@@ -137,8 +137,8 @@ export default class ItemForm extends React.Component {
                                         Slot:
                                     </td>
                                     <td>
-                                        <Select field="slot" initialValue="hand">
-                                            <Option value="null">Select Item Slot</Option>
+                                        <Select field="slot">
+                                            {/* <Option value="null">Select Item Slot</Option> */}
                                             <Option value="hand">HAND</Option>
                                             <Option value="offhand">OFFHAND</Option>
                                         </Select>
@@ -151,8 +151,8 @@ export default class ItemForm extends React.Component {
                                         Slot:
                                     </td>
                                     <td>
-                                        <Select field="slot" initialValue="head">
-                                            <Option value="null">Select Item Slot</Option>
+                                        <Select field="slot">
+                                            {/* <Option value="null">Select Item Slot</Option> */}
                                             <Option value="head">HEAD</Option>
                                             <Option value="body">BODY</Option>
                                             <Option value="arms">ARMS</Option>
@@ -168,8 +168,8 @@ export default class ItemForm extends React.Component {
                                         Gift Receiver Type:
                                     </td>
                                     <td>
-                                        <Select field="slot" initialValue="miku">
-                                            <Option value="null">Select Item Slot</Option>
+                                        <Select field="slot">
+                                            {/* <Option value="null">Select Item Slot</Option> */}
                                             <Option value="miku">MIKU</Option>
                                             <Option value="monster">MONSTER</Option>
                                         </Select>
@@ -182,8 +182,8 @@ export default class ItemForm extends React.Component {
                                         Sealed Item Type:
                                     </td>
                                     <td>
-                                        <Select field="slot" initialValue="digital">
-                                            <Option value="null">Select Sealed Item Type</Option>
+                                        <Select field="slot">
+                                            {/* <Option value="null">Select Sealed Item Type</Option> */}
                                             <Option value="digital">DIGITAL CODE</Option>
                                             <Option value="physical">PHYSICAL GOODS</Option>
                                         </Select>
