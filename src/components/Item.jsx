@@ -26,6 +26,11 @@ export default class Item extends React.Component {
             values.slot = "inventory";
         }
 
+        if (!values.slot) {
+            toast("Must select a slot", {type: "error"});
+            return;
+        }
+
         try {
             await ApiHelper.updateItem(values);
             toast("Item updated!", {type: "info"});

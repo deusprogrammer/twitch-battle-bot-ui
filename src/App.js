@@ -1,6 +1,7 @@
 import React from 'react';
 import {ToastContainer} from 'react-toastify';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import axios from 'axios';
 
 import Home from './components/Home';
 import Battler from './components/Battler';
@@ -16,19 +17,20 @@ import SealedItems from './components/SealedItems';
 import RegistrationStart from './components/RegistrationStart';
 import RegistrationCallBack from './components/RegistrationCallBack';
 import RegistrationRefresh from './components/RegistrationRefresh';
-
 import AbilitiesEncyclopedia from './components/AbilitiesEncyclopedia';
 import ItemsEncyclopedia from './components/ItemsEncyclopedia';
 import MonstersEncyclopedia from './components/MonstersEncyclopedia';
-
-import 'react-toastify/dist/ReactToastify.css';
-import './App.css';
-import axios from 'axios';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
 import AdminConfigs from './components/AdminConfigs';
 import MediaPoolConfig from './components/MediaPoolConfig';
 import RaidAlertCustomizer from './components/RaidAlertCustomizer';
+
+import SecureRoute from './elements/SecureRoute';
+
+import 'react-toastify/dist/ReactToastify.css';
+import './App.css';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class App extends React.Component {
     state = {
@@ -116,22 +118,23 @@ class App extends React.Component {
                         <Route exact path={`${process.env.PUBLIC_URL}/registration/start`} component={RegistrationStart} />
                         <Route exact path={`${process.env.PUBLIC_URL}/registration/callback`} component={RegistrationCallBack} />
                         <Route exact path={`${process.env.PUBLIC_URL}/registration/refresh`} component={RegistrationRefresh} />
-                        <Route exact path={`${process.env.PUBLIC_URL}/bot`} component={Bot} />
-                        <Route exact path={`${process.env.PUBLIC_URL}/bot/media`} component={MediaPoolConfig} />
-                        <Route exact path={`${process.env.PUBLIC_URL}/bot/raid-alert`} component={RaidAlertCustomizer} />
-                        <Route exact path={`${process.env.PUBLIC_URL}/items`} component={Items} />
-                        <Route exact path={`${process.env.PUBLIC_URL}/items/:id`} component={Item} />
-                        <Route exact path={`${process.env.PUBLIC_URL}/sealed-items`} component={SealedItems} />
-                        <Route exact path={`${process.env.PUBLIC_URL}/sealed-items/:id`} component={SealedItem} />
-                        <Route exact path={`${process.env.PUBLIC_URL}/abilities`} component={Abilities} />
-                        <Route exact path={`${process.env.PUBLIC_URL}/abilities/:id`} component={Ability} />
-                        <Route exact path={`${process.env.PUBLIC_URL}/monsters`} component={Monsters} />
-                        <Route exact path={`${process.env.PUBLIC_URL}/monsters/:id`} component={Monster} />
                         <Route exact path={`${process.env.PUBLIC_URL}/battlers/:id`} component={Battler} />
                         <Route exact path={`${process.env.PUBLIC_URL}/encyclopedia/abilities`} component={AbilitiesEncyclopedia} />
                         <Route exact path={`${process.env.PUBLIC_URL}/encyclopedia/items`} component={ItemsEncyclopedia} />
                         <Route exact path={`${process.env.PUBLIC_URL}/encyclopedia/monsters`} component={MonstersEncyclopedia} />
-                        <Route exact path={`${process.env.PUBLIC_URL}/admin/configs`} component={AdminConfigs} />
+                        
+                        <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/items`} component={Items} />
+                        <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/items/:id`} component={Item} />
+                        <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/sealed-items`} component={SealedItems} />
+                        <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/sealed-items/:id`} component={SealedItem} />
+                        <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/abilities`} component={Abilities} />
+                        <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/abilities/:id`} component={Ability} />
+                        <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/monsters`} component={Monsters} />
+                        <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/monsters/:id`} component={Monster} />
+                        <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/bot`} component={Bot} />
+                        <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/bot/media`} component={MediaPoolConfig} />
+                        <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/bot/raid-alert`} component={RaidAlertCustomizer} />
+                        <SecureRoute isAuthenticated={this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/admin/configs`} component={AdminConfigs} />
                     </Switch>
                 </Router>
             </div>
