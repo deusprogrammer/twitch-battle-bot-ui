@@ -188,8 +188,8 @@ export default class Bot extends React.Component {
                 </div>
                 <h3>Stand Alone Panels</h3>
                 <div style={{marginLeft: "10px"}}>
-                    <a href={`https://deusprogrammer.com/util/twitch-tools/wtd?channelId=${this.state.channelId}`}><button type="button">What the Dub</button></a><br />
-                    <a href={`https://deusprogrammer.com/util/twitch-tools/tts?channelId=${this.state.channelId}`}><button type="button">Text to Speech</button></a>
+                    <a target="_blank" href={`https://deusprogrammer.com/util/twitch-tools/wtd?channelId=${this.state.channelId}`}><button type="button">What the Dub</button></a><br />
+                    <a target="_blank" href={`https://deusprogrammer.com/util/twitch-tools/tts?channelId=${this.state.channelId}`}><button type="button">Text to Speech</button></a>
                 </div>
                 <h3>Panel Tools</h3>
                 <div style={{marginLeft: "10px"}}>
