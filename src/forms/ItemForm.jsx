@@ -138,7 +138,7 @@ export default class ItemForm extends React.Component {
                                     </td>
                                     <td>
                                         <Select field="slot">
-                                            {/* <Option value="null">Select Item Slot</Option> */}
+                                            <Option value="null">Select Item Slot</Option>
                                             <Option value="hand">HAND</Option>
                                             <Option value="offhand">OFFHAND</Option>
                                         </Select>
@@ -152,7 +152,7 @@ export default class ItemForm extends React.Component {
                                     </td>
                                     <td>
                                         <Select field="slot">
-                                            {/* <Option value="null">Select Item Slot</Option> */}
+                                            <Option value="null">Select Item Slot</Option>
                                             <Option value="head">HEAD</Option>
                                             <Option value="body">BODY</Option>
                                             <Option value="arms">ARMS</Option>
@@ -169,7 +169,7 @@ export default class ItemForm extends React.Component {
                                     </td>
                                     <td>
                                         <Select field="slot">
-                                            {/* <Option value="null">Select Item Slot</Option> */}
+                                            <Option value="null">Select Item Slot</Option>
                                             <Option value="miku">MIKU</Option>
                                             <Option value="monster">MONSTER</Option>
                                         </Select>
@@ -183,7 +183,7 @@ export default class ItemForm extends React.Component {
                                     </td>
                                     <td>
                                         <Select field="slot">
-                                            {/* <Option value="null">Select Sealed Item Type</Option> */}
+                                            <Option value="null">Select Sealed Item Type</Option>
                                             <Option value="digital">DIGITAL CODE</Option>
                                             <Option value="physical">PHYSICAL GOODS</Option>
                                         </Select>
