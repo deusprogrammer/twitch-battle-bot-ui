@@ -6,6 +6,21 @@ import AbilityElement from '../elements/AbilityElement';
 
 import ApiHelper from '../utils/ApiHelper';
 
+const iconMap = {
+    HAND: `${process.env.PUBLIC_URL}/icons/weapon-icon.png`,
+    OFFHAND: `${process.env.PUBLIC_URL}/icons/weapon-icon.png`,
+    HEAD: `${process.env.PUBLIC_URL}/icons/head-icon.png`,
+    ARMS: `${process.env.PUBLIC_URL}/icons/arms-icon.png`,
+    BODY: `${process.env.PUBLIC_URL}/icons/body-icon.png`,
+    LEGS: `${process.env.PUBLIC_URL}/icons/legs-icon.png`,
+    ACCESSORY: `${process.env.PUBLIC_URL}/icons/accessory-icon.png`,
+    MIKU: `${process.env.PUBLIC_URL}/icons/key-item-icon.png`,
+    MONSTER: `${process.env.PUBLIC_URL}/icons/key-item-icon.png`,
+    DIGITAL: `${process.env.PUBLIC_URL}/icons/sealed-item-icon.png`,
+    PHYSICAL: `${process.env.PUBLIC_URL}/icons/sealed-item-icon.png`,
+    CONSUMABLE: `${process.env.PUBLIC_URL}/icons/consumable-icon.png`
+}
+
 export default class Battler extends React.Component {
     state = {
         user: null,
@@ -161,10 +176,11 @@ export default class Battler extends React.Component {
                             <table>
                                     { ["HAND", "HEAD", "ARMS", "BODY", "LEGS", "ACCESSORY"].map((slot) => {
                                         let item = user.equipment[slot.toLowerCase()];
+                                        let icon = <img src={iconMap[slot]} />;
                                         if (!item) {
                                             return (
                                                 <tr style={{height: "40px"}}>
-                                                    <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.replace("ACCESSORY", "ACCS").toUpperCase()}</td>
+                                                    <td style={{textAlign: "center"}}>{icon}</td>
                                                     <td>None</td>
                                                     <td></td>
                                                 </tr>
@@ -244,6 +260,7 @@ export default class Battler extends React.Component {
                                     return Object.keys(user.condensedInventory).map((itemKey) => {
                                         const item = user.condensedInventory[itemKey].item;
                                         const count = user.condensedInventory[itemKey].count;
+                                        let icon = <img src={iconMap[slot]} />;
                                         if (item.slot.toUpperCase() !== slot) {
                                             return;
                                         }
@@ -253,7 +270,7 @@ export default class Battler extends React.Component {
                                                     data-tip 
                                                     data-for={`${item.id}-inv-tip`}
                                                     style={{cursor: "pointer"}}>
-                                                        <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.replace("ACCESSORY", "ACCS").toUpperCase()}</td>
+                                                        <td style={{textAlign: "center"}}>{icon}</td>
                                                         <td>{item.name}</td>
                                                         <td>{count}</td>
                                                         <td>
