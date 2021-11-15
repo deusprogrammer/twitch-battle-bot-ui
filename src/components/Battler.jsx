@@ -192,7 +192,7 @@ export default class Battler extends React.Component {
                                                     data-tip 
                                                     data-for={`${item.slot}-tip`}
                                                     style={{cursor: "pointer", height: "40px"}}>
-                                                        <td style={{textAlign: "center", background: "teal", color: "white", fontWeight: "bolder"}}>{slot.replace("ACCESSORY", "ACCS").toUpperCase()}</td>
+                                                        <td style={{textAlign: "center"}}>{icon}</td>
                                                         <td>{item.name}</td>
                                                         <td>
                                                             <button type="button" class="btn btn-primary" onClick={() => {this.unequipItem(item)}}>Unequip</button>
