@@ -165,7 +165,7 @@ export default class Battler extends React.Component {
                                         <td style={{textAlign: "center"}}>{user.gold}</td>
                                     </tr>
                                     <tr title="This is the range of damage you can do with your current weapon." style={{cursor: "pointer"}}>
-                                        <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>Damage Range</td>
+                                        <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>DMG</td>
                                         <td style={{textAlign: "center"}}>{this.damageRange(user).low} - {this.damageRange(user).high}</td>
                                     </tr>
                                 </tbody>
