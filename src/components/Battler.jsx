@@ -176,7 +176,7 @@ export default class Battler extends React.Component {
                             <table>
                                     { ["HAND", "HEAD", "ARMS", "BODY", "LEGS", "ACCESSORY"].map((slot) => {
                                         let item = user.equipment[slot.toLowerCase()];
-                                        let icon = <img src={iconMap[slot]} />;
+                                        let icon = <img style={{heigh: "38px", width: "38px"}} src={iconMap[slot]} />;
                                         if (!item) {
                                             return (
                                                 <tr style={{height: "40px"}}>
@@ -260,7 +260,7 @@ export default class Battler extends React.Component {
                                     return Object.keys(user.condensedInventory).map((itemKey) => {
                                         const item = user.condensedInventory[itemKey].item;
                                         const count = user.condensedInventory[itemKey].count;
-                                        let icon = <img src={iconMap[slot]} />;
+                                        let icon = <img style={{heigh: "38px", width: "38px"}} src={iconMap[slot]} />;
                                         if (item.slot.toUpperCase() !== slot) {
                                             return;
                                         }
