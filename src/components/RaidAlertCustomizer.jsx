@@ -341,7 +341,7 @@ const RaidAlertCustomizer = (props) => {
                     setSaving(false);
                     window.location = `https://deusprogrammer.com/util/twitch-tools/raid-test?raider=wagnus&raidSize=1000&theme=STORED&key=${id}`;
             }}>
-                {isEdit? "Create" : "Update"}
+                { isEdit ? "Update" : "Create" }
             </button>
         </div>
     )
