@@ -64,6 +64,7 @@ const Animation = (props) => {
     }, [props.frameCount, props.speed, props.startFrame, props.endFrame]);
 
     useEffect(() => {
+        clearInterval(canvasUpdater.interval);
         updateImage();
     }, [props.url]);
 
