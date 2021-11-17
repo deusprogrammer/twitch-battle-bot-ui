@@ -38,7 +38,7 @@ const RaidAlertCustomizer = (props) => {
 
             raidAlert.sprites.forEach((sprite) => {
                 sprite.isStored = true;
-                sprite.frames = sprite.endFrame - sprite.startFrame;
+                sprite.frames = sprite.cellCount;
                 sprite.endFrame -= 1;
             });
 
@@ -94,7 +94,8 @@ const RaidAlertCustomizer = (props) => {
                     endFrame: sprite.endFrame,
                     frameWidth: sprite.frameWidth,
                     frameHeight: sprite.frameHeight,
-                    frameRate: sprite.frameRate
+                    frameRate: sprite.frameRate,
+                    cellCount: sprite.frames
                 }
             }),
             music: {
