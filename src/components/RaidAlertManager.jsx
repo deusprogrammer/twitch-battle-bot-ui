@@ -18,8 +18,8 @@ export default (props) => {
                         return (
                             <tr>
                                 <td>{raidAlert.name}</td>
-                                <td><button onClick={() => {window.location = `https://deusprogrammer.com/util/twitch-tools/raid-test?raider=wagnus&raidSize=1000&theme=STORED&key=${raidAlert.id}`}}>Preview</button></td>
-                                <td><button onClick={() => {window.location = `https://deusprogrammer.com/util/twitch/bot/raid-alert/${raidAlert.id}`}}>Edit</button>
+                                <td><button onClick={() => {window.location = `https://deusprogrammer.com/util/twitch-tools/raid-test?raider=wagnus&raidSize=1000&theme=STORED&key=${raidAlert._id}`}}>Preview</button></td>
+                                <td><button onClick={() => {window.location = `https://deusprogrammer.com/util/twitch/bot/raid-alert/${raidAlert._id}`}}>Edit</button>
                                 <button onClick={() => {alert("This doesn't function yet")}}>Delete</button></td>
                             </tr>
                         )
