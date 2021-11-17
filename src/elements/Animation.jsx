@@ -43,14 +43,7 @@ const Animation = (props) => {
         }
     }
 
-    useEffect(() => {
-        if (canvasUpdater) {
-            const {frameWidth, frameHeight} = canvasUpdater.updateCanvas(parseInt(props.frameCount), parseInt(props.speed), parseInt(props.startFrame), parseInt(props.endFrame));
-            props.onLoaded(frameWidth, frameHeight);
-        }
-    }, [props.frameCount, props.speed, props.startFrame, props.endFrame]);
-
-    useEffect(() => {
+    updateImage = () => {
         let img = new Image();
         img.src = props.url;
         img.addEventListener('load', (e) => {
@@ -61,6 +54,21 @@ const Animation = (props) => {
             props.onLoaded(updater.frameWidth, updater.frameHeight);
             setCanvasUpdater(updater);
         }, false);
+    }
+
+    useEffect(() => {
+        if (canvasUpdater) {
+            const {frameWidth, frameHeight} = canvasUpdater.updateCanvas(parseInt(props.frameCount), parseInt(props.speed), parseInt(props.startFrame), parseInt(props.endFrame));
+            props.onLoaded(frameWidth, frameHeight);
+        }
+    }, [props.frameCount, props.speed, props.startFrame, props.endFrame]);
+
+    useEffect(() => {
+        updateImage();
+    }, [props.url]);
+
+    useEffect(() => {
+        updateImage();
     }, []);
 
     return (
