@@ -70,8 +70,10 @@ const Animation = (props) => {
     }, [props.frameCount, props.speed, props.startFrame, props.endFrame]);
 
     useEffect(() => {
-        canvasUpdater.clearInterval();
-        updateImage();
+        if (canvasUpdater) {
+            canvasUpdater.clearInterval();
+            updateImage();
+        }
     }, [props.url]);
 
     useEffect(() => {
