@@ -120,7 +120,7 @@ const RaidAlertCustomizer = (props) => {
 
         if (isEdit) {
             await ApiHelper.updateRaidAlert(props.match.params.id, config);
-            return props.id;
+            return props.match.params.id;
         } else {
             let {_id} = await ApiHelper.storeRaidAlert(config);
             return _id;
