@@ -3,6 +3,7 @@ import { Route } from 'react-router';
 
 export default (props) => {
     if (!props.isAuthenticated) {
+        delete props.component;
         return <Route {...props} render={props => <div>You must be authenticated to use this page.  Please login.</div>} />
     }
 
