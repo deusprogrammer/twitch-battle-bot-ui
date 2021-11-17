@@ -38,6 +38,7 @@ const RaidAlertCustomizer = (props) => {
 
             raidAlert.sprites.forEach((sprite) => {
                 sprite.isStored = true;
+                sprite.frames = sprite.endFrame - sprite.startFrame + 1;
             });
 
             setName(raidAlert.name);
