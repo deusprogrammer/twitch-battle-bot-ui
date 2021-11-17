@@ -52,7 +52,13 @@ const RaidAlertCustomizer = (props) => {
             setSFX(raidAlert.leavingSound);
             setIsEdit(true);
         }
-    }, [])
+    }, []);
+
+    const removeSprite = async (index) => {
+        let temp = [...sprites];
+        temp = temp.splice(index, 1);
+        setSprites(temp);
+    };
 
     const storeAudio = async (imagePayload, title) => {
         let mediaData = {
@@ -63,7 +69,7 @@ const RaidAlertCustomizer = (props) => {
 
         let {_id} = await ApiHelper.storeMedia(mediaData);
         return `${config.MEDIA_SERVER_URL}/media/${_id}/file.mp3`;
-    }
+    };
 
     const storeImage = async (imagePayload, title) => {
         let mediaData = {
@@ -74,7 +80,7 @@ const RaidAlertCustomizer = (props) => {
 
         let {_id} = await ApiHelper.storeMedia(mediaData);
         return `${config.MEDIA_SERVER_URL}/media/${_id}/file.png`;
-    }
+    };
 
     const storeRaidAlert = async () => {
         for (let sprite of sprites) {
@@ -125,7 +131,7 @@ const RaidAlertCustomizer = (props) => {
             let {_id} = await ApiHelper.storeRaidAlert(config);
             return _id;
         }
-    }
+    };
 
     return (
         <div>
@@ -252,6 +258,9 @@ const RaidAlertCustomizer = (props) => {
                                                         setSprites(temp);
                                                     }} />
                                             </td>
+                                        </tr>
+                                        <tr>
+                                            <td><button onClick={() => {removeSprite(index);}}>Remove</button></td>
                                         </tr>
                                     </tbody>
                                 </table>
