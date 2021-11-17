@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ApiHelper from '../utils/ApiHelper';
 
-export default (props) => {
+const RaidAlertManager = (props) => {
     let [raidAlerts, setRaidAlerts] = useState([]);
     useEffect(async () => {
         let channel = parseInt(window.localStorage.getItem("channel"));
@@ -29,3 +29,5 @@ export default (props) => {
         </div>
     )
 }
+
+export default RaidAlertManager;
