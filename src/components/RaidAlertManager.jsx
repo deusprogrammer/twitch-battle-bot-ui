@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {Link} from 'react-router-dom';
 import ApiHelper from '../utils/ApiHelper';
 
 const RaidAlertManager = (props) => {
@@ -18,9 +19,11 @@ const RaidAlertManager = (props) => {
                         return (
                             <tr>
                                 <td>{raidAlert.name}</td>
-                                <td><button onClick={() => {window.location = `https://deusprogrammer.com/util/twitch-tools/raid-test?raider=wagnus&raidSize=1000&theme=STORED&key=${raidAlert._id}`}}>Preview</button></td>
-                                <td><button onClick={() => {window.location = `https://deusprogrammer.com/util/twitch/configs/raid-alert/${raidAlert._id}`}}>Edit</button>
-                                <button onClick={() => {alert("This doesn't function yet")}}>Delete</button></td>
+                                <td>
+                                    <button onClick={() => {window.location = `https://deusprogrammer.com/util/twitch-tools/raid-test?raider=wagnus&raidSize=1000&theme=STORED&key=${raidAlert._id}`}}>Preview</button>
+                                    <Link to={`${process.env.PUBLIC_URL}/configs/raid-alert/${raidAlert._id}`}><button type="button">Edit</button></Link>
+                                    <button onClick={() => {alert("This doesn't function yet")}}>Delete</button>
+                                </td>
                             </tr>
                         )
                     })}
