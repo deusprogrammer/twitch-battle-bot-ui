@@ -20,6 +20,12 @@ const readFileAsDataUri = (file) => {
     });
 }
 
+const uuidv4 = () => {
+    return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    );
+  }
+
 const RaidAlertCustomizer = (props) => {
     const [sprites, setSprites] = useState([]);
     const [sfx, setSFX] = useState({});
@@ -176,7 +182,7 @@ const RaidAlertCustomizer = (props) => {
                 <h2>Sprites</h2>
                 {sprites.map((sprite, index) => {
                     return (
-                        <div key={`sprite-${index}-${sprite.file}`} style={{border: "1px solid black"}}>
+                        <div key={`sprite-${uuidv4()}`} style={{border: "1px solid black"}}>
                             <h3>Sprite {index}</h3>
                             <div style={{marginLeft: "10px"}}>
                                 <Animation 
