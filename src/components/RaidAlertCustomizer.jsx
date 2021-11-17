@@ -42,6 +42,9 @@ const RaidAlertCustomizer = (props) => {
                 sprite.endFrame -= 1;
             });
 
+            raidAlert.music.isStored = true;
+            raidAlert.leavingSound.isStored = true;
+
             setName(raidAlert.name);
             setMessage(raidAlert.message);
             setSprites(raidAlert.sprites);
@@ -80,8 +83,15 @@ const RaidAlertCustomizer = (props) => {
             }
         }
 
-        bgm.file = await storeAudio(bgm.file.substring(bgm.file.indexOf(',') + 1), "Raid-BGM");
-        sfx.file = await storeAudio(sfx.file.substring(sfx.file.indexOf(',') + 1), "Raid-SFX");
+        let bgmFile = bgm.file;
+        if (!bgm.isStored) {
+            bgmFile = await storeAudio(bgm.file.substring(bgm.file.indexOf(',') + 1), "Raid-BGM");
+        }
+
+        let sfxFile = sfx.file;
+        if (!sfx.isStored) {
+            sfxFile = await storeAudio(sfx.file.substring(sfx.file.indexOf(',') + 1), "Raid-SFX");
+        }
 
         let config = {
             twitchChannel: parseInt(window.localStorage.getItem("channel")),
@@ -99,11 +109,11 @@ const RaidAlertCustomizer = (props) => {
                 }
             }),
             music: {
-                file: bgm.file,
+                file: bgmFile,
                 volume: 1
             },
             leavingSound: {
-                file: sfx.file,
+                file: sfxFile,
                 volume: 1
             }
         };
@@ -271,7 +281,8 @@ const RaidAlertCustomizer = (props) => {
                                     frames: 1,
                                     startFrame: 0,
                                     endFrame: 0,
-                                    frameRate: 15
+                                    frameRate: 15,
+                                    isStored: false
                                 };
                             });
                             setSprites([...sprites, ...newSprites]);
@@ -295,7 +306,7 @@ const RaidAlertCustomizer = (props) => {
                                     const f = e.target.files[0];
                                     const fr = new FileReader();
                                     fr.addEventListener("load", (event) => {
-                                        setBGM({file: event.target.result});
+                                        setBGM({file: event.target.result, isStored: false});
                                     });
                                     fr.readAsDataURL(f);
                                 }}/>
@@ -319,7 +330,7 @@ const RaidAlertCustomizer = (props) => {
                                     const f = e.target.files[0];
                                     const fr = new FileReader();
                                     fr.addEventListener("load", (event) => {
-                                        setSFX({file: event.target.result});
+                                        setSFX({file: event.target.result, isStored: false});
                                     });
                                     fr.readAsDataURL(f);
                                 }}/>
