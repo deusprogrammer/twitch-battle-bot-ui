@@ -156,8 +156,10 @@ export default class Bot extends React.Component {
                                 )
                             })}
                         </select>
-                        <Link to={`${process.env.PUBLIC_URL}/configs/raid-alert`}><button type="button">Create New Raid Alert</button></Link>
-                        <Link to={`${process.env.PUBLIC_URL}/configs/raid-alerts`}><button type="button">Manage My Raid Alerts</button></Link>
+                        {/* <Link to={`${process.env.PUBLIC_URL}/configs/raid-alert`}><button type="button">Create New Raid Alert</button></Link>
+                        <Link to={`${process.env.PUBLIC_URL}/configs/raid-alerts`}><button type="button">Manage My Raid Alerts</button></Link> */}
+                        <button onClick={() => {window.location=`${process.env.PUBLIC_URL}/configs/raid-alert`}} type="button">Create New Raid Alert</button>
+                        <button onClick={() => {window.location=`${process.env.PUBLIC_URL}/configs/raid-alerts`}} type="button">Manage My Raid Alerts</button>
                     </div>
                 </div>
                 <h3>Panel URLs</h3>
