@@ -24,6 +24,8 @@ import AdminConfigs from './components/AdminConfigs';
 import MediaPoolConfig from './components/MediaPoolConfig';
 import RaidAlertCustomizer from './components/RaidAlertCustomizer';
 import RaidAlertManager from './components/RaidAlertManager';
+import Test from './components/Test';
+import Test1 from './components/Test1';
 
 import SecureRoute from './elements/SecureRoute';
 
@@ -116,6 +118,8 @@ class App extends React.Component {
                     }
                     <Switch>
                         <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
+                        <Route exact path={`${process.env.PUBLIC_URL}/test`} component={Test} />
+                        <Route exact path={`${process.env.PUBLIC_URL}/test1`} component={Test} />
                         <Route exact path={`${process.env.PUBLIC_URL}/registration/start`} component={RegistrationStart} />
                         <Route exact path={`${process.env.PUBLIC_URL}/registration/callback`} component={RegistrationCallBack} />
                         <Route exact path={`${process.env.PUBLIC_URL}/registration/refresh`} component={RegistrationRefresh} />
