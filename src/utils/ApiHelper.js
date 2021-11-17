@@ -580,6 +580,16 @@ const storeRaidAlert = async (raidAlert) => {
     return created.data;
 }
 
+const updateRaidAlert = async (id, raidAlert) => {
+    let updated = await axios.put(`${config.BASE_URL}/raid-configs/${id}`, raidAlert, {
+        headers: {
+            "X-Access-Token": localStorage.getItem("accessToken")
+        }
+    });
+
+    return updated.data;
+}
+
 const getRaidAlert = async (id) => {
     let found = await axios.get(`${config.BASE_URL}/raid-configs/${id}`, {
         headers: {
@@ -632,6 +642,7 @@ const updateAdminConfigs = async (newConfig) => {
 
 export default {
     storeRaidAlert,
+    updateRaidAlert,
     getRaidAlerts,
     getRaidAlert,
     updateRaidAlertConfig,

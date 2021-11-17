@@ -156,6 +156,8 @@ export default class Bot extends React.Component {
                                 )
                             })}
                         </select>
+                        <Link to={`${process.env.PUBLIC_URL}/bot/raid-alert`}><button type="button">Create New Raid Alert</button></Link>
+                        <Link to={`${process.env.PUBLIC_URL}/bot/raid-alerts`}><button type="button">Manage My Raid Alerts</button></Link>
                     </div>
                 </div>
                 <h3>Panel URLs</h3>
@@ -193,8 +195,7 @@ export default class Bot extends React.Component {
                 </div>
                 <h3>Panel Tools</h3>
                 <div style={{marginLeft: "10px"}}>
-                    <Link to={`${process.env.PUBLIC_URL}/bot/media`}><button type="button">Configure Media Pool</button></Link><br />
-                    <Link to={`${process.env.PUBLIC_URL}/bot/raid-alert`}><button type="button">Create New Raid Alert</button></Link>
+                    <Link to={`${process.env.PUBLIC_URL}/bot/media`}><button type="button">Configure Media Pool</button></Link>
                 </div>
                 <h3>Actions</h3>
                 <div style={{marginLeft: "10px"}}>

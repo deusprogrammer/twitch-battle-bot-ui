@@ -23,6 +23,7 @@ import MonstersEncyclopedia from './components/MonstersEncyclopedia';
 import AdminConfigs from './components/AdminConfigs';
 import MediaPoolConfig from './components/MediaPoolConfig';
 import RaidAlertCustomizer from './components/RaidAlertCustomizer';
+import RaidAlertManager from './components/RaidAlertManager';
 
 import SecureRoute from './elements/SecureRoute';
 
@@ -134,6 +135,8 @@ class App extends React.Component {
                         <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/bot`} component={Bot} />
                         <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/bot/media`} component={MediaPoolConfig} />
                         <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/bot/raid-alert`} component={RaidAlertCustomizer} />
+                        <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/bot/raid-alert/:id`} component={RaidAlertCustomizer} />
+                        <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/bot/raid-alerts`} component={RaidAlertManager} />
                         <SecureRoute isAuthenticated={this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/admin/configs`} component={AdminConfigs} />
                     </Switch>
                 </Router>

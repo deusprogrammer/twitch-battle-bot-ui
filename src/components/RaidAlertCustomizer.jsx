@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import Animation from '../elements/Animation';
 
 import ApiHelper from '../utils/ApiHelper';
@@ -27,9 +27,27 @@ const RaidAlertCustomizer = (props) => {
     const [name, setName] = useState("Sprite");
     const [message, setMessage] = useState("Incoming raid of size ${raidSize} from ${raider}");
     const [saving, setSaving] = useState(false);
+    const [isEdit, setIsEdit] = useState(false);
     const fileInput = useRef();
     const bgmFileInput = useRef();
     const sfxFileInput = useRef();
+
+    useEffect(async () => {
+        if (props.match && props.match.params && props.match.params.id) {
+            let raidAlert = await ApiHelper.getRaidAlert(props.match.params.id);
+
+            raidAlert.sprites.forEach((sprite) => {
+                sprite.isStored = true;
+            });
+
+            setName(raidAlert.name);
+            setMessage(raidAlert.message);
+            setSprites(raidAlert.sprites);
+            setBGM(raidAlert.music);
+            setSFX(raidAlert.leavingSound);
+            setIsEdit(true);
+        }
+    }, [])
 
     const storeAudio = async (imagePayload, title) => {
         let mediaData = {
@@ -55,7 +73,9 @@ const RaidAlertCustomizer = (props) => {
 
     const storeRaidAlert = async () => {
         for (let sprite of sprites) {
-            sprite.file = await storeImage(sprite.file.substring(sprite.file.indexOf(',') + 1), "Raid-Sprite");
+            if (!sprite.isStored) {
+                sprite.file = await storeImage(sprite.file.substring(sprite.file.indexOf(',') + 1), "Raid-Sprite");
+            }
         }
 
         bgm.file = await storeAudio(bgm.file.substring(bgm.file.indexOf(',') + 1), "Raid-BGM");
@@ -85,8 +105,13 @@ const RaidAlertCustomizer = (props) => {
             }
         };
 
-        let {_id} = await ApiHelper.storeRaidAlert(config);
-        return _id;
+        if (isEdit) {
+            await ApiHelper.updateRaidAlert(props.id, config);
+            return props.id;
+        } else {
+            let {_id} = await ApiHelper.storeRaidAlert(config);
+            return _id;
+        }
     }
 
     return (
@@ -313,7 +338,7 @@ const RaidAlertCustomizer = (props) => {
                     setSaving(false);
                     window.location = `https://deusprogrammer.com/util/twitch-tools/raid-test?raider=wagnus&raidSize=1000&theme=STORED&key=${id}`;
             }}>
-                Create
+                {isEdit? "Create" : "Update"}
             </button>
         </div>
     )
