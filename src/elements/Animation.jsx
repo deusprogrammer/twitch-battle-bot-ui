@@ -43,7 +43,7 @@ const Animation = (props) => {
         }
     }
 
-    updateImage = () => {
+    const updateImage = () => {
         let img = new Image();
         img.src = props.url;
         img.addEventListener('load', (e) => {
