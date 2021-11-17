@@ -133,10 +133,10 @@ class App extends React.Component {
                         <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/monsters`} component={Monsters} />
                         <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/monsters/:id`} component={Monster} />
                         <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/bot`} component={Bot} />
-                        <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/bot/media`} component={MediaPoolConfig} />
+                        <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/configs/media`} component={MediaPoolConfig} />
                         <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/configs/raid-alert`} component={RaidAlertCustomizer} />
                         <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/configs/raid-alert/:id`} component={RaidAlertCustomizer} />
-                        <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}//raid-alerts`} component={RaidAlertManager} />
+                        <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/configs/raid-alerts`} component={RaidAlertManager} />
                         <SecureRoute isAuthenticated={this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/admin/configs`} component={AdminConfigs} />
                     </Switch>
                 </Router>

@@ -195,7 +195,7 @@ export default class Bot extends React.Component {
                 </div>
                 <h3>Panel Tools</h3>
                 <div style={{marginLeft: "10px"}}>
-                    <Link to={`${process.env.PUBLIC_URL}/bot/media`}><button type="button">Configure Media Pool</button></Link>
+                    <Link to={`${process.env.PUBLIC_URL}/configs/media`}><button type="button">Configure Media Pool</button></Link>
                 </div>
                 <h3>Actions</h3>
                 <div style={{marginLeft: "10px"}}>
