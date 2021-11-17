@@ -176,7 +176,7 @@ const RaidAlertCustomizer = (props) => {
                 <h2>Sprites</h2>
                 {sprites.map((sprite, index) => {
                     return (
-                        <div key={`sprite-${index}`} style={{border: "1px solid black"}}>
+                        <div key={`sprite-${index}-${sprite.file}`} style={{border: "1px solid black"}}>
                             <h3>Sprite {index}</h3>
                             <div style={{marginLeft: "10px"}}>
                                 <Animation 
