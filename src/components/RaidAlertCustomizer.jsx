@@ -56,7 +56,7 @@ const RaidAlertCustomizer = (props) => {
 
     const removeSprite = async (index) => {
         let temp = [...sprites];
-        temp = temp.splice(index, 1);
+        temp.splice(index, 1);
         setSprites(temp);
     };
 
@@ -260,7 +260,7 @@ const RaidAlertCustomizer = (props) => {
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><button onClick={() => {removeSprite(index);}}>Remove</button></td>
+                                            <td><button onClick={() => {removeSprite(index)}}>Remove</button></td>
                                         </tr>
                                     </tbody>
                                 </table>
