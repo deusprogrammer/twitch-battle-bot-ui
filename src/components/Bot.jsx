@@ -55,7 +55,7 @@ export default class Bot extends React.Component {
         let botState = await ApiHelper.getBotState(this.state.channelId);
         let botConfig = await ApiHelper.getBot(this.state.channelId);
         let customRaidConfigs = await ApiHelper.getRaidAlerts(this.state.channelId);
-        customRaidConfigs = [...customRaidConfigs, {name: "Yoshi [Built In]", theme: "YOSHI", id: null}, {name: "Zelda 2 [Built In]", theme: "ZELDA2", id: null}];
+        customRaidConfigs = [...customRaidConfigs, {name: "Yoshi [Built In]", theme: "YOSHI", _id: null}, {name: "Zelda 2 [Built In]", theme: "ZELDA2", _id: null}];
         this.setState({botState, tokenState, config, botConfig, customRaidConfigs, selectedRaidConfig: `${botConfig.raidConfig.theme}:${botConfig.raidConfig.customId}`});
 
         if (!tokenState.valid) {
