@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { Route } from 'react-router';
 
 export default (props) => {
-    useEffect(() => {
-        window.onblur = function() {window.onfocus = function () {window.location.reload(true)}};
-    }, [])
+    // useEffect(() => {
+    //     window.onblur = function() {window.onfocus = function () {window.location.reload(true)}};
+    // }, [])
 
     if (!props.isAuthenticated) {
         delete props.component;
