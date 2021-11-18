@@ -77,6 +77,9 @@ export default class Bot extends React.Component {
         let key = event.target.value;
         let [theme, customId] = key.split(":");
         this.setState({selectedRaidConfig: key});
+        if (customId === "undefined") {
+            customId = null;
+        }
         await ApiHelper.updateRaidAlertConfig(this.state.channelId, {theme, customId});
         toast(`Raid config saved`, {type: "info"});
     }
