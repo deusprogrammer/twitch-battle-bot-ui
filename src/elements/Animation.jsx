@@ -39,6 +39,11 @@ const Animation = (props) => {
                     this.frame++;
                 }
 
+                if (!this.canvas || !this.canvas.current) {
+                    this.clearInterval(this.interval);
+                    return;
+                }
+
                 const x = this.frame * this.frameWidth;
                 const ctx = this.canvas.current.getContext("2d");
                 ctx.clearRect(0, 0, this.frameWidth, this.frameHeight);
