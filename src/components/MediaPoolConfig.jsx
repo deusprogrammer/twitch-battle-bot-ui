@@ -84,7 +84,7 @@ export default class MediaPoolConfig extends React.Component {
             return;
         }
 
-        mediaPool[index].url = (e.target.checked ? "" : "*") + mediaPool[index].url.replace("*", "");
+        mediaPool[index].enabled = e.target.checked;
 
         try {
             if (type === "audio") {
@@ -320,19 +320,19 @@ export default class MediaPoolConfig extends React.Component {
                                 
                                 return (
                                     <li>
-                                        <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "audio", index)}} checked={!element.name.startsWith("*")} disabled={this.state.saving}/>
+                                        <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "audio", index)}} checked={element.enabled} disabled={this.state.saving}/>
                                         <button onClick={() => {this.onDeleteMedia("audio", index)}}>X</button>
-                                        <span className={this.state.audioPreview === element.url  ? "selected" : ""} style={{cursor: "pointer"}} onClick={() => {this.setState({audioPreview: element.url.replace("*", ""), selectedAudioIndex: index }); document.getElementById("audio-preview").volume = element.volume;}}>
+                                        <span className={this.state.audioPreview === element.url  ? "selected" : ""} style={{cursor: "pointer"}}>
                                             <input type="text" value={element.name} onChange={(e) => {this.updateMedia(e, index, "audio")}} onBlur={() => {this.saveMediaConfig("audio")}} disabled={this.state.saving} />
                                             <input type="range" min={0} max={1} step={0.1} value={element.volume} onBlur={() => {this.saveMediaConfig("audio")}} onChange={(e) => {this.updateVolume(e, index, "audio")}} />
                                             <span style={{width: "50px"}}>{element.volume * 100}%</span>
+                                            <button onClick={() => {this.setState({audioPreview: element.url, selectedAudioIndex: index }); document.getElementById("audio-preview").volume = element.volume;}}>Preview</button>
                                         </span>
                                     </li>)
                             })}                       
                         </ul>
                     </div>
-                    {this.state.selectedAudioIndex < this.state.audioPool.length ?
-                    <div style={{display: "table-cell", verticalAlign: "middle"}}>
+                    <div style={{display: "table-cell", visibility: this.state.selectedAudioIndex >= 0 && this.state.selectedAudioIndex < this.state.audioPool.length ? "visible" : "hidden", verticalAlign: "middle"}}>
                         <h3>Preview</h3>
                         <audio 
                             id="audio-preview"
@@ -340,15 +340,19 @@ export default class MediaPoolConfig extends React.Component {
                             width="300px" 
                             controls 
                             onBlur={() => {this.saveMediaConfig("video")}} />
-                    </div> : null}
+                    </div>
                 </div>
                 <div style={{border: "1px solid black"}}>
                     <h3>Add New Audio</h3>
-                    <audio src={this.state.uploadAudioDataUrl} width="300px" controls /><br/>
-                    <input ref={this.audioDataRef} onChange={(e) => {this.onFileLoaded(e)}} accept=".mp3" type="file" disabled={this.state.addAudioUrl ? true : false} /><br/>
-                    <span>or</span><br/>
-                    <input ref={this.audioUrlRef} onChange={(e) => {this.onChangeUrl(e, "audio")}} type="text" placeholder="Audio URL" disabled={this.state.uploadAudioDataUrl ? true : false} /><br/>
-                    <button onClick={() => {this.storeMedia("audio")}} disabled={this.state.uploadAudioData || this.state.addAudioUrl || this.state.saving ? false : true}>Store Audio</button>
+                    <div style={{display: "table"}}>
+                        <div style={{display: "table-cell", verticalAlign: "middle"}}>
+                            <input ref={this.audioDataRef} onChange={(e) => {this.onFileLoaded(e)}} accept=".mp3" type="file" disabled={this.state.addAudioUrl ? true : false} /><br/>
+                            <button onClick={() => {this.storeMedia("audio")}} disabled={this.state.uploadAudioData || this.state.addAudioUrl || this.state.saving ? false : true}>Store Audio</button>
+                        </div>
+                        <div style={{display: "table-cell"}}>
+                            {this.state.uploadAudioDataUrl ? <audio src={this.state.uploadAudioDataUrl} width="300px" controls /> : null}
+                        </div>
+                    </div>
                 </div>
                 <div style={{display: "table"}}>
                     <div style={{display: "table-cell"}}>
@@ -360,7 +364,7 @@ export default class MediaPoolConfig extends React.Component {
                                 }
 
                                 return (<li>
-                                            <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "video", index)}} checked={!element.url.startsWith("*")} disabled={this.state.saving}/>
+                                            <input type="checkbox" onChange={(e) => {this.onDisableMedia(e, "video", index)}} checked={element.enabled} disabled={this.state.saving}/>
                                             <button onClick={() => {this.onDeleteMedia("video", index)}}>X</button>
                                             <select 
                                                 defaultValue="none" 
@@ -372,17 +376,17 @@ export default class MediaPoolConfig extends React.Component {
                                                     <option value="blue">Blue</option>
                                                     <option value="none">No Chroma</option>
                                             </select>
-                                            <span className={this.state.videoPreview === element.url  ? "selected" : ""} style={{cursor: "pointer"}} onClick={() => {this.setState({videoPreview: element.url.replace("*", ""), selectedVideoIndex: index }); document.getElementById("video-preview").volume = element.volume;}}>
+                                            <span className={this.state.videoPreview === element.url  ? "selected" : ""} style={{cursor: "pointer"}}>
                                                 <input type="text" value={element.name} onChange={(e) => {this.updateMedia(e, index, "video")}} onBlur={() => {this.saveMediaConfig("video")}} disabled={this.state.saving} />
                                                 <input type="range" min={0} max={1} step={0.1} value={element.volume} onBlur={() => {this.saveMediaConfig("video")}} onChange={(e) => {this.updateVolume(e, index, "video")}} />
                                                 <span style={{width: "50px"}}>{element.volume * 100}%</span>
+                                                <button onClick={() => {this.setState({videoPreview: element.url, selectedVideoIndex: index }); document.getElementById("video-preview").volume = element.volume;}}>Preview</button>
                                             </span>
                                         </li>)
                             })}                        
                         </ul>
                     </div>
-                    {this.state.selectedVideoIndex < this.state.videoPool.length ?
-                    <div style={{display: "table-cell", verticalAlign: "middle"}}>
+                    <div style={{display: "table-cell", visibility: this.state.selectedVideoIndex >= 0 && this.state.selectedVideoIndex < this.state.videoPool.length ? "visible" : "hidden", verticalAlign: "middle"}}>
                         <h3>Preview</h3>
                         <video 
                             id="video-preview"
@@ -390,15 +394,19 @@ export default class MediaPoolConfig extends React.Component {
                             width="300px" 
                             controls 
                             onBlur={() => {this.saveMediaConfig("video")}} />
-                    </div>: null}
+                    </div>
                 </div>
                 <div style={{border: "1px solid black"}}>
                     <h3>Add New Video</h3>
-                    <video src={this.state.uploadVideoDataUrl} width="300px" controls /><br/>
-                    <input ref={this.videoDataRef} onChange={(e) => {this.onFileLoaded(e)}} accept=".mp4" type="file" disabled={this.state.addVideoUrl ? true : false} /><br/>
-                    <span>or</span><br/>
-                    <input ref={this.videoUrlRef} onChange={(e) => {this.onChangeUrl(e, "video")}} type="text" placeholder="Video URL" disabled={this.state.uploadVideoDataUrl ? true : false} /><br/>
-                    <button onClick={() => {this.storeMedia("video")}} disabled={this.state.uploadVideoData || this.state.addVideoUrl || this.state.saving ? false : true}>Store Video</button>
+                    <div style={{display: "table"}}>
+                        <div style={{display: "table-cell", verticalAlign: "middle"}}>
+                            <input ref={this.videoDataRef} onChange={(e) => {this.onFileLoaded(e)}} accept=".mp4" type="file" disabled={this.state.addVideoUrl ? true : false} /><br/>
+                            <button onClick={() => {this.storeMedia("video")}} disabled={this.state.uploadVideoData || this.state.addVideoUrl || this.state.saving ? false : true}>Store Video</button>
+                        </div>
+                        <div style={{display: "table-cell"}}>
+                            {this.state.uploadVideoDataUrl ? <video src={this.state.uploadVideoDataUrl} width="300px" controls /> : null}
+                        </div>
+                    </div>
                 </div>
             </div>
         )
