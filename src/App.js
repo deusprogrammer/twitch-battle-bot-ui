@@ -85,7 +85,7 @@ class App extends React.Component {
                         }
                     </div>
                     <div style={{textAlign: "center"}}>
-                        <Link to={`${process.env.PUBLIC_URL}/`}>Guide</Link> | <Link to={`${process.env.PUBLIC_URL}/battlers/~self`}>Your Battler</Link> | {this.state.isAdmin ? <Link to={`${process.env.PUBLIC_URL}/bot`}>Your Bot</Link> : <Link to={`${process.env.PUBLIC_URL}/registration/start`}>Get a Bot</Link>}
+                        <Link to={`${process.env.PUBLIC_URL}/`}>Guide</Link> | <Link to={`${process.env.PUBLIC_URL}/battlers/~self`}>Your Battler</Link>
                     </div>
                     <div style={{textAlign: "center"}}>
                         <Link to={`${process.env.PUBLIC_URL}/encyclopedia/items`}>Item Encyclopedia</Link> | <Link to={`${process.env.PUBLIC_URL}/encyclopedia/abilities`}>Ability Encyclopedia</Link> | <Link to={`${process.env.PUBLIC_URL}/encyclopedia/monsters`}>Monster Encyclopedia</Link>
@@ -95,11 +95,11 @@ class App extends React.Component {
                             <Link to={`${process.env.PUBLIC_URL}/items`}>Item Console</Link> | <Link to={`${process.env.PUBLIC_URL}/abilities`}>Ability Console</Link> | <Link to={`${process.env.PUBLIC_URL}/monsters`}>Monster Console</Link>
                         </div>
                     : null}
-                    {this.state.isBroadcaster ? 
+                    {/* {this.state.isBroadcaster ? 
                         <div style={{textAlign: "center"}}>
                             <Link to={`${process.env.PUBLIC_URL}/sealed-items`}>Sealed Items</Link>
                         </div>
-                    : null}
+                    : null} */}
                     {this.state.isAdmin ?
                         <div style={{textAlign: "center"}}>
                             <label>Channel:</label>
@@ -126,8 +126,8 @@ class App extends React.Component {
                         <SecureRoute isAuthenticated={this.state.isLoggedIn} exact path={`${process.env.PUBLIC_URL}/battlers/:id`} component={Battler} />
                         <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/items`} component={Items} />
                         <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/items/:id`} component={Item} />
-                        <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/sealed-items`} component={SealedItems} />
-                        <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/sealed-items/:id`} component={SealedItem} />
+                        {/* <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/sealed-items`} component={SealedItems} /> */}
+                        {/* <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/sealed-items/:id`} component={SealedItem} /> */}
                         <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/abilities`} component={Abilities} />
                         <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/abilities/:id`} component={Ability} />
                         <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/monsters`} component={Monsters} />
