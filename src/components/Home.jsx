@@ -14,7 +14,7 @@ export default class Home extends React.Component {
                 
                 <h1>Getting Started</h1>
 
-                <p>First you need to create a battler through the Twitch extension under the video.  Once you do this, you can check out and manage your profile here: https://deusprogrammer.com/util/twitch/battlers/~self</p>
+                <p>First you need to create a battler through the Twitch extension under the video.  Once you do this, you can check out and manage your profile here: https://deusprogrammer.com/cbd/battlers/~self</p>
 
                 <h1>How Does it Work?</h1>
 

@@ -40,7 +40,7 @@ class App extends React.Component {
     }
 
     login = () => {
-        window.localStorage.setItem("twitchRedirect", "https://deusprogrammer.com/util/twitch/");
+        window.localStorage.setItem("twitchRedirect", "https://deusprogrammer.com/cbd/");
         window.location.replace("https://deusprogrammer.com/api/auth-svc/auth/twitch");
     }
 
