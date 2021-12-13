@@ -100,7 +100,7 @@ class App extends React.Component {
                             <Link to={`${process.env.PUBLIC_URL}/sealed-items`}>Sealed Items</Link>
                         </div>
                     : null} */}
-                    {this.state.isAdmin ?
+                    {/* {this.state.isAdmin ?
                         <div style={{textAlign: "center"}}>
                             <label>Channel:</label>
                             <select 
@@ -113,7 +113,7 @@ class App extends React.Component {
                                 })}
                             </select>
                         </div> : null
-                    }
+                    } */}
                     <Switch>
                         <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
                         <Route exact path={`${process.env.PUBLIC_URL}/registration/start`} component={RegistrationStart} />
