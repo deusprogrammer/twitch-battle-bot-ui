@@ -71,6 +71,10 @@ class App extends React.Component {
             isBroadcaster = true;
         }
 
+        if (profile.username === null) {
+            isLoggedIn = false;
+        }
+
         this.setState({isLoggedIn, isAdmin, isBroadcaster, profile});
     }
     
