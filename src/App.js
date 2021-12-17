@@ -11,19 +11,14 @@ import Monster from './components/Monster';
 import Monsters from './components/Monsters';
 import Ability from './components/Ability';
 import Abilities from './components/Abilities';
-import Bot from './components/Bot';
-import SealedItem from './components/SealedItem';
-import SealedItems from './components/SealedItems';
 import RegistrationStart from './components/RegistrationStart';
 import RegistrationCallBack from './components/RegistrationCallBack';
 import RegistrationRefresh from './components/RegistrationRefresh';
 import AbilitiesEncyclopedia from './components/AbilitiesEncyclopedia';
 import ItemsEncyclopedia from './components/ItemsEncyclopedia';
 import MonstersEncyclopedia from './components/MonstersEncyclopedia';
-import AdminConfigs from './components/AdminConfigs';
-import MediaPoolConfig from './components/MediaPoolConfig';
-import RaidAlertCustomizer from './components/RaidAlertCustomizer';
-import RaidAlertManager from './components/RaidAlertManager';
+
+import Dev from './devComponents/Dev';
 
 import SecureRoute from './elements/SecureRoute';
 
@@ -40,6 +35,10 @@ class App extends React.Component {
     }
 
     login = () => {
+        if (process.env.NODE_ENV === "development") {
+            window.location = `https://deusprogrammer.com/util/auth/dev?redirect=${window.location.protocol}//${window.location.hostname}:${window.location.port}${process.env.PUBLIC_URL}/dev`;
+            return;
+        }
         window.localStorage.setItem("twitchRedirect", "https://deusprogrammer.com/cbd/");
         window.location.replace("https://deusprogrammer.com/api/auth-svc/auth/twitch");
     }
@@ -99,25 +98,6 @@ class App extends React.Component {
                             <Link to={`${process.env.PUBLIC_URL}/items`}>Item Console</Link> | <Link to={`${process.env.PUBLIC_URL}/abilities`}>Ability Console</Link> | <Link to={`${process.env.PUBLIC_URL}/monsters`}>Monster Console</Link>
                         </div>
                     : null}
-                    {/* {this.state.isBroadcaster ? 
-                        <div style={{textAlign: "center"}}>
-                            <Link to={`${process.env.PUBLIC_URL}/sealed-items`}>Sealed Items</Link>
-                        </div>
-                    : null} */}
-                    {/* {this.state.isAdmin ?
-                        <div style={{textAlign: "center"}}>
-                            <label>Channel:</label>
-                            <select 
-                                value={this.state.channel}
-                                onChange={(evt) => {window.localStorage.setItem("channel", evt.target.value); window.location.reload();}}>
-                                { this.state.profile.connected.twitch.channels.map((channel) => {
-                                    return (
-                                        <option value={channel}>{channel}</option>
-                                    );
-                                })}
-                            </select>
-                        </div> : null
-                    } */}
                     <Switch>
                         <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
                         <Route exact path={`${process.env.PUBLIC_URL}/registration/start`} component={RegistrationStart} />
@@ -136,6 +116,10 @@ class App extends React.Component {
                         <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/abilities/:id`} component={Ability} />
                         <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/monsters`} component={Monsters} />
                         <SecureRoute isAuthenticated={this.state.isBroadcaster || this.state.isAdmin} exact path={`${process.env.PUBLIC_URL}/monsters/:id`} component={Monster} />
+
+                        { process.env.NODE_ENV === 'development' ?
+                            <Route exact path={`${process.env.PUBLIC_URL}/dev`} component={Dev} /> : null
+                        }
                     </Switch>
                 </Router>
             </div>

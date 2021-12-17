@@ -10,9 +10,14 @@ axios.interceptors.response.use(function (response) {
     return response;
 }, function (error) {
     if (error.response.status === 401) {
-        window.localStorage.setItem("twitchRedirect", window.location);
-        window.location = "https://deusprogrammer.com/api/auth-svc/auth/twitch";
+      if (process.env.NOD_ENV === "development") {
+        window.location = "https://deusprogrammer.com/util/auth/dev?redirect=http://localhost:3000";
         return;
+      }
+
+      window.localStorage.setItem("twitchRedirect", window.location);
+      window.location = "https://deusprogrammer.com/api/auth-svc/auth/twitch";
+      return;
     }
     return Promise.reject(error);
 });
