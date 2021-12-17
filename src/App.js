@@ -31,6 +31,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 class App extends React.Component {
     state = {
         isAdmin: false,
+        profile: {},
         channel: window.localStorage.getItem("channel")
     }
 
@@ -84,7 +85,7 @@ class App extends React.Component {
                 <Router>
                     <div style={{textAlign: "right"}}>
                         {!this.state.isLoggedIn ? 
-                            <button onClick={this.login}>Login</button> : <button onClick={() => {alert("This is not currently implemented")}}>My Profile</button>
+                            <button onClick={this.login}>Login</button> : <span>Logged in as {this.state.profile.username}{this.state.isAdmin ? "[ADMIN]" : null}</span>
                         }
                     </div>
                     <div style={{textAlign: "center"}}>
