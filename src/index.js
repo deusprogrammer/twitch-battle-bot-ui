@@ -9,9 +9,9 @@ import axios from 'axios';
 axios.interceptors.response.use(function (response) {
     return response;
 }, function (error) {
-    if (error.response.status === 401) {
+    if (error.response && error.response.status === 401) {
       if (process.env.NOD_ENV === "development") {
-        window.location = "https://deusprogrammer.com/util/auth/dev?redirect=http://localhost:3000";
+        window.location = `https://deusprogrammer.com/util/auth/dev?redirect=${window.location.protocol}//${window.location.hostname}:${window.location.port}${process.env.PUBLIC_URL}/dev`
         return;
       }
 
