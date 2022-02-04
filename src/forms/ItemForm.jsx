@@ -53,6 +53,14 @@ export default class ItemForm extends React.Component {
         let skillsAdded = [];
         let unlocksAdded = [];
         let triggers = [];
+
+        if (!abilities) {
+            abilities = [];
+        }
+        if (!sealedItems) {
+            sealedItems = [];
+        }
+        
         if (this.props.initialValues) {
             abilitiesAdded = this.props.initialValues.abilities;
             skillsAdded = this.props.initialValues.skills;
