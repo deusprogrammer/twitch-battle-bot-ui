@@ -1,0 +1,38 @@
+.battler-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 1;
+    gap: 10px;
+    width: 100vw;
+}
+
+.battler-container > * {
+    padding: 10px;
+    flex-basis: 100%;
+    text-align: center;
+}
+
+.battler-container table {
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+}
+
+@media screen and (min-width: 1400px) {
+    .battler-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        flex: 1;
+        gap: 10px;
+        width: 100vw;
+    }
+
+    .battler-container > * {
+        padding: 10px;
+        flex-basis: 100%;
+    }
+}

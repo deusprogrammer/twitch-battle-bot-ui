@@ -6,6 +6,8 @@ import AbilityElement from '../elements/AbilityElement';
 
 import ApiHelper from '../utils/ApiHelper';
 
+import './Battler.css';
+
 const iconMap = {
     HAND: `${process.env.PUBLIC_URL}/icons/weapon-icon.png`,
     OFFHAND: `${process.env.PUBLIC_URL}/icons/weapon-icon.png`,
@@ -125,170 +127,168 @@ export default class Battler extends React.Component {
 
         return (
             <div>
-                <div className="container-fluid">
-                    <h1>{user.name}</h1>
-                    <div className="row">
-                        <div className="col-md-2">
-                            <h3>Stats</h3>
-                            <table>
-                                <tbody>
-                                    <tr title="Your health points determine whether you are alive or not.  Once you hit zero, it's over." style={{cursor: "pointer"}}>
-                                        <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>HP</td>
-                                        <td>{user.hp}/{user.maxHp}</td>
-                                    </tr>
-                                    <tr title="Your action points are consumed when you perform actions like attacking or using abilities." style={{cursor: "pointer"}}>
-                                        <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>AP</td>
-                                        <td style={{textAlign: "center"}}>{user.ap}</td>
-                                    </tr>
-                                    <tr title="Your strength determines how hard you hit when you attack." style={{cursor: "pointer"}}>
-                                        <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>STR</td>
-                                        <td style={{textAlign: "center"}}>{user.str}</td>
-                                    </tr>
-                                    <tr title="Your dexterity determines how often you can attack." style={{cursor: "pointer"}}>
-                                        <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>DEX</td>
-                                        <td style={{textAlign: "center"}}>{user.dex}</td>
-                                    </tr>
-                                    <tr title="Your intelligence determines if your abilities succeed or not." style={{cursor: "pointer"}}>
-                                        <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>INT</td>
-                                        <td style={{textAlign: "center"}}>{user.int}</td>
-                                    </tr>
-                                    <tr title="Your hit determines whether your attacks hit or not." style={{cursor: "pointer"}}>
-                                        <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>HIT</td>
-                                        <td style={{textAlign: "center"}}>{user.hit}</td>
-                                    </tr>
-                                    <tr title="Your armor class determines how hard it is to hit you." style={{cursor: "pointer"}}>
-                                        <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>AC</td>
-                                        <td style={{textAlign: "center"}}>{user.totalAC}</td>
-                                    </tr>
-                                    <tr title="Gold is used for purchasing things." style={{cursor: "pointer"}}>
-                                        <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>Gold</td>
-                                        <td style={{textAlign: "center"}}>{user.gold}</td>
-                                    </tr>
-                                    <tr title="This is the range of damage you can do with your current weapon." style={{cursor: "pointer"}}>
-                                        <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>DMG</td>
-                                        <td style={{textAlign: "center"}}>{this.damageRange(user).low} - {this.damageRange(user).high}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div className="col-md-3">
-                            <h3>Equipment</h3>
-                            <table>
-                                    { ["HAND", "HEAD", "ARMS", "BODY", "LEGS", "ACCESSORY"].map((slot) => {
-                                        let item = user.equipment[slot.toLowerCase()];
-                                        let icon = <img style={{heigh: "38px", width: "38px"}} src={iconMap[slot]} />;
-                                        if (!item) {
-                                            return (
-                                                <tr style={{height: "40px"}}>
+                <h1>{user.name}</h1>
+                <div className="battler-container">
+                    <div className="battler-stats">
+                        <h3>Stats</h3>
+                        <table>
+                            <tbody>
+                                <tr title="Your health points determine whether you are alive or not.  Once you hit zero, it's over." style={{cursor: "pointer"}}>
+                                    <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>HP</td>
+                                    <td>{user.hp}/{user.maxHp}</td>
+                                </tr>
+                                <tr title="Your action points are consumed when you perform actions like attacking or using abilities." style={{cursor: "pointer"}}>
+                                    <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>AP</td>
+                                    <td style={{textAlign: "center"}}>{user.ap}</td>
+                                </tr>
+                                <tr title="Your strength determines how hard you hit when you attack." style={{cursor: "pointer"}}>
+                                    <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>STR</td>
+                                    <td style={{textAlign: "center"}}>{user.str}</td>
+                                </tr>
+                                <tr title="Your dexterity determines how often you can attack." style={{cursor: "pointer"}}>
+                                    <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>DEX</td>
+                                    <td style={{textAlign: "center"}}>{user.dex}</td>
+                                </tr>
+                                <tr title="Your intelligence determines if your abilities succeed or not." style={{cursor: "pointer"}}>
+                                    <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>INT</td>
+                                    <td style={{textAlign: "center"}}>{user.int}</td>
+                                </tr>
+                                <tr title="Your hit determines whether your attacks hit or not." style={{cursor: "pointer"}}>
+                                    <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>HIT</td>
+                                    <td style={{textAlign: "center"}}>{user.hit}</td>
+                                </tr>
+                                <tr title="Your armor class determines how hard it is to hit you." style={{cursor: "pointer"}}>
+                                    <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>AC</td>
+                                    <td style={{textAlign: "center"}}>{user.totalAC}</td>
+                                </tr>
+                                <tr title="Gold is used for purchasing things." style={{cursor: "pointer"}}>
+                                    <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>Gold</td>
+                                    <td style={{textAlign: "center"}}>{user.gold}</td>
+                                </tr>
+                                <tr title="This is the range of damage you can do with your current weapon." style={{cursor: "pointer"}}>
+                                    <td style={{background: "teal", color: "white", fontWeight: "bolder"}}>DMG</td>
+                                    <td style={{textAlign: "center"}}>{this.damageRange(user).low} - {this.damageRange(user).high}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="battler-equipment">
+                        <h3>Equipment</h3>
+                        <table>
+                                { ["HAND", "HEAD", "ARMS", "BODY", "LEGS", "ACCESSORY"].map((slot) => {
+                                    let item = user.equipment[slot.toLowerCase()];
+                                    let icon = <img style={{heigh: "38px", width: "38px"}} src={iconMap[slot]} />;
+                                    if (!item) {
+                                        return (
+                                            <tr style={{height: "40px"}}>
+                                                <td style={{textAlign: "center"}}>{icon}</td>
+                                                <td>None</td>
+                                                <td></td>
+                                            </tr>
+                                        )
+                                    }
+                                    return (
+                                        <React.Fragment>
+                                            <tr 
+                                                data-tip 
+                                                data-for={`${item.slot}-tip`}
+                                                style={{cursor: "pointer", height: "40px"}}>
                                                     <td style={{textAlign: "center"}}>{icon}</td>
-                                                    <td>None</td>
-                                                    <td></td>
-                                                </tr>
-                                            )
-                                        }
-                                        return (
-                                            <React.Fragment>
-                                                <tr 
-                                                    data-tip 
-                                                    data-for={`${item.slot}-tip`}
-                                                    style={{cursor: "pointer", height: "40px"}}>
-                                                        <td style={{textAlign: "center"}}>{icon}</td>
-                                                        <td>{item.name}</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-primary" onClick={() => {this.unequipItem(item)}}>Unequip</button>
-                                                        </td>
-                                                </tr>
-                                                <ReactToolTip id={`${item.slot}-tip`} place="right" effect="solid" clickable={true} delayHide={500} delayShow={500} delayUpdate={500}>
-                                                    <ItemElement 
-                                                        item={item} 
-                                                        abilityTable={this.abilityTable} />
-                                                </ReactToolTip>
-                                            </React.Fragment>
-                                        )
-                                    })}
-                            </table>
-                        </div>
-                        <div className="col-md-3">
-                            <h3>Abilities</h3>
-                            {user.abilities.length > 0 ?
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>AP Cost</th>
-                                            <th>Element</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        { ["NONE", "FIRE", "ICE", "LIGHTNING", "WATER", "EARTH", "DARK", "LIGHT", "HEALING", "BUFFING", "CLEANSING"].map((element) => {
-                                            return user.abilities.map((ability) => {
-                                                if (element !== ability.element) {
-                                                    return;
-                                                }
-
-                                                return (
-                                                    <React.Fragment>
-                                                        <tr data-tip
-                                                            data-for={`${ability.id}-tip`}
-                                                            style={{cursor: "pointer"}}
-                                                            key={`ability-${ability.id}`}>
-                                                                <td>{ability.name}</td>
-                                                                <td>{ability.ap}</td>
-                                                                <td>{ability.element}</td>
-                                                                <td>
-                                                                    <button type="button" class="btn btn-primary" onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
-                                                                </td>
-                                                        </tr>
-                                                        <ReactToolTip id={`${ability.id}-tip`} place="right" effect="solid" clickable={true} delayHide={500} delayShow={500} delayUpdate={500}>
-                                                            <AbilityElement 
-                                                                ability={ability} 
-                                                                abilityTable={this.abilityTable} />
-                                                        </ReactToolTip>
-                                                    </React.Fragment>
-                                                )
-                                            })
-                                        })}
-                                    </tbody>
-                                </table> : null 
-                            }
-                        </div>
-                        <div className="col-md-4">
-                            <h3>Inventory</h3>
+                                                    <td>{item.name}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary" onClick={() => {this.unequipItem(item)}}>Unequip</button>
+                                                    </td>
+                                            </tr>
+                                            <ReactToolTip id={`${item.slot}-tip`} place="right" effect="solid" clickable={true} delayHide={500} delayShow={500} delayUpdate={500}>
+                                                <ItemElement 
+                                                    item={item} 
+                                                    abilityTable={this.abilityTable} />
+                                            </ReactToolTip>
+                                        </React.Fragment>
+                                    )
+                                })}
+                        </table>
+                    </div>
+                    <div className="battler-abilities">
+                        <h3>Abilities</h3>
+                        {user.abilities.length > 0 ?
                             <table>
-                                { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY", "MIKU", "MONSTER", "DIGITAL", "PHYSICAL"].map((slot) => {
-                                    return Object.keys(user.condensedInventory).map((itemKey) => {
-                                        const item = user.condensedInventory[itemKey].item;
-                                        const count = user.condensedInventory[itemKey].count;
-                                        let icon = <img style={{heigh: "38px", width: "38px"}} src={iconMap[slot]} />;
-                                        if (item.slot.toUpperCase() !== slot) {
-                                            return;
-                                        }
-                                        return (
-                                            <React.Fragment>
-                                                <tr 
-                                                    data-tip 
-                                                    data-for={`${item.id}-inv-tip`}
-                                                    style={{cursor: "pointer"}}>
-                                                        <td style={{textAlign: "center"}}>{icon}</td>
-                                                        <td>{item.name}</td>
-                                                        <td>{count}</td>
-                                                        <td>
-                                                            {item.slot !== "INVENTORY" ? <button type="button" class="btn btn-primary" onClick={() => {this.equipItemOnUser(item)}}>Equip</button> : null}
-                                                            <button type="button" class="btn btn-primary" onClick={() => {this.sellItem(item)}}>Sell</button>
-                                                        </td>
-                                                </tr>
-                                                <ReactToolTip id={`${item.id}-inv-tip`} place="left" effect="solid" clickable={true} delayHide={500} delayShow={500} delayUpdate={500}>
-                                                    <ItemElement 
-                                                        item={item} 
-                                                        abilityTable={this.abilityTable} />
-                                                </ReactToolTip>
-                                            </React.Fragment>
-                                        )
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>AP Cost</th>
+                                        <th>Element</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    { ["NONE", "FIRE", "ICE", "LIGHTNING", "WATER", "EARTH", "DARK", "LIGHT", "HEALING", "BUFFING", "CLEANSING"].map((element) => {
+                                        return user.abilities.map((ability) => {
+                                            if (element !== ability.element) {
+                                                return;
+                                            }
+
+                                            return (
+                                                <React.Fragment>
+                                                    <tr data-tip
+                                                        data-for={`${ability.id}-tip`}
+                                                        style={{cursor: "pointer"}}
+                                                        key={`ability-${ability.id}`}>
+                                                            <td>{ability.name}</td>
+                                                            <td>{ability.ap}</td>
+                                                            <td>{ability.element}</td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-primary" onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}>Get Id</button>
+                                                            </td>
+                                                    </tr>
+                                                    <ReactToolTip id={`${ability.id}-tip`} place="right" effect="solid" clickable={true} delayHide={500} delayShow={500} delayUpdate={500}>
+                                                        <AbilityElement 
+                                                            ability={ability} 
+                                                            abilityTable={this.abilityTable} />
+                                                    </ReactToolTip>
+                                                </React.Fragment>
+                                            )
+                                        })
                                     })}
-                                )}
-                            </table>
-                        </div>
+                                </tbody>
+                            </table> : null 
+                        }
+                    </div>
+                    <div className="battler-inventory">
+                        <h3>Inventory</h3>
+                        <table>
+                            { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY", "MIKU", "MONSTER", "DIGITAL", "PHYSICAL"].map((slot) => {
+                                return Object.keys(user.condensedInventory).map((itemKey) => {
+                                    const item = user.condensedInventory[itemKey].item;
+                                    const count = user.condensedInventory[itemKey].count;
+                                    let icon = <img style={{heigh: "38px", width: "38px"}} src={iconMap[slot]} />;
+                                    if (item.slot.toUpperCase() !== slot) {
+                                        return;
+                                    }
+                                    return (
+                                        <React.Fragment>
+                                            <tr 
+                                                data-tip 
+                                                data-for={`${item.id}-inv-tip`}
+                                                style={{cursor: "pointer"}}>
+                                                    <td style={{textAlign: "center"}}>{icon}</td>
+                                                    <td>{item.name}</td>
+                                                    <td>{count}</td>
+                                                    <td>
+                                                        {item.slot !== "INVENTORY" ? <button type="button" class="btn btn-primary" onClick={() => {this.equipItemOnUser(item)}}>Equip</button> : null}
+                                                        <button type="button" class="btn btn-primary" onClick={() => {this.sellItem(item)}}>Sell</button>
+                                                    </td>
+                                            </tr>
+                                            <ReactToolTip id={`${item.id}-inv-tip`} place="left" effect="solid" clickable={true} delayHide={500} delayShow={500} delayUpdate={500}>
+                                                <ItemElement 
+                                                    item={item} 
+                                                    abilityTable={this.abilityTable} />
+                                            </ReactToolTip>
+                                        </React.Fragment>
+                                    )
+                                })}
+                            )}
+                        </table>
                     </div>
                 </div>
             </div>
