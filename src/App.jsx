@@ -102,7 +102,6 @@ class App extends React.Component {
                                 }
                             </div>
                         </div>
-                        <br />
                         <nav className="desktop">
                             <div style={{textAlign: "center"}}>
                                 <Link to={`${process.env.PUBLIC_URL}/`}>Guide</Link> | <Link to={`${process.env.PUBLIC_URL}/battlers/~self`}>Your Battler</Link>
