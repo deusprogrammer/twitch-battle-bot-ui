@@ -6,48 +6,17 @@ strong {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 body {
-  background-color: dimgray;
-  color: white;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  background-color: dimgray !important;
+  color: white !important;
 }
 
 ul {
   list-style-type: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 a {
@@ -61,7 +30,6 @@ a:hover {
 }
 
 .item {
-  max-width: 800px;
   box-sizing: border-box;
   margin: 10px;
   background-color: black;
@@ -77,19 +45,109 @@ a:hover {
   box-sizing: border-box;
 }
 
+.burger > div {
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  margin: 6px;
+}
+
 @media screen and (min-width: 480px) {
   .item-image {
     width: 200px;
     vertical-align: middle;
   }
-
-  .battler {
-    width: 80%;
-    margin: auto;
-  }
 }
 
-@media screen and (max-width: 480px) {
+header {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  width: 100vw;
+}
+
+.desktop {
+  display: block;
+}
+
+.mobile {
+  display: none;
+}
+
+button.menu-button {
+  display: none;
+}
+
+#header-row {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  font-size: 1.2em;
+}
+
+#header-row h1 {
+  font-size: 1.2em;
+}
+
+#header-row > *:last-child {
+  font-size: 0.5em;
+  text-align: right;
+}
+
+#header-row > * {
+  flex-basis: 100%;
+}
+
+.burger {
+  visibility: hidden;
+}
+
+@media screen and (max-width: 800px) {
+  .desktop {
+    display: none !important;
+  }
+
+  button.menu-button {
+    display: inline !important;
+    padding: 1.0em !important;
+  }
+
+  .mobile {
+    display: block;
+  }
+
+  nav.mobile {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    gap: 2px;
+    width: 100vw;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 400ms ease-in-out;
+    background: rgb(36, 97, 250);
+    color: white;
+  }
+
+  nav.mobile.show {
+    max-height: 100vh;
+    transition: max-height 400ms ease-in-out;
+  }
+
+  nav.mobile h2 {
+    font-size: 1.2em;
+  }
+
+  nav.mobile button {
+    width: 100%;
+    padding: 0.5em;
+    border: none;
+  }
+
+  .nav-checkbox {
+    z-index: 9999;
+  }
+
   .item-details {
     padding: 10px;
   }
@@ -116,8 +174,19 @@ a:hover {
   }
 
   button {
-    width: 200px;
-    height: 50px;
+    padding: 2em;
+  }
+
+  .item-stats {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .item-stats > *:not(:first-child) {
+    margin-left: 10px;
+  }
+
+  .burger {
+    visibility: visible;
   }
 }
 
@@ -132,7 +201,7 @@ a:hover {
   overflow-wrap: normal;
 }
 
-.item-stat {
+/* .item-stat {
   margin: 5px;
   width: 75px;
   height: 25px;
@@ -141,9 +210,18 @@ a:hover {
   color: black;
   border: 1px solid black;
   background-color: white;
+} */
+
+.item-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.item-stat-highlight {
+.item-stats > .stats-label {
+  grid-row: span 2;
+}
+
+/* .item-stat-highlight {
   margin: 5px;
   width: 75px;
   height: 25px;
@@ -151,7 +229,7 @@ a:hover {
   text-align: center;
   color: white;
   background-color: greenyellow;
-}
+} */
 
 .item-name {
   font-size: larger;
@@ -183,4 +261,9 @@ a:hover {
 .selected {
   background-color: blue;
   color: white;
+}
+
+.item-grid {
+  display: flex;
+  flex-basis: 100%;
 }

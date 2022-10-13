@@ -36,7 +36,7 @@ export default class ItemsEncyclopedia extends React.Component {
         return (
             <div>
                 <h1 style={{textAlign: "center"}}>Item Encyclopedia</h1>
-                <div>
+                <div className="item-grid">
                     { this.state.items.length > 0 ? 
                     <div style={{margin: "auto"}}>
                         { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY"].map((slot) => {

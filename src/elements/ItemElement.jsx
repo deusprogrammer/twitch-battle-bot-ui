@@ -142,19 +142,19 @@ export default (props) => {
                             </div>
                             <div style={{clear: "both"}} />
                             <div className="item-stats">
-                                <div style={{float: "left", height: "25px", lineHeight: "25px"}}><b>Stat Mods:</b></div>
+                                <div className="stats-label" style={{height: "25px", lineHeight: "25px"}}><b>Stat Mods:</b></div>
                                 {["STR", "DEX", "INT", "HIT", "AC"].map((modStat) => {
                                     return <div style={{float: "left"}} className={item.type !== "armor" && item.toHitStat === modStat ? "item-stat-highlight" : "item-stat"}>{modStat}: {item.mods[modStat.toLowerCase()]}</div>
                                 })}
                             </div>
                             <div style={{clear: "both"}} />
                             <div className="item-stats">
-                                <div style={{float: "left", height: "25px", lineHeight: "25px"}}><b>Resistances:</b></div>
+                                <div style={{height: "25px", lineHeight: "25px"}}><b>Resistances:</b></div>
                                 {["Fire", "Ice", "Lightning", "Water", "Earth", "Dark", "Light"].map((resistance) => {
                                     let elementColor = elementColors[resistance.toUpperCase()];
                                     let color = elementColor.c;
                                     let backgroundColor = elementColor.b;
-                                    return <div style={{float: "left", color, backgroundColor, width: "120px", textAlign: "center"}}>{resistance}: {item.resistances[resistance.toLowerCase()]*5}%</div>
+                                    return <div style={{color, backgroundColor, width: "120px", textAlign: "center"}}>{resistance}: {item.resistances[resistance.toLowerCase()]*5}%</div>
                                 })}
                             </div>
                             <div style={{clear: "both"}} />
