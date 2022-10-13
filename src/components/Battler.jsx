@@ -126,8 +126,8 @@ export default class Battler extends React.Component {
         }
 
         return (
-            <div>
-                <h1>{user.name}</h1>
+            <div id="battler">
+                <h2>{user.name}</h2>
                 <div className="battler-container">
                     <div className="battler-stats">
                         <h3>Stats</h3>

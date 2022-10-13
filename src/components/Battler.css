@@ -1,3 +1,7 @@
+#battler h2 {
+    font-size: 1.5em;
+}
+
 .battler-container {
     display: flex;
     flex-direction: row;
