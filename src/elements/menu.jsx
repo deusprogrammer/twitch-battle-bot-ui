@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import './menu.css';
 
 export const menu = ({title, menu, className}) => {
+    let closeMenu = () => {
+        document.getElementById("menu-checkbox-label").click();
+    }
+
     return (
         <div className={className} id="menu">
             <input id="menu-checkbox" type="checkbox" />
@@ -14,7 +18,7 @@ export const menu = ({title, menu, className}) => {
                 </div>
                 <h1>{title}</h1>
             </label>
-            <nav>
+            <nav onClick={closeMenu}>
                 { Object.keys(menu).map((menuGroup, i) => {
                     let {items, show} = menu[menuGroup];
 
