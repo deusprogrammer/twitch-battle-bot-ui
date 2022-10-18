@@ -1,3 +1,7 @@
+#login-button {
+  padding: 0.5em;
+}
+
 strong {
   display: inline;
 }
@@ -22,11 +26,6 @@ ul {
 a {
   color: white;
   text-decoration: none;
-}
-
-a:hover {
-  color: black;
-  background-color: white;
 }
 
 .item {

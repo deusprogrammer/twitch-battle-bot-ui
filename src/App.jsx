@@ -18,6 +18,8 @@ import AbilitiesEncyclopedia from './components/AbilitiesEncyclopedia';
 import ItemsEncyclopedia from './components/ItemsEncyclopedia';
 import MonstersEncyclopedia from './components/MonstersEncyclopedia';
 
+import Menu from './elements/menu';
+
 import Dev from './devComponents/Dev';
 
 import SecureRoute from './elements/SecureRoute';
@@ -30,7 +32,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
     state = {
-        menuOpen: false,
         isAdmin: false,
         profile: {},
         channel: window.localStorage.getItem("channel")
@@ -43,10 +44,6 @@ class App extends React.Component {
         }
         window.localStorage.setItem("twitchRedirect", "https://deusprogrammer.com/cbd/");
         window.location.replace("https://deusprogrammer.com/api/auth-svc/auth/twitch");
-    }
-
-    toggleMenu = () => {
-        this.setState({menuOpen: !this.state.menuOpen});
     }
 
     componentDidMount = async () => {
@@ -89,49 +86,57 @@ class App extends React.Component {
                 <ToastContainer />
                 <Router>
                     <header>
-                        <div id="header-row">
-                            <div className="burger" onClick={() => {this.toggleMenu();}}>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </div>
-                            <h1>Chat Battler Dungeon</h1>
-                            <div>
-                                {!this.state.isLoggedIn ? 
-                                    <button onClick={this.login}>Login</button> : <span>Logged in as {this.state.profile.username}{this.state.isAdmin ? "[ADMIN]" : null}</span>
-                                }
-                            </div>
+                        <div>
+                            {!this.state.isLoggedIn ? 
+                                <button id="login-button" onClick={this.login}>Login</button> : <span>Logged in as {this.state.profile.username}{this.state.isAdmin ? "[ADMIN]" : null}</span>
+                            }
                         </div>
-                        <nav className="desktop">
-                            <div style={{textAlign: "center"}}>
-                                <Link to={`${process.env.PUBLIC_URL}/`}>Guide</Link> | <Link to={`${process.env.PUBLIC_URL}/battlers/~self`}>Your Battler</Link>
-                            </div>
-                            <div style={{textAlign: "center"}}>
-                                <Link to={`${process.env.PUBLIC_URL}/encyclopedia/items`}>Item Encyclopedia</Link> | <Link to={`${process.env.PUBLIC_URL}/encyclopedia/abilities`}>Ability Encyclopedia</Link> | <Link to={`${process.env.PUBLIC_URL}/encyclopedia/monsters`}>Monster Encyclopedia</Link>
-                            </div>
-                            {this.state.isAdmin ? 
-                                <div style={{textAlign: "center"}}>
-                                    <Link to={`${process.env.PUBLIC_URL}/items`}>Item Console</Link> | <Link to={`${process.env.PUBLIC_URL}/abilities`}>Ability Console</Link> | <Link to={`${process.env.PUBLIC_URL}/monsters`}>Monster Console</Link>
-                                </div>
-                            : null}
-                        </nav>
-                        <nav className={this.state.menuOpen ? "mobile show" : "mobile"} onClick={() => {this.toggleMenu();}}>
-                            <h2>Your Battler</h2>
-                            <Link to={`${process.env.PUBLIC_URL}/`}><button>Guide</button></Link>
-                            <Link to={`${process.env.PUBLIC_URL}/battlers/~self`}><button>Your Battler</button></Link>
-                            <h2>Encyclopedia</h2>
-                            <Link to={`${process.env.PUBLIC_URL}/encyclopedia/items`}><button>Item Encyclopedia</button></Link>
-                            <Link to={`${process.env.PUBLIC_URL}/encyclopedia/abilities`}><button>Ability Encyclopedia</button></Link>
-                            <Link to={`${process.env.PUBLIC_URL}/encyclopedia/monsters`}><button>Monster Encyclopedia</button></Link>
-                            {this.state.isAdmin ? 
-                                <>
-                                    <h2>Admin</h2>
-                                    <Link to={`${process.env.PUBLIC_URL}/items`}><button>Item Console</button></Link>
-                                    <Link to={`${process.env.PUBLIC_URL}/abilities`}><button>Ability Console</button></Link>
-                                    <Link to={`${process.env.PUBLIC_URL}/monsters`}><button>Monster Console</button></Link>
-                                </>
-                            : null}
-                        </nav>
+                        <Menu 
+                            title="Chat Battler Dungeon"
+                            menu={{
+                                "Profile": {
+                                    items: [
+                                        {
+                                            label: "Guide",
+                                            to: `${process.env.PUBLIC_URL}/`
+                                        }, {
+                                            label: "Battler",
+                                            to: `${process.env.PUBLIC_URL}/battlers/~self`
+                                        }
+                                    ],
+                                    show: true
+                                },
+                                "Encyclopedia": {
+                                    items: [
+                                        {
+                                            label: "Item Encyclopedia",
+                                            to: `${process.env.PUBLIC_URL}/encyclopedia/items`
+                                        }, {
+                                            label: "Ability Encyclopedia",
+                                            to: `${process.env.PUBLIC_URL}/encyclopedia/abilities`
+                                        }, {
+                                            label: "Monster Encyclopedia",
+                                            to: `${process.env.PUBLIC_URL}/encyclopedia/monsters`
+                                        }
+                                    ],
+                                    show: true
+                                },
+                                "Admin": {
+                                    items: [
+                                        {
+                                            label: "Item Console",
+                                            to: `${process.env.PUBLIC_URL}/items`
+                                        }, {
+                                            label: "Ability Console",
+                                            to: `${process.env.PUBLIC_URL}/abilities`
+                                        }, {
+                                            label: "Monster Console",
+                                            to: `${process.env.PUBLIC_URL}/monsters`
+                                        },
+                                    ],
+                                    show: this.state.isAdmin
+                                }
+                            }} />
                     </header>
                     <Switch>
                         <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
