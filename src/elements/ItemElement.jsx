@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 import ReactToolTip from 'react-tooltip';
 import AbilityElement from './AbilityElement';
 
@@ -84,7 +85,12 @@ export default (props) => {
     }
 
     return (
-        <div className="item" style={{backgroundColor, color}}>
+        <div 
+            className="item" 
+            style={{backgroundColor, color}}
+            title="Click to copy ID"
+            onClick={() => {navigator.clipboard.writeText(item.id);toast("Copied id to clipboard", {type: "info"});}}
+        >
             <div className="item-inner">
                 <div className="item-image"><img src="https://dummyimage.com/200X200/000/fff" /></div>
                 <div className="item-details">

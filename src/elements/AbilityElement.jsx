@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 import ReactToolTip from 'react-tooltip';
 
 const elementColors = {
@@ -64,7 +65,12 @@ let AbilityElement = (props) => {
     }
 
     return (
-        <div className="item" style={{backgroundColor, color}}>
+        <div 
+            className="item" 
+            style={{backgroundColor, color}}
+            title="Click to copy ID"
+            onClick={() => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}
+        >
             <div className="item-inner">
                 <div className="item-image"><img src="https://dummyimage.com/200X200/000/fff" /></div>
                 <div className="item-details">
@@ -105,7 +111,6 @@ let AbilityElement = (props) => {
                 </div>
             </div>
             <div style={{textAlign: "center"}}>
-                {props.onGetId ? <button type="button" class="btn btn-primary" onClick={() => {props.onGetId(ability)}}>Get Id</button> : null}
                 {props.onEdit ? <button type="button" class="btn btn-primary" onClick={() => {props.onEdit(ability)}}>Edit</button> : null}
             </div>
         </div>

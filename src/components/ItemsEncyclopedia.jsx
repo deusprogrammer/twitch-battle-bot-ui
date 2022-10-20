@@ -36,7 +36,7 @@ export default class ItemsEncyclopedia extends React.Component {
         return (
             <div>
                 <h1 style={{textAlign: "center"}}>Item Encyclopedia</h1>
-                <div className="item-grid">
+                <div>
                     { this.state.items.length > 0 ? 
                     <div style={{margin: "auto"}}>
                         { ["HAND", "OFFHAND", "HEAD", "BODY", "ARMS", "LEGS", "ACCESSORY", "INVENTORY"].map((slot) => {
@@ -69,20 +69,22 @@ export default class ItemsEncyclopedia extends React.Component {
                                 default:
                             }
                             return ( 
-                            <div>
-                                <h2>{slotName}</h2>
-                                {this.state.items.map((item) => {
-                                    if (item.slot.toUpperCase() !== slot) {
-                                        return;
-                                    }
-                                    
-                                    return <ItemElement 
-                                                item={item} 
-                                                abilityTable={this.abilityTable}
-                                                onGetId={(item) => {navigator.clipboard.writeText(item.id);toast("Copied id to clipboard", {type: "info"});}} 
-                                                />
-                                })}
-                            </div>
+                                <>
+                                    <h2>{slotName}</h2>
+                                    <div className="item-grid">
+                                        {this.state.items.map((item) => {
+                                            if (item.slot.toUpperCase() !== slot) {
+                                                return;
+                                            }
+                                            
+                                            return <ItemElement 
+                                                        item={item} 
+                                                        abilityTable={this.abilityTable}
+                                                        onGetId={(item) => {navigator.clipboard.writeText(item.id);toast("Copied id to clipboard", {type: "info"});}} 
+                                                        />
+                                        })}
+                                    </div>
+                                </>
                             )
                         })}
                     </div> : null }

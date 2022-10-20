@@ -1,0 +1,78 @@
+.element-row {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    flex-basis: 100%;
+    gap: 10px;
+}
+
+.element-row > div:first-child {
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+
+.element-row > div:last-child {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.stat-label {
+    font-weight: bolder;
+}
+
+.monster {
+    display: flex;
+    flex-direction: column;
+    background: black;
+    color: white;
+    padding: 10px;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.monster-name {
+    font-size: 2em;
+    font-weight: bolder;
+}
+
+.monster-description {
+    font-size: 0.95rem;
+    flex-basis: 100%;
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+}
+
+.monster-dungeon {
+    font-size: 0.75rem;
+    text-transform: capitalize;
+}
+
+.monster-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.monster-stats > div {
+    text-align: center;
+}
+
+.monster-drops {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 20px;
+}
+
+.monster-drops > div {
+    background-color: gray;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.stat-label {
+    font-size: 1.1em;
+    font-weight: bolder;
+}

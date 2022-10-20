@@ -66,21 +66,23 @@ export default class AbilitiesEncyclopedia extends React.Component {
                                 }
 
                                 return (
-                                    <div>
+                                    <>
                                         <h2>{slotName}</h2>
-                                        {this.state.abilities.map((ability) => {
-                                            if (element !== ability.element) {
-                                                return;
-                                            }
+                                        <div className="item-grid">
+                                            {this.state.abilities.map((ability) => {
+                                                if (element !== ability.element) {
+                                                    return;
+                                                }
 
-                                            return (
-                                                <AbilityElement 
-                                                    ability={ability} 
-                                                    abilityTable={this.abilityTable} 
-                                                    onGetId={(ability) => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}/>
-                                            )
-                                        })}
-                                    </div>
+                                                return (
+                                                    <AbilityElement 
+                                                        ability={ability} 
+                                                        abilityTable={this.abilityTable} 
+                                                        onGetId={(ability) => {navigator.clipboard.writeText(ability.id);toast("Copied id to clipboard", {type: "info"});}}/>
+                                                )
+                                            })}
+                                        </div>
+                                    </>
                                 );
                             })}
                     </div> : null }
