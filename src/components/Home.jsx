@@ -243,55 +243,61 @@ export default class Home extends React.Component {
 
                 <h2>Your Stats and What they Mean</h2>
 
-                <h3>HP</h3>
-                
-                <p>Hit points are how much damage your character can take until you are dead.  Simple enough.</p>
-
-                <h3>AP</h3>
-
-                <p>Action points are used everytime you perform an action like attacking, using abilities, or exploring.</p>
-
-                <h3>STR</h3>
-
-                <p>Strength is how hard you hit with your weapon.  This stat adds damage each attack you perform.</p>
-
-                <h3>DEX</h3>
-
-                <p>How quickly you can attack.  If you have a DEX of 0 your cooldown time is 25 seconds.  At the maximum value of +5 your cool down times are 5 seconds, and negative DEX has no limit on how much it can slow you down.  In the future, DEX beyond +5 will allow for multiple attacks in one cool down period.</p>
-
-                <h3>INT</h3>
-
-                <p>This stat is how well you can cast magic.  Abilities can use any of these stats to specify if an ability hits or not, but magic type abilities will always rely on intelligence.</p>
-
-                <h3>HIT</h3>
-
-                <p>This stat is how well you can aim your attacks.  The higher this is, the more likely you are to hit your target with an attack or a non-magic ability.</p>
-
-                <h3>AC</h3>
-
-                <p>This stat represents how hard you are to damage.  This is generally due to how well you armor protects you.</p>
+                <div className="command-grid">
+                    <div className="command-grid-item">
+                        <h3>HP</h3>
+                        <p>Hit points are how much damage your character can take until you are dead.  Simple enough.</p>
+                    </div>
+                    <div className="command-grid-item">
+                        <h3>AP</h3>
+                        <p>Action points are used everytime you perform an action like attacking, using abilities, or exploring.</p>
+                    </div>
+                    <div className="command-grid-item">
+                        <h3>STR</h3>
+                        <p>Strength is how hard you hit with your weapon.  This stat adds damage each attack you perform.</p>
+                    </div>
+                    <div className="command-grid-item">
+                        <h3>DEX</h3>
+                        <p>How quickly you can attack.  If you have a DEX of 0 your cooldown time is 25 seconds.  At the maximum value of +5 your cool down times are 5 seconds, and negative DEX has no limit on how much it can slow you down.  In the future, DEX beyond +5 will allow for multiple attacks in one cool down period.</p>
+                    </div>
+                    <div className="command-grid-item">
+                        <h3>INT</h3>
+                        <p>This stat is how well you can cast magic.  Abilities can use any of these stats to specify if an ability hits or not, but magic type abilities will always rely on intelligence.</p>
+                    </div>
+                    <div className="command-grid-item">
+                        <h3>HIT</h3>
+                        <p>This stat is how well you can aim your attacks.  The higher this is, the more likely you are to hit your target with an attack or a non-magic ability.</p>
+                    </div>
+                    <div className="command-grid-item">
+                        <h3>AC</h3>
+                        <p>This stat represents how hard you are to damage.  This is generally due to how well you armor protects you.</p>
+                    </div>
+                </div>
 
                 <h2>Special Effects</h2>
 
-                <h3>Damage Area/Target Types</h3>
-
-                <p>Some abilities can target more than one enemy, and some can only target monsters or only players in chat.</p>
-
-                <h3>Damage Types</h3>
-
-                <p>Weapons and abilities can damage more than just your HP.  They can also damage (or heal) your AP or Gold.</p>
-
-                <h3>Buffs/Debuffs</h3>
-
-                <p>Some abilities will temporarily increase your stats and make it easier/harder to damage targets, do more/less damage to targets, act faster/slower, or be harder/easier hit.</p>
-
-                <h3>Status Effects</h3>
-
-                <p>Some attacks and abilities will harm your HP/AP/Gold over time.  An example of this is the poison spell that deals 1d4 every 10 seconds.</p>
-
-                <h3>Triggered Effects</h3>
-
-                <p>Some weapons are able to trigger abilities.  The Poop Knife for example has a 50% chance of inflicting poison.  Triggered abilities are used for free.</p>
+                <div className="command-grid">
+                    <div className="command-grid-item">
+                        <h3>Damage Area/Target Types</h3>
+                        <p>Some abilities can target more than one enemy, and some can only target monsters or only players in chat.</p>
+                    </div>
+                    <div className="command-grid-item">
+                        <h3>Damage Types</h3>
+                        <p>Weapons and abilities can damage more than just your HP.  They can also damage (or heal) your AP or Gold.</p>
+                    </div>
+                    <div className="command-grid-item">
+                        <h3>Buffs/Debuffs</h3>
+                        <p>Some abilities will temporarily increase your stats and make it easier/harder to damage targets, do more/less damage to targets, act faster/slower, or be harder/easier hit.</p>
+                    </div>
+                    <div className="command-grid-item">
+                        <h3>Status Effects</h3>
+                        <p>Some attacks and abilities will harm your HP/AP/Gold over time.  An example of this is the poison spell that deals 1d4 every 10 seconds.</p>
+                    </div>
+                    <div className="command-grid-item">
+                        <h3>Triggered Effects</h3>
+                        <p>Some weapons are able to trigger abilities.  The Poop Knife for example has a 50% chance of inflicting poison.  Triggered abilities are used for free.</p>
+                    </div>
+                </div>
             </div>
         );
     }

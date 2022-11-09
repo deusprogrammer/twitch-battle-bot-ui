@@ -118,6 +118,10 @@ p {
     padding: 10px;
 }
 
+.command-grid-item>:is(h2, h3) {
+    text-align: center;
+}
+
 .command-grid-item>div {
     flex-grow: 1;
 }
